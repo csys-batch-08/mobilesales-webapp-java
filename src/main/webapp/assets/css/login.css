@@ -1,0 +1,70 @@
+@charset "ISO-8859-1";
+
+
+.text-info {
+    margin-top: -50px;
+}
+
+.cont {
+    position: absolute;
+    background-color:white;
+    left: 500px;
+    top: 100px;
+    padding: 30px;
+      border-radius: 40px;
+}
+
+.c_login {
+    font-size: 30px;
+    color: black;
+    margin-left: 100px;
+    /* text-align: ; */
+}
+body{
+	  
+}
+
+.c_user {
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    width: 300px;
+    height: 25px;
+}
+
+.c_sub {
+    padding: 12px;
+    margin-left: 100px;
+    background-color: rgb(83, 83, 204);
+    border-radius: 20px;
+}
+
+.c_sub:hover {
+    background-color: gray ;
+    color: black;
+}
+
+.c_reg {
+    padding: 12px;
+    background-color: rgb(83, 83, 204);
+    border-radius: 20px;
+    text-decoration: none;
+    margin-left: 92px;
+    border-color: black;
+    color: black;
+}
+.c_reg:hover {
+    background-color: gray;
+    color: black;
+}
+.full {
+   background: linear-gradient(rgba(0, 0, 0, .3)50%, rgba(0, 0, 0, .3)-50%), url(https://www.kindpng.com/picc/m/478-4787076_mobile-frame-png-full-hd-mobiles-kartik-creation.png);
+    background-repeat: no-repeat;
+	 background-size: cover;
+    height: 100vh;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
