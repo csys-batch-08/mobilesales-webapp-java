@@ -131,6 +131,14 @@ background-color:cornsilk;
 </div>
   </div>
          <%session.removeAttribute("product"); %> 
+         <%
+	response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");
+	if ((session.getAttribute("role") == null)) {
+		response.sendRedirect("index.jsp");
+	}
+	%>
+
+         
   
  
 </body>

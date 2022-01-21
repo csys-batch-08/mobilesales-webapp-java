@@ -67,6 +67,9 @@ li a:hover {
 body{
 background-color:cornsilk;
 }
+.btn{
+width: 200px;
+}
 
 .btn_add:hover {
 	background-color: cornflowerblue;
@@ -105,15 +108,15 @@ background-color:cornsilk;
 			
 		
 			<br> <a class="btn btn-secondary btn-block" style="margin-left: 40px"
-				href="ProductList.jsp">Show Product</a><br>
+				href="ProductList.jsp">View Products</a><br>
 		
 			
 			<br> <a class="btn btn-secondary btn-block" style="margin-left: 40px"
-				href="ViewUser.jsp">Show All User</a><br>
+				href="ViewUser.jsp">View All Users</a><br>
 			
 			
 			<br> <a class="btn btn-secondary btn-block" style="margin-left: 40px"
-				href="ViewContactUs.jsp">Show Contact</a><br>
+				href="ViewContactUs.jsp">View ContactUs</a><br>
 				
 				<br> <a class="btn btn-secondary btn-block" style="margin-left: 40px"
 				href="InActiveUsers.jsp">InActive Users</a><br>
@@ -121,6 +124,14 @@ background-color:cornsilk;
 			</div>
 		</div>
 	</div>
+	<%
+	response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");
+	if ((session.getAttribute("role") == null)) {
+		response.sendRedirect("index.jsp");
+	}
+	%>
+
+	
 
 
 

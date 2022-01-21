@@ -10,7 +10,7 @@ String userId1 = (String) session.getAttribute("userId");
 
 double wallet = (double) session.getAttribute("wallet");
 int userId = Integer.parseInt(userId1);
-System.out.println(userId);
+
 %>
 
 
@@ -170,9 +170,9 @@ padding:10px;
     margin-left: 30px;
 }
 .user_det{
-margin:100px;
+margin:60px;
 position: absolute;
-left: 300px;
+left: 250px;
 }
 body{
 background-color:cornsilk;
@@ -180,7 +180,7 @@ background-color:cornsilk;
 	form  { display: table;      }
 p     { display: table-row;  }
 label { display: table-cell;position: absolute;right: 90px;  }
-input { display: table-cell;position: absolute;left: 100px; }
+input { display: table-cell;position: absolute;left: 80px; }
 
 * {
 	margin: 0;
@@ -239,12 +239,31 @@ input { display: table-cell;position: absolute;left: 100px; }
 		</p>
 		<p>
 		<label>Wallet :</label>
-		<input type="text" required class="c_user" name="userWallet" readonly value="<%= rs.getString(6)%>">	<br><br>
+		<input type="text" required class="c_user" name="userWallet" readonly value="<%= rs.getString(6)%>">
+	
+		<br><br>
 		</p>
 		<p>
 		<button style="margin-left: 100px" class="btn btn-primary" type="submit">Update</button>
 		</p>
 		</form>
+			<div >
+		<details style="position:absolute;left: 450px ;top: 210px;padding: 4px;">
+		<summary style=" padding: 4px;" class="btn btn-secondary" >Recharge</summary>
+		<p><form action="addWallet" method="post">
+					<p ><br>
+						
+						<input hidden="" style=" display: table-cell;position: absolute;left: 80px;" type="text" name="walletUserId"
+							value="<%= rs.getString(1)%>" readonly pattern="[0-9]{1,8}"
+							maxlength="8" required></p>
+							<p>
+							<label style=" display: table-cell;position: absolute;right:  20px;">Wallet:</label>
+							 <input style=" display: table-cell;position: absolute;left: 70px;" type="text" name="walletAmount" pattern="[1-9][0-9]{1,8}"
+							maxlength="8" title="Only enter positive number" required><br> <br>
+						<button style=" display: table-cell;position: absolute;left:  20px;" type="submit" class="btn btn-success">Add</button>
+						<br> <br></p>
+					</form></p>
+		</details>	</div>
 		</div>
 		
 		<%}
@@ -258,6 +277,14 @@ input { display: table-cell;position: absolute;left: 100px; }
 	session.removeAttribute("msg");
 	
 	%>
+	<%
+	response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");
+	if ((session.getAttribute("role") == null)) {
+		response.sendRedirect("index.jsp");
+	}
+	%>
+
+	
 	
 	
 	

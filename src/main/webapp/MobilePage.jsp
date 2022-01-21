@@ -16,7 +16,7 @@ double wallet=0;
 if(rs1.next()){
 	wallet=rs1.getDouble(6);
 }
-System.out.println(userId);
+
 %>
 
 
@@ -210,13 +210,13 @@ left: 100px;
 		<h5 style="margin-left: 200px;">Welcome :<%=name%></h5>
 		<h5 style="margin-left: 200px;"><%="Wallet Amount: " + wallet%></h5>
 
-
+ 
 
 		<marquee class="mar1" behavior="" direction="">New
 			Smartphone Offer Available upto 15% Discount</marquee><br>
 <div class="searchPro">			
 <form action="SearchMobile.jsp">
-<input type="text" name="search"  >
+<input type="text" pattern="[A-Za-z]{1,40}" name="search"  >
 <button type="submit">Search</button>
 </form>
 </div><br><br><br><br>
@@ -232,7 +232,7 @@ left: 100px;
 				int i = 0;
 				while (i <= 1) {
 					if (rs.next()) {
-						System.out.println("proId"+rs.getInt(1));
+						
 			%>
 			<tr>
 
@@ -393,6 +393,14 @@ left: 100px;
 				%>
 			
 		</table>
+		<%
+	response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");
+	if ((session.getAttribute("role") == null)) {
+		response.sendRedirect("index.jsp");
+	}
+	%>
+
+		
 </div>
 </body>
 

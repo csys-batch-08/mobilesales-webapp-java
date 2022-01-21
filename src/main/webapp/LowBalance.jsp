@@ -148,5 +148,13 @@ margin-top:40px;
 	
 	<h1 style="color: green;margin-left: 470px;margin-top:200px">Low Balance in Wallet</h1>
 	<span style='font-size:100px;margin-left: 550px'>&#128528;</span>
+	<%
+	response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");
+	if ((session.getAttribute("role") == null)) {
+		response.sendRedirect("index.jsp");
+	}
+	%>
+
+	
 </body>
 </html>

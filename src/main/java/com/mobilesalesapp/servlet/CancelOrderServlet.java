@@ -19,10 +19,14 @@ public class CancelOrderServlet extends HttpServlet {
 		int orderId = Integer.parseInt(req.getParameter("orderId"));
 		//System.out.println( "cancelled" + orderId);
 		String status = req.getParameter("orderStatus");
-//		System.out.println(status + "cancelled" + orderId);
+		double price=Double.parseDouble( req.getParameter("price"));
+		int userId = Integer.parseInt(req.getParameter("userId"));
+		System.out.println(price);
 
 		if (status.equals("Placed")) {
 			OrderPojo orderPojo = new OrderPojo(0, orderId);
+			orderPojo.setPrice(price);
+			orderPojo.setUserId(userId);
 			OrderImpl orderImpl = new OrderImpl();
 			orderImpl.orderCancel(orderPojo);
 			PrintWriter out = res.getWriter();

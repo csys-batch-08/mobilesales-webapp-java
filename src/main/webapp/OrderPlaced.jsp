@@ -5,6 +5,9 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>OrderPlaced</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
 </head>
 <style>
 .h2_1 {
@@ -38,6 +41,9 @@
 
 .table1 td {
 	padding: 15px;
+}
+body{
+background-color:cornsilk;
 }
 
 .button1 {
@@ -122,7 +128,7 @@ margin-top:40px;
 <body bgcolor="cornsilk">
 	<h2 class="h2_1">Mobile Sales App</h2>
 
-	<div class="top_nav">
+	<div style="position: relative;top: -10px;" class="top_nav">
 
 		<ul>
 			<li><a class="active" href="MobilePage.jsp">Home</a></li>
@@ -131,7 +137,7 @@ margin-top:40px;
             <li><a href="MyProfile.jsp">My Profile</a></li>
 			<li><a href="ContactUs.jsp">Contact us</a></li>
 			<li><a href="AboutUs.jsp">About us</a></li>
-			<li style="float: right;"><a href="logOut.jsp">Logout</a></li>
+			<li style="float: right;"><a href="logOut">Logout</a></li>
 		
 
 		</ul>
@@ -141,7 +147,15 @@ margin-top:40px;
 	<img style="border-radius: 100px;position: absolute;top:0px;left: 500px; " width="40px" alt="" src="assets/images/mobile112.png">
 	
 	
-	<h1 style="color: green;margin-left: 300px;margin-top:200px">Successfully Placed Thank You for Purchasing</h1>
+	<h1 style="color: green;margin-left: 250px;margin-top:160px">Successfully Placed Thank You for Purchasing</h1>
 	<span style='font-size:100px;margin-left: 550px'>&#128522;</span>
+	<%
+	response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");
+	if ((session.getAttribute("role") == null)) {
+		response.sendRedirect("index.jsp");
+	}
+	%>
+
+	
 </body>
 </html>

@@ -182,7 +182,7 @@ pre.setInt(1,userId );
 	
 	
   
-    System.out.println("rsnext");
+  //  System.out.println("rsnext");
 %>
    
     
@@ -221,6 +221,13 @@ pre.setInt(1,userId );
     </table>
 	
 	
+	<%
+	response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");
+	if ((session.getAttribute("role") == null)) {
+		response.sendRedirect("index.jsp");
+	}
+	%>
+
 	
 	
 </body>

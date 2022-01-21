@@ -213,6 +213,13 @@ background-color: rgb(248, 213, 168);
     	<h1 style="color: red ;margin-left: 500px;margin-top: 150px">Order is not placed yet</h1>
    <% }%>
 <!--  <h3 style="color: red;margin-left: 300px">No Order Placed</h3> -->
+<%
+	response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");
+	if ((session.getAttribute("role") == null)) {
+		response.sendRedirect("index.jsp");
+	}
+	%>
+
 
 
 </body>

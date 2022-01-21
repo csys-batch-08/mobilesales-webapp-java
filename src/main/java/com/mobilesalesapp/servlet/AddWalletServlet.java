@@ -20,7 +20,7 @@ public class AddWalletServlet extends HttpServlet {
 		int userId=Integer.parseInt(req.getParameter("walletUserId"));
 		double addAmount=Double.parseDouble(req.getParameter("walletAmount"));
 		//System.out.println(userId+"add"+addAmount);
-	
+		
 		RegisterPojo wallet=new RegisterPojo(userId,addAmount);
 		AdminImpl adminAddAmount=new AdminImpl();
 		int i=adminAddAmount.addWalletAmount(wallet);
@@ -28,12 +28,12 @@ public class AddWalletServlet extends HttpServlet {
 			try {
 				if(i>0) {
 					//System.out.println("success");
-					res.sendRedirect("ViewUser.jsp");
+					res.sendRedirect("MyProfile.jsp");
 				}
 				
 				else {
 					//System.out.println("not success");
-					res.sendRedirect("ViewUser.jsp");
+					res.sendRedirect("MyProfile.jsp");
 				}
 				
 			} catch (IOException e) {

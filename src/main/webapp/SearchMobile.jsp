@@ -10,7 +10,7 @@ String userId1 = (String) session.getAttribute("userId");
 
 double wallet = (double) session.getAttribute("wallet");
 int userId = Integer.parseInt(userId1);
-System.out.println(userId);
+//System.out.println(userId);
 %>
 
 
@@ -20,6 +20,9 @@ System.out.println(userId);
 <head>
 <meta charset="ISO-8859-1">
 <title>Mobile_page</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
 </head>
 <style>
 .h2_1 {
@@ -158,6 +161,9 @@ padding:10px;
 .table_right {
 	margin-right: 200px
 }
+body{
+background-color:cornsilk;
+}
 
 * {
 	margin: 0;
@@ -169,7 +175,7 @@ padding:10px;
 	<h2 class="h2_1">Mobile Sales App</h2>
 
 
-	<div class="top_nav">
+	<div style="position: relative;top: -10px;" class="top_nav">
 
 		<ul>
 			<li><a class="active" href="MobilePage.jsp	">Home</a></li>
@@ -190,8 +196,8 @@ padding:10px;
 
 	<div class="body_main">
 		<br>
-		<h3 style="margin-left: 200px;"><%=name%></h3>
-		<h3 style="margin-left: 200px;"><%="Wallet Amount: " + wallet%></h3>
+		<h5 style="margin-left: 200px;"><%=name%></h5>
+		<h5 style="margin-left: 200px;"><%="Wallet Amount: " + wallet%></h5>
 
 
 
@@ -199,13 +205,13 @@ padding:10px;
 			Smartphone Offer Available upto 15% Discount</marquee><br><br>
 	<div class="searchPro">	
 <form action="SearchMobile.jsp">
-<input type="text" name="search"  >
+<input type="text" pattern="[A-Za-z]{1,40}" name="search"  >
 <button type="submit">Search</button>
 </form>
 </div>	<br><br><br>
 
 
-	<table class="table table-hover table-striped" style="margin-left: 222px;" id="table2" class="table1">
+	<table  style="margin-left: 222px;" id="table2" class="table1">
 			<%
 			String search=( request.getParameter("search")).toLowerCase();
 			//System.out.println(search+" searches ");
@@ -219,13 +225,13 @@ padding:10px;
 				if(rs1.next()){
 				while (i <= 1) {
 					if (rs.next()) {
-						System.out.println("proId"+rs.getInt(1));
+						//System.out.println("proId"+rs.getInt(1));
 			%>
 			<tr>
 
 
 
-				<th><a href="MobileInfo.jsp?product_id=<%=rs.getInt(1)%>"> <img
+				<th><a style="margin-left: 80px;" href="MobileInfo.jsp?product_id=<%=rs.getInt(1)%>"> <img
 						src="<%=rs.getString(6)%>" alt=""></a></th>
 			</tr>
 
@@ -264,7 +270,7 @@ padding:10px;
 				<tr>
 
 
-					<th><a href="MobileInfo.jsp?product_id=<%=rs.getInt(1)%>"> <img
+					<th><a style="margin-left: 80px;" href="MobileInfo.jsp?product_id=<%=rs.getInt(1)%>"> <img
 							src="<%=rs.getString(6)%>" alt=""></a></th>
 				</tr>
 
@@ -297,7 +303,7 @@ padding:10px;
 
 
 
-		<table style="margin-left: 622px;" class="table1">
+		<table style="margin-left: 80px;" style="margin-left: 622px;" class="table1">
 			<div class="table_right">
 				<%
 				int k = 0;
@@ -339,7 +345,7 @@ padding:10px;
 		</table>
 
 
-		<table style="margin-left: 222px; margin-top: -1030px" class="table1">
+		<table style="margin-left: 80px;" style="margin-left: 222px; margin-top: -1030px" class="table1">
 			<div class="table_right">
 				<%
 				int l = 0;
@@ -381,6 +387,14 @@ padding:10px;
 				<h2 style="color: red; margin:100px;position:absolute; left: 350px">Product Not Found</h2>
 				<%} %>
 		</table>
+		<%
+	response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");
+	if ((session.getAttribute("role") == null)) {
+		response.sendRedirect("index.jsp");
+	}
+	%>
+
+		
 </div>
 
 

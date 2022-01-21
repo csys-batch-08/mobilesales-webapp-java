@@ -244,7 +244,7 @@ background-color: rgb(248, 213, 168);
 
 		<%
 		while (rs.next()) {
-			System.out.println("url id "+rs.getInt(6));
+			//System.out.println("url id "+rs.getInt(6));
 			int productId=rs.getInt(6);
 			OrderImpl orderImpl =new OrderImpl();
 			
@@ -264,7 +264,7 @@ background-color: rgb(248, 213, 168);
 						value="<%=rs.getInt(1)%>" readonly><br>
 					<br>
 
-					<button class="btn btn-danger" type="submit" onclick="Cancel('<%=rs.getString(2)%>','<%=rs.getInt(1)%>')" class="btn_add">Cancel</button>
+					<button class="btn btn-danger" type="submit" onclick="Cancel('<%=rs.getString(2)%>','<%=rs.getInt(1)%>','<%=rs.getDouble(3)%>','<%=rs.getInt(7)%>')" class="btn_add">Cancel</button>
 				
 			</td>
 		</tr>
@@ -286,9 +286,9 @@ background-color: rgb(248, 213, 168);
 	}
 	%>
 	<script type="text/javascript">
-	function Cancel(status,id) {
-		console.log('on'+status);
-		var url1="cancelOrder?orderStatus="+status+"&orderId="+id;
+	function Cancel(status,id,price,userId) {
+		console.log('on'+status,price+userId);
+		var url1="cancelOrder?orderStatus="+status+"&orderId="+id+"&price="+price+"&userId="+userId;
 		if(window.XMLHttpRequest){  
     		request=new XMLHttpRequest();  
     		}  
@@ -318,6 +318,14 @@ background-color: rgb(248, 213, 168);
 		
 	}
 	</script>
+	<%
+	response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");
+	if ((session.getAttribute("role") == null)) {
+		response.sendRedirect("index.jsp");
+	}
+	%>
+
+	
 
 
 </body>

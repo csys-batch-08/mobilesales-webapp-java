@@ -5,9 +5,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
 <style type="text/css">
 .fullbody {
     
@@ -28,11 +28,14 @@
     background-color:white;
    
     padding: 30px;
-    padding-bottom:80px;
+    padding-bottom:50px;
     position: absolute;
     left: 500px;
-    top: 100px;
+    top: 50px;
     border-radius: 40px;
+}
+.btn{
+width: 300px;
 }
 * {
     margin: 0;
@@ -64,28 +67,29 @@
     <div class="fullbody">
 
         <div class="containe">
-            <form action="reg" onsubmit="return match()" method="post">
+        	<div class="container mt-1">
+            <form action="reg" class="was-validated" onsubmit="return match()" method="post">
 
-                <h2 class="c_register" style="position: absolute;left: 120px;" >Register </h2><br><br><br>
-                <label for="">Name:</label><br>
-                <input autofocus  autocomplete="off" class="c_user2"  name="name1" type="text" pattern="[A-Za-z]{3,40}" 
-                title="Only enter A-Z ,a-z and enter  min 3 to max 40 " required><br>
+                <h2 class="c_register" style="position: absolute;left: 120px;" >Register </h2><br><br>
+                <label class="form-label" for="">Name:</label><br>
+                <input autofocus  autocomplete="off" class="form-control"  name="name1" type="text" pattern="[A-Za-z]{3,40}" 
+                title="Only enter A-Z ,a-z and enter  min 3 to max 40 " required>
                 
-                <label for="">Email:</label><br>
-                <input  autocomplete="off" class="c_user2"  name="email"  
-                pattern="[a-z][a-z0-9_.]+@[a-z0-9.]+[.][a-z]+" type="email"   title="Enter valid email ex(example12@gmail.com)" required><br>
+                <label class="form-label">Email:</label><br>
+                <input  autocomplete="off" class="form-control"  name="email"  
+                pattern="[a-z][a-z0-9_.]+@[a-z0-9.]+[.][a-z]+" type="email"   title="Enter valid email ex(example12@gmail.com)" required>
                 
-              	<label for="">Phone number:</label><br>
-                <input  autocomplete="off" class="c_user2" name="phone_number" type="text"
-                pattern="[6789]{1}[0-9]{9}" maxlength="10"  title="Enter only 10 digit number" required><br>
+              	<label  class="form-label">Phone number:</label><br>
+                <input  autocomplete="off" class="form-control" name="phone_number" type="text"
+                pattern="[6789]{1}[0-9]{9}" maxlength="10"  title="Enter only 10 digit number" required>
                 
-                <label for="">Password:</label><br>
-                <input  autocomplete="off" class="c_user2" id="pwd1" name="password" type="password"
+                <label  class="form-label">Password:</label><br>
+                <input  autocomplete="off" class="form-control" id="pwd1" name="password" type="password"
                 pattern="(?=.*\d)(?=.*[@#$%*!^()_+])(?=.*[a-z])(?=.*[A-Z]).{8,}" 
-                title="Enter atleast one upper case and one lower case and one number ,and atleast 8 or more character" required><br>
+                title="Enter atleast one upper case and one lower case and one number ,and atleast 8 or more character" required>
                
-                <label for="">Confirm Password:</label><br>
-                <input  autocomplete="off" class="c_user2" id="pwd2" name="confirm_password" type="password"
+                <label  class="form-label">Confirm Password:</label><br>
+                <input  autocomplete="off" class="form-control" id="pwd2" name="confirm_password" type="password"
                 pattern="((?=.*\d)(?=.*[@#$%*!^()_+])(?=.*[a-z])(?=.*[A-Z]).{8,}" 
                 title="Enter atleast one upper case and one lower case and one number ,and atleast 8 or more character" required>
                 <p id="pws" style="color:red;"></p><br>
@@ -93,15 +97,18 @@
                 if(regError!=null){%>
                 <h6 style="color: red;position: absolute;left:90px;"><%=regError %></h6><br><br>
                 <% }%>
-                <button style="position: absolute;left: 140px;" class="btn btn-primary	">Register</button>
+                <button  class="btn btn-primary	">Register</button>
                 
             </form>
+            </div>
         </div>
         <br><br>
 	<%session.removeAttribute("regError"); %>
 
 
     </div>
+
+
 
 
 

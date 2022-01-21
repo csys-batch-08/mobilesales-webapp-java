@@ -82,7 +82,7 @@ public class OrderImpl implements OrderDao {
 	public ResultSet viewAllOrders(OrderPojo orderPojo) {
 
 		Connection con = ConnectionUtil.connect();
-		String query = "select order_id,status,price,order_date,address,fk_product_id from orders_table where fk_user_id=? order by order_date desc ";
+		String query = "select order_id,status,price,order_date,address,fk_product_id,fk_user_id from orders_table where fk_user_id=? order by order_date desc ";
 		ResultSet rs = null;
 		try {
 			//System.out.println(orderPojo.getUserId());
@@ -116,11 +116,14 @@ public class OrderImpl implements OrderDao {
 	public void orderCancel(OrderPojo orderPojo) {
 		Connection con=ConnectionUtil.connect();
 		String query="commit";
+		String query3="update users_table set wallet=(wallet)+'"+orderPojo.getPrice()+"'where pk_user_id='"+orderPojo.getUserId()+"'";
 		String query2="update orders_table set status='Cancelled' where order_id=? ";
 		try {
-			//System.out.println(orderPojo.getOrerId());
+			System.out.println(orderPojo.getUserId()+"helo");
 			PreparedStatement pre1=con.prepareStatement(query);
 			pre1.executeUpdate();
+			PreparedStatement pre2=con.prepareStatement(query3);
+			pre2.executeUpdate();
 			PreparedStatement pre=con.prepareStatement(query2);
 			pre.setInt(1, orderPojo.getOrerId());
 			int i=pre.executeUpdate();

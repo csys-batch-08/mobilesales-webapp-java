@@ -223,5 +223,13 @@ background-color:cornsilk;
 double price= rs.getDouble(5);
 session.setAttribute("price",price);
 } %>
+<%
+	response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");
+	if ((session.getAttribute("role") == null)) {
+		response.sendRedirect("index.jsp");
+	}
+	%>
+
+
 </body>
 </html>

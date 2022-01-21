@@ -127,7 +127,7 @@ background-color: rgb(248, 213, 168);
 				<th>Name</th>
 				<th>Email</th>
 				<th>Phone Number</th>
-				<th>Wallet</th>
+				
 				<th>Action</th>
 				<th>Orders</th>
 				<th>Inactive</th>
@@ -143,17 +143,7 @@ background-color: rgb(248, 213, 168);
 				<td><%=ns.getString(3)%></td>
 				<td><%=ns.getLong(4)%></td>
 				<td><%=ns.getDouble(5)%></td>
-				<td>
-					<form action="addWallet" method="post">
-						User_id :<input type="text" name="walletUserId"
-							value="<%=ns.getInt(1)%>" readonly pattern="[0-9]{1,8}"
-							maxlength="8" required><br> <br> Wallet :<input
-							type="text" name="walletAmount" pattern="[1-9][0-9]{1,8}"
-							maxlength="8" title="Only enter positive number" required><br> <br>
-						<button type="submit" class="btn btn-success">Add</button>
-						<br> <br>
-					</form>
-				</td>
+			
 				<td>
 			
 					<a class="btn btn-primary" href="DeliveredOrder.jsp?userId=<%=ns.getInt(1)%>">View Order</a>
@@ -170,6 +160,14 @@ background-color: rgb(248, 213, 168);
 			%>
 		</table>
 	</div>
+	<%
+	response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");
+	if ((session.getAttribute("role") == null)) {
+		response.sendRedirect("index.jsp");
+	}
+	%>
+
+	
 
 </body>
 </html>
