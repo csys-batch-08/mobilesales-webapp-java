@@ -1,17 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1" import="java.sql.*"
-	import ="com.mobilesalesapp.util.*" %>
-<%
-if (session.getAttribute("name") == (null)) {
-	response.sendRedirect("index.jsp");
-}
-String name = (String) session.getAttribute("name");
-String userId1 = (String) session.getAttribute("userId");
 
-double wallet = (double) session.getAttribute("wallet");
-int userId = Integer.parseInt(userId1);
-//System.out.println(userId);
-%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 
 
 
@@ -19,18 +10,19 @@ int userId = Integer.parseInt(userId1);
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Mobile_page</title>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+	rel="stylesheet">
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 
+<title>Mobile_page</title>
 </head>
 <style>
 .h2_1 {
 	text-align: center;
 	background-color: bisque;
 }
-
-
 
 .top_nav {
 	/* background-color: brown;
@@ -42,6 +34,13 @@ int userId = Integer.parseInt(userId1);
 	position: relative;
 	left: 500px;
 	padding: 8px;
+}
+
+bod {
+	background-image:
+		url("https://image.freepik.com/free-psd/smartphone-screen-mockup-glowing-neon-lights_53876-98580.jpg");
+	background-repeat: repeat;
+	background-size: 700px;
 }
 
 .top_nav_bu1 {
@@ -88,18 +87,16 @@ int userId = Integer.parseInt(userId1);
 
 .mar1 {
 	font-size: 30px;
-	color: green	;
+	color: green;
 }
 
 .body_main1 {
-	
-	background: linear-gradient(rgba(0, 0, 0, .3) 70%, rgba(0, 0, 0, .3)
+	background: linear-gradient(rgba(0, 0, 0, .3) 60%, rgba(0, 0, 0, .3)
 		-70%),
-		url(https://images.unsplash.com/photo-1506102383123-c8ef1e872756?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8Mjd8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60);
-	background-repeat: no-repeat;
-	background-size: cover;
+		url(https://image.freepik.com/free-psd/smartphone-screen-mockup-glowing-neon-lights_53876-98580.jpg);
+	background-repeat: repeat;
+	background-size: 700px;
 	/* background: rgba(76, 175, 80, 0.3) */
-	height: 100%;
 }
 
 ul {
@@ -139,30 +136,73 @@ li a:hover {
 	position: relative;
 	top: -8px;
 }
-.searchPro{
-position: absolute;
-left: 420px;
-}
-.searchPro input[type=text]{
-padding:10px;
-font-size: 16px;
-float:left;
-}
 
-.searchPro button{
-float: left;
-padding:10px;
- background: #2196F3;
-  font-size: 17px;
-  border: 1px solid grey;
-  border-left: none;
-  cursor: pointer;
-}
 .table_right {
 	margin-right: 200px
 }
-body{
-background-color:cornsilk;
+
+.searchPro {
+	position: absolute;
+	left: 420px;
+}
+
+.searchPro input[type=text] {
+	padding: 10px;
+	font-size: 16px;
+	float: left;
+}
+
+.searchPro button {
+	float: left;
+	padding: 10px;
+	background: #2196F3;
+	font-size: 17px;
+	border: 1px solid grey;
+	border-left: none;
+	cursor: pointer;
+}
+#pets {
+margin-left: 75px;
+margin-top: 20px;
+line-height: 2;
+font-size: 20px;
+}
+
+#pets p {
+margin-left: 40px;
+font-weight: bold;
+}
+
+#pets button {
+margin-left: 50px;
+margin-top: 5px;
+width: 120px;
+height: 30px;
+background-color: rgb(16, 177, 16);
+border-radius: 10px;
+border: none;
+color: white;
+font-size: 17px;
+font-weight: bold;
+box-shadow: 0 0 5px black;
+}
+#pets button:hover {
+background-color: white;
+color: black;
+}
+
+#pets img {
+width: 170px;
+height: 280px;
+border-radius: 10px;
+}
+#petdetails {
+width: 100px;
+}
+
+.img1 {
+	position: absolute;
+	left: 100px;
 }
 
 * {
@@ -171,234 +211,97 @@ background-color:cornsilk;
 }
 </style>
 
-<body bgcolor="cornsilk">
+<body class="" style="background-color: cornsilk">
 	<h2 class="h2_1">Mobile Sales App</h2>
 
-
-	<div style="position: relative;top: -10px;" class="top_nav">
+	<div style="position: relative; top: -10px;" class="top_nav">
 
 		<ul>
-			<li><a class="active" href="MobilePage.jsp	">Home</a></li>
-			<li><a href="ViewOrders.jsp">My Orders</a></li>
+			<li><a class="active" href="MobilePage">Home</a></li>
+			<li><a href="ViewOrders1">My Orders</a></li>
 			<li><a href="ViewCart.jsp">Cart</a></li>
 			<li><a href="MyProfile.jsp">My Profile</a></li>
 			<li><a href="ContactUs.jsp">Contact us</a></li>
 			<li><a href="AboutUs.jsp">About us</a></li>
 			<li style="float: right;"><a href="logOut">Logout</a></li>
-			
+
+
 		</ul>
 
 
 	</div>
-	<img style="border-radius: 100px;position: absolute;top:0px;left: 500px; " width="40px" alt="" src="assets/images/mobile112.png">
-	
-	<br>
+	<img
+		style="border-radius: 100px; position: absolute; top: 0px; left: 500px;"
+		width="40px" alt="" src="assets/images/mobile112.png">
 
 	<div class="body_main">
 		<br>
-		<h5 style="margin-left: 200px;"><%=name%></h5>
-		<h5 style="margin-left: 200px;"><%="Wallet Amount: " + wallet%></h5>
+
+
+		<h5 style="margin-left: 200px;">
+			Welcome :${sessionScope.name}</h5>
+		<h5 style="margin-left: 200px;">Wallet Amount:${sessionScope.wallet}  </h5>
 
 
 
-		<marquee class="mar1" behavior="" direction="">New
-			Smartphone Offer Available upto 15% Discount</marquee><br><br>
-	<div class="searchPro">	
-<form action="SearchMobile.jsp">
-<input type="text" pattern="[A-Za-z]{1,40}" name="search"  >
-<button type="submit">Search</button>
-</form>
-</div>	<br><br><br>
+		<marquee class="mar1" >New
+			Smartphone Offer Available upto 15% Discount</marquee>
+		<br>
+		<div class="searchPro">
+			<form action="SearchMobile">
+				<input type="text" pattern="[A-Za-z]{1,40}" name="search">
+				<button type="submit">Search</button>
+			</form>
+		</div>
+		<br>
+		<br>
+		<br>
+		<br>
 
 
-	<table  style="margin-left: 222px;" id="table2" class="table1">
-			<%
-			String search=( request.getParameter("search")).toLowerCase();
-			//System.out.println(search+" searches ");
-			String query = "select * from products where lower(product_name) like '"+search+"%'";
-				Connection con = ConnectionUtil.connect();
-				Statement st = con.createStatement();
-				Statement st1 = con.createStatement();
-				ResultSet rs = st.executeQuery(query);
-				ResultSet rs1 = st1.executeQuery(query);
-				int i = 0;
-				if(rs1.next()){
-				while (i <= 1) {
-					if (rs.next()) {
-						//System.out.println("proId"+rs.getInt(1));
-			%>
-			<tr>
+		<table>
+			<tbody>
+				<tr>
+					<c:set var="count" value="1" />
+					<c:forEach items="${sessionScope.searchList}" var="p">
+						<td>
+							<table id="pets">
+								<tbody>
+									<!-- Pet Image -->
+									<tr>
+										<td><img src="${p.url}" alt="petimage"></td>
 
-
-
-				<th><a style="margin-left: 80px;" href="MobileInfo.jsp?product_id=<%=rs.getInt(1)%>"> <img
-						src="<%=rs.getString(6)%>" alt=""></a></th>
-			</tr>
-
-			<tr>
-
-				<td><br> <%=rs.getString(2)%></td>
-
-			</tr>
-			<tr>
-
-				<td><br> <%=rs.getString(5)%></td>
-
-			</tr>
-			<tr>
-
-				<td><a id="but_id" class="button1" href="MobileInfo.jsp?product_id=<%=rs.getInt(1)%>">Buy</a>
-				</td>
-
-			</tr>
-
-			<%
-			}
-			i++;
-			}
-			%>
+									
+										<td>
+											
+											
+											<p> ${p.productName}</p>
+											
+											<p> Rs. ${p.listCost}</p>
+											
+											<p><a style="border-radius: 20px;position: relative  ;left: 10px;top: 10px;" id="but_id" class="btn btn-primary" href="MobileInfo?productId=${p.id }">View</a></p>
+										</td>
+				
+									</tr>
+								</tbody>
+							</table>
+						</td>
+						<c:choose>
+							<c:when test="${count==2}">
+								<c:set var="count" value="1" />
+				</tr>
+				<tr>
+					</c:when>
+					<c:otherwise>
+						<c:set var="count" value="2" />
+					</c:otherwise>
+					</c:choose>
+					</c:forEach>
+				</tr>
+			</tbody>
 		</table>
 
-
-		<table style="margin-left: 622px; margin-top: -1050px" class="table1">
-			<div class="table_right">
-				<%
-				int j = 0;
-				while (j <= 1) {
-					if (rs.next()) {
-				%>
-				<tr>
-
-
-					<th><a style="margin-left: 80px;" href="MobileInfo.jsp?product_id=<%=rs.getInt(1)%>"> <img
-							src="<%=rs.getString(6)%>" alt=""></a></th>
-				</tr>
-
-				<tr>
-
-					<td><br> <%=rs.getString(2)%></td>
-
-				</tr>
-				<tr>
-
-					<td><br> <%=rs.getString(5)%></td>
-
-				</tr>
-				<tr>
-
-					<td><a id="but_id" class="button1" href="MobileInfo.jsp?product_id=<%=rs.getInt(1)%>">Buy</a>
-				</td>
-
-				</tr>
-				<br>
-
-				<%
-				}
-				j++;
-				}
-				%>
-			</div>
-		</table>
-
-
-
-
-		<table style="margin-left: 80px;" style="margin-left: 622px;" class="table1">
-			<div class="table_right">
-				<%
-				int k = 0;
-				while (k <= 1) {
-					if (rs.next()) {
-				%>
-				<tr>
-
-
-					<th><a href="MobileInfo.jsp?product_id=<%=rs.getInt(1)%>"> <img
-							src="<%=rs.getString(6)%>" alt=""></a></th>
-				</tr>
-
-				<tr>
-
-					<td><br> <%=rs.getString(2)%></td>
-
-				</tr>
-				<tr>
-
-					<td><br> <%=rs.getString(5)%></td>
-
-				</tr>
-				<tr>
-
-					<td><a id="but_id" class="button1" href="MobileInfo.jsp?product_id=<%=rs.getInt(1)%>">Buy</a>
-				</td>
-
-				</tr>
-				<br>
-
-				<%
-				}
-
-				k++;
-				}
-				%>
-			</div>
-		</table>
-
-
-		<table style="margin-left: 80px;" style="margin-left: 222px; margin-top: -1030px" class="table1">
-			<div class="table_right">
-				<%
-				int l = 0;
-				while (l <= 1) {
-					if (rs.next()) {
-				%>
-				<tr>
-
-
-					<th><a href="MobileInfo.jsp?product_id=<%=rs.getInt(1)%>"> <img
-							src="<%=rs.getString(6)%>" alt=""></a></th>
-				</tr>
-
-				<tr>
-
-					<td><br> <%=rs.getString(2)%></td>
-
-				</tr>
-				<tr>
-
-					<td><br> <%=rs.getString(5)%></td>
-
-				</tr>
-				<tr>
-
-					<td><a id="but_id" class="button1" href="MobileInfo.jsp?product_id=<%=rs.getInt(1)%>">Buy</a>
-				</td>
-
-				</tr>
-				<br>
-
-				<%
-				}
-
-				l++;
-				}}
-				else{
-				%>
-				<h2 style="color: red; margin:100px;position:absolute; left: 350px">Product Not Found</h2>
-				<%} %>
-		</table>
-		<%
-	response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");
-	if ((session.getAttribute("role") == null)) {
-		response.sendRedirect("index.jsp");
-	}
-	%>
-
-		
-</div>
-
-
-</div>
+	</div>
 </body>
 
 </html>

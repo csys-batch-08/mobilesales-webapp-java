@@ -1,6 +1,7 @@
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1" import ="com.mobilesalesapp.impl.OrderImpl" import ="java.sql.*" import ="com.mobilesalesapp.model.OrderPojo" %>
+    pageEncoding="ISO-8859-1"  %>
+    	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -160,21 +161,8 @@ background-color: rgb(248, 213, 168);
 	<img style="border-radius: 100px;position: absolute;top:0px;left: 500px; " width="40px" alt="" src="assets/images/mobile112.png">
 	
 	<br><br>
-    <%
-    //String user = (String) session.getAttribute("userId");
-  //  System.out.println("my"+user);
-  
-    	int userId = Integer.parseInt(request.getParameter("userId"));
-    //	System.out.println("my1	"+userId);
-    	OrderPojo orderPojo=new OrderPojo(userId);
-    	OrderImpl order=new OrderImpl();
-    	ResultSet rs=order.viewAllOrders(orderPojo);
-    	ResultSet rs1=order.viewAllOrders(orderPojo);
-    %>
-    <%
-    if(rs1.next() ){%>
-    	
-   
+	
+  <c:if test="${userId==null}">
     	
     <table style="width: 80%;margin-left: 100px;">
     <tr style="background-color: cornflowerblue">
@@ -185,40 +173,33 @@ background-color: rgb(248, 213, 168);
     <th>Delivery Address</th>
     <th>Cancel Order</th>
     </tr>
+
     
-  
-    
- 
-    <%while(rs.next()){%>
+ <c:forEach items="${orderDetails}" var="o">
+  	
     <tr>
-    <td><%=rs.getInt(1) %></td>
-    <td><%=rs.getString(2) %></td>
-    <td><%=rs.getDouble(3) %></td>
-    <td><%=rs.getString(4) %></td>
-    <td><%=rs.getString(5) %></td>
+    <td>${o.orderId }</td>
+    <td>${o.status }</td>
+    <td>${o.price }</td>
+    <td>${o.date }</td>
+    <td>${o.address}</td>
     <td>
  
-    <a class="btn btn-success" href="deliveredOrder?orderId=<%=rs.getInt(1)%>&deliveryStatus=<%=rs.getString(2) %>">Delivered</a>
+    <a class="btn btn-success" href="deliveredOrder?orderId=${o.orderId }&deliveryStatus=${o.status }">Delivered</a>
     </td>
     </tr>
   
-    	<% }%>	
+    	</c:forEach>
     		
     	
    
     </table>
+    </c:if>
 
- <% }
-   else{%>
+<c:if test="${userId!=null}">
     	<h1 style="color: red ;margin-left: 500px;margin-top: 150px">Order is not placed yet</h1>
-   <% }%>
-<!--  <h3 style="color: red;margin-left: 300px">No Order Placed</h3> -->
-<%
-	response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");
-	if ((session.getAttribute("role") == null)) {
-		response.sendRedirect("index.jsp");
-	}
-	%>
+   </c:if>
+
 
 
 

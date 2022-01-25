@@ -8,8 +8,6 @@ import java.sql.SQLException;
 import com.mobilesalesapp.exception.CartException;
 import com.mobilesalesapp.impl.CartImpl;
 import com.mobilesalesapp.model.CartPojo;
-
-import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -18,12 +16,14 @@ import javax.servlet.http.HttpSession;
 
 @WebServlet("/addCart")
 public class CartServlet extends HttpServlet {
+
+	private static final long serialVersionUID = 1L;
+
+	@Override
 	public void service(HttpServletRequest req,HttpServletResponse res) throws IOException {
-//		System.out.println("addCart1");
 		HttpSession session=req.getSession();
 		int productId=Integer.parseInt(req.getParameter("productId"));
 
-//		System.out.println("checkCart "+productId);
 		String userId1=(String)session.getAttribute("userId");
 
 		int userId=Integer.parseInt(userId1);
@@ -38,13 +38,10 @@ public class CartServlet extends HttpServlet {
 	
 		
 		try {
-			
-			
 			if(rs.next()) {
 			
 			throw new CartException();
-			
-			//res.sendRedirect("CartItem.jsp");
+
 			}
 			else {
 				cartDao.addCart(cartPojo);
@@ -52,13 +49,11 @@ public class CartServlet extends HttpServlet {
 				
 			}
 		}  catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (CartException e) {
-			// TODO Auto-generated catch block
 			String message=e.cartSame();
 			write.print(message);
-			//e.printStackTrace();
+
 		}
 		
 	}

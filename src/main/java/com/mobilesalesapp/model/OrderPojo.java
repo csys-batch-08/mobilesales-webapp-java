@@ -3,46 +3,83 @@ package com.mobilesalesapp.model;
 import java.time.LocalDate;
 
 public class OrderPojo {
-	private int userId;
-	private int productId;
-	private double price;
-	private String address;
-	private int orerId;
-	private LocalDate date;	
-	
-
-	
-
-	public OrderPojo(int userId, LocalDate date) {
-		super();
-		this.userId = userId;
-		this.date = date;
-	}
-
-	public LocalDate getDate() {
-		return date;
-	}
-
-	public void setDate(LocalDate date) {
-		this.date = date;
-	}
-
-	public OrderPojo(int productId, int orerId) {
-		super();
-		this.productId = productId;
-		this.orerId = orerId;
-	}
-
 	public OrderPojo(int userId) {
 		super();
 		this.userId = userId;
 	}
-	
-	public int getOrerId() {
-		return orerId;
+
+
+	private int userId;
+	private int productId;
+	private int orderId;
+	private String status;
+	private double price;
+	private String date;
+	private String address;
+	public OrderPojo(int orderId, String status, double price, String date, String address) {
+		super();
+		this.orderId = orderId;
+		this.status = status;
+		this.price = price;
+		this.date = date;
+		this.address = address;
 	}
-	public void setOrerId(int orerId) {
-		this.orerId = orerId;
+
+
+	public OrderPojo(int userId, int orderId, String status, double price, String date, String address) {
+		super();
+		this.userId = userId;
+		this.orderId = orderId;
+		this.status = status;
+		this.price = price;
+		this.date = date;
+		this.address = address;
+	}
+
+
+
+
+
+
+
+
+
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+	public OrderPojo(int userId, String date) {
+		super();
+		this.userId = userId;
+		this.date = date;
+	}
+
+	public String getDate() {
+		return date;
+	}
+
+	public void setDate(String date) {
+		this.date = date;
+	}
+
+	public OrderPojo(int productId, int orderId) {
+		super();
+		this.productId = productId;
+		this.orderId = orderId;
+	}
+
+	
+	
+	public int getOrderId() {
+		return orderId;
+	}
+	public void setOrderId(int orderId) {
+		this.orderId = orderId;
 	}
 	
 
@@ -94,7 +131,6 @@ public class OrderPojo {
 
 	public OrderPojo() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	
 	

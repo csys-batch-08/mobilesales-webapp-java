@@ -2,76 +2,90 @@ package com.mobilesalesapp.model;
 
 public class ProductPojo {
 	private int id;
-
+	private String productName;
+	private String description;
+	private double standardCost;
+	private double listCost;
+	private String url;
+	public ProductPojo(int id, String productName, String description, double standardCost, double listCost,
+			String url) {
+		super();
+		this.id = id;
+		this.productName = productName;
+		this.description = description;
+		this.standardCost = standardCost;
+		this.listCost = listCost;
+		this.url = url;
+	}
+	public String getUrl() {
+		return url;
+	}
+	public void setUrl(String url) {
+		this.url = url;
+	}
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public String getProductName() {
+		return productName;
+	}
+	public void setProductName(String productName) {
+		this.productName = productName;
+	}
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
+	}
+	public double getStandardCost() {
+		return standardCost;
+	}
+	public void setStandardCost(double standardCost) {
+		this.standardCost = standardCost;
+	}
+	public double getListCost() {
+		return listCost;
+	}
+	public void setListCost(double listCost) {
+		this.listCost = listCost;
+	}
 	public ProductPojo(int id) {
 		super();
 		this.id = id;
 	}
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	public ProductPojo(int id, double standard_cost, double list_cost) {
+	public ProductPojo(int id, double standardCost, double listCost) {
 		super();
 		this.id = id;
-		this.standard_cost = standard_cost;
-		this.list_cost = list_cost;
+		this.standardCost = standardCost;
+		this.listCost = listCost;
 	}
-
-	private String product_name;
-	private String description;
-	private double standard_cost;
-	private double list_cost;
-
+	public ProductPojo(String productName, String description, double standardCost, double listCost) {
+		super();
+		this.productName = productName;
+		this.description = description;
+		this.standardCost = standardCost;
+		this.listCost = listCost;
+	}
 	@Override
 	public String toString() {
-		return "AddProductDao [product_name=" + product_name + ", description=" + description + ", standard_cost="
-				+ standard_cost + ", list_cost=" + list_cost + "]";
+		return "ProductPojo [id=" + id + ", productName=" + productName + ", description=" + description
+				+ ", standardCost=" + standardCost + ", listCost=" + listCost + "]";
 	}
-
-	public ProductPojo(String product_name, String description, double standard_cost, double list_cost) {
+	public ProductPojo(int id, String productName, String description, double standardCost, double listCost) {
 		super();
-		this.product_name = product_name;
+		this.id = id;
+		this.productName = productName;
 		this.description = description;
-		this.standard_cost = standard_cost;
-		this.list_cost = list_cost;
+		this.standardCost = standardCost;
+		this.listCost = listCost;
 	}
-
-	public String getProduct_name() {
-		return product_name;
-	}
-
-	public void setProduct_name(String product_name) {
-		this.product_name = product_name;
-	}
-
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
-	public double getStandard_cost() {
-		return standard_cost;
-	}
-
-	public void setStandard_cost(double standard_cost) {
-		this.standard_cost = standard_cost;
-	}
-
-	public double getList_cost() {
-		return list_cost;
-	}
-
-	public void setList_cost(double list_cost) {
-		this.list_cost = list_cost;
-	}
-
+	
+	
+	
 }
+
+	

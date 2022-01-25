@@ -1,3 +1,4 @@
+<%@page import="com.mobilesalesapp.impl.UserImpl"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1" import="java.sql.*"
 	import ="com.mobilesalesapp.util.*" %>
@@ -6,10 +7,10 @@ if (session.getAttribute("name") == (null)) {
 	response.sendRedirect("index.jsp");
 }
 String name = (String) session.getAttribute("name");
-String userId1 = (String) session.getAttribute("userId");
+int userId =Integer.parseInt( session.getAttribute("userId").toString());
 
 double wallet = (double) session.getAttribute("wallet");
-int userId = Integer.parseInt(userId1);
+
 
 %>
 
@@ -195,8 +196,8 @@ input { display: table-cell;position: absolute;left: 80px; }
 	<div style="position: relative;top: -10px;" class="top_nav">
 
 		<ul>
-			<li><a  href="MobilePage.jsp	">Home</a></li>
-			<li><a href="ViewOrders.jsp">My Orders</a></li>
+			<li><a  href="MobilePage">Home</a></li>
+			<li><a href="ViewOrders1">My Orders</a></li>
 			<li><a href="ViewCart.jsp">Cart</a></li>
 			<li><a class="active" href="MyProfile.jsp">My Profile</a></li>
 			<li><a href="ContactUs.jsp">Contact us</a></li>
@@ -212,10 +213,8 @@ input { display: table-cell;position: absolute;left: 80px; }
 	
 	<br>
 	<%
-	String query="select * from users_table where pk_user_id='"+userId+"'";
-	Connection con =ConnectionUtil.connect();
-	Statement st=con.createStatement();
-	ResultSet rs= st.executeQuery(query);
+	UserImpl userImpl=new UserImpl();
+	ResultSet rs=userImpl.myDetails(userId);
 	if(rs.next()){
 		%>
 		
@@ -267,24 +266,9 @@ input { display: table-cell;position: absolute;left: 80px; }
 		</div>
 		
 		<%}
-	String message=(String)session.getAttribute("msg");
-	if(message!=null){%>
-	<script type="text/javascript">
-	alert('<%= message%>');
-	</script>
-		
-		<%	}
-	session.removeAttribute("msg");
-	
-	%>
-	<%
-	response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");
-	if ((session.getAttribute("role") == null)) {
-		response.sendRedirect("index.jsp");
-	}
+
 	%>
 
-	
 	
 	
 	

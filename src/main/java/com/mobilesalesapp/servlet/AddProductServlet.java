@@ -1,39 +1,54 @@
 package com.mobilesalesapp.servlet;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.sql.SQLException;
+import java.util.List;
 
 import com.mobilesalesapp.impl.ProductImpl;
 import com.mobilesalesapp.model.ProductPojo;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+
 
 @WebServlet("/addproduct")
 public class AddProductServlet extends HttpServlet {
-       public void doPost(HttpServletRequest req,HttpServletResponse res) throws IOException {
-    	   String product_name=req.getParameter("product_name");
+ 
+	private static final long serialVersionUID = 1L;
+
+	@Override
+       public void doPost(HttpServletRequest req,HttpServletResponse res) {
+    	   String productName=req.getParameter("product_name");
     	   String description=req.getParameter("description");
-    	   String standard_cost=req.getParameter("standard_cost");
-    	   String list_price=req.getParameter("list_price");
-    	  //System.out.println(product_name);
-//    	   PrintWriter out=res.getWriter();
-//    	   out.println(product_name);
-    	   
-    	   ProductPojo obj=new ProductPojo(product_name,description,
-    			   Double.parseDouble(standard_cost),Double.parseDouble(list_price));
-    	   
+    	  
+    	   try {
+    	   double standardCost=Double.parseDouble( req.getParameter("standard_cost"));
+    	   double listPrice=Double.parseDouble(req.getParameter("list_price"));
+    	   ProductPojo obj=new ProductPojo(productName,description,
+    			   standardCost,(listPrice));
     	   ProductImpl obj2=new ProductImpl();
     	   
 			obj2.add(obj);
-			HttpSession session=req.getSession();
-			session.setAttribute("product","Product succesfully added");
-			res.sendRedirect("ProductList.jsp");
+    	   }catch (NumberFormatException uhex) {
+    		   uhex.printStackTrace();
+    		  }
+
+			 try {
+				 ProductImpl product=new ProductImpl();
+					List<ProductPojo> viewProducts =product.showAllProduct();
+					req.setAttribute("viewProducts", viewProducts);
+					RequestDispatcher rd=req.getRequestDispatcher("ProductList.jsp");
+					rd.forward(req, res);
+			} catch (IOException | ServletException e) {
+				
+				e.printStackTrace();
+			} 
+    	   
+
+			
 		
     	   
        } 

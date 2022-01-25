@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1" import="com.mobilesalesapp.impl.*"
-	import="java.sql.*"%>
+	pageEncoding="ISO-8859-1" 
+	%>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -98,26 +99,8 @@ background-color:cornsilk;
 	<br>
 	<br>
 	<br>
-	<%
-	ListAllProductImpl listAllProductDao = new ListAllProductImpl();
-	ResultSet rs = listAllProductDao.viewProduct();
-	%>
-	<%
-	if (session.getAttribute("deleteInfo") != null) {
-	%>
-	<h3 style="color: green; margin-left: 500px"><%=session.getAttribute("deleteInfo")%></h3>
-	<br>
-	<%
-	}
-	%>
-	<%
-	if (session.getAttribute("updateInfo") != null) {
-	%>
-	<h3 style="color: green; margin-left: 500px"><%=session.getAttribute("updateInfo")%></h3>
-	<br>
-	<%
-	}
-	%>
+	
+
 	<table class="table table-hover table-striped" style="width: 90%; margin-left: 70px;">
 		<tr style="background-color: cornflowerblue">
 			<th>Product Id</th>
@@ -128,23 +111,21 @@ background-color:cornsilk;
 			<th>Update</th>
 			<th>Delete</th>
 		</tr>
-		<%
-		while (rs.next()) {
-		%>
-
+		
+		<c:forEach items="${viewProducts}" var="p">
 
 		<tr>
-			<td><%=rs.getInt(1)%></td>
-			<td><%=rs.getString(2)%></td>
-			<td><%=rs.getString(3)%></td>
-			<td><%=rs.getString(4)%></td>
-			<td><%=rs.getString(5)%></td>
+			<td>${p.id}</td>
+			<td>${p.productName}</td>
+			<td>${p.description}</td>
+			<td>${p.standardCost}</td>
+			<td>${p.listCost}</td>
 			<td>
 
 				<form action="updateProduct" method="post">
 
 					Product Id : <input type="text" name="updateId"
-						value=<%=rs.getInt(1)%> readonly id="brand_textbox"
+						value="${p.id}"  readonly id="brand_textbox"
 						pattern="[0-9]{1,8}" maxlength="8" required class="updateId"><br>
 					<br> <label class="add_label1">Standard_cost :</label> <input
 						type="text" name="updateStandardPrice" id="brand_textbox"
@@ -160,7 +141,7 @@ background-color:cornsilk;
 			</td>
 			<td>
 				<form action="deleteProduct" method="post">
-					Product Id : <input type="text" value=<%=rs.getInt(1)%> readonly
+					Product Id : <input type="text" value="${p.id}" readonly
 						name="deleteId" id="brand_textbox" pattern="[0-9]{1,8}"
 						maxlength="8" required class="deleteId"><br> <br>
 					<button type="submit" class="btn btn-danger">Delete</button>
@@ -169,23 +150,9 @@ background-color:cornsilk;
 				</form>
 			</td>
 		</tr>
-		<%
-		}
-		%>
+		</c:forEach>
 	</table>
 
-	<%
-	session.removeAttribute("deleteInfo");
-	%>
-	<%
-	session.removeAttribute("updateInfo");
-	%>
-	<%
-	response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");
-	if ((session.getAttribute("role") == null)) {
-		response.sendRedirect("index.jsp");
-	}
-	%>
 
 	
 </body>

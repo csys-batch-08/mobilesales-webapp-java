@@ -10,14 +10,17 @@ import javax.servlet.http.HttpSession;
 
 @WebServlet("/logOut")
 public class LogOutServlet extends HttpServlet {
+
+	private static final long serialVersionUID = 1L;
+
+	@Override
 	public void service(HttpServletRequest req,HttpServletResponse res) {
 		HttpSession session=req.getSession();
-		//req.getSession().invalidate();
 		session.invalidate();
 		try {
 			res.sendRedirect("index.jsp");
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+
 			e.printStackTrace();
 		}
 	}

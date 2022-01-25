@@ -12,13 +12,21 @@ import com.mobilesalesapp.impl.UserImpl;
 import com.mobilesalesapp.model.RegisterPojo;
 @WebServlet("/forgotPassword")
 public class ForgotPasswordServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+	@Override
 	public void doPost(HttpServletRequest request ,HttpServletResponse response) {
 		String email=request.getParameter("email");
-		long phone=Long.parseLong(request.getParameter("phone_number"));
+		long phone=0;
+		try {
+			phone=Long.parseLong(request.getParameter("phone_number"));
+		}
+		catch (NumberFormatException e) {
+			e.printStackTrace();
+		}
 		String password=request.getParameter("password");
 		RegisterPojo reg=new RegisterPojo();
 		reg.setEmail(email);
-		reg.setPhone_number(phone);
+		reg.setPhoneNumber(phone);
 		reg.setPassword(password);
 		UserImpl userImpl=new UserImpl();
 		int i=userImpl.forgotPassword(reg);
@@ -32,7 +40,6 @@ public class ForgotPasswordServlet extends HttpServlet {
 				out.println("</script>");
 				
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			
@@ -46,7 +53,6 @@ public class ForgotPasswordServlet extends HttpServlet {
 				out.println("</script>");
 				
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}

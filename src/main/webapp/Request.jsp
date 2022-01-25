@@ -5,6 +5,9 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Request Page</title>
+	<%
+		String email=(String)session.getAttribute("email");
+	%>
 
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
@@ -89,9 +92,6 @@ body {
 <body>
 	<div class="full">
 		<div class="cont">
-	<%
-		String email=(String)session.getAttribute("email");
-	%>
 
 			<form action="req" method="post">
 				<h3 class="c_login">Request</h3>

@@ -1,5 +1,7 @@
+<%@page import="com.mobilesalesapp.impl.AdminImpl"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1" import ="com.mobilesalesapp.util.*" import ="java.sql.*" %>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -150,12 +152,7 @@ background-color: rgb(248, 213, 168);
 	<img style="border-radius: 100px;position: absolute;top:0px;left: 500px; " width="40px" alt="" src="assets/images/mobile112.png">
 	
 	<br><br>
-	<%
-String query="select * from contactus";
-Connection con=ConnectionUtil.connect();
-Statement st=con.createStatement();
-ResultSet rs=st.executeQuery(query);
-%>
+
 
 
  <table class="table table-hover table-striped" style="width: 85%;margin-left: 70px;">
@@ -168,24 +165,18 @@ ResultSet rs=st.executeQuery(query);
   
     </tr>
    
-    <%while(rs.next()){ 
-     %>
+  
+     <c:forEach items="${viewContact}" var="v">
+     
+     
     
-    <tr>
-    <td><%=rs.getString(1) %></td>
-    <td><%=rs.getString(2) %></td>
-    <td><%=rs.getLong(3) %></td>
-    <td><%=rs.getString(4) %></td>
-    
-   
-    </tr>
-    <%}%>
-    <%
-	response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");
-	if ((session.getAttribute("role") == null)) {
-		response.sendRedirect("index.jsp");
-	}
-	%>
+	<tr>
+	<td>${v.name}</td>
+	<td>${v.email}</td>
+	<td>${v.phoneNumber}</td>
+	<td>${v.description}</td>
+	</tr>
+   </c:forEach>
 
     
 

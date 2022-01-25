@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-   
+   <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
    
     
 <!DOCTYPE html>
@@ -113,7 +113,6 @@ background-color:cornsilk;
 
 
 
-     <% String name =(String)session.getAttribute("name");%>
       
       
       
@@ -122,8 +121,8 @@ background-color:cornsilk;
 	<div style="position: relative;top: -10px;" class="top_nav">
 
 		<ul>
-			<li><a class="active" href="MobilePage.jsp">Home</a></li>
-			<li><a href="ViewOrders.jsp">My Orders</a></li>
+			<li><a class="active" href="MobilePage">Home</a></li>
+			<li><a href="ViewOrders1">My Orders</a></li>
             <li><a href="ViewCart.jsp">Cart</a></li>
             <li><a href="MyProfile.jsp">My Profile</a></li>
 			<li><a href="ContactUs.jsp">Contact us</a></li>
@@ -133,14 +132,14 @@ background-color:cornsilk;
 
 		</ul>
 
-	<%double price=(double)session.getAttribute("price"); %>
+	
 
 	</div>
 	<img style="border-radius: 100px;position: absolute;top:0px;left: 500px; " width="40px" alt="" src="assets/images/mobile112.png">
 	
 	<div class="buy_div">
 	<form action="buying" method="post"><br>
-	<h4 style="margin-left: 70px;color: blue">Hello <%=name %></h4>
+	<h4 style="margin-left: 70px;color: blue">Hello ${sessionScope.name}</h4>
 	<p>
 	<label>Address Line  :</label> 
 	<input autocomplete="off" name="address1" required="required" pattern="[a-zA-Z0-9\s,[]]{3,40}" type="text" ><br><br></td>
@@ -170,13 +169,13 @@ background-color:cornsilk;
 	</p>
 	<p>
 	<label> Price  :</label> 
-	 <input type="text" id="myInput2" maxlength="2" value=<%=price%> pattern="[1-9]+{1+}" ><br><br>
+	 <input type="text" id="myInput2" maxlength="2" value="${sessionScope.price}" pattern="[1-9]+{1+}" ><br><br>
 	</p>
 	
-	<%double total=(price-(price*.15));%>
+	
 	<p>
 	<label> Total Price(Discount 15%): </label>
-	<input type="text" id="myInput3" readonly name="total1" value=<%=total%>><br><br>
+	<input type="text" id="myInput3" readonly name="total1" value="${sessionScope.total}"><br><br>
 	</p>
 	
 	
@@ -185,10 +184,8 @@ background-color:cornsilk;
 	<th> <h5 id="timehead" style="margin-left: 150px;"></h5></th>
 	</p>
 	
-	<%session.setAttribute("total",total); %>	
-	<%if(session.getAttribute("buying")!=null){ %>
-	<h4 style="color:red;margin-left: 50px"><%=session.getAttribute("buying") %></h3>
-	<%} %>
+		
+	
 	<p>
 	 <button style="margin-left: 150px" class="btn btn-success btn-lg" type="submit">Buy</button><br><br>
 	</p>
@@ -196,7 +193,7 @@ background-color:cornsilk;
 	
 	
 	</div>
-		<%session.removeAttribute("buying"); %>
+	
 	
 	
 	<script type="text/javascript">
@@ -235,12 +232,7 @@ background-color:cornsilk;
 		
 	});
 	</script>
-	<%
-	response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");
-	if ((session.getAttribute("role") == null)) {
-		response.sendRedirect("index.jsp");
-	}
-	%>
+
 
 	
 </html>

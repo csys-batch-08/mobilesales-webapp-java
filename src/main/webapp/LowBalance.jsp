@@ -131,8 +131,8 @@ margin-top:40px;
 	<div style="position: relative;top: -10px;" class="top_nav">
 
 		<ul>
-			<li><a class="active" href="MobilePage.jsp">Home</a></li>
-			<li><a href="ViewOrders.jsp">My Orders</a></li>
+			<li><a class="active" href="MobilePage">Home</a></li>
+			<li><a href="ViewOrders1">My Orders</a></li>
             <li><a href="ViewCart.jsp">Cart</a></li>
             <li><a href="MyProfile.jsp">My Profile</a></li>
 			<li><a href="ContactUs.jsp">Contact us</a></li>
@@ -148,12 +148,7 @@ margin-top:40px;
 	
 	<h1 style="color: green;margin-left: 470px;margin-top:200px">Low Balance in Wallet</h1>
 	<span style='font-size:100px;margin-left: 550px'>&#128528;</span>
-	<%
-	response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");
-	if ((session.getAttribute("role") == null)) {
-		response.sendRedirect("index.jsp");
-	}
-	%>
+
 
 	
 </body>

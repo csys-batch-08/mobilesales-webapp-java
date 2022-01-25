@@ -5,7 +5,7 @@ public class RegisterPojo {
 	private int userId;
 	private String name;
 	private String email;
-	private Long phone_number;
+	private Long phoneNumber;
 	private String password;
 	private double wallet;
 	private String reason;
@@ -49,11 +49,11 @@ public class RegisterPojo {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public Long getPhone_number() {
-		return phone_number;
+	public Long getPhoneNumber() {
+		return phoneNumber;
 	}
-	public void setPhone_number(Long phone_number) {
-		this.phone_number = phone_number;
+	public void setPhoneNumber(Long phoneNumber) {
+		this.phoneNumber = phoneNumber;
 	}
 	public String getPassword() {
 		return password;
@@ -62,22 +62,39 @@ public class RegisterPojo {
 		this.password = password;
 	}
 		
-	public RegisterPojo(String name, String email, Long phone_number, String password) {
+	public RegisterPojo(String name, String email, Long phoneNumber, String password) {
 		super();
 		this.name = name;
 		this.email = email;
-		this.phone_number = phone_number;
+		this.phoneNumber = phoneNumber;
 		this.password = password;
 	}
 
 	@Override
 	public String toString() {
-		return "RegisterPojo [name=" + name + ", email=" + email + ", phone_number=" + phone_number + ", password="
+		return "RegisterPojo [name=" + name + ", email=" + email + ", phoneNumber=" + phoneNumber + ", password="
 				+ password + "]";
 	}
 	public RegisterPojo() {
 		super();
-		// TODO Auto-generated constructor stub
+
+	}
+	public RegisterPojo(int userId, String name, String email, Long phoneNumber, double wallet) {
+		super();
+		this.userId = userId;
+		this.name = name;
+		this.email = email;
+		this.phoneNumber = phoneNumber;
+		this.wallet = wallet;
+		
+	}
+	public RegisterPojo(int userId, String name, String email, Long phoneNumber, String reason) {
+		super();
+		this.userId = userId;
+		this.name = name;
+		this.email = email;
+		this.phoneNumber = phoneNumber;
+		this.reason = reason;
 	}
 	
 	

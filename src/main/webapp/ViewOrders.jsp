@@ -1,7 +1,7 @@
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1" import="com.mobilesalesapp.impl.OrderImpl"
-	import="java.sql.*" import="com.mobilesalesapp.model.OrderPojo"%>
+	pageEncoding="ISO-8859-1" %>
+	 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -176,7 +176,7 @@ background-color: rgb(248, 213, 168);
 	<div style="position: relative;top: -10px;" class="top_nav">
 
 		<ul>
-			<li><a href="MobilePage.jsp">Home</a></li>
+			<li><a href="MobilePage">Home</a></li>
 			<li><a class="active" href="ViewOrders.jsp">My Orders</a></li>
 			<li><a href="ViewCart.jsp">Cart</a></li>
 			<li><a href="MyProfile.jsp">My Profile</a></li>
@@ -194,24 +194,11 @@ background-color: rgb(248, 213, 168);
 	<br>
 	<br>
 
-	<%
-	String user = (String) session.getAttribute("userId");
-	//System.out.println("my" + user);
-	int userId = Integer.parseInt(user);
-//	System.out.println("my1	" + userId);
-	OrderPojo orderPojo = new OrderPojo(userId);
-	OrderImpl order = new OrderImpl();
-	ResultSet rs = order.viewAllOrders(orderPojo);
-	ResultSet rs1 = order.viewAllOrders(orderPojo);
-	%>
-	<%
-	if (rs1.next()) {
-		
-	%>
+	
 
 
 	<div class="searchPro"">
-		<form action="SearchOrder.jsp">
+		<form action="SearchOrder">
 			<input type="date" id="search" name="OrderDate" 
 				 requried>
 			<button class="btn btn-primary" type="submit">Search</button>
@@ -227,11 +214,11 @@ background-color: rgb(248, 213, 168);
 		document.getElementById("search").max =today;
 		
 	</script>
-
+<c:if test="${sessionScope.userId1!=null}">
 	<table class="table table-hover table-striped" style="width: 90%; margin-left: 60px;">
 		<tr style="background-color:cornflowerblue ">
 			
-			<th>Product</th>
+			
 			<th>Order Status</th>
 			<th>Price</th>
 			<th>Order Date</th>
@@ -242,49 +229,35 @@ background-color: rgb(248, 213, 168);
 
 
 
-		<%
-		while (rs.next()) {
-			//System.out.println("url id "+rs.getInt(6));
-			int productId=rs.getInt(6);
-			OrderImpl orderImpl =new OrderImpl();
-			
-			String url=orderImpl.getUrl(productId);
-			
-		%>
+		<c:forEach items="${sessionScope.orderList}" var="o">
 		<tr>
 			
-			<td> <img width="100px" alt="null" src="<%=url%>"> </td>
-			<td><%=rs.getString(2)%></td>
-			<td><%=rs.getDouble(3)%></td>
-			<td><%=rs.getString(4)%></td>
-			<td><%=rs.getString(5)%></td>
+			
+			<td>${o.status}</td>
+			<td>${o.price }</td>
+			<td>${o.date}</td>
+			<td>${o.address}</td>
 			<td>
 			
 					Order Id :<input type="text" name="cancelId"
-						value="<%=rs.getInt(1)%>" readonly><br>
+						value="${o.orderId }" readonly><br>
 					<br>
 
-					<button class="btn btn-danger" type="submit" onclick="Cancel('<%=rs.getString(2)%>','<%=rs.getInt(1)%>','<%=rs.getDouble(3)%>','<%=rs.getInt(7)%>')" class="btn_add">Cancel</button>
+					<button class="btn btn-danger" type="submit" onclick="Cancel('${o.status}','${o.orderId }','${o.price }','${o.userId}')" class="btn_add">Cancel</button>
 				
 			</td>
 		</tr>
 
-		<%
-		}
-		%>
+		</c:forEach>
 
 
 
 	</table>
-
-	<%
-	} else {
-	%>
+</c:if>
+	<c:if test="${sessionScope.userId1==null}">
 	<h1 style="color: red; margin-left: 500px; margin-top: 150px">Order
 		is not placed yet</h1>
-	<%
-	}
-	%>
+</c:if>
 	<script type="text/javascript">
 	function Cancel(status,id,price,userId) {
 		console.log('on'+status,price+userId);
@@ -318,14 +291,7 @@ background-color: rgb(248, 213, 168);
 		
 	}
 	</script>
-	<%
-	response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");
-	if ((session.getAttribute("role") == null)) {
-		response.sendRedirect("index.jsp");
-	}
-	%>
 
-	
 
 
 </body>

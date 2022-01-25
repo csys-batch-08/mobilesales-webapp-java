@@ -168,11 +168,11 @@ input { display: table-cell;position: absolute;left: 200px; }
 	<div style="position: relative; top: -10px;" class="top_nav">
 
 		<ul>
-			<li><a class="active" href="MobilePage.jsp">Home</a></li>
-			<li><a href="ViewOrders.jsp">My Orders</a></li>
+			<li><a  href="MobilePage">Home</a></li>
+			<li><a href="ViewOrders1">My Orders</a></li>
 			<li><a href="ViewCart.jsp">Cart</a></li>
 			<li><a href="MyProfile.jsp">My Profile</a></li>
-			<li><a href="ContactUs.jsp">Contact us</a></li>
+			<li><a class="active" href="ContactUs.jsp">Contact us</a></li>
 			<li><a href="AboutUs.jsp">About us</a></li>
 			<li style="float: right;"><a href="logOut">Logout</a></li>
 
@@ -233,12 +233,6 @@ input { display: table-cell;position: absolute;left: 200px; }
 	
 	</form>
 	</div>
-	<%
-	response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");
-	if ((session.getAttribute("role") == null)) {
-		response.sendRedirect("index.jsp");
-	}
-	%>
 
 	
 

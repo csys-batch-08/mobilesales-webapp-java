@@ -1,5 +1,4 @@
 package com.mobilesalesapp.servlet;
-
 import java.io.IOException;
 import java.io.PrintWriter;
 
@@ -12,6 +11,10 @@ import com.mobilesalesapp.impl.UserImpl;
 import com.mobilesalesapp.model.RegisterPojo;
 @WebServlet("/req")
 public class ActivationRequestServlet extends HttpServlet {
+
+	private static final long serialVersionUID = 1L;
+
+	@Override
 	public void doPost(HttpServletRequest request ,HttpServletResponse response) {
 		String email=request.getParameter("username");
 		String reason=request.getParameter("reason");
@@ -29,7 +32,7 @@ public class ActivationRequestServlet extends HttpServlet {
 				out.println("location='index.jsp';");
 				out.println("</script>");
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
+
 				e.printStackTrace();
 			} 
 			

@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1" import="com.mobilesalesapp.impl.*"
-	import="java.sql.*"%>
+	pageEncoding="ISO-8859-1" %>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -121,10 +121,7 @@ background-color: rgb(248, 213, 168);
 
 
 	
-		<%
-		UserImpl userDao = new UserImpl();
-		ResultSet ns = userDao.inActiveUserDetails();
-		%>
+		
 		<table style="width: 90%; margin-left: 50px;">
 			<tr style="background-color: cornflowerblue">
 				<th>Name</th>
@@ -135,34 +132,25 @@ background-color: rgb(248, 213, 168);
 				<th>Action</th>
 
 			</tr>
-			<%
-			while (ns.next()) {
-			%>
+			<c:forEach items="${inactiveUserDetails }" var="i">
 
 
 			<tr>
-				<td><%=ns.getString(2)%></td>
-				<td><%=ns.getString(3)%></td>
-				<td><%=ns.getLong(4)%></td>
-				<td><%=ns.getString(5)%></td>
+				<td>${i.name }</td>
+				<td>${i.email}</td>
+				<td>${i.phoneNumber}</td>
+				<td>${i.reason}</td>
 		
 				<td>
-					<a class="btn btn-dark" href="activeUser?userId=<%=ns.getInt(1)%>">Active</a>
+					<a class="btn btn-dark" href="activeUser?userId=${i.userId}">Active</a>
 					
 				</td>
 
 			</tr>
-			<%
-			}
-			%>
+			</c:forEach>
 		</table>
 	</div>
-	<%
-	response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");
-	if ((session.getAttribute("role") == null)) {
-		response.sendRedirect("index.jsp");
-	}
-	%>
+
 
 	
 

@@ -1,6 +1,7 @@
 package com.mobilesalesapp.dao;
 
 import java.sql.ResultSet;
+import java.util.List;
 
 import com.mobilesalesapp.model.OrderPojo;
 import com.mobilesalesapp.model.UpdateWalletPojo;
@@ -10,11 +11,11 @@ public interface OrderDao {
 
 	public int insertOrder(OrderPojo obj2);
 	
-	public ResultSet viewAllOrders(OrderPojo orderPojo);
+	public List<OrderPojo> viewAllOrders(OrderPojo orderPojo);
 	
 	public void orderCancel(OrderPojo orderPojo);
 	
-	public ResultSet SearchAllOrders(OrderPojo orderPojo);
+	public List<OrderPojo> searchAllOrders(OrderPojo orderPojo);
 	
 	public void deliveredCancel(OrderPojo orderPojo);
 	

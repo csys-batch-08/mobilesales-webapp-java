@@ -4,7 +4,7 @@ public class ContactUsPojo {
 	private String name;
 	private String email;
 	private long phoneNumber;
-	private String Description;
+	private String description;
 	public String getName() {
 		return name;
 	}
@@ -24,26 +24,25 @@ public class ContactUsPojo {
 		this.phoneNumber = phoneNumber;
 	}
 	public String getDescription() {
-		return Description;
+		return description;
 	}
 	public void setDescription(String description) {
-		Description = description;
+		this.description = description;
 	}
 	public ContactUsPojo(String name, String email, long phoneNumber, String description) {
 		super();
 		this.name = name;
 		this.email = email;
 		this.phoneNumber = phoneNumber;
-		Description = description;
+		this.description = description;
 	}
 	@Override
 	public String toString() {
 		return "ContactUsPojo [name=" + name + ", email=" + email + ", phoneNumber=" + phoneNumber + ", Description="
-				+ Description + "]";
+				+ description + "]";
 	}
 	public ContactUsPojo() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	
 	

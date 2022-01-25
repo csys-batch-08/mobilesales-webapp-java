@@ -42,7 +42,7 @@ body {
 	padding: 12px;
 	margin-left: 100px;
 	background-color: rgb(83, 83, 204);
-	border-radius: 20px;
+	border-radius: 20px;s
 }
 
 .c_sub:hover {
@@ -112,22 +112,11 @@ width: 300px;
 					password</a><br> <br>
 
 
-				<%
-				String error = (String) session.getAttribute("LoginResult");
-				if (error != null) {
-				%>
-				<h6 style="margin-left: 50px; color: red;"><%=session.getAttribute("LoginResult")%></h6>
-
-				<%
-				}
-				%>
 
 			</form>
 			</div>
 
-			<%
-			session.removeAttribute("LoginResult");
-			%>
+			
 
 
 

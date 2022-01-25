@@ -120,9 +120,7 @@ background-color:cornsilk;
 			</p>
             <button type="submit" style="margin-left: 100px" class="btn btn-success">Add</button><br><br>
             
-            <%if(session.getAttribute("product")!=null){ %>
-            <h4 style="color: green"><%=session.getAttribute("product") %></h4>
-            <%} %>
+        
         </form><br>
      	
          <br>
@@ -130,14 +128,7 @@ background-color:cornsilk;
 			
 </div>
   </div>
-         <%session.removeAttribute("product"); %> 
-         <%
-	response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");
-	if ((session.getAttribute("role") == null)) {
-		response.sendRedirect("index.jsp");
-	}
-	%>
-
+   
          
   
  

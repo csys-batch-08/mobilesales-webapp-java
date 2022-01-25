@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1" import="com.mobilesalesapp.impl.*"
-	import="java.sql.*"%>
+	pageEncoding="ISO-8859-1" 
+	%>
+		<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -118,10 +119,7 @@ background-color: rgb(248, 213, 168);
 
 
 	
-		<%
-		UserImpl userDao = new UserImpl();
-		ResultSet ns = userDao.userDetails();
-		%>
+		
 		<table class="table table-hover table-striped" style="width: 90%; margin-left: 50px;">
 			<tr style="background-color: cornflowerblue">
 				<th>Name</th>
@@ -133,41 +131,29 @@ background-color: rgb(248, 213, 168);
 				<th>Inactive</th>
 
 			</tr>
-			<%
-			while (ns.next()) {
-			%>
-
+			<c:forEach items="${userDetails}" var="u">
 
 			<tr>
-				<td><%=ns.getString(2)%></td>
-				<td><%=ns.getString(3)%></td>
-				<td><%=ns.getLong(4)%></td>
-				<td><%=ns.getDouble(5)%></td>
+				<td>${u.name}</td>
+				<td>${u.email}</td>
+				<td>${u.phoneNumber}</td>
+				<td>${u.wallet}</td>
 			
 				<td>
 			
-					<a class="btn btn-primary" href="DeliveredOrder.jsp?userId=<%=ns.getInt(1)%>">View Order</a>
+					<a class="btn btn-primary" href="DeliveredOrder?userId=${u.userId}">View Order</a>
 
 				</td>
 				<td>
-					<a class="btn btn-dark" href="inActive?userId=<%=ns.getInt(1)%>">InActive</a>
+					<a class="btn btn-dark" href="inActive?userId=${u.userId}">InActive</a>
 					
 				</td>
 
 			</tr>
-			<%
-			}
-			%>
+			</c:forEach>
 		</table>
 	</div>
-	<%
-	response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");
-	if ((session.getAttribute("role") == null)) {
-		response.sendRedirect("index.jsp");
-	}
-	%>
 
-	
 
 </body>
 </html>

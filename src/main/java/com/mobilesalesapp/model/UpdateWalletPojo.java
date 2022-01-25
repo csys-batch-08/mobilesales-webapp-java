@@ -37,7 +37,7 @@ public class UpdateWalletPojo {
 	}
 	public UpdateWalletPojo() {
 		super();
-		// TODO Auto-generated constructor stub
+
 	}
 	
 }

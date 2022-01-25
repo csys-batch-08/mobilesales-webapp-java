@@ -150,8 +150,8 @@ background-color:cornsilk;
 	<div  style="position: relative;top: -10px;" class="top_nav">
 
 		<ul>
-			<li><a  href="MobilePage.jsp">Home</a></li>
-			<li><a  href="ViewOrders.jsp">My Orders</a></li>
+			<li><a  href="MobilePage">Home</a></li>
+			<li><a  href="ViewOrders1">My Orders</a></li>
             <li><a class="active" href="ViewCart.jsp">Cart</a></li>
             <li><a href="MyProfile.jsp">My Profile</a></li>
 			<li><a href="ContactUs.jsp">Contact us</a></li>
@@ -167,11 +167,11 @@ background-color:cornsilk;
 	
 	<br><br>
 <%
-String userId1=(String)session.getAttribute("userId");
-int userId=Integer.parseInt(userId1);
+int userId=Integer.parseInt( session.getAttribute("userId").toString());
+
 
 Connection con=ConnectionUtil.connect();
-String query="select * from carts_table where user_id=? order by cart_id desc";
+String query="select cart_id,user_id,product_id,product_name,description,price,url from carts_table where user_id=? order by cart_id desc";
 
 PreparedStatement pre1 =con.prepareStatement(query);
 pre1.setInt(1,userId );
@@ -180,9 +180,7 @@ PreparedStatement pre =con.prepareStatement(query);
 pre.setInt(1,userId );
 	ResultSet rs=pre.executeQuery();
 	
-	
-  
-  //  System.out.println("rsnext");
+
 %>
    
     
@@ -221,12 +219,6 @@ pre.setInt(1,userId );
     </table>
 	
 	
-	<%
-	response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");
-	if ((session.getAttribute("role") == null)) {
-		response.sendRedirect("index.jsp");
-	}
-	%>
 
 	
 	

@@ -1,45 +1,52 @@
 package com.mobilesalesapp.servlet;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import com.mobilesalesapp.impl.AdminImpl;
 import com.mobilesalesapp.model.RegisterPojo;
-import com.mobilesalesapp.model.UpdateWalletPojo;
 
-import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+
 
 @WebServlet("/addWallet")
 public class AddWalletServlet extends HttpServlet {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	@Override
 	public void doPost(HttpServletRequest req,HttpServletResponse res) {
-		//System.out.println("add");
-		int userId=Integer.parseInt(req.getParameter("walletUserId"));
-		double addAmount=Double.parseDouble(req.getParameter("walletAmount"));
-		//System.out.println(userId+"add"+addAmount);
-		
-		RegisterPojo wallet=new RegisterPojo(userId,addAmount);
-		AdminImpl adminAddAmount=new AdminImpl();
-		int i=adminAddAmount.addWalletAmount(wallet);
-		
-			try {
+		try {
+				int userId=Integer.parseInt(req.getParameter("walletUserId"));
+				double addAmount=Double.parseDouble(req.getParameter("walletAmount"));
+				
+				
+				RegisterPojo wallet=new RegisterPojo(userId,addAmount);
+				AdminImpl adminAddAmount=new AdminImpl();
+				int i=adminAddAmount.addWalletAmount(wallet);
+				PrintWriter out=res.getWriter();
 				if(i>0) {
-					//System.out.println("success");
-					res.sendRedirect("MyProfile.jsp");
+					out.println("<script type=\"text/javascript\">");
+					out.println("alert('Wallet added Successfully');");
+					out.println("location='MyProfile.jsp';");
+					out.println("</script>");
+				}else if(i==0){
+					out.println("<script type=\"text/javascript\">");
+					out.println("alert('wallet not added');");
+					out.println("location='MyProfile.jsp';");
+					out.println("</script>");
 				}
 				
-				else {
-					//System.out.println("not success");
-					res.sendRedirect("MyProfile.jsp");
-				}
-				
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
+			} catch (IOException |NumberFormatException e) {
+			
 				e.printStackTrace();
 			}
+			
 		
 		
 		
