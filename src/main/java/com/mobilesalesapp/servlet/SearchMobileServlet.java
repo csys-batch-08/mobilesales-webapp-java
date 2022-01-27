@@ -2,7 +2,6 @@ package com.mobilesalesapp.servlet;
 
 import java.io.IOException;
 import java.util.List;
-import java.util.Locale;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;

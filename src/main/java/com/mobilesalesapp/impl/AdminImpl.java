@@ -96,7 +96,7 @@ public class AdminImpl implements AdminDao  {
 	public List<ContactUsPojo> viewContactUs() {
 		String query="select name,email,phone_number,descriptions from contactus";
 		Connection con=ConnectionUtil.connect();
-		List<ContactUsPojo> contact=new ArrayList<ContactUsPojo>();
+		List<ContactUsPojo> contact=new ArrayList<>();
 		ResultSet rs=null;
 		Statement st =null;
 		try {

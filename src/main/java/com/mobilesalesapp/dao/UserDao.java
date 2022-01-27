@@ -9,7 +9,7 @@ import com.mobilesalesapp.model.RegisterPojo;
 public interface UserDao {
 	public int register(RegisterPojo p);
 
-	public ResultSet fetch(RegisterPojo Login);
+	public ResultSet fetch(RegisterPojo login);
 
 	public List<RegisterPojo> userDetails();
 	

@@ -128,7 +128,7 @@ public class CartImpl implements CartDao {
 		Connection con=ConnectionUtil.connect();
 		String query="select cart_id,user_id,product_id,product_name,description,price,url from carts_table where user_id=? order by cart_id desc";
 		PreparedStatement pre=null;
-		List<CartPojo> cartList=new ArrayList<CartPojo>();
+		List<CartPojo> cartList=new ArrayList<>();
 		try {
 			pre = con.prepareStatement(query);
 			pre.setInt(1,cartPojo.getUserId() );
