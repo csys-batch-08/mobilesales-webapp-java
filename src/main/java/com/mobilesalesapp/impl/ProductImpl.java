@@ -28,15 +28,7 @@ public class ProductImpl implements ProductDao {
 
 		} catch (Exception e) {
 			e.printStackTrace();
-		}finally {
-			try {
-				if (pre != null ) {
-					pre.close();
-				}
 
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
 		}
 
 	}
@@ -53,15 +45,7 @@ public class ProductImpl implements ProductDao {
 
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}finally {
-			try {
-				if (pre != null ) {
-					pre.close();
-				}
 
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
 		}
 		return i;
 
@@ -80,48 +64,32 @@ public class ProductImpl implements ProductDao {
 
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}finally {
-			try {
-				if (pre != null ) {
-					pre.close();
-				}
 
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
 		}
 
 	}
 	public List<ProductPojo> showAllProduct() {
 		String query = "select pk_product_id,product_name,description,standard_price,list_price,url from products order by pk_product_id ";
 		Connection con = ConnectionUtil.connect();
-		List<ProductPojo> productList=new ArrayList<ProductPojo>();
+		List<ProductPojo> productList=new ArrayList<>();
 		ResultSet rs=null;
 		PreparedStatement pre=null;
 		try 
 		{
 			pre=con.prepareStatement(query);
-			rs = pre.executeQuery(query);
+			rs = pre.executeQuery();
 			while(rs.next()) {
 				ProductPojo productPojo=new ProductPojo(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getDouble(4),rs.getDouble(5),rs.getString(6));
 				productList.add(productPojo);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}finally {
-			try {
-				if (pre != null ) {
-					pre.close();
-				}
 
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
 		}
 		return productList;
 	}
 	public List<ProductPojo> selectProduct(int productId) {
-		String query = "select pk_product_id,product_name,description,standard_price,list_price,url from products where pk_product_id= '"+productId+"'";
+		String query = "select pk_product_id,product_name,description,standard_price,list_price,url from products where pk_product_id=? ";
 		Connection con = ConnectionUtil.connect();
 		List<ProductPojo> productList=new ArrayList<>();
 		ResultSet rs=null;
@@ -130,22 +98,14 @@ public class ProductImpl implements ProductDao {
 		{
 			pre =con.prepareStatement(query);
 			pre.setInt(1, productId);
-			rs = pre.executeQuery(query);
+			rs = pre.executeQuery();
 			while(rs.next()) {
 				ProductPojo productPojo=new ProductPojo(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getDouble(4),rs.getDouble(5),rs.getString(6));
 				productList.add(productPojo);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}finally {
-			try {
-				if (pre != null ) {
-					pre.close();
-				}
 
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
 		}
 		return productList;
 	}
@@ -158,7 +118,7 @@ public class ProductImpl implements ProductDao {
 			pre=con.prepareStatement(query);
 			pre.setString(1, product);
 			
-			ResultSet rs = pre.executeQuery(query);
+			ResultSet rs = pre.executeQuery();
 			while(rs.next()) {
 				ProductPojo productPojo=new ProductPojo(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getDouble(4),rs.getDouble(5),rs.getString(6));
 				productList.add(productPojo);
@@ -166,15 +126,7 @@ public class ProductImpl implements ProductDao {
 		} catch (SQLException e) {
 
 			e.printStackTrace();
-		}finally {
-			try {
-				if (pre != null ) {
-					pre.close();
-				}
-
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
+	
 		}
 		return productList;
 		

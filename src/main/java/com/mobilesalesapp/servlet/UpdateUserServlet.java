@@ -2,6 +2,7 @@ package com.mobilesalesapp.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.io.Serializable;
 import java.util.List;
 
 import javax.servlet.annotation.WebServlet;
@@ -17,6 +18,13 @@ import com.mobilesalesapp.model.RegisterPojo;
 public class UpdateUserServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
+	
+	public static HttpSession setSessionAttribute(final HttpSession session, 
+			final String attributeName,
+			        final Serializable attributeValue) {
+			    session.setAttribute(attributeName, attributeValue);
+			    return session;
+			  }
 
 	@Override
 	public void doPost(HttpServletRequest request,HttpServletResponse response) {
@@ -35,7 +43,7 @@ public class UpdateUserServlet extends HttpServlet {
 		UserImpl userImpl=new UserImpl();
 		userImpl.updateProfile(registerPojo);
 		List<RegisterPojo> listAllDetails=userImpl.myDetails(userId);
-		session.setAttribute("listAllDetails", listAllDetails);
+		setSessionAttribute(session,"listAllDetails", (Serializable) listAllDetails);
 		try {
 			PrintWriter out=response.getWriter();
 			out.println("<script type=\"text/javascript\">");

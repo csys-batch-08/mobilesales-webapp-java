@@ -1,6 +1,7 @@
 package com.mobilesalesapp.servlet;
 
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -17,6 +18,13 @@ import com.mobilesalesapp.model.ProductPojo;
 
 @WebServlet("/SearchMobile")
 public class SearchMobileServlet extends HttpServlet {
+	
+	public static HttpSession setSessionAttribute(final HttpSession session, 
+			final String attributeName,
+			        final Serializable attributeValue) {
+			    session.setAttribute(attributeName, attributeValue);
+			    return session;
+			  }
 
 	private static final long serialVersionUID = 1L;
 	
@@ -24,10 +32,10 @@ public class SearchMobileServlet extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String search=( request.getParameter("search")).toLowerCase();
 		HttpSession session=request.getSession();
-		System.out.println("seacrh");
+	
 		ProductImpl product=new ProductImpl();
 		List<ProductPojo> searchList = product.searchProduct(search);
-		session.setAttribute("searchList", searchList);
+		setSessionAttribute(session,"searchList", (Serializable) searchList);
 		RequestDispatcher rd=request.getRequestDispatcher("SearchMobile.jsp");
 		rd.forward(request, response);
 	}

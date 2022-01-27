@@ -1,7 +1,7 @@
 package com.mobilesalesapp.servlet;
 
 import java.io.IOException;
-
+import java.io.Serializable;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -22,7 +22,14 @@ public class ViewOrderServlet extends HttpServlet {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-
+	
+	public static HttpSession setSessionAttribute(final HttpSession session, 
+			final String attributeName,
+			        final Serializable attributeValue) {
+			    session.setAttribute(attributeName, attributeValue);
+			    return session;
+			  }	
+	
 		@Override
 		public void service(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException {
 			HttpSession session=request.getSession();
@@ -35,9 +42,10 @@ public class ViewOrderServlet extends HttpServlet {
 			OrderImpl order = new OrderImpl();
 
 			List<OrderPojo> orderList = order.viewAllOrders(orderPojo);
-			session.setAttribute("orderList", orderList);
-			session.setAttribute("userId1", userId);
-			System.out.println(orderList);
+			setSessionAttribute(session, "orderList", (Serializable) orderList);
+			setSessionAttribute(session, "userId1", userId);
+			
+	
 			RequestDispatcher rd=request.getRequestDispatcher("ViewOrders.jsp");
 			rd.forward(request, response);
 			

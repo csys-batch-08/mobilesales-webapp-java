@@ -1,6 +1,7 @@
 package com.mobilesalesapp.servlet;
 
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -18,24 +19,29 @@ import com.mobilesalesapp.model.OrderPojo;
 public class SearchOrderServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
+	
+	public static HttpSession setSessionAttribute(final HttpSession session, 
+			final String attributeName,
+			        final Serializable attributeValue) {
+			    session.setAttribute(attributeName, attributeValue);
+			    return session;
+			  }
 
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse resp) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		String dateOrder = request.getParameter("OrderDate");
-		System.out.println(dateOrder);
+
 
 		int userId = Integer.parseInt( session.getAttribute("userId").toString());
-//		 SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");  
-//		    String strDate= formatter.format(dateOrder); 
-	
+
 		OrderPojo orderPojo = new OrderPojo(userId,dateOrder );
 		OrderImpl order = new OrderImpl();
 		
 		List<OrderPojo> searchList1 = order.searchAllOrders(orderPojo);
 
-		session.setAttribute("searchList1", searchList1);
-		session.setAttribute("userId", userId);
+		setSessionAttribute(session,"searchList1", (Serializable) searchList1);
+		setSessionAttribute(session,"userId", userId);
 	
 		RequestDispatcher rd = request.getRequestDispatcher("SearchOrder.jsp");
 		rd.forward(request, resp);

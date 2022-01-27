@@ -10,12 +10,16 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+
 import com.mobilesalesapp.impl.AdminImpl;
 import com.mobilesalesapp.model.ContactUsPojo;
 @WebServlet("/ViewContactUs1")
 public class ViewContactServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1;
+	
+
+	
 	@Override
 	public void service(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException {
 		

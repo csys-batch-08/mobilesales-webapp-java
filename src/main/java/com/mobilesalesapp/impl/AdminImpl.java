@@ -11,6 +11,7 @@ import com.mobilesalesapp.util.ConnectionUtil;
 
 
 
+
 public class AdminImpl implements AdminDao  {
 
 	
@@ -19,9 +20,9 @@ public class AdminImpl implements AdminDao  {
 			String query="commit";
 			String query2="update users_table set wallet=(select wallet from users_table where pk_user_id= ? )+? where pk_user_id=?";
 			int j=0;
-
-			try(PreparedStatement pre1=con.prepareStatement(query2)) {
-				
+			PreparedStatement pre1=null;
+			try {
+				pre1=con.prepareStatement(query2);
 				pre1.setInt(1, wallet.getUserId());
 				pre1.setDouble(2, wallet.getWallet());
 				pre1.setInt(3, wallet.getUserId());
@@ -33,6 +34,7 @@ public class AdminImpl implements AdminDao  {
 			} catch (SQLException e) {
 				
 				e.printStackTrace();
+	
 			}
 			
 			
@@ -48,20 +50,12 @@ public class AdminImpl implements AdminDao  {
 		try {
 			pre=con.prepareStatement(query);
 			pre.setInt(1, reg.getUserId());
-			i=pre.executeUpdate(query);
+			i=pre.executeUpdate();
 		
 		} catch (SQLException e) {
 		
 			e.printStackTrace();
-		}finally {
-			try {
-				if(pre!=null) {
-					pre.close();
-				}
-				
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
+
 		}
 		return i;
 		
@@ -75,20 +69,12 @@ public class AdminImpl implements AdminDao  {
 		try {
 			pre=con.prepareStatement(query);
 			pre.setInt(1, reg.getUserId());
-			i=pre.executeUpdate(query);
+			i=pre.executeUpdate();
 		
 		} catch (SQLException e) {
 		
 			e.printStackTrace();
-		}finally {
-			try {
-				if(pre!=null) {
-					pre.close();
-				}
-				
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
+
 		}
 		return i;
 		
@@ -98,10 +84,10 @@ public class AdminImpl implements AdminDao  {
 		Connection con=ConnectionUtil.connect();
 		List<ContactUsPojo> contact=new ArrayList<>();
 		ResultSet rs=null;
-		Statement st =null;
+		PreparedStatement pre =null;
 		try {
-			st = con.createStatement();
-			 rs=st.executeQuery(query);
+			pre = con.prepareStatement(query);
+			 rs=pre.executeQuery();
 			 while(rs.next()) {
 				 ContactUsPojo contactUsPojo=new ContactUsPojo(rs.getString(1),rs.getString(2),rs.getLong(3),rs.getString(4));
 				 contact.add(contactUsPojo);
@@ -109,15 +95,7 @@ public class AdminImpl implements AdminDao  {
 		} catch (SQLException e) {
 			
 			e.printStackTrace();
-		}finally {
-			try {
-				if(st!=null) {
-					st.close();
-				}
-				
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
+
 		}
 		
 		return contact;

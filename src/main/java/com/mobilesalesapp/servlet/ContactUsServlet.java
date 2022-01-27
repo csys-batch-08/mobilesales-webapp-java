@@ -26,8 +26,7 @@ public class ContactUsServlet extends HttpServlet {
 		
 		UserImpl userImpl=new UserImpl();
 		userImpl.contactUs(contactUsPojo);
-		}
-		catch (NumberFormatException e) {
+		} catch (NumberFormatException e) {
 			e.printStackTrace();
 		}
 		

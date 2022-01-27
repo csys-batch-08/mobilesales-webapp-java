@@ -1,6 +1,7 @@
 package com.mobilesalesapp.servlet;
 
 import java.io.IOException;
+import java.io.Serializable;
 
 import com.mobilesalesapp.impl.ProductImpl;
 import com.mobilesalesapp.model.ProductPojo;
@@ -15,6 +16,13 @@ import javax.servlet.http.HttpSession;
 public class UpdateProductServlet extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
+	
+	public static HttpSession setSessionAttribute(final HttpSession session, 
+			final String attributeName,
+			        final Serializable attributeValue) {
+			    session.setAttribute(attributeName, attributeValue);
+			    return session;
+			  }
 
 	@Override
 	public void doPost(HttpServletRequest req,HttpServletResponse res) {
@@ -34,7 +42,7 @@ public class UpdateProductServlet extends HttpServlet {
 		}
 		try {
 			HttpSession session =req.getSession();
-			session.setAttribute("updateInfo", "updated Successfully");
+			setSessionAttribute(session,"updateInfo", "updated Successfully");
 			res.sendRedirect("AdminMain.jsp");
 		} catch (IOException e) {
 			e.printStackTrace();

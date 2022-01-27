@@ -3,6 +3,7 @@ package com.mobilesalesapp.servlet;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+
 import com.mobilesalesapp.impl.OrderImpl;
 import com.mobilesalesapp.model.OrderPojo;
 import javax.servlet.annotation.WebServlet;
@@ -12,11 +13,12 @@ import javax.servlet.http.HttpServletResponse;
 
 
 
+
 @WebServlet("/deliveredOrder")
 public class OrderDeliveredServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
-
+	
 	@Override
 	public void service(HttpServletRequest req,HttpServletResponse res) {
 		int orderId=Integer.parseInt( req.getParameter("orderId"));

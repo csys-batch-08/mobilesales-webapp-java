@@ -48,16 +48,7 @@ public class OrderImpl implements OrderDao {
 		} catch (Exception e) {
 
 			e.printStackTrace();
-		} finally {
-			try {
-				if (pre != null && pre1 != null) {
-					pre.close();
-					pre1.close();
-				}
 
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
 		}
 
 		return i;
@@ -80,15 +71,7 @@ public class OrderImpl implements OrderDao {
 		} catch (SQLException e) {
 
 			e.printStackTrace();
-		}finally {
-			try {
-				if (pre != null ) {
-					pre.close();
-				}
 
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
 		}
 		return i;
 
@@ -116,15 +99,6 @@ public class OrderImpl implements OrderDao {
 		} catch (Exception e) {
 			e.printStackTrace();
 
-		}finally {
-			try {
-				if (pre != null ) {
-					pre.close();
-				}
-
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
 		}
 
 
@@ -153,15 +127,7 @@ public class OrderImpl implements OrderDao {
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-		}finally {
-			try {
-				if (pre != null ) {
-					pre.close();
-				}
 
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
 		}
 
 		return orderList1;
@@ -182,15 +148,7 @@ public class OrderImpl implements OrderDao {
 			pre2.executeUpdate(COMMIT);
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}finally {
-			try {
-				if (pre2 != null ) {
-					pre2.close();
-				}
 
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
 		}
 
 		PreparedStatement pre=null;
@@ -202,15 +160,7 @@ public class OrderImpl implements OrderDao {
 		} catch (SQLException e) {
 
 			e.printStackTrace();
-		}finally {
-			try {
-				if (pre != null ) {
-					pre.close();
-				}
 
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
 		}
 
 
@@ -227,15 +177,7 @@ public class OrderImpl implements OrderDao {
 			pre.executeUpdate(COMMIT);
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}finally {
-			try {
-				if (pre != null ) {
-					pre.close();
-				}
 
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
 		}
 	}
 
@@ -248,7 +190,7 @@ public class OrderImpl implements OrderDao {
 		try {
 			pre = con.prepareStatement(query);
 			pre.setInt(1, productId);
-			rs = pre.executeQuery(query);
+			rs = pre.executeQuery();
 
 			
 			if (rs.next()) {
@@ -256,15 +198,7 @@ public class OrderImpl implements OrderDao {
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-		}finally {
-			try {
-				if (pre != null ) {
-					pre.close();
-				}
 
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
 		}
 		return url;
 	}

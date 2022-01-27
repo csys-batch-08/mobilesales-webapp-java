@@ -11,7 +11,7 @@ import com.mobilesalesapp.impl.AdminImpl;
 import com.mobilesalesapp.model.RegisterPojo;
 
 @WebServlet("/activeUser")
-public class AcivateUserServlet extends HttpServlet {
+public class AcivateUserServlet extends HttpServlet  {
 
 	private static final long serialVersionUID = 1L;
 

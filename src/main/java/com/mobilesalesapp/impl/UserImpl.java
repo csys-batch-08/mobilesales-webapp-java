@@ -33,6 +33,7 @@ public class UserImpl implements UserDao {
 			try {
 				if(pre!=null) {
 					pre.close();
+					con.close();
 				}
 				
 			} catch (SQLException e) {
@@ -58,17 +59,9 @@ public class UserImpl implements UserDao {
 			rs = pre.executeQuery();
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}finally {
-			try {
-				if(pre!=null) {
-					pre.close();
-				}
-				
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-			}
 
+			}
+		
 
 		return rs;
 
@@ -77,7 +70,7 @@ public class UserImpl implements UserDao {
 	public List<RegisterPojo> userDetails() {
 		Connection con = ConnectionUtil.connect();
 		String query = "select pk_user_id,first_name,email,phone_number,wallet from users_table where role='user'";
-		List<RegisterPojo> userList=new ArrayList<RegisterPojo>();
+		List<RegisterPojo> userList=new ArrayList<>();
 		ResultSet rs = null;
 		PreparedStatement pre =null;
 		try {
@@ -94,6 +87,7 @@ public class UserImpl implements UserDao {
 			try {
 				if(pre!=null) {
 					pre.close();
+					con.close();
 				}
 				
 			} catch (SQLException e) {
@@ -121,15 +115,7 @@ public class UserImpl implements UserDao {
 
 		} catch (Exception e) {
 			e.printStackTrace();
-		}finally {
-			try {
-				if(pre!=null) {
-					pre.close();
-				}
-				
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
+	
 			}
 
 
@@ -151,15 +137,7 @@ public class UserImpl implements UserDao {
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}finally {
-			try {
-				if(pre!=null) {
-					pre.close();
-				}
-				
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
+
 			}
 
 		
@@ -176,15 +154,7 @@ public class UserImpl implements UserDao {
 			pre.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}	finally {
-			try {
-				if(pre!=null) {
-					pre.close();
-				}
-				
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
+
 			}
 	
 		
@@ -205,15 +175,7 @@ public class UserImpl implements UserDao {
 		
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}finally {
-			try {
-				if(pre!=null) {
-					pre.close();
-				}
-				
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
+
 			}
 
 
@@ -233,15 +195,7 @@ public class UserImpl implements UserDao {
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}finally {
-			try {
-				if(pre!=null) {
-					pre.close();
-				}
-				
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
+
 			}
 
 		
@@ -256,7 +210,7 @@ public class UserImpl implements UserDao {
 		PreparedStatement pre=null;
 		try {
 			pre =con.prepareStatement(query);
-			 rs= pre.executeQuery(query);
+			 rs= pre.executeQuery();
 			 while(rs.next()) {
 					RegisterPojo registerPojo1=new RegisterPojo();
 					registerPojo1.setUserId(rs.getInt(1));
@@ -268,15 +222,7 @@ public class UserImpl implements UserDao {
 				}
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}finally {
-			try {
-				if(pre!=null) {
-					pre.close();
-				}
-				
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
+
 			}
 
 	

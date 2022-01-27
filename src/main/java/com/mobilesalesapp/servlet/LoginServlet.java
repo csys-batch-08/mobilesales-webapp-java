@@ -3,6 +3,7 @@ package com.mobilesalesapp.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.io.Serializable;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
@@ -26,6 +27,13 @@ import com.mobilesalesapp.model.RegisterPojo;
 public class LoginServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
+	
+	public static HttpSession setSessionAttribute(final HttpSession session, 
+			final String attributeName,
+			        final Serializable attributeValue) {
+			    session.setAttribute(attributeName, attributeValue);
+			    return session;
+			  }
 
 	@Override
 	public void doPost(HttpServletRequest req,HttpServletResponse res) throws IOException, ServletException {
@@ -51,11 +59,12 @@ public class LoginServlet extends HttpServlet {
 					String email=ns.getString(3);
 					double wallet=ns.getDouble(6);
 					role=ns.getString(7);
-					session.setAttribute("userId", userId);
-					session.setAttribute("email", email);
-					session.setAttribute("name", name);
-					session.setAttribute("wallet", wallet);
-					session.setAttribute("role", role);
+					setSessionAttribute(session,"userId", userId);
+					setSessionAttribute(session,"email", email);
+					setSessionAttribute(session,"name", name);
+					setSessionAttribute(session,"wallet", wallet);
+					
+					setSessionAttribute(session, "role", role);
 					
 				}
 				
@@ -69,7 +78,7 @@ public class LoginServlet extends HttpServlet {
 						
 						ProductImpl  productImpl = new ProductImpl();
 						List<ProductPojo> productList= productImpl.showAllProduct();
-						session.setAttribute("productList", productList);
+						setSessionAttribute(session,"productList", (Serializable) productList);
 						RequestDispatcher rd=req.getRequestDispatcher("MobilePage.jsp");
 						rd.forward(req, res);
 						

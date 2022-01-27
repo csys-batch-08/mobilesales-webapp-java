@@ -19,8 +19,7 @@ public class ForgotPasswordServlet extends HttpServlet {
 		long phone=0;
 		try {
 			phone=Long.parseLong(request.getParameter("phone_number"));
-		}
-		catch (NumberFormatException e) {
+		} catch (NumberFormatException e) {
 			e.printStackTrace();
 		}
 		String password=request.getParameter("password");
@@ -43,8 +42,7 @@ public class ForgotPasswordServlet extends HttpServlet {
 				e.printStackTrace();
 			}
 			
-		}
-		else {
+		} else {
 			try {
 				PrintWriter out = response.getWriter();
 				out.println("<script type=\"text/javascript\">");

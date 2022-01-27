@@ -1,6 +1,7 @@
 package com.mobilesalesapp.servlet;
 
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -19,19 +20,26 @@ public class ViewCartServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 	
+	public static HttpSession setSessionAttribute(final HttpSession session, 
+			final String attributeName,
+			        final Serializable attributeValue) {
+			    session.setAttribute(attributeName, attributeValue);
+			    return session;
+			  }
+	
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		System.out.println("hlo01");
+	
 		HttpSession session=req.getSession();
 		int userId=Integer.parseInt( session.getAttribute("userId").toString());
 		CartPojo cartPojo=new CartPojo();
 		cartPojo.setUserId(userId);
 		CartImpl cartImpl=new CartImpl();
-		System.out.println("hlo");
+
 		List<CartPojo> listCart= cartImpl.viewAllCart(cartPojo);
-		session.setAttribute("listCart", listCart);
+		setSessionAttribute(session,"listCart", (Serializable) listCart);
 		if(listCart.isEmpty()) {
-			session.setAttribute("cartId", userId);
+			setSessionAttribute(session,"cartId", userId);
 		}
 		RequestDispatcher rd=req.getRequestDispatcher("ViewCart.jsp");
 		rd.forward(req, resp);

@@ -1,6 +1,7 @@
 package com.mobilesalesapp.servlet;
 
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -19,6 +20,14 @@ public class MyProfileServlet extends HttpServlet {
 	
 	
 	private static final long serialVersionUID = 1L;
+	
+	public static HttpSession setSessionAttribute(final HttpSession session, 
+			final String attributeName,
+			        final Serializable attributeValue) {
+			    session.setAttribute(attributeName, attributeValue);
+			    return session;
+			  }
+	
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		HttpSession session=req.getSession();
@@ -26,7 +35,7 @@ public class MyProfileServlet extends HttpServlet {
 		
 		UserImpl userImpl=new UserImpl();
 		List<RegisterPojo> listAllDetails=userImpl.myDetails(userId);
-		session.setAttribute("listAllDetails", listAllDetails);
+		setSessionAttribute(session,"listAllDetails", (Serializable) listAllDetails);
 		
 		RequestDispatcher rd=req.getRequestDispatcher("MyProfile.jsp");
 		rd.forward(req, resp);

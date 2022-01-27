@@ -25,15 +25,7 @@ public class CartImpl implements CartDao {
 		} catch (SQLException e) {
 			
 			e.printStackTrace();
-		}finally {
-			try {
-				if(pre!=null) {
-					pre.close();
-				}
-				
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
+
 			}
 		return rs;
 		
@@ -75,23 +67,15 @@ public class CartImpl implements CartDao {
 			pre2.setString(4, description);
 			pre2.setDouble(5, price);
 			pre2.setString(6, url);
-			pre2.executeUpdate();
+			int i=pre2.executeUpdate();
+			System.out.print(i);
 			pre2.executeUpdate("commit");
 
 			
 		
 		}catch (Exception e) {
 			e.printStackTrace();
-		} finally {
-				try {
-					if(pre!=null && pre2!=null) {
-						pre.close();
-						pre2.close();
-					}
-					
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
+
 		}
 
 	}
@@ -105,21 +89,12 @@ public class CartImpl implements CartDao {
 			pre = con.prepareStatement(query);
 			pre.setInt(1, cartPojo.getProductId());
 			pre.setInt(2, cartPojo.getUserId());
-			Statement st=con.createStatement();
-			st.executeUpdate(query);
+			pre.executeUpdate();
 
 		} catch (SQLException e) {
 	
 			e.printStackTrace();
-		}finally {
-			try {
-				if(pre!=null) {
-					pre.close();
-				}
-				
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
+
 			}
 		
 		
@@ -141,15 +116,7 @@ public class CartImpl implements CartDao {
 		} catch (SQLException e) {
 	
 			e.printStackTrace();
-		}finally {
-			try {
-				if(pre!=null) {
-					pre.close();
-				}
-				
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
+
 			}
 		return cartList;
 		

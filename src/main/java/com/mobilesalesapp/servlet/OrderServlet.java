@@ -15,9 +15,7 @@ import javax.servlet.http.HttpSession;
 
 @WebServlet("/buying")
 public class OrderServlet extends HttpServlet {
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = 1L;
 
 	@Override

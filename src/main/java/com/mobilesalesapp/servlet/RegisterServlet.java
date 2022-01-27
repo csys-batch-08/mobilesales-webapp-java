@@ -46,14 +46,11 @@ public class RegisterServlet extends HttpServlet {
 		
 		try {
 			res.sendRedirect("index.jsp");
-		} 
-		
-		catch (IOException e) {
+		} catch (IOException e) {
 				e.printStackTrace();
 
 		}
-		}
-		else {
+		} else {
 			
 			try {
 
