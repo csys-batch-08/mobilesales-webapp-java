@@ -2,6 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1" %>
 	 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+	  <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -176,13 +177,14 @@ background-color: rgb(248, 213, 168);
 	<div style="position: relative;top: -10px;" class="top_nav">
 
 		<ul>
-			<li><a href="MobilePage">Home</a></li>
-			<li><a class="active" href="ViewOrders.jsp">My Orders</a></li>
-			<li><a href="ViewCart.jsp">Cart</a></li>
-			<li><a href="MyProfile.jsp">My Profile</a></li>
+			<li><a  href="MobilePage">Home</a></li>
+			<li><a class="active" href="ViewOrders1">My Orders</a></li>
+			<li><a href="ViewCart">Cart</a></li>
+			<li><a href="MyProfile">My Profile</a></li>
 			<li><a href="ContactUs.jsp">Contact us</a></li>
 			<li><a href="AboutUs.jsp">About us</a></li>
 			<li style="float: right;"><a href="logOut">Logout</a></li>
+
 
 
 		</ul>
@@ -229,21 +231,22 @@ background-color: rgb(248, 213, 168);
 
 		
 
-		<c:forEach items="${sessionScope.searchList1}" var="o">
+		<c:forEach items="${sessionScope.searchList1}" var="searchList1">
 		<tr>
 			
 			
-			<td>${o.status}</td>
-			<td>${o.price }</td>
-			<td>${o.date}</td>
-			<td>${o.address}</td>
+			<td>${searchList1.status}</td>
+			<td>${searchList1.price }</td>
+			<td><fmt:parseDate value="${searchList1.date}" pattern="yyyy-MM-dd" var="orderDate" type="date"/>
+		<fmt:formatDate pattern="dd/MM/yyyy" value="${orderDate}"/></td>
+			<td>${searchList1.address}</td>
 			<td>
 			
 					Order Id :<input type="text" name="cancelId"
-						value="${o.orderId }" readonly><br>
+						value="${searchList1.orderId }" readonly><br>
 					<br>
 
-					<button class="btn btn-danger" type="submit" onclick="Cancel('${o.status}','${o.orderId }','${o.price }','${o.userId}')" class="btn_add">Cancel</button>
+					<button class="btn btn-danger" type="submit" onclick="Cancel('${searchList1.status}','${searchList1.orderId }','${searchList1.price }','${searchList1.userId}')" class="btn_add">Cancel</button>
 				
 			</td>
 		</tr>

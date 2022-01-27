@@ -175,17 +175,17 @@ background-color: rgb(248, 213, 168);
     </tr>
 
     
- <c:forEach items="${orderDetails}" var="o">
+ <c:forEach items="${orderDetails}" var="orderDetails">
   	
     <tr>
-    <td>${o.orderId }</td>
-    <td>${o.status }</td>
-    <td>${o.price }</td>
-    <td>${o.date }</td>
-    <td>${o.address}</td>
+    <td>${orderDetails.orderId }</td>
+    <td>${orderDetails.status }</td>
+    <td>${orderDetails.price }</td>
+    <td>${orderDetails.date }</td>
+    <td>${orderDetails.address}</td>
     <td>
  
-    <a class="btn btn-success" href="deliveredOrder?orderId=${o.orderId }&deliveryStatus=${o.status }">Delivered</a>
+    <a class="btn btn-success" href="deliveredOrder?orderId=${orderDetails.orderId }&deliveryStatus=${orderDetails.status }">Delivered</a>
     </td>
     </tr>
   

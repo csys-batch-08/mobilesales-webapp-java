@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1" import ="com.mobilesalesapp.util.ConnectionUtil" import ="java.sql.* "%>
+    pageEncoding="ISO-8859-1" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -150,13 +151,14 @@ background-color:cornsilk;
 	<div  style="position: relative;top: -10px;" class="top_nav">
 
 		<ul>
-			<li><a  href="MobilePage">Home</a></li>
-			<li><a  href="ViewOrders1">My Orders</a></li>
-            <li><a class="active" href="ViewCart.jsp">Cart</a></li>
-            <li><a href="MyProfile.jsp">My Profile</a></li>
+				<li><a  href="MobilePage">Home</a></li>
+			<li><a href="ViewOrders1">My Orders</a></li>
+			<li><a class="active" href="ViewCart">Cart</a></li>
+			<li><a href="MyProfile">My Profile</a></li>
 			<li><a href="ContactUs.jsp">Contact us</a></li>
 			<li><a href="AboutUs.jsp">About us</a></li>
 			<li style="float: right;"><a href="logOut">Logout</a></li>
+
 		
 
 		</ul>
@@ -166,28 +168,9 @@ background-color:cornsilk;
 	<img style="border-radius: 100px;position: absolute;top:0px;left: 500px; " width="40px" alt="" src="assets/images/mobile112.png">
 	
 	<br><br>
-<%
-int userId=Integer.parseInt( session.getAttribute("userId").toString());
 
-
-Connection con=ConnectionUtil.connect();
-String query="select cart_id,user_id,product_id,product_name,description,price,url from carts_table where user_id=? order by cart_id desc";
-
-PreparedStatement pre1 =con.prepareStatement(query);
-pre1.setInt(1,userId );
-ResultSet rs1=pre1.executeQuery();
-PreparedStatement pre =con.prepareStatement(query);
-pre.setInt(1,userId );
-	ResultSet rs=pre.executeQuery();
-	
-
-%>
    
-    
-    
-    <%if(rs1.next()) {%>
-   
-     
+     <c:if test="${userId!=null}">
     <table class="table table-hover table-striped" style="width: 90%;margin-left: 60px;">
     <tr style="background-color: cornflowerblue" >
      <th>Product</th>
@@ -198,22 +181,22 @@ pre.setInt(1,userId );
   	<th>Action</th>
     </tr>
    
-    <%while(rs.next()){ 
-     %>
-    
+   <c:forEach items="${sessionScope.listCart}" var="listCarts">
+   
     <tr>
-    <td><img alt="img" src="<%=rs.getString(7) %>" width="100px"> </td>
-    <td><%=rs.getString(4) %></td>
-    <td><%=rs.getString(5) %></td>
-    <td><%=rs.getDouble(6) %></td>
-    <td><a class="btn btn-secondary"  href="MobileInfo.jsp?product_id=<%=rs.getInt(3) %>">View </a></td>
-    <td><a class="btn btn-danger" href="cartDelete?product_id=<%=rs.getInt(3) %>&userId=<%=rs.getInt(2) %>">Delete </a></td>
+    <td><img alt="img" src="${listCarts.url}" width="100px"> </td>
+    <td>${listCarts.productName}</td>
+    <td>${listCarts.description}</td>
+    <td>${listCarts.price}</td>
+    <td><a class="btn btn-secondary"  href="MobileInfo.jsp?product_id=${listCarts.productId}">View </a></td>
+    <td><a class="btn btn-danger" href="cartDelete?product_id=${listCarts.productId}&userId=${listCarts.userId}">Delete </a></td>
    
     </tr>
-    <%}}
-     else{%>
+  </c:forEach>
+  </c:if>
+     <c:if test="${userId==null}">
     	 <h1 style="color: red;margin-left: 500px;margin-top: 150px">Cart is Empty</h1>
-     <% } %>
+</c:if>
      
      
     </table>

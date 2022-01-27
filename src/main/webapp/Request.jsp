@@ -1,13 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
 <title>Request Page</title>
-	<%
-		String email=(String)session.getAttribute("email");
-	%>
+
 
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
@@ -98,7 +97,7 @@ body {
 				<label class="c_lab" for="">Email</label><br> <input
 					autocomplete="off" autofocus class="c_user"
 					pattern="[a-z][a-z0-9_.]+@[a-z0-9.]+[.][a-z]+" readonly
-					title="Enter valid email ex(example12@gmail.com)" value="<%=email %>" name="username"
+					title="Enter valid email ex(example12@gmail.com)" value="${email }" name="username"
 					type="email" required><br> <br> <label
 					class="c_lab" for="">Reason</label><br> <input
 					autocomplete="off" class="c_user"

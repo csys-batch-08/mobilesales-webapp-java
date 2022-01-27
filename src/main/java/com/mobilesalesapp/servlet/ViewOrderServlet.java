@@ -26,17 +26,18 @@ public class ViewOrderServlet extends HttpServlet {
 		@Override
 		public void service(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException {
 			HttpSession session=request.getSession();
-			System.out.println("nomo");
+			
 			int userId = Integer.parseInt(session.getAttribute("userId").toString());
 
 		
 
 			OrderPojo orderPojo = new OrderPojo(userId);
 			OrderImpl order = new OrderImpl();
-//			String url=order.getUrl(productId);
+
 			List<OrderPojo> orderList = order.viewAllOrders(orderPojo);
 			session.setAttribute("orderList", orderList);
 			session.setAttribute("userId1", userId);
+			System.out.println(orderList);
 			RequestDispatcher rd=request.getRequestDispatcher("ViewOrders.jsp");
 			rd.forward(request, response);
 			

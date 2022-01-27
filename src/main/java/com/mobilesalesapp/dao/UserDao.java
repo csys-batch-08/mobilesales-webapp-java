@@ -23,6 +23,6 @@ public interface UserDao {
 	
 	public int request(RegisterPojo user);
 	
-	public ResultSet myDetails(int userId) ;
+	public List<RegisterPojo> myDetails(int userId) ;
 
 }

@@ -2,10 +2,11 @@ package com.mobilesalesapp.impl;
 
 import com.mobilesalesapp.dao.CartDao;
 import com.mobilesalesapp.model.CartPojo;
-
 import com.mobilesalesapp.util.ConnectionUtil;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 
 
@@ -93,6 +94,28 @@ public class CartImpl implements CartDao {
 	
 			e.printStackTrace();
 		}
+		
+		
+	}
+	public List<CartPojo> viewAllCart(CartPojo cartPojo) {
+		Connection con=ConnectionUtil.connect();
+		String query="select cart_id,user_id,product_id,product_name,description,price,url from carts_table where user_id=? order by cart_id desc";
+
+		List<CartPojo> cartList=new ArrayList<CartPojo>();
+		try {
+			PreparedStatement pre = con.prepareStatement(query);
+			pre.setInt(1,cartPojo.getUserId() );
+			ResultSet rs=pre.executeQuery();
+			while(rs.next()) {
+				System.out.println("hlo2");
+				CartPojo cart=new CartPojo(rs.getInt(1),rs.getInt(2),rs.getInt(3),rs.getString(4),rs.getString(5),rs.getDouble(6),rs.getString(7));
+				cartList.add(cart);
+			}
+		} catch (SQLException e) {
+	
+			e.printStackTrace();
+		}
+		return cartList;
 		
 		
 	}

@@ -1,6 +1,5 @@
 package com.mobilesalesapp.dao;
 
-import java.sql.ResultSet;
 import java.util.List;
 
 import com.mobilesalesapp.model.OrderPojo;

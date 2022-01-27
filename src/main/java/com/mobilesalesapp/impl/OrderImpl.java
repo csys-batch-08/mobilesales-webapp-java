@@ -74,7 +74,7 @@ public class OrderImpl implements OrderDao {
 	public List<OrderPojo> viewAllOrders(OrderPojo orderPojo) {
 
 		Connection con = ConnectionUtil.connect();
-		String query = "select order_id,status,price,trunc(order_date),address,fk_product_id,fk_user_id from orders_table where fk_user_id=? order by order_date desc ";
+		String query = "select order_id,status,price,order_date,address,fk_product_id,fk_user_id from orders_table where fk_user_id=? order by order_date desc ";
 		ResultSet rs = null;
 		List<OrderPojo> orderList1 = new ArrayList<OrderPojo>();
 		try {
@@ -84,8 +84,8 @@ public class OrderImpl implements OrderDao {
 			rs = pre.executeQuery();
 			while (rs.next()) {
 
-				OrderPojo orders = new OrderPojo(rs.getInt(7), rs.getInt(1), rs.getString(2), rs.getDouble(3),
-						rs.getString(4), rs.getString(5));
+				OrderPojo orders = new OrderPojo(rs.getInt(6),rs.getInt(7), rs.getInt(1), rs.getString(2), rs.getDouble(3),
+						rs.getDate(4), rs.getString(5));
 
 				orderList1.add(orders);
 			}
@@ -101,18 +101,18 @@ public class OrderImpl implements OrderDao {
 	public List<OrderPojo> searchAllOrders(OrderPojo orderPojo) {
 		List<OrderPojo> orderList1 = new ArrayList<OrderPojo>();
 		Connection con = ConnectionUtil.connect();
-		String query = "select order_id,status,price,trunc(order_date),address,fk_product_id,fk_user_id from orders_table where fk_user_id=? and to_char(trunc( order_date),'yyyy-mm-dd')='"
-				+ orderPojo.getDate() + "' order by order_date desc";
+		String query = "select order_id,status,price,trunc(order_date),address,fk_product_id,fk_user_id from orders_table where fk_user_id=? and to_char(trunc( order_date),'yyyy-mm-dd')=? order by order_date desc";
 		ResultSet rs = null;
 		try {
 			PreparedStatement pre = con.prepareStatement(query);
 			pre.setInt(1, orderPojo.getUserId());
+			pre.setString(2,orderPojo.getStrDate() );
 			rs = pre.executeQuery();
-			System.out.println("nom1");
+			
 			while (rs.next()) {
 				System.out.println("nom");
-				OrderPojo orders = new OrderPojo(rs.getInt(7), rs.getInt(1), rs.getString(2), rs.getDouble(3),
-						rs.getString(4), rs.getString(5));
+				OrderPojo orders = new OrderPojo(rs.getInt(6),rs.getInt(7), rs.getInt(1), rs.getString(2), rs.getDouble(3),
+						rs.getDate(4), rs.getString(5));
 
 				orderList1.add(orders);
 				System.out.println("nom3");

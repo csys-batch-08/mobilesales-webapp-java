@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import com.mobilesalesapp.exception.InvalidUserException;
+
 import com.mobilesalesapp.impl.ProductImpl;
 import com.mobilesalesapp.impl.UserImpl;
 import com.mobilesalesapp.model.ProductPojo;
@@ -33,8 +33,10 @@ public class LoginServlet extends HttpServlet {
 		
 		String username=req.getParameter("username");
 		String password=req.getParameter("password");
-		
-		RegisterPojo login=new RegisterPojo(null,username,null,password);
+		String role=null;
+		RegisterPojo login=new RegisterPojo();
+		login.setEmail(username);
+		login.setPassword(password);
 		UserImpl userDao=new UserImpl();
 	
 	
@@ -48,17 +50,23 @@ public class LoginServlet extends HttpServlet {
 					String name=ns.getString(2);
 					String email=ns.getString(3);
 					double wallet=ns.getDouble(6);
-					String role=ns.getString(7);
+					role=ns.getString(7);
 					session.setAttribute("userId", userId);
 					session.setAttribute("email", email);
 					session.setAttribute("name", name);
 					session.setAttribute("wallet", wallet);
 					session.setAttribute("role", role);
-					System.out.println(email);
+					
+				}
+				
+				if(role==null) {
+					
+					session.setAttribute("loginError", "invalid User or password");
+					res.sendRedirect("index.jsp");
+
+				}else {
 					if(role.equals("user")) {
 						
-//						int userId = Integer.parseInt(session.getAttribute("userId").toString());
-//						double wallet = Double.parseDouble(session.getAttribute("wallet").toString());
 						ProductImpl  productImpl = new ProductImpl();
 						List<ProductPojo> productList= productImpl.showAllProduct();
 						session.setAttribute("productList", productList);
@@ -66,37 +74,25 @@ public class LoginServlet extends HttpServlet {
 						rd.forward(req, res);
 						
 	
-					}
-					else if(role.equals("inactive")) {
+					} else if(role.equals("inactive")) {
+						
 						out.println("<script type=\"text/javascript\">");
 						out.println("alert('Your account now Inactive');");
 						out.println("location='Request.jsp';");
-						out.println("</script>");					}
-					else  {
+						out.println("</script>");					
+						}else if(role.equals("admin"))  {
 						res.sendRedirect("AdminMain.jsp");
 					}
+				}
 					
-				}else {
-					throw new InvalidUserException();
+				} catch (SQLException |IOException e) {
+			
+					e.printStackTrace();
 				}
 			}
-			catch (InvalidUserException | IOException e) {
-				try(PrintWriter out=res.getWriter()){
-				out.println("<script type=\"text/javascript\">");
-				out.println("alert('Invalid Email or password');");
-				out.println("location='index.jsp';");
-				out.println("</script>");
-				
-				}
-				catch (IOException e2) {
-				e.printStackTrace();
-				}
-			} catch (SQLException  e) {
-
-				e.printStackTrace();
-			}
-
 	}
+				
 
 
-}
+
+

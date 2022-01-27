@@ -112,20 +112,20 @@ background-color:cornsilk;
 			<th>Delete</th>
 		</tr>
 		
-		<c:forEach items="${viewProducts}" var="p">
+		<c:forEach items="${viewProducts}" var="viewProducts">
 
 		<tr>
-			<td>${p.id}</td>
-			<td>${p.productName}</td>
-			<td>${p.description}</td>
-			<td>${p.standardCost}</td>
-			<td>${p.listCost}</td>
+			<td>${viewProducts.id}</td>
+			<td>${viewProducts.productName}</td>
+			<td>${viewProducts.description}</td>
+			<td>${viewProducts.standardCost}</td>
+			<td>${viewProducts.listCost}</td>
 			<td>
 
 				<form action="updateProduct" method="post">
 
 					Product Id : <input type="text" name="updateId"
-						value="${p.id}"  readonly id="brand_textbox"
+						value="${viewProducts.id}"  readonly id="brand_textbox"
 						pattern="[0-9]{1,8}" maxlength="8" required class="updateId"><br>
 					<br> <label class="add_label1">Standard_cost :</label> <input
 						type="text" name="updateStandardPrice" id="brand_textbox"
@@ -141,7 +141,7 @@ background-color:cornsilk;
 			</td>
 			<td>
 				<form action="deleteProduct" method="post">
-					Product Id : <input type="text" value="${p.id}" readonly
+					Product Id : <input type="text" value="${viewProducts.id}" readonly
 						name="deleteId" id="brand_textbox" pattern="[0-9]{1,8}"
 						maxlength="8" required class="deleteId"><br> <br>
 					<button type="submit" class="btn btn-danger">Delete</button>

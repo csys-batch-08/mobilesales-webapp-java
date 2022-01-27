@@ -1,6 +1,7 @@
 package com.mobilesalesapp.model;
 
 import java.time.LocalDate;
+import java.util.Date;
 
 public class OrderPojo {
 	public OrderPojo(int userId) {
@@ -14,9 +15,28 @@ public class OrderPojo {
 	private int orderId;
 	private String status;
 	private double price;
-	private String date;
+	private Date date;
+	private String strDate;
 	private String address;
-	public OrderPojo(int orderId, String status, double price, String date, String address) {
+	
+	public OrderPojo(int userId, String strDate) {
+		super();
+		this.userId = userId;
+		this.strDate = strDate;
+	}
+
+
+	public String getStrDate() {
+		return strDate;
+	}
+
+
+	public void setStrDate(String strDate) {
+		this.strDate = strDate;
+	}
+
+
+	public OrderPojo(int orderId, String status, double price, Date date, String address) {
 		super();
 		this.orderId = orderId;
 		this.status = status;
@@ -26,8 +46,9 @@ public class OrderPojo {
 	}
 
 
-	public OrderPojo(int userId, int orderId, String status, double price, String date, String address) {
+	public OrderPojo(int productId, int userId, int orderId, String status, double price, Date date, String address) {
 		super();
+		this.productId = productId;
 		this.userId = userId;
 		this.orderId = orderId;
 		this.status = status;
@@ -53,17 +74,17 @@ public class OrderPojo {
 		this.status = status;
 	}
 
-	public OrderPojo(int userId, String date) {
+	public OrderPojo(int userId, Date date) {
 		super();
 		this.userId = userId;
 		this.date = date;
 	}
 
-	public String getDate() {
+	public Date getDate() {
 		return date;
 	}
 
-	public void setDate(String date) {
+	public void setDate(Date date) {
 		this.date = date;
 	}
 
@@ -122,12 +143,17 @@ public class OrderPojo {
 		this.price = price;
 		this.address = address;
 	}
+	
+	
+	
+
 	@Override
 	public String toString() {
-		return "OrderPojo [userId=" + userId + ", productId=" + productId + ", price=" + price + ", address=" + address
+		return "OrderPojo [userId=" + userId + ", productId=" + productId + ", orderId=" + orderId + ", status="
+				+ status + ", price=" + price + ", date=" + date + ", strDate=" + strDate + ", address=" + address
 				+ "]";
 	}
-	
+
 
 	public OrderPojo() {
 		super();

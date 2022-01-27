@@ -29,14 +29,13 @@ public class UpdateProductServlet extends HttpServlet {
 		ProductPojo obj1=new ProductPojo(productId,standardPrice,listPrice);
 		ProductImpl obj2=new ProductImpl();
 		obj2.update(obj1);
-		}
-		catch (NumberFormatException e) {
+		} catch (NumberFormatException e) {
 			e.printStackTrace();
 		}
 		try {
 			HttpSession session =req.getSession();
 			session.setAttribute("updateInfo", "updated Successfully");
-			res.sendRedirect("ProductList.jsp");
+			res.sendRedirect("AdminMain.jsp");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

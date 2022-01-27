@@ -1,6 +1,8 @@
 package com.mobilesalesapp.servlet;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -23,19 +25,20 @@ public class SearchOrderServlet extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse resp) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		String dateOrder = request.getParameter("OrderDate");
-
+		System.out.println(dateOrder);
 
 		int userId = Integer.parseInt( session.getAttribute("userId").toString());
-
+//		 SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");  
+//		    String strDate= formatter.format(dateOrder); 
 	
-		OrderPojo orderPojo = new OrderPojo(userId, dateOrder);
+		OrderPojo orderPojo = new OrderPojo(userId,dateOrder );
 		OrderImpl order = new OrderImpl();
 		
 		List<OrderPojo> searchList1 = order.searchAllOrders(orderPojo);
-		System.out.println("saerxch"+dateOrder);
+
 		session.setAttribute("searchList1", searchList1);
 		session.setAttribute("userId", userId);
-		System.out.println(searchList1);
+	
 		RequestDispatcher rd = request.getRequestDispatcher("SearchOrder.jsp");
 		rd.forward(request, resp);
 	}

@@ -1,18 +1,7 @@
-<%@page import="com.mobilesalesapp.impl.UserImpl"%>
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1" import="java.sql.*"
-	import ="com.mobilesalesapp.util.*" %>
-<%
-if (session.getAttribute("name") == (null)) {
-	response.sendRedirect("index.jsp");
-}
-String name = (String) session.getAttribute("name");
-int userId =Integer.parseInt( session.getAttribute("userId").toString());
-
-double wallet = (double) session.getAttribute("wallet");
-
-
-%>
+	pageEncoding="ISO-8859-1"  %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 
 
@@ -198,12 +187,12 @@ input { display: table-cell;position: absolute;left: 80px; }
 		<ul>
 			<li><a  href="MobilePage">Home</a></li>
 			<li><a href="ViewOrders1">My Orders</a></li>
-			<li><a href="ViewCart.jsp">Cart</a></li>
-			<li><a class="active" href="MyProfile.jsp">My Profile</a></li>
+			<li><a href="ViewCart">Cart</a></li>
+			<li><a class="active" href="MyProfile">My Profile</a></li>
 			<li><a href="ContactUs.jsp">Contact us</a></li>
 			<li><a href="AboutUs.jsp">About us</a></li>
 			<li style="float: right;"><a href="logOut">Logout</a></li>
-		
+
 
 		</ul>
 
@@ -212,11 +201,7 @@ input { display: table-cell;position: absolute;left: 80px; }
 	<img style="border-radius: 100px;position: absolute;top:0px;left: 500px; " width="40px" alt="" src="assets/images/mobile112.png">
 	
 	<br>
-	<%
-	UserImpl userImpl=new UserImpl();
-	ResultSet rs=userImpl.myDetails(userId);
-	if(rs.next()){
-		%>
+	<c:forEach items="${listAllDetails}" var="listAllDetail">
 		
 		<div class="user_det">
 		
@@ -226,19 +211,19 @@ input { display: table-cell;position: absolute;left: 80px; }
 		</p>
 		<p>
 		<label>Name : </label>
-		 <input type="text"  required class="c_user" name="userName" pattern="[A-Za-z.\s]{3,40}" value="<%= rs.getString(2)%>">	<br><br>
+		 <input type="text"  required class="c_user" name="userName" pattern="[A-Za-z.\s]{3,40}" value="${listAllDetail.name}">	<br><br>
 		</p>
 		<p>
 	    <label>Email :</label>
-	     <input type="text" required class="c_user" readonly name="userEmail" value="<%= rs.getString(3)%>">	<br><br>
+	     <input type="text" required class="c_user" readonly name="userEmail" value="${listAllDetail.email}">	<br><br>
 		</p>
 		<p>
 		<label>Phone :</label>
-		<input class="c_user" required type="text" pattern="[6789]{1}[0-9]{9}" maxlength="10" name="userPhone" value="<%= rs.getString(4)%>">	<br><br>
+		<input class="c_user" required type="text" pattern="[6789]{1}[0-9]{9}" maxlength="10" name="userPhone" value="${listAllDetail.phoneNumber}">	<br><br>
 		</p>
 		<p>
 		<label>Wallet :</label>
-		<input type="text" required class="c_user" name="userWallet" readonly value="<%= rs.getString(6)%>">
+		<input type="text" required class="c_user" name="userWallet" readonly value="${listAllDetail.wallet}">
 	
 		<br><br>
 		</p>
@@ -253,7 +238,7 @@ input { display: table-cell;position: absolute;left: 80px; }
 					<p ><br>
 						
 						<input hidden="" style=" display: table-cell;position: absolute;left: 80px;" type="text" name="walletUserId"
-							value="<%= rs.getString(1)%>" readonly pattern="[0-9]{1,8}"
+							value="${listAllDetail.userId}" readonly pattern="[0-9]{1,8}"
 							maxlength="8" required></p>
 							<p>
 							<label style=" display: table-cell;position: absolute;right:  20px;">Wallet:</label>
@@ -264,10 +249,7 @@ input { display: table-cell;position: absolute;left: 80px; }
 					</form></p>
 		</details>	</div>
 		</div>
-		
-		<%}
-
-	%>
+	</c:forEach>
 
 	
 	

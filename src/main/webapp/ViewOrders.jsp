@@ -2,6 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1" %>
 	 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+	 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -176,13 +177,14 @@ background-color: rgb(248, 213, 168);
 	<div style="position: relative;top: -10px;" class="top_nav">
 
 		<ul>
-			<li><a href="MobilePage">Home</a></li>
-			<li><a class="active" href="ViewOrders.jsp">My Orders</a></li>
-			<li><a href="ViewCart.jsp">Cart</a></li>
-			<li><a href="MyProfile.jsp">My Profile</a></li>
+				<li><a  href="MobilePage">Home</a></li>
+			<li><a class="active" href="ViewOrders1">My Orders</a></li>
+			<li><a href="ViewCart">Cart</a></li>
+			<li><a href="MyProfile">My Profile</a></li>
 			<li><a href="ContactUs.jsp">Contact us</a></li>
 			<li><a href="AboutUs.jsp">About us</a></li>
 			<li style="float: right;"><a href="logOut">Logout</a></li>
+
 
 
 		</ul>
@@ -218,7 +220,7 @@ background-color: rgb(248, 213, 168);
 	<table class="table table-hover table-striped" style="width: 90%; margin-left: 60px;">
 		<tr style="background-color:cornflowerblue ">
 			
-			
+			<th>Product</th>
 			<th>Order Status</th>
 			<th>Price</th>
 			<th>Order Date</th>
@@ -229,21 +231,23 @@ background-color: rgb(248, 213, 168);
 
 
 
-		<c:forEach items="${sessionScope.orderList}" var="o">
+		<c:forEach items="${sessionScope.orderList}" var="orderList">
 		<tr>
-			
-			
-			<td>${o.status}</td>
-			<td>${o.price }</td>
-			<td>${o.date}</td>
-			<td>${o.address}</td>
+			<jsp:useBean id="url" class="com.mobilesalesapp.impl.OrderImpl"></jsp:useBean>
+			<td><img width="110px;" alt="${orderList.productId}" src="${url.getUrl(orderList.productId)}"> </td>
+			<td>${orderList.status}</td>
+			<td>${orderList.price }</td>
+			<td><fmt:parseDate value="${orderList.date}" pattern="yyyy-MM-dd" var="orderDate" type="date"/>
+			<fmt:formatDate pattern="dd/MM/yyyy" value="${orderDate}"/></td>
+			<td>${orderList.address}</td>
 			<td>
 			
+			
 					Order Id :<input type="text" name="cancelId"
-						value="${o.orderId }" readonly><br>
+						value="${orderList.orderId }" readonly><br>
 					<br>
 
-					<button class="btn btn-danger" type="submit" onclick="Cancel('${o.status}','${o.orderId }','${o.price }','${o.userId}')" class="btn_add">Cancel</button>
+					<button class="btn btn-danger" type="submit" onclick="Cancel('${orderList.status}','${orderList.orderId }','${orderList.price }','${orderList.userId}')" class="btn_add">Cancel</button>
 				
 			</td>
 		</tr>

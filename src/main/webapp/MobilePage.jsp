@@ -192,12 +192,12 @@ color: black;
 }
 
 #pets img {
-width: 170px;
+width: 140px;
 height: 280px;
 border-radius: 10px;
 }
 #petdetails {
-width: 100px;
+width: 80px;
 }
 
 .img1 {
@@ -219,8 +219,8 @@ width: 100px;
 		<ul>
 			<li><a class="active" href="MobilePage">Home</a></li>
 			<li><a href="ViewOrders1">My Orders</a></li>
-			<li><a href="ViewCart.jsp">Cart</a></li>
-			<li><a href="MyProfile.jsp">My Profile</a></li>
+			<li><a href="ViewCart">Cart</a></li>
+			<li><a href="MyProfile">My Profile</a></li>
 			<li><a href="ContactUs.jsp">Contact us</a></li>
 			<li><a href="AboutUs.jsp">About us</a></li>
 			<li style="float: right;"><a href="logOut">Logout</a></li>
@@ -263,23 +263,23 @@ width: 100px;
 			<tbody>
 				<tr>
 					<c:set var="count" value="1" />
-					<c:forEach items="${sessionScope.productList}" var="p">
+					<c:forEach items="${sessionScope.productList}" var="productList">
 						<td>
 							<table id="pets">
 								<tbody>
 									<!-- Pet Image -->
 									<tr>
-										<td><img src="${p.url}" alt="petimage"></td>
+										<td><img src="${productList.url}" alt="petimage"></td>
 
 									
 										<td>
 											
 											
-											<p> ${p.productName}</p>
+											<p> ${productList.productName}</p>
 											
-											<p> Rs. ${p.listCost}</p>
+											<p> Rs. ${productList.listCost}</p>
 											
-											<p><a style="border-radius: 20px;position: relative  ;left: 10px;top: 10px;" id="but_id" class="btn btn-primary" href="MobileInfo?productId=${p.id }">View</a></p>
+											<p><a style="border-radius: 20px;position: relative  ;left: 10px;top: 10px;" id="but_id" class="btn btn-primary" href="MobileInfo?productId=${productList.id }">View</a></p>
 										</td>
 				
 									</tr>

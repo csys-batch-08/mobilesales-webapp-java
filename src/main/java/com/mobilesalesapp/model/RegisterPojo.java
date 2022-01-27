@@ -69,11 +69,14 @@ public class RegisterPojo {
 		this.phoneNumber = phoneNumber;
 		this.password = password;
 	}
+	
 
+	
+	
 	@Override
 	public String toString() {
-		return "RegisterPojo [name=" + name + ", email=" + email + ", phoneNumber=" + phoneNumber + ", password="
-				+ password + "]";
+		return "RegisterPojo [userId=" + userId + ", name=" + name + ", email=" + email + ", phoneNumber=" + phoneNumber
+				+ ", password=" + password + ", wallet=" + wallet + ", reason=" + reason + "]";
 	}
 	public RegisterPojo() {
 		super();
@@ -87,6 +90,15 @@ public class RegisterPojo {
 		this.phoneNumber = phoneNumber;
 		this.wallet = wallet;
 		
+	}
+	public RegisterPojo(int userId, String name, String email, Long phoneNumber, double wallet, String reason) {
+		super();
+		this.userId = userId;
+		this.name = name;
+		this.email = email;
+		this.phoneNumber = phoneNumber;
+		this.wallet = wallet;
+		this.reason = reason;
 	}
 	public RegisterPojo(int userId, String name, String email, Long phoneNumber, String reason) {
 		super();

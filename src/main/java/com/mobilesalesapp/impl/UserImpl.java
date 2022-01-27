@@ -159,21 +159,31 @@ public class UserImpl implements UserDao {
 		
 		return i;
 	}
-	public ResultSet myDetails(int userId) {
+	public List<RegisterPojo> myDetails(int userId) {
 		Connection con = ConnectionUtil.connect();
-		String query="select pk_user_id,first_name,email,phone_number,password,wallet,role,request from users_table where pk_user_id='"+userId+"'";
+		String query="select pk_user_id,first_name,email,phone_number,wallet,request from users_table where pk_user_id='"+userId+"'";
 		
-		
+		List<RegisterPojo> userList=new ArrayList<RegisterPojo>();
 		ResultSet rs=null;
 		try {
 			Statement st = con.createStatement();
 			 rs= st.executeQuery(query);
+			 while(rs.next()) {
+				 System.out.println("hbsbh"+rs.getInt(1)+rs.getString(2)+rs.getString(3)+rs.getLong(4)+rs.getDouble(5)+rs.getString(6));
+					RegisterPojo registerPojo1=new RegisterPojo();
+					registerPojo1.setUserId(rs.getInt(1));
+					registerPojo1.setName(rs.getString(2));
+					registerPojo1.setEmail(rs.getString(3));
+					registerPojo1.setPhoneNumber(rs.getLong(4));
+					registerPojo1.setWallet(rs.getDouble(5));
+					userList.add(registerPojo1);
+				}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 	
 		
-		return rs;
+		return userList;
 
 	}
 	

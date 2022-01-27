@@ -132,17 +132,17 @@ background-color: rgb(248, 213, 168);
 				<th>Action</th>
 
 			</tr>
-			<c:forEach items="${inactiveUserDetails }" var="i">
+			<c:forEach items="${inactiveUserDetails}" var="inactiveUserDetails">
 
 
 			<tr>
-				<td>${i.name }</td>
-				<td>${i.email}</td>
-				<td>${i.phoneNumber}</td>
-				<td>${i.reason}</td>
+				<td>${inactiveUserDetails.name }</td>
+				<td>${inactiveUserDetails.email}</td>
+				<td>${inactiveUserDetails.phoneNumber}</td>
+				<td>${inactiveUserDetails.reason}</td>
 		
 				<td>
-					<a class="btn btn-dark" href="activeUser?userId=${i.userId}">Active</a>
+					<a class="btn btn-dark" href="activeUser?userId=${inactiveUserDetails.userId}">Active</a>
 					
 				</td>
 

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -110,9 +111,12 @@ width: 300px;
 				<br> <a class="btn btn-primary btn-block" href="Register.jsp">Register</a><br>
 				<br> <a style="margin-left: 80px;" " href="ForgotPassword.jsp">Forgot
 					password</a><br> <br>
-
-
-
+					<c:if test="${loginError!=null}">
+					<h6 style="color: red ; margin-left: 60px;">${loginError}</h6>
+					
+					</c:if>
+					<c:remove var="loginError" scope="session" />	
+				
 			</form>
 			</div>
 

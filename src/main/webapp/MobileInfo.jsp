@@ -143,14 +143,14 @@ background-color:cornsilk;
 	<div style="position: relative;top: -10px;" class="top_nav">
 
 		<ul>
-			<li><a class="active" href="MobilePage">Home</a></li>
+		<li><a class="active" href="MobilePage">Home</a></li>
 			<li><a href="ViewOrders1">My Orders</a></li>
-            <li><a href="ViewCart.jsp">Cart</a></li>
-            <li><a href="MyProfile.jsp">My Profile</a></li>
+			<li><a href="ViewCart">Cart</a></li>
+			<li><a href="MyProfile">My Profile</a></li>
 			<li><a href="ContactUs.jsp">Contact us</a></li>
 			<li><a href="AboutUs.jsp">About us</a></li>
 			<li style="float: right;"><a href="logOut">Logout</a></li>
-			
+
 
 		</ul>
 
@@ -158,20 +158,20 @@ background-color:cornsilk;
 	</div>
 	<img style="border-radius: 100px;position: absolute;top:0px;left: 500px; " width="40px" alt="" src="assets/images/mobile112.png">
 	
-	<c:forEach items="${sessionScope.selectedProduct}" var="p">
+	<c:forEach items="${sessionScope.selectedProduct}" var="selectedProduct">
 	<div class="body_main">
 	
 		<a><img id="41"
-			src="${p.url}"
+			src="${selectedProduct.url}"
 			alt=""></a>
 		<div class="phoneInfo">
-			<pre>${p.description}
+			<pre>${selectedProduct.description}
 </pre>
 
 			<div class="but_lo">
-				<button type="button" class="btn btn-primary" onclick="addCartItem('${p.id}')">Add Cart</button>
+				<button type="button" class="btn btn-primary" onclick="addCartItem('${selectedProduct.id}')">Add Cart</button>
 				
-				<a style="margin-left: 50px;" class="btn btn-success" href="MobileBuy?price=${p.listCost}&productId=${p.id}">Buy</a>
+				<a style="margin-left: 50px;" class="btn btn-success" href="MobileBuy?price=${selectedProduct.listCost}&productId=${selectedProduct.id}">Buy</a>
 			</div>
 		</div>
 	</div>
