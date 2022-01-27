@@ -19,6 +19,8 @@ public class OrderDeliveredServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 	private static final String SCRIPT= "<script type=\"text/javascript\">";
+	private static final String LOCATION="location='AdminMain.jsp';";
+	private static final String SCRIPTEND="</script>";
 	@Override
 	public void service(HttpServletRequest req,HttpServletResponse res) {
 		int orderId=Integer.parseInt( req.getParameter("orderId"));
@@ -31,8 +33,8 @@ public class OrderDeliveredServlet extends HttpServlet {
 			PrintWriter out=res.getWriter();
 			out.println(SCRIPT);
 			out.println("alert('Successfully Updated');");
-			out.println("location='AdminMain.jsp';");
-			out.println("</script>");
+			out.println(LOCATION);
+			out.println(SCRIPTEND);
 			} catch (IOException e) {
 
 			e.printStackTrace();
@@ -42,8 +44,8 @@ public class OrderDeliveredServlet extends HttpServlet {
 				PrintWriter out=res.getWriter();
 				out.println(SCRIPT);
 				out.println("alert('Already Delivered');");
-				out.println("location='AdminMain.jsp';");
-				out.println("</script>");
+				out.println(LOCATION);
+				out.println(SCRIPTEND);
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
@@ -53,8 +55,8 @@ public class OrderDeliveredServlet extends HttpServlet {
 				PrintWriter out=res.getWriter();
 				out.println(SCRIPT);
 				out.println("alert('Already Cancelled');");
-				out.println("location='AdminMain.jsp';");
-				out.println("</script>");
+				out.println(LOCATION);
+				out.println(SCRIPTEND);
 			} catch (IOException e) {
 
 				e.printStackTrace();

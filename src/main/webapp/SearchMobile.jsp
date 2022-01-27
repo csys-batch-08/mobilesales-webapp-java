@@ -16,7 +16,7 @@
 <script
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 
-<title>Mobile_page</title>
+<title>Mobile page</title>
 </head>
 <style>
 .h2_1 {
@@ -211,7 +211,7 @@ width: 100px;
 }
 </style>
 
-<body class="" style="background-color: cornsilk">
+<body >
 	<h2 class="h2_1">Mobile Sales App</h2>
 
 	<div style="position: relative; top: -10px;" class="top_nav">

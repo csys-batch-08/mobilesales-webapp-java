@@ -109,7 +109,7 @@ body{
 background-color:cornsilk;
 }
 </style>
-<body bgcolor="cornsilk">
+<body >
 
 
 

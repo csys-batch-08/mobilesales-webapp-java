@@ -29,10 +29,12 @@ public class UpdateUserServlet extends HttpServlet {
 	@Override
 	public void doPost(HttpServletRequest request,HttpServletResponse response) {
 		HttpSession session=request.getSession();
-		int userId =Integer.parseInt( session.getAttribute("userId").toString());
+		
+		int userId =0;
 		String name=request.getParameter("userName");
 		long userPhone=0;
 		try {
+			userId =Integer.parseInt( session.getAttribute("userId").toString());
 			userPhone=Long.parseLong( request.getParameter("userPhone"));
 		}catch (NumberFormatException e) {
 			e.printStackTrace();

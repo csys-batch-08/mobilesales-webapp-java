@@ -79,7 +79,7 @@ width: 200px;
 
 </head>
 
-<body bgcolor="cornsilk">
+<body >
 	<h2 class="h2_1">Mobile Sales App</h2>
 
 	<div style="position: relative;top: -10px;" class="top_nav">

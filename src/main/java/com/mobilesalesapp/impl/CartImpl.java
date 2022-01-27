@@ -67,8 +67,8 @@ public class CartImpl implements CartDao {
 			pre2.setString(4, description);
 			pre2.setDouble(5, price);
 			pre2.setString(6, url);
-			int i=pre2.executeUpdate();
-			System.out.print(i);
+			pre2.executeUpdate();
+			
 			pre2.executeUpdate("commit");
 
 			

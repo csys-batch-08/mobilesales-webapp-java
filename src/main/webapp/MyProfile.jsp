@@ -178,7 +178,7 @@ input { display: table-cell;position: absolute;left: 80px; }
 }
 </style>
 
-<body bgcolor="cornsilk">
+<body >
 	<h2 class="h2_1">Mobile Sales App</h2>
 
 

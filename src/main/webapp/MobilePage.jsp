@@ -199,6 +199,9 @@ border-radius: 10px;
 #petdetails {
 width: 80px;
 }
+body{
+background-color:cornsilk;
+}
 
 .img1 {
 	position: absolute;
@@ -211,7 +214,7 @@ width: 80px;
 }
 </style>
 
-<body class="" style="background-color: cornsilk">
+<body >
 	<h2 class="h2_1">Mobile Sales App</h2>
 
 	<div style="position: relative; top: -10px;" class="top_nav">
