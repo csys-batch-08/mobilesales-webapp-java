@@ -42,7 +42,7 @@ public class CartDeleteServlet extends HttpServlet {
 	
 		if(listCart.isEmpty()) {
 			setSessionAttribute(session,"cartId" , userId);
-			//session.setAttribute("cartId", userId);
+	
 		}
 		
 		try {

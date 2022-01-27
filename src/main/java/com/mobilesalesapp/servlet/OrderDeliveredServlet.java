@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
 public class OrderDeliveredServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
-	
+	private static final String SCRIPT= "<script type=\"text/javascript\">";
 	@Override
 	public void service(HttpServletRequest req,HttpServletResponse res) {
 		int orderId=Integer.parseInt( req.getParameter("orderId"));
@@ -29,7 +29,7 @@ public class OrderDeliveredServlet extends HttpServlet {
 		orderImpl.deliveredCancel(orderPojo);
 		try {
 			PrintWriter out=res.getWriter();
-			out.println("<script type=\"text/javascript\" >");
+			out.println(SCRIPT);
 			out.println("alert('Successfully Updated');");
 			out.println("location='AdminMain.jsp';");
 			out.println("</script>");
@@ -40,7 +40,7 @@ public class OrderDeliveredServlet extends HttpServlet {
 		} else if(status.equals("Delivered")) {
 			try {
 				PrintWriter out=res.getWriter();
-				out.println("<script type=\"text/javascript\" >");
+				out.println(SCRIPT);
 				out.println("alert('Already Delivered');");
 				out.println("location='AdminMain.jsp';");
 				out.println("</script>");
@@ -51,7 +51,7 @@ public class OrderDeliveredServlet extends HttpServlet {
 		} else {
 			try {
 				PrintWriter out=res.getWriter();
-				out.println("<script type=\"text/javascript\" >");
+				out.println(SCRIPT);
 				out.println("alert('Already Cancelled');");
 				out.println("location='AdminMain.jsp';");
 				out.println("</script>");
