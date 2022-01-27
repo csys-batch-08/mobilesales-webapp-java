@@ -19,18 +19,7 @@ public class AdminImpl implements AdminDao  {
 			String query="commit";
 			String query2="update users_table set wallet=(select wallet from users_table where pk_user_id= ? )+? where pk_user_id=?";
 			int j=0;
-			
-			
-			
-			try {
-				PreparedStatement pre=con.prepareStatement(query);
-				pre.executeUpdate();
-			
-			} catch (SQLException e1) {
-				
-				e1.printStackTrace();
-			}
-			
+
 			try(PreparedStatement pre1=con.prepareStatement(query2)) {
 				
 				pre1.setInt(1, wallet.getUserId());
@@ -38,6 +27,7 @@ public class AdminImpl implements AdminDao  {
 				pre1.setInt(3, wallet.getUserId());
 				
 				j=pre1.executeUpdate();
+				pre1.executeUpdate(query);
 				
 				
 			} catch (SQLException e) {
@@ -51,37 +41,56 @@ public class AdminImpl implements AdminDao  {
 			
 		}
 	public int userInActive(RegisterPojo reg) {
-		String query="update users_table set role='inactive' where pk_user_id='"+reg.getUserId()+"'";
+		String query="update users_table set role='inactive' where pk_user_id=?";
 		Connection con=ConnectionUtil.connect();
 		int i=0;
-		
+		PreparedStatement pre=null;
 		try {
-			Statement st=con.createStatement();
-			i=st.executeUpdate(query);
+			pre=con.prepareStatement(query);
+			pre.setInt(1, reg.getUserId());
+			i=pre.executeUpdate(query);
 		
 		} catch (SQLException e) {
 		
 			e.printStackTrace();
+		}finally {
+			try {
+				if(pre!=null) {
+					pre.close();
+				}
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 		return i;
 		
 		
 	}
 	public int activateUser(RegisterPojo reg) {
-		String query="update users_table set role='user' where pk_user_id='"+reg.getUserId()+"'";
+		String query="update users_table set role='user' where pk_user_id=?";
 		Connection con=ConnectionUtil.connect();
 		int i=0;
-		
+		PreparedStatement pre=null;
 		try {
-			Statement st=con.createStatement();
-			i=st.executeUpdate(query);
-	
+			pre=con.prepareStatement(query);
+			pre.setInt(1, reg.getUserId());
+			i=pre.executeUpdate(query);
+		
 		} catch (SQLException e) {
 		
 			e.printStackTrace();
+		}finally {
+			try {
+				if(pre!=null) {
+					pre.close();
+				}
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 		return i;
-		
 		
 	}
 	public List<ContactUsPojo> viewContactUs() {
@@ -89,8 +98,9 @@ public class AdminImpl implements AdminDao  {
 		Connection con=ConnectionUtil.connect();
 		List<ContactUsPojo> contact=new ArrayList<ContactUsPojo>();
 		ResultSet rs=null;
+		Statement st =null;
 		try {
-			Statement st = con.createStatement();
+			st = con.createStatement();
 			 rs=st.executeQuery(query);
 			 while(rs.next()) {
 				 ContactUsPojo contactUsPojo=new ContactUsPojo(rs.getString(1),rs.getString(2),rs.getLong(3),rs.getString(4));
@@ -99,6 +109,15 @@ public class AdminImpl implements AdminDao  {
 		} catch (SQLException e) {
 			
 			e.printStackTrace();
+		}finally {
+			try {
+				if(st!=null) {
+					st.close();
+				}
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 		
 		return contact;

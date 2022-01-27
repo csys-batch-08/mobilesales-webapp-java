@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.mobilesalesapp.dao.ProductDao;
-import com.mobilesalesapp.model.OrderPojo;
 import com.mobilesalesapp.model.ProductPojo;
 
 import com.mobilesalesapp.util.ConnectionUtil;

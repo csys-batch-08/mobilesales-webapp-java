@@ -6,7 +6,6 @@ import com.mobilesalesapp.model.UpdateWalletPojo;
 import com.mobilesalesapp.util.ConnectionUtil;
 
 import java.sql.*;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,27 +16,31 @@ public class OrderImpl implements OrderDao {
 		int i = 0;
 		Connection con = ConnectionUtil.connect();
 
-		String query2 = "select wallet from users_table where pk_user_id='" + obj1.getUserId() + "'";
+		String query2 = "select wallet from users_table where pk_user_id=?";
 
 		String query = "update users_table set wallet = wallet-? where pk_user_id=? and password=?";
+		PreparedStatement pre = null;
+		PreparedStatement pre1 = null;
 		try {
-			Statement st = con.createStatement();
-			st.executeUpdate(COMMIT);
+			pre = con.prepareStatement(query2);
+			pre.setInt(1, obj1.getUserId());
+			ResultSet rs = pre.executeQuery();
 
 			// get Wallet code
-			ResultSet rs = st.executeQuery(query2);
+
 			double wallet = 0;
 			if (rs.next()) {
 				wallet = rs.getDouble(1);
 			}
 			if (wallet > obj1.getPrice()) {
 
-				PreparedStatement pre = con.prepareStatement(query);
-				pre.setDouble(1, obj1.getPrice());
-				pre.setInt(2, obj1.getUserId());
-				pre.setString(3, obj1.getPassword());
+				pre1 = con.prepareStatement(query);
+				pre1.setDouble(1, obj1.getPrice());
+				pre1.setInt(2, obj1.getUserId());
+				pre1.setString(3, obj1.getPassword());
 
-				i = pre.executeUpdate();
+				i = pre1.executeUpdate();
+				pre1.executeUpdate(COMMIT);
 
 			} else {
 				i = 5;
@@ -45,6 +48,16 @@ public class OrderImpl implements OrderDao {
 		} catch (Exception e) {
 
 			e.printStackTrace();
+		} finally {
+			try {
+				if (pre != null && pre1 != null) {
+					pre.close();
+					pre1.close();
+				}
+
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 
 		return i;
@@ -84,17 +97,17 @@ public class OrderImpl implements OrderDao {
 			rs = pre.executeQuery();
 			while (rs.next()) {
 
-				OrderPojo orders = new OrderPojo(rs.getInt(6),rs.getInt(7), rs.getInt(1), rs.getString(2), rs.getDouble(3),
-						rs.getDate(4), rs.getString(5));
+				OrderPojo orders = new OrderPojo(rs.getInt(6), rs.getInt(7), rs.getInt(1), rs.getString(2),
+						rs.getDouble(3), rs.getDate(4), rs.getString(5));
 
 				orderList1.add(orders);
 			}
 
 		} catch (Exception e) {
 			e.printStackTrace();
-			
+
 		}
-	
+
 		return orderList1;
 	}
 
@@ -106,13 +119,13 @@ public class OrderImpl implements OrderDao {
 		try {
 			PreparedStatement pre = con.prepareStatement(query);
 			pre.setInt(1, orderPojo.getUserId());
-			pre.setString(2,orderPojo.getStrDate() );
+			pre.setString(2, orderPojo.getStrDate());
 			rs = pre.executeQuery();
-			
+
 			while (rs.next()) {
 				System.out.println("nom");
-				OrderPojo orders = new OrderPojo(rs.getInt(6),rs.getInt(7), rs.getInt(1), rs.getString(2), rs.getDouble(3),
-						rs.getDate(4), rs.getString(5));
+				OrderPojo orders = new OrderPojo(rs.getInt(6), rs.getInt(7), rs.getInt(1), rs.getString(2),
+						rs.getDouble(3), rs.getDate(4), rs.getString(5));
 
 				orderList1.add(orders);
 				System.out.println("nom3");
@@ -126,18 +139,15 @@ public class OrderImpl implements OrderDao {
 	public void orderCancel(OrderPojo orderPojo) {
 		Connection con = ConnectionUtil.connect();
 
-		String query3 = "update users_table set wallet=(wallet)+'" + orderPojo.getPrice() + "'where pk_user_id='"
-				+ orderPojo.getUserId() + "'";
+		String query3 = "update users_table set wallet=(wallet)+? where pk_user_id=?" + orderPojo.getUserId() + "'";
 		String query2 = "update orders_table set status='Cancelled' where order_id=? ";
-		try {
-			PreparedStatement pre1 = con.prepareStatement(COMMIT);
-			pre1.executeUpdate();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+
 		try {
 			PreparedStatement pre2 = con.prepareStatement(query3);
+			pre2.setDouble(1, orderPojo.getPrice());
+			pre2.setInt(2, orderPojo.getUserId());
 			pre2.executeUpdate();
+			pre2.executeUpdate(COMMIT);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -145,7 +155,7 @@ public class OrderImpl implements OrderDao {
 			PreparedStatement pre = con.prepareStatement(query2);
 			pre.setInt(1, orderPojo.getOrderId());
 			pre.executeUpdate();
-
+			pre.executeUpdate(COMMIT);
 		} catch (SQLException e) {
 
 			e.printStackTrace();
@@ -156,16 +166,12 @@ public class OrderImpl implements OrderDao {
 	public void deliveredCancel(OrderPojo orderPojo) {
 		Connection con = ConnectionUtil.connect();
 		String query2 = "update orders_table set status='Delivered' where order_id=? ";
-		try {
-			PreparedStatement pre1 = con.prepareStatement(COMMIT);
-			pre1.executeUpdate();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+
 		try {
 			PreparedStatement pre = con.prepareStatement(query2);
 			pre.setInt(1, orderPojo.getOrderId());
 			pre.executeUpdate();
+			pre.executeUpdate(COMMIT);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -173,15 +179,18 @@ public class OrderImpl implements OrderDao {
 
 	public String getUrl(int productId) {
 		Connection con = ConnectionUtil.connect();
-		String query = "select url from products where pk_product_id='" + productId + "'";
-		ResultSet ns = null;
+		String query = "select url from products where pk_product_id=?";
+		ResultSet rs = null;
 		String url = null;
-
+		PreparedStatement pre=null;
 		try {
-			Statement st = con.createStatement();
-			ns = st.executeQuery(query);
-			if (ns.next()) {
-				url = ns.getString(1);
+			pre = con.prepareStatement(query);
+			pre.setInt(1, productId);
+			rs = pre.executeQuery(query);
+
+			
+			if (rs.next()) {
+				url = rs.getString(1);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
