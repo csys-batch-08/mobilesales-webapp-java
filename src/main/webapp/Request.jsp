@@ -8,10 +8,8 @@
 <title>Request Page</title>
 
 
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-	crossorigin="anonymous">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
 <style type="text/css">
 .text-info {
 	margin-top: -50px;
@@ -103,9 +101,9 @@ body {
 					autocomplete="off" class="c_user"
 					pattern="[A-Za-z.\s]{3,80}"
 					title="Enter valid character"
-					name="reason" type="textarea" required><br> <br>
+					name="reason" type="text" required><br> <br>
 				<br>
-				<button class="btn btn-primary btn-block" type="submit">Submit
+				<button style="margin-left: 100px;" class="btn btn-primary btn-block" type="submit">Submit
 				</button>
 				
 

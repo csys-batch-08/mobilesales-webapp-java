@@ -34,7 +34,7 @@ public class AcivateUserServlet extends HttpServlet  {
 				
 			} catch (IOException e) {
 			
-				e.printStackTrace();
+				e.getMessage();
 			}
 			
 		}

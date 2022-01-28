@@ -37,7 +37,7 @@ public class OrderDeliveredServlet extends HttpServlet {
 			out.println(SCRIPTEND);
 			} catch (IOException e) {
 
-			e.printStackTrace();
+				e.getMessage();
 		}
 		} else if(status.equals("Delivered")) {
 			try {
@@ -47,7 +47,7 @@ public class OrderDeliveredServlet extends HttpServlet {
 				out.println(LOCATION);
 				out.println(SCRIPTEND);
 			} catch (IOException e) {
-				e.printStackTrace();
+				e.getMessage();
 			}
 			
 		} else {
@@ -58,8 +58,7 @@ public class OrderDeliveredServlet extends HttpServlet {
 				out.println(LOCATION);
 				out.println(SCRIPTEND);
 			} catch (IOException e) {
-
-				e.printStackTrace();
+				e.getMessage();
 			}
 		}
 	}

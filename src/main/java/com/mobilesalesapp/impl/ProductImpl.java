@@ -26,8 +26,8 @@ public class ProductImpl implements ProductDao {
 			pre.setDouble(4, obj.getListCost());
 			pre.executeUpdate();
 
-		} catch (Exception e) {
-			e.printStackTrace();
+		} catch (SQLException e) {
+			e.getErrorCode();
 
 		}finally {
 			try {
@@ -37,7 +37,7 @@ public class ProductImpl implements ProductDao {
 				}
 
 			} catch (SQLException e) {
-				e.printStackTrace();
+				e.getErrorCode();
 			}
 		}
 
@@ -54,7 +54,7 @@ public class ProductImpl implements ProductDao {
 			 i = pre.executeUpdate();
 
 		} catch (SQLException e) {
-			e.printStackTrace();
+			e.getErrorCode();
 
 		}finally {
 			try {
@@ -64,7 +64,7 @@ public class ProductImpl implements ProductDao {
 				}
 
 			} catch (SQLException e) {
-				e.printStackTrace();
+				e.getErrorCode();
 			}
 		}
 		return i;
@@ -83,7 +83,7 @@ public class ProductImpl implements ProductDao {
 			pre.executeUpdate();
 
 		} catch (SQLException e) {
-			e.printStackTrace();
+			e.getErrorCode();
 
 		}finally {
 			try {
@@ -93,7 +93,7 @@ public class ProductImpl implements ProductDao {
 				}
 
 			} catch (SQLException e) {
-				e.printStackTrace();
+				e.getErrorCode();
 			}
 		}
 
@@ -113,7 +113,7 @@ public class ProductImpl implements ProductDao {
 				productList.add(productPojo);
 			}
 		} catch (SQLException e) {
-			e.printStackTrace();
+			e.getErrorCode();
 
 		}finally {
 			try {
@@ -123,7 +123,7 @@ public class ProductImpl implements ProductDao {
 				}
 
 			} catch (SQLException e) {
-				e.printStackTrace();
+				e.getErrorCode();
 			}
 		}
 		return productList;
@@ -144,7 +144,7 @@ public class ProductImpl implements ProductDao {
 				productList.add(productPojo);
 			}
 		} catch (SQLException e) {
-			e.printStackTrace();
+			e.getErrorCode();
 
 		}finally {
 			try {
@@ -154,7 +154,7 @@ public class ProductImpl implements ProductDao {
 				}
 
 			} catch (SQLException e) {
-				e.printStackTrace();
+				e.getErrorCode();
 			}
 		}
 		return productList;
@@ -175,7 +175,7 @@ public class ProductImpl implements ProductDao {
 			}
 		} catch (SQLException e) {
 
-			e.printStackTrace();
+			e.getErrorCode();
 	
 		}finally {
 			try {
@@ -185,7 +185,7 @@ public class ProductImpl implements ProductDao {
 				}
 
 			} catch (SQLException e) {
-				e.printStackTrace();
+				e.getErrorCode();
 			}
 		}
 		return productList;

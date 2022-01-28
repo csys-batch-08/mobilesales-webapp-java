@@ -1,6 +1,6 @@
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1" %>
+	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 
@@ -13,8 +13,7 @@
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
 	rel="stylesheet">
-<script
-	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
 
 <title>Mobile_page</title>
 </head>
@@ -161,46 +160,50 @@ li a:hover {
 	border-left: none;
 	cursor: pointer;
 }
+
 #pets {
-margin-left: 75px;
-margin-top: 20px;
-line-height: 2;
-font-size: 20px;
+	margin-left: 75px;
+	margin-top: 20px;
+	line-height: 2;
+	font-size: 20px;
 }
 
 #pets p {
-margin-left: 40px;
-font-weight: bold;
+	margin-left: 40px;
+	font-weight: bold;
 }
 
 #pets button {
-margin-left: 50px;
-margin-top: 5px;
-width: 120px;
-height: 30px;
-background-color: rgb(16, 177, 16);
-border-radius: 10px;
-border: none;
-color: white;
-font-size: 17px;
-font-weight: bold;
-box-shadow: 0 0 5px black;
+	margin-left: 50px;
+	margin-top: 5px;
+	width: 120px;
+	height: 30px;
+	background-color: rgb(16, 177, 16);
+	border-radius: 10px;
+	border: none;
+	color: white;
+	font-size: 17px;
+	font-weight: bold;
+	box-shadow: 0 0 5px black;
 }
+
 #pets button:hover {
-background-color: white;
-color: black;
+	background-color: white;
+	color: black;
 }
 
 #pets img {
-width: 140px;
-height: 280px;
-border-radius: 10px;
+	width: 140px;
+	height: 280px;
+	border-radius: 10px;
 }
+
 #petdetails {
-width: 80px;
+	width: 80px;
 }
-body{
-background-color:cornsilk;
+
+body {
+	background-color: cornsilk;
 }
 
 .img1 {
@@ -214,7 +217,7 @@ background-color:cornsilk;
 }
 </style>
 
-<body >
+<body>
 	<h2 class="h2_1">Mobile Sales App</h2>
 
 	<div style="position: relative; top: -10px;" class="top_nav">
@@ -241,14 +244,14 @@ background-color:cornsilk;
 		<br>
 
 
-		<h5 style="margin-left: 200px;">
-			Welcome :${sessionScope.name}</h5>
-		<h5 style="margin-left: 200px;">Wallet Amount:${sessionScope.wallet}  </h5>
+		<h5 style="margin-left: 200px;">Welcome :${sessionScope.name}</h5>
+		<h5 style="margin-left: 200px;">Wallet
+			Amount:${sessionScope.wallet}</h5>
 
 
 
-		<marquee class="mar1" >New
-			Smartphone Offer Available upto 15% Discount</marquee>
+		<marquee class="mar1">New Smartphone Offer Available upto
+			15% Discount</marquee>
 		<br>
 		<div class="searchPro">
 			<form action="SearchMobile">
@@ -256,35 +259,37 @@ background-color:cornsilk;
 				<button type="submit">Search</button>
 			</form>
 		</div>
-		<br>
-		<br>
-		<br>
-		<br>
+		<br> <br> <br> <br>
 
 
-		<table >
+		<table>
 			<tbody>
 				<tr>
 					<c:set var="count" value="1" />
 					<c:forEach items="${sessionScope.productList}" var="productList">
 						<td>
-							<table  id="pets">
+							<table id="pets">
 								<tbody>
 									<!-- Pet Image -->
 									<tr>
 										<td><img src="${productList.url}" alt="petimage"></td>
 
-									
+
 										<td>
-											
-											
-											<p> ${productList.productName}</p>
-											
-											<p> Rs. ${productList.listCost}</p>
-											
-											<p><a style="border-radius: 20px;position: relative  ;left: 10px;top: 10px;" id="but_id" class="btn btn-primary" href="MobileInfo?productId=${productList.id }">View</a></p>
+
+
+											<p>${productList.productName}</p>
+
+											<p>Rs. ${productList.listCost}</p>
+
+											<p>
+												<a
+													style="border-radius: 20px; position: relative; left: 10px; top: 10px;"
+													id="but_id" class="btn btn-primary"
+													href="MobileInfo?productId=${productList.id }">View</a>
+											</p>
 										</td>
-				
+
 									</tr>
 								</tbody>
 							</table>

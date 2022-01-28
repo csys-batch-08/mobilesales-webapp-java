@@ -45,9 +45,9 @@ public class OrderImpl implements OrderDao {
 			} else {
 				i = 5;
 			}
-		} catch (Exception e) {
+		} catch (SQLException e) {
 
-			e.printStackTrace();
+			e.getErrorCode();
 
 		}finally {
 			try {
@@ -58,7 +58,7 @@ public class OrderImpl implements OrderDao {
 				}
 
 			} catch (SQLException e) {
-				e.printStackTrace();
+				e.getErrorCode();
 			}
 		}
 
@@ -81,7 +81,7 @@ public class OrderImpl implements OrderDao {
 
 		} catch (SQLException e) {
 
-			e.printStackTrace();
+			e.getErrorCode();
 
 		}finally {
 			try {
@@ -91,7 +91,7 @@ public class OrderImpl implements OrderDao {
 				}
 
 			} catch (SQLException e) {
-				e.printStackTrace();
+				e.getErrorCode();
 			}
 		}
 		return i;
@@ -154,8 +154,8 @@ public class OrderImpl implements OrderDao {
 				orderList1.add(orders);
 			
 			}
-		} catch (Exception e) {
-			e.printStackTrace();
+		} catch (SQLException e) {
+			e.getErrorCode();
 
 		}finally {
 			try {
@@ -165,7 +165,7 @@ public class OrderImpl implements OrderDao {
 				}
 
 			} catch (SQLException e) {
-				e.printStackTrace();
+				e.getErrorCode();
 			}
 		}
 
@@ -186,7 +186,7 @@ public class OrderImpl implements OrderDao {
 			pre2.executeUpdate();
 			pre2.executeUpdate(COMMIT);
 		} catch (SQLException e) {
-			e.printStackTrace();
+			e.getErrorCode();
 
 		}
 
@@ -198,7 +198,7 @@ public class OrderImpl implements OrderDao {
 			pre.executeUpdate(COMMIT);
 		} catch (SQLException e) {
 
-			e.printStackTrace();
+			e.getErrorCode();
 
 		}finally {
 			try {
@@ -208,7 +208,7 @@ public class OrderImpl implements OrderDao {
 				}
 
 			} catch (SQLException e) {
-				e.printStackTrace();
+				e.getErrorCode();
 			}
 		}
 
@@ -225,7 +225,7 @@ public class OrderImpl implements OrderDao {
 			pre.executeUpdate();
 			pre.executeUpdate(COMMIT);
 		} catch (SQLException e) {
-			e.printStackTrace();
+			e.getErrorCode();
 
 		}finally {
 			try {
@@ -235,7 +235,7 @@ public class OrderImpl implements OrderDao {
 				}
 
 			} catch (SQLException e) {
-				e.printStackTrace();
+				e.getErrorCode();
 			}
 		}
 	}
@@ -255,8 +255,8 @@ public class OrderImpl implements OrderDao {
 			if (rs.next()) {
 				url = rs.getString(1);
 			}
-		} catch (Exception e) {
-			e.printStackTrace();
+		} catch (SQLException e) {
+			e.getErrorCode();
 
 		}finally {
 			try {
@@ -266,7 +266,7 @@ public class OrderImpl implements OrderDao {
 				}
 
 			} catch (SQLException e) {
-				e.printStackTrace();
+				e.getErrorCode();
 			}
 		}
 		return url;

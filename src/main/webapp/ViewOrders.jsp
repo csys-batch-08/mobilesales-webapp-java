@@ -8,7 +8,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
 
 <title>ViewOrders</title>
 </head>
@@ -203,10 +203,10 @@ width: 90%;
 	
 
 
-	<div class="searchPro"">
+	<div class="searchPro">
 		<form action="SearchOrder">
 			<input type="date" id="search" name="OrderDate" 
-				 requried>
+				 required >
 			<button class="btn btn-primary" type="submit">Search</button>
 		</form>
 	</div>

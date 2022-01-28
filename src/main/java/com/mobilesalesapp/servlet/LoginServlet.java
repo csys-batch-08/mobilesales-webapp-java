@@ -96,7 +96,7 @@ public class LoginServlet extends HttpServlet {
 					
 				} catch (SQLException |IOException e) {
 			
-					e.printStackTrace();
+					e.getMessage();
 				}
 			}
 	}

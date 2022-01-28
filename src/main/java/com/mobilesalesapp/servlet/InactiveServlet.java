@@ -32,7 +32,7 @@ public class InactiveServlet extends HttpServlet {
 					
 					
 				} catch (IOException e) {
-					e.printStackTrace();
+					e.getMessage();
 				}
 				
 			}

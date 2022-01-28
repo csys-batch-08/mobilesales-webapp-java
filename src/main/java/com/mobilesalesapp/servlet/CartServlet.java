@@ -50,7 +50,7 @@ public class CartServlet extends HttpServlet {
 				
 			}
 		}  catch (SQLException e) {
-			e.printStackTrace();
+			e.getMessage();
 		} catch (CartException e) {
 			String message=e.cartSame();
 			write.print(message);

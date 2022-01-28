@@ -10,7 +10,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
 
 <title>Mobile_page</title>
 </head>
@@ -246,7 +246,7 @@ input { display: table-cell;position: absolute;left: 80px; }
 							maxlength="8" title="Only enter positive number" required><br> <br>
 						<button style=" display: table-cell;position: absolute;left:  20px;" type="submit" class="btn btn-success">Add</button>
 						<br> <br></p>
-					</form></p>
+					</form>
 		</details>	</div>
 		</div>
 	</c:forEach>

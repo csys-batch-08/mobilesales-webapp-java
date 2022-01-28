@@ -8,7 +8,7 @@
 <title>Login Page</title>
 
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
 <style type="text/css">
 .text-info {
 	margin-top: -50px;
@@ -109,7 +109,7 @@ width: 300px;
 				<button class="btn btn-primary btn-block" type="submit">Login
 				</button><br>
 				<br> <a class="btn btn-primary btn-block" href="Register.jsp">Register</a><br>
-				<br> <a style="margin-left: 80px;" " href="ForgotPassword.jsp">Forgot
+				<br> <a style="margin-left: 80px;"  href="ForgotPassword.jsp">Forgot
 					password</a><br> <br>
 					<c:if test="${loginError!=null}">
 					<h6 style="color: red ; margin-left: 60px;">${loginError}</h6>

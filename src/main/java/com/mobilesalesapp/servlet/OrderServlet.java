@@ -47,37 +47,32 @@ public class OrderServlet extends HttpServlet {
 				j= orderDao.insertOrder(obj2);
 			}
 		}catch (NumberFormatException e) {
-		e.printStackTrace();
+			e.getMessage();
 		}
 				if (j > 0) {
 					try {
 					res.sendRedirect("OrderPlaced.jsp");
+					} catch (IOException e) {
+						e.getMessage();
 					}
-					catch (IOException e) {
-						e.printStackTrace();
-					}
-				} 
-			else if(i==5) {
+				} else if(i==5) {
 				try {
 					throw new LowBalanceException();
 				} catch (LowBalanceException  low) {
 					String page=low.lowBal();
 					try {
 					res.sendRedirect(page);
-					}
-					catch (IOException e) {
-					e.printStackTrace();
+					} catch (IOException e) {
+						e.getMessage();
 					}
 				}
 				
-			}
-			else {
+			} else {
 				session.setAttribute("buying", "Invalid Password");
 				try {
 				res.sendRedirect("MobileBuy.jsp");
-				}
-				catch (IOException e) {
-					e.printStackTrace();
+				} catch (IOException e) {
+					e.getMessage();
 				}
 			}
 		

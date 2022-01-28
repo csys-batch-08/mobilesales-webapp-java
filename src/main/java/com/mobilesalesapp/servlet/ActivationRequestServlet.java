@@ -34,7 +34,7 @@ public class ActivationRequestServlet extends HttpServlet {
 				out.println("</script>");
 			} catch (IOException e) {
 
-				e.printStackTrace();
+				e.getMessage();
 			} 
 			
 		}

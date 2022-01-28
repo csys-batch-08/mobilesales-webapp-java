@@ -28,7 +28,7 @@ public class UserImpl implements UserDao {
 			 i=pre.executeUpdate();
 			pre.executeUpdate(query2);
 		} catch (SQLException e) {
-			e.printStackTrace();
+			e.getErrorCode();
 		}finally {
 			try {
 				if(pre!=null) {
@@ -37,7 +37,7 @@ public class UserImpl implements UserDao {
 				}
 				
 			} catch (SQLException e) {
-				e.printStackTrace();
+				e.getErrorCode();
 			}
 			}
 
@@ -58,7 +58,7 @@ public class UserImpl implements UserDao {
 			pre.setString(2, login.getPassword());
 			rs = pre.executeQuery();
 		} catch (SQLException e) {
-			e.printStackTrace();
+			e.getErrorCode();
 
 			}
 		
@@ -81,8 +81,8 @@ public class UserImpl implements UserDao {
 				userList.add(registerPojo);
 			}
 
-		} catch (Exception e) {
-			e.printStackTrace();
+		} catch (SQLException e) {
+			e.getErrorCode();
 		}finally {
 			try {
 				if(pre!=null) {
@@ -91,7 +91,7 @@ public class UserImpl implements UserDao {
 				}
 				
 			} catch (SQLException e) {
-				e.printStackTrace();
+				e.getErrorCode();
 			}
 			}
 
@@ -113,8 +113,8 @@ public class UserImpl implements UserDao {
 				userList.add(registerPojo);
 			}
 
-		} catch (Exception e) {
-			e.printStackTrace();
+		} catch (SQLException e) {
+			e.getErrorCode();
 	
 			}finally {
 				try {
@@ -124,7 +124,7 @@ public class UserImpl implements UserDao {
 					}
 					
 				} catch (SQLException e) {
-					e.printStackTrace();
+					e.getErrorCode();
 				}
 				}
 
@@ -146,7 +146,7 @@ public class UserImpl implements UserDao {
 			pre.executeUpdate();			
 			
 		} catch (SQLException e) {
-			e.printStackTrace();
+			e.getErrorCode();
 
 			}finally {
 				try {
@@ -156,7 +156,7 @@ public class UserImpl implements UserDao {
 					}
 					
 				} catch (SQLException e) {
-					e.printStackTrace();
+					e.getErrorCode();
 				}
 				}
 
@@ -173,7 +173,7 @@ public class UserImpl implements UserDao {
 			pre.setString(3, reg.getEmail());
 			pre.executeUpdate();
 		} catch (SQLException e) {
-			e.printStackTrace();
+			e.getErrorCode();
 
 			}finally {
 				try {
@@ -183,7 +183,7 @@ public class UserImpl implements UserDao {
 					}
 					
 				} catch (SQLException e) {
-					e.printStackTrace();
+					e.getErrorCode();
 				}
 				}
 	
@@ -204,7 +204,7 @@ public class UserImpl implements UserDao {
 			pre.executeUpdate("commit");
 		
 		} catch (SQLException e) {
-			e.printStackTrace();
+			e.getErrorCode();
 
 			}finally {
 				try {
@@ -214,7 +214,7 @@ public class UserImpl implements UserDao {
 					}
 					
 				} catch (SQLException e) {
-					e.printStackTrace();
+					e.getErrorCode();
 				}
 				}
 
@@ -234,7 +234,7 @@ public class UserImpl implements UserDao {
 			i=pre.executeUpdate();
 			
 		} catch (SQLException e) {
-			e.printStackTrace();
+			e.getErrorCode();
 
 			}finally {
 				try {
@@ -244,7 +244,7 @@ public class UserImpl implements UserDao {
 					}
 					
 				} catch (SQLException e) {
-					e.printStackTrace();
+					e.getErrorCode();
 				}
 				}
 
@@ -271,7 +271,7 @@ public class UserImpl implements UserDao {
 					userList.add(registerPojo1);
 				}
 		} catch (SQLException e) {
-			e.printStackTrace();
+			e.getErrorCode();
 
 			}finally {
 				try {
@@ -281,7 +281,7 @@ public class UserImpl implements UserDao {
 					}
 					
 				} catch (SQLException e) {
-					e.printStackTrace();
+					e.getErrorCode();
 				}
 				}
 

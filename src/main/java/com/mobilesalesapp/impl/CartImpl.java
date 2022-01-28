@@ -24,7 +24,7 @@ public class CartImpl implements CartDao {
 			 rs = pre.executeQuery();
 		} catch (SQLException e) {
 			
-			e.printStackTrace();
+			e.getErrorCode();
 
 			}
 		return rs;
@@ -69,8 +69,8 @@ public class CartImpl implements CartDao {
 
 			
 		
-		}catch (Exception e) {
-			e.printStackTrace();
+		}catch (SQLException e) {
+			e.getErrorCode();
 
 		}finally {
 			try {
@@ -81,7 +81,7 @@ public class CartImpl implements CartDao {
 				}
 				
 			} catch (SQLException e) {
-				e.printStackTrace();
+				e.getErrorCode();
 			}
 	}
 
@@ -98,7 +98,7 @@ public class CartImpl implements CartDao {
 
 		} catch (SQLException e) {
 	
-			e.printStackTrace();
+			e.getErrorCode();
 
 			}finally {
 				try {
@@ -108,7 +108,7 @@ public class CartImpl implements CartDao {
 					}
 					
 				} catch (SQLException e) {
-					e.printStackTrace();
+					e.getErrorCode();
 				}
 				}
 	}
@@ -128,7 +128,7 @@ public class CartImpl implements CartDao {
 			}
 		} catch (SQLException e) {
 	
-			e.printStackTrace();
+			e.getErrorCode();
 
 			}finally {
 				try {
@@ -138,7 +138,7 @@ public class CartImpl implements CartDao {
 					}
 					
 				} catch (SQLException e) {
-					e.printStackTrace();
+					e.getErrorCode();
 				}
 				}
 		return cartList;

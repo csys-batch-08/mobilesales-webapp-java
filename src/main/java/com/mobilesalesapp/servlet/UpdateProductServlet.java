@@ -38,14 +38,14 @@ public class UpdateProductServlet extends HttpServlet {
 		ProductImpl obj2=new ProductImpl();
 		obj2.update(obj1);
 		} catch (NumberFormatException e) {
-			e.printStackTrace();
+			e.getMessage();
 		}
 		try {
 			HttpSession session =req.getSession();
 			setSessionAttribute(session,"updateInfo", "updated Successfully");
 			res.sendRedirect("adminMain.jsp");
 		} catch (IOException e) {
-			e.printStackTrace();
+			e.getMessage();
 		}
 		
 		

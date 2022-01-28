@@ -55,7 +55,7 @@ public class UpdateUserServlet extends HttpServlet {
 			
 		} catch (IOException e) {
 		
-			e.printStackTrace();
+			e.getMessage();
 		}
 		
 		

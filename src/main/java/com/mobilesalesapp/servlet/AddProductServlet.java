@@ -44,7 +44,7 @@ public class AddProductServlet extends HttpServlet {
 					rd.forward(req, res);
 			} catch (IOException | ServletException e) {
 				
-				e.printStackTrace();
+				e.getMessage();
 			} 
     	   
 

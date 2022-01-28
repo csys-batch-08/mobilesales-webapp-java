@@ -39,7 +39,7 @@ public class ForgotPasswordServlet extends HttpServlet {
 				out.println("</script>");
 				
 			} catch (IOException e) {
-				e.printStackTrace();
+				e.getMessage();
 			}
 			
 		} else {
@@ -51,7 +51,7 @@ public class ForgotPasswordServlet extends HttpServlet {
 				out.println("</script>");
 				
 			} catch (IOException e) {
-				e.printStackTrace();
+				e.getMessage();
 			}
 		}
 		

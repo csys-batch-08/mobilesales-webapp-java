@@ -62,7 +62,7 @@ public class AddWalletServlet extends HttpServlet {
 				
 			} catch (IOException |NumberFormatException e) {
 			
-				e.printStackTrace();
+				e.getMessage();
 			}
 			
 		

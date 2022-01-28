@@ -8,7 +8,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
 <title>MobileBuyingPage</title>
 </head>
 <style>
@@ -142,7 +142,7 @@ background-color:cornsilk;
 	<h4 style="margin-left: 70px;color: blue">Hello ${sessionScope.name}</h4>
 	<p>
 	<label>Address Line  :</label> 
-	<input autocomplete="off" name="address1" required="required" pattern="[a-zA-Z0-9\s,[]]{3,40}" type="text" ><br><br></td>
+	<input autocomplete="off" name="address1" required="required" pattern="[a-zA-Z0-9\s,[]]{3,40}" type="text" ><br><br>
 	 
 	</p>
 	<p>
@@ -181,7 +181,7 @@ background-color:cornsilk;
 	
 	
 	<p>
-	<th> <h5 id="timehead" style="margin-left: 150px;"></h5></th>
+	 <h5 id="timehead" style="margin-left: 150px;"></h5>
 	</p>
 	
 		

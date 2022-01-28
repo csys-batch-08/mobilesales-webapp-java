@@ -43,7 +43,7 @@ public class DeleteProductServlet extends HttpServlet {
 				}
 
 			}catch (IOException e) {
-				e.printStackTrace();
+				e.getMessage();
 			}
 	
 			

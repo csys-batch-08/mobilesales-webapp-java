@@ -47,9 +47,9 @@ public class CancelOrderServlet extends HttpServlet {
 		
 				PrintWriter out = res.getWriter();
 				out.print("Already Cancelled");
-			} catch (IOException e1) {
+			} catch (IOException e) {
 
-				e1.printStackTrace();
+				e.getMessage();
 			}
 		}
 

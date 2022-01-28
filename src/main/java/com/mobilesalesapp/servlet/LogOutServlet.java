@@ -21,7 +21,7 @@ public class LogOutServlet extends HttpServlet {
 			res.sendRedirect("index.jsp");
 		} catch (IOException e) {
 
-			e.printStackTrace();
+			e.getMessage();
 		}
 	}
 

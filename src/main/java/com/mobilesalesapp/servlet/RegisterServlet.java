@@ -30,7 +30,7 @@ public class RegisterServlet extends HttpServlet {
 		try {
 			phoneNumber=Long.parseLong(req.getParameter("phone_number"));
 		}catch (NumberFormatException e) {
-			e.printStackTrace();
+			e.getMessage();
 		}
 		String password=req.getParameter("password");
 
@@ -49,7 +49,7 @@ public class RegisterServlet extends HttpServlet {
 		try {
 			res.sendRedirect("index.jsp");
 		} catch (IOException e) {
-				e.printStackTrace();
+			e.getMessage();
 
 		}
 		} else {
