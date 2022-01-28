@@ -171,7 +171,8 @@ background-color:cornsilk;
 
    
      <c:if test="${userId!=null}">
-    <table class="table table-hover table-striped" style="width: 90%;margin-left: 60px;">
+    <table role="none" class="table table-hover table-striped" style="width: 90%;margin-left: 60px;">
+    
     <tr style="background-color: cornflowerblue" >
      <th>Product</th>
     <th>Product Name</th>

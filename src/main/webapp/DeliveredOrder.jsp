@@ -164,7 +164,7 @@ background-color: rgb(248, 213, 168);
 	
   <c:if test="${userId==null}">
     	
-    <table style="width: 80%;margin-left: 100px;">
+    <table role="none" style="width: 80%;margin-left: 100px;">
     <tr style="background-color: cornflowerblue">
      <th>Order Id</th>
     <th>Order Status</th>

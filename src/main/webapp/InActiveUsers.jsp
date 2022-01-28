@@ -122,7 +122,7 @@ background-color: rgb(248, 213, 168);
 
 	
 		
-		<table style="width: 90%; margin-left: 50px;">
+		<table role="none" style="width: 90%; margin-left: 50px;">
 			<tr style="background-color: cornflowerblue">
 				<th>Name</th>
 				<th>Email</th>

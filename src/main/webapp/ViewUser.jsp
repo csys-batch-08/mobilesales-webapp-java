@@ -120,7 +120,7 @@ background-color: rgb(248, 213, 168);
 
 	
 		
-		<table class="table table-hover table-striped" style="width: 90%; margin-left: 50px;">
+		<table role="none" class="table table-hover table-striped" style="width: 90%; margin-left: 50px;">
 			<tr style="background-color: cornflowerblue">
 				<th>Name</th>
 				<th>Email</th>

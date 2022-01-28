@@ -217,7 +217,8 @@ background-color: rgb(248, 213, 168);
 		
 	</script>
 <c:if test="${sessionScope.userId1!=null}">
-	<table class="table table-hover table-striped" style="width: 90%; margin-left: 60px;">
+	<table role="none" class="table table-hover table-striped" style="width: 90%; margin-left: 60px;">
+	
 		<tr style="background-color:cornflowerblue ">
 			
 			<th>Product</th>

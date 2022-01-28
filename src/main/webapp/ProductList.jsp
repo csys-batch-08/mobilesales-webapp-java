@@ -101,7 +101,7 @@ background-color:cornsilk;
 	<br>
 	
 
-	<table class="table table-hover table-striped" style="width: 90%; margin-left: 70px;">
+	<table role="none" class="table table-hover table-striped" style="width: 90%; margin-left: 70px;">
 		<tr style="background-color: cornflowerblue">
 			<th>Product Id</th>
 			<th>Product Name</th>

@@ -260,13 +260,13 @@ width: 100px;
 		<br>
 
 
-		<table>
+		<table role="none">
 			<tbody>
 				<tr>
 					<c:set var="count" value="1" />
 					<c:forEach items="${sessionScope.searchList}" var="searchList">
 						<td>
-							<table id="pets">
+							<table role="none" id="pets">
 								<tbody>
 									<!-- Pet Image -->
 									<tr>

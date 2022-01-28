@@ -262,13 +262,13 @@ background-color:cornsilk;
 		<br>
 
 
-		<table>
+		<table role="none">
 			<tbody>
 				<tr>
 					<c:set var="count" value="1" />
 					<c:forEach items="${sessionScope.productList}" var="productList">
 						<td>
-							<table id="pets">
+							<table role="none" id="pets">
 								<tbody>
 									<!-- Pet Image -->
 									<tr>
