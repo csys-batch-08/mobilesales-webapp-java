@@ -10,7 +10,9 @@ public class ConnectionUtil {
 		Connection con = null;
 		try {
 			Class.forName("oracle.jdbc.OracleDriver");
-			con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "system", "oracle");
+			String userName="system";
+			String password= "oracle";
+			con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe",userName ,password);
 		} catch (Exception e) {
 	
 			e.printStackTrace();

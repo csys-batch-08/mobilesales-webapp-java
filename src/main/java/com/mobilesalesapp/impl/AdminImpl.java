@@ -1,5 +1,6 @@
 package com.mobilesalesapp.impl;
 
+
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,15 +13,21 @@ import com.mobilesalesapp.util.ConnectionUtil;
 
 
 
+
+
 public class AdminImpl implements AdminDao  {
 
 	
+
 	public int addWalletAmount(RegisterPojo wallet) {
+		
 			Connection con=ConnectionUtil.connect();
 			String query="commit";
 			String query2="update users_table set wallet=(select wallet from users_table where pk_user_id= ? )+? where pk_user_id=?";
 			int j=0;
 			PreparedStatement pre1=null;
+
+			
 			try {
 				pre1=con.prepareStatement(query2);
 				pre1.setInt(1, wallet.getUserId());
@@ -33,7 +40,8 @@ public class AdminImpl implements AdminDao  {
 				
 			} catch (SQLException e) {
 				
-				e.printStackTrace();
+				
+				e.getErrorCode();
 	
 			}finally {
 				try {
@@ -43,7 +51,7 @@ public class AdminImpl implements AdminDao  {
 					}
 					
 				} catch (SQLException e) {
-					e.printStackTrace();
+					e.getErrorCode();
 				}
 			}
 			
@@ -64,7 +72,7 @@ public class AdminImpl implements AdminDao  {
 		
 		} catch (SQLException e) {
 		
-			e.printStackTrace();
+			e.getErrorCode();
 
 		}finally {
 			try {
@@ -74,7 +82,7 @@ public class AdminImpl implements AdminDao  {
 				}
 				
 			} catch (SQLException e) {
-				e.printStackTrace();
+				e.getErrorCode();
 			}
 		}
 		return i;
@@ -93,7 +101,7 @@ public class AdminImpl implements AdminDao  {
 		
 		} catch (SQLException e) {
 		
-			e.printStackTrace();
+			e.getErrorCode();
 
 		}finally {
 			try {
@@ -103,7 +111,7 @@ public class AdminImpl implements AdminDao  {
 				}
 				
 			} catch (SQLException e) {
-				e.printStackTrace();
+				e.getErrorCode();
 			}
 		}
 		return i;
@@ -124,7 +132,7 @@ public class AdminImpl implements AdminDao  {
 			 }
 		} catch (SQLException e) {
 			
-			e.printStackTrace();
+			e.getErrorCode();
 
 		}finally {
 			try {
@@ -134,7 +142,7 @@ public class AdminImpl implements AdminDao  {
 				}
 				
 			} catch (SQLException e) {
-				e.printStackTrace();
+				e.getErrorCode();
 			}
 		}
 		
