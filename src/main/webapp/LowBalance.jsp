@@ -135,8 +135,8 @@ margin-top:40px;
 			<li><a href="ViewOrders1">My Orders</a></li>
 			<li><a href="ViewCart">Cart</a></li>
 			<li><a href="MyProfile">My Profile</a></li>
-			<li><a href="ContactUs.jsp">Contact us</a></li>
-			<li><a href="AboutUs.jsp">About us</a></li>
+			<li><a href="contactUs.jsp">Contact us</a></li>
+			<li><a href="aboutUs.jsp">About us</a></li>
 			<li style="float: right;"><a href="logOut">Logout</a></li>
 
 

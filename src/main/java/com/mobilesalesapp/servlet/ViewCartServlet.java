@@ -41,7 +41,7 @@ public class ViewCartServlet extends HttpServlet {
 		if(listCart.isEmpty()) {
 			setSessionAttribute(session,"cartId", userId);
 		}
-		RequestDispatcher rd=req.getRequestDispatcher("ViewCart.jsp");
+		RequestDispatcher rd=req.getRequestDispatcher("viewCart.jsp");
 		rd.forward(req, resp);
 		
 	}

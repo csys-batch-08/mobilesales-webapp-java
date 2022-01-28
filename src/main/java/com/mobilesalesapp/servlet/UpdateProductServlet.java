@@ -43,7 +43,7 @@ public class UpdateProductServlet extends HttpServlet {
 		try {
 			HttpSession session =req.getSession();
 			setSessionAttribute(session,"updateInfo", "updated Successfully");
-			res.sendRedirect("AdminMain.jsp");
+			res.sendRedirect("adminMain.jsp");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

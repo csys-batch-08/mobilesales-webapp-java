@@ -19,7 +19,7 @@ public class OrderDeliveredServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 	private static final String SCRIPT= "<script type=\"text/javascript\">";
-	private static final String LOCATION="location='AdminMain.jsp';";
+	private static final String LOCATION="location='adminMain.jsp';";
 	private static final String SCRIPTEND="</script>";
 	@Override
 	public void service(HttpServletRequest req,HttpServletResponse res) {

@@ -40,7 +40,7 @@ public class AddProductServlet extends HttpServlet {
 				 ProductImpl product=new ProductImpl();
 					List<ProductPojo> viewProducts =product.showAllProduct();
 					req.setAttribute("viewProducts", viewProducts);
-					RequestDispatcher rd=req.getRequestDispatcher("ProductList.jsp");
+					RequestDispatcher rd=req.getRequestDispatcher("productList.jsp");
 					rd.forward(req, res);
 			} catch (IOException | ServletException e) {
 				

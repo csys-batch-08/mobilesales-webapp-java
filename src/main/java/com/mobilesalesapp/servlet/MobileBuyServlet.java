@@ -33,7 +33,7 @@ public class MobileBuyServlet extends HttpServlet {
 			setSessionAttribute(session,"price", price);
 			setSessionAttribute(session,"total", total);
 			setSessionAttribute(session,"productId", productId);
-			RequestDispatcher rd=req.getRequestDispatcher("MobileBuy.jsp");
+			RequestDispatcher rd=req.getRequestDispatcher("mobileBuy.jsp");
 			rd.forward(req, resp);
 	}
 	

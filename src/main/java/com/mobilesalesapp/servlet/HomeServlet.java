@@ -34,7 +34,7 @@ public class HomeServlet extends HttpServlet {
 		List<ProductPojo> productList= productImpl.showAllProduct();
 		
 		setSessionAttribute(session, "productList",(Serializable) productList);
-		RequestDispatcher rd=req.getRequestDispatcher("MobilePage.jsp");
+		RequestDispatcher rd=req.getRequestDispatcher("mobilePage.jsp");
 		rd.forward(req, resp);
 	}
 

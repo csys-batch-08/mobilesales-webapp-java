@@ -30,14 +30,14 @@ public class DeleteProductServlet extends HttpServlet {
 				if (i > 0) {
 					out.println("<script type=\"text/javascript\">");
 					out.println("alert('Successfully Deleted');");
-					out.println("location='AdminMain.jsp';");
+					out.println("location='adminMain.jsp';");
 					out.println("</script>");
 
 				} else {
 					
 					out.println("<script type=\"text/javascript\">");
 					out.println("alert('Not Deleted');");
-					out.println("location='AdminMain.jsp';");
+					out.println("location='adminMain.jsp';");
 					out.println("</script>");
 
 				}

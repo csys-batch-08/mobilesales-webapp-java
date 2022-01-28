@@ -27,7 +27,7 @@ public class ViewContactServlet extends HttpServlet {
 	
 		List<ContactUsPojo> contactList=adminImpl.viewContactUs();
 		request.setAttribute("viewContact", contactList);	
-		RequestDispatcher rd=request.getRequestDispatcher("ViewContactUs.jsp");
+		RequestDispatcher rd=request.getRequestDispatcher("viewContactUs.jsp");
 		rd.forward(request, response);
 	
  }

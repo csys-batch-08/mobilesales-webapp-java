@@ -43,7 +43,7 @@ public class SearchOrderServlet extends HttpServlet {
 		setSessionAttribute(session,"searchList1", (Serializable) searchList1);
 		setSessionAttribute(session,"userId", userId);
 	
-		RequestDispatcher rd = request.getRequestDispatcher("SearchOrder.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("searchOrder.jsp");
 		rd.forward(request, resp);
 	}
 

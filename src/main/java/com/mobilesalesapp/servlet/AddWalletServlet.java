@@ -51,12 +51,12 @@ public class AddWalletServlet extends HttpServlet {
 				if(i>0) {
 					out.println("<script type=\"text/javascript\">");
 					out.println("alert('Wallet added Successfully');");
-					out.println("location='MyProfile.jsp';");
+					out.println("location='myProfile.jsp';");
 					out.println("</script>");
 				}else if(i==0){
 					out.println("<script type=\"text/javascript\">");
 					out.println("alert('wallet not added');");
-					out.println("location='MyProfile.jsp';");
+					out.println("location='myProfile.jsp';");
 					out.println("</script>");
 				}
 				

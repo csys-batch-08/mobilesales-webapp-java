@@ -31,7 +31,7 @@ public class ViewDeleiverOrder extends HttpServlet {
     		
     		req.setAttribute("userId",userId);
     	}
-    	RequestDispatcher rd=req.getRequestDispatcher("DeliveredOrder.jsp");
+    	RequestDispatcher rd=req.getRequestDispatcher("deliveredOrder.jsp");
     	rd.forward(req, resp);
     	
     	

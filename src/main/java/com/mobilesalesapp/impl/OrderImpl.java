@@ -49,6 +49,17 @@ public class OrderImpl implements OrderDao {
 
 			e.printStackTrace();
 
+		}finally {
+			try {
+				if (pre != null && pre1 != null) {
+					pre.close();
+					pre1.close();
+					con.close();
+				}
+
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 
 		return i;
@@ -72,6 +83,16 @@ public class OrderImpl implements OrderDao {
 
 			e.printStackTrace();
 
+		}finally {
+			try {
+				if (pre != null ) {
+					pre.close();
+					con.close();
+				}
+
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 		return i;
 
@@ -99,9 +120,17 @@ public class OrderImpl implements OrderDao {
 		} catch (Exception e) {
 			e.printStackTrace();
 
+		}finally {
+			try {
+				if (pre != null ) {
+					pre.close();
+					con.close();
+				}
+
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
-
-
 		return orderList1;
 	}
 
@@ -128,6 +157,16 @@ public class OrderImpl implements OrderDao {
 		} catch (Exception e) {
 			e.printStackTrace();
 
+		}finally {
+			try {
+				if (pre != null ) {
+					pre.close();
+					con.close();
+				}
+
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 
 		return orderList1;
@@ -161,6 +200,16 @@ public class OrderImpl implements OrderDao {
 
 			e.printStackTrace();
 
+		}finally {
+			try {
+				if (pre != null ) {
+					pre.close();
+					con.close();
+				}
+
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 
 
@@ -178,6 +227,16 @@ public class OrderImpl implements OrderDao {
 		} catch (SQLException e) {
 			e.printStackTrace();
 
+		}finally {
+			try {
+				if (pre != null ) {
+					pre.close();
+					con.close();
+				}
+
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 
@@ -199,6 +258,16 @@ public class OrderImpl implements OrderDao {
 		} catch (Exception e) {
 			e.printStackTrace();
 
+		}finally {
+			try {
+				if (pre != null ) {
+					pre.close();
+					con.close();
+				}
+
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 		return url;
 	}

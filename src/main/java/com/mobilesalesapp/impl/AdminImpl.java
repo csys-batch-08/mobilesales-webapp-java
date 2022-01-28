@@ -35,6 +35,16 @@ public class AdminImpl implements AdminDao  {
 				
 				e.printStackTrace();
 	
+			}finally {
+				try {
+					if(pre1!=null) {
+						pre1.close();
+						con.close();
+					}
+					
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
 			}
 			
 			
@@ -56,6 +66,16 @@ public class AdminImpl implements AdminDao  {
 		
 			e.printStackTrace();
 
+		}finally {
+			try {
+				if(pre!=null) {
+					pre.close();
+					con.close();
+				}
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 		return i;
 		
@@ -75,6 +95,16 @@ public class AdminImpl implements AdminDao  {
 		
 			e.printStackTrace();
 
+		}finally {
+			try {
+				if(pre!=null) {
+					pre.close();
+					con.close();
+				}
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 		return i;
 		
@@ -96,6 +126,16 @@ public class AdminImpl implements AdminDao  {
 			
 			e.printStackTrace();
 
+		}finally {
+			try {
+				if(pre!=null) {
+					pre.close();
+					con.close();
+				}
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 		
 		return contact;

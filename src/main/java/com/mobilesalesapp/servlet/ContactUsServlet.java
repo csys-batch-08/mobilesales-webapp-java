@@ -31,7 +31,7 @@ public class ContactUsServlet extends HttpServlet {
 		}
 		
 		try {
-			res.sendRedirect("ContactUs.jsp");
+			res.sendRedirect("contactUs.jsp");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

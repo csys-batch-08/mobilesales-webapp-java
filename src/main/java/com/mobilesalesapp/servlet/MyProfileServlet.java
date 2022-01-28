@@ -37,7 +37,7 @@ public class MyProfileServlet extends HttpServlet {
 		List<RegisterPojo> listAllDetails=userImpl.myDetails(userId);
 		setSessionAttribute(session,"listAllDetails", (Serializable) listAllDetails);
 		
-		RequestDispatcher rd=req.getRequestDispatcher("MyProfile.jsp");
+		RequestDispatcher rd=req.getRequestDispatcher("myProfile.jsp");
 		rd.forward(req, resp);
 	}
 	

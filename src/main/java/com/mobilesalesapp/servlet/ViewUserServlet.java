@@ -28,7 +28,7 @@ public class ViewUserServlet extends HttpServlet {
 		UserImpl userDao = new UserImpl();
 		List<RegisterPojo> userDetails = userDao.userDetails();
 		req.setAttribute("userDetails", userDetails);
-		RequestDispatcher rd=req.getRequestDispatcher("ViewUser.jsp");
+		RequestDispatcher rd=req.getRequestDispatcher("viewUser.jsp");
 		rd.forward(req, resp);
 		
 	}

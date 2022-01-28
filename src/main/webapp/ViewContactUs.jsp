@@ -1,6 +1,5 @@
-<%@page import="com.mobilesalesapp.impl.AdminImpl"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1" import ="com.mobilesalesapp.util.*" import ="java.sql.*" %>
+    pageEncoding="ISO-8859-1"  %>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -143,7 +142,7 @@ background-color: rgb(248, 213, 168);
 		<ul>
 
 			<li style="float: right;"><a href="logOut">Logout</a></li>
-			<li style="float: right;"><a href="AdminMain.jsp">Admin</a></li>
+			<li style="float: right;"><a href="adminMain.jsp">Admin</a></li>
 
 		</ul>
 

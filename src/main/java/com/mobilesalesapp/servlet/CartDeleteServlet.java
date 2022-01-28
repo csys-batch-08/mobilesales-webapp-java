@@ -46,7 +46,7 @@ public class CartDeleteServlet extends HttpServlet {
 		}
 		
 		try {
-			res.sendRedirect("ViewCart.jsp");
+			res.sendRedirect("viewCart.jsp");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

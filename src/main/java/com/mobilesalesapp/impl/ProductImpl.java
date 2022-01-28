@@ -29,6 +29,16 @@ public class ProductImpl implements ProductDao {
 		} catch (Exception e) {
 			e.printStackTrace();
 
+		}finally {
+			try {
+				if (pre != null ) {
+					pre.close();
+					con.close();
+				}
+
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 
 	}
@@ -46,6 +56,16 @@ public class ProductImpl implements ProductDao {
 		} catch (SQLException e) {
 			e.printStackTrace();
 
+		}finally {
+			try {
+				if (pre != null ) {
+					pre.close();
+					con.close();
+				}
+
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 		return i;
 
@@ -65,6 +85,16 @@ public class ProductImpl implements ProductDao {
 		} catch (SQLException e) {
 			e.printStackTrace();
 
+		}finally {
+			try {
+				if (pre != null ) {
+					pre.close();
+					con.close();
+				}
+
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 
 	}
@@ -85,6 +115,16 @@ public class ProductImpl implements ProductDao {
 		} catch (SQLException e) {
 			e.printStackTrace();
 
+		}finally {
+			try {
+				if (pre != null ) {
+					pre.close();
+					con.close();
+				}
+
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 		return productList;
 	}
@@ -106,6 +146,16 @@ public class ProductImpl implements ProductDao {
 		} catch (SQLException e) {
 			e.printStackTrace();
 
+		}finally {
+			try {
+				if (pre != null ) {
+					pre.close();
+					con.close();
+				}
+
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 		return productList;
 	}
@@ -127,6 +177,16 @@ public class ProductImpl implements ProductDao {
 
 			e.printStackTrace();
 	
+		}finally {
+			try {
+				if (pre != null ) {
+					pre.close();
+					con.close();
+				}
+
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 		return productList;
 		

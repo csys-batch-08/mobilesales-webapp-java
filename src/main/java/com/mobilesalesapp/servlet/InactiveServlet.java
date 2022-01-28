@@ -27,7 +27,7 @@ public class InactiveServlet extends HttpServlet {
 					PrintWriter out=response.getWriter();
 					out.println("<script type=\"text/javascript\">");
 					out.println("alert('Inactive Successfully');");
-					out.println("location='AdminMain.jsp';");
+					out.println("location='adminMain.jsp';");
 					out.println("</script>");
 					
 					

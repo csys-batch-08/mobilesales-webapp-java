@@ -44,8 +44,7 @@ public class CartServlet extends HttpServlet {
 			
 			throw new CartException();
 
-			}
-			else {
+			} else {
 				cartDao.addCart(cartPojo);
 				write.print("Cart Successfully");
 				

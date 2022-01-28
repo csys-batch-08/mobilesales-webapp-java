@@ -116,7 +116,17 @@ public class UserImpl implements UserDao {
 		} catch (Exception e) {
 			e.printStackTrace();
 	
-			}
+			}finally {
+				try {
+					if(pre!=null) {
+						pre.close();
+						con.close();
+					}
+					
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+				}
 
 
 		return userList;
@@ -138,7 +148,17 @@ public class UserImpl implements UserDao {
 		} catch (SQLException e) {
 			e.printStackTrace();
 
-			}
+			}finally {
+				try {
+					if(pre!=null) {
+						pre.close();
+						con.close();
+					}
+					
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+				}
 
 		
 	}
@@ -155,7 +175,17 @@ public class UserImpl implements UserDao {
 		} catch (SQLException e) {
 			e.printStackTrace();
 
-			}
+			}finally {
+				try {
+					if(pre!=null) {
+						pre.close();
+						con.close();
+					}
+					
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+				}
 	
 		
 	}
@@ -176,7 +206,17 @@ public class UserImpl implements UserDao {
 		} catch (SQLException e) {
 			e.printStackTrace();
 
-			}
+			}finally {
+				try {
+					if(pre!=null) {
+						pre.close();
+						con.close();
+					}
+					
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+				}
 
 
 		return i;
@@ -196,7 +236,17 @@ public class UserImpl implements UserDao {
 		} catch (SQLException e) {
 			e.printStackTrace();
 
-			}
+			}finally {
+				try {
+					if(pre!=null) {
+						pre.close();
+						con.close();
+					}
+					
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+				}
 
 		
 		return i;
@@ -223,7 +273,17 @@ public class UserImpl implements UserDao {
 		} catch (SQLException e) {
 			e.printStackTrace();
 
-			}
+			}finally {
+				try {
+					if(pre!=null) {
+						pre.close();
+						con.close();
+					}
+					
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+				}
 
 	
 		

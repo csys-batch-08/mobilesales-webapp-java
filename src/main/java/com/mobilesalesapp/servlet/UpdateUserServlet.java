@@ -50,7 +50,7 @@ public class UpdateUserServlet extends HttpServlet {
 			PrintWriter out=response.getWriter();
 			out.println("<script type=\"text/javascript\">");
 			out.println("alert('updated successful');");
-			out.println("location='MyProfile.jsp';");
+			out.println("location='myProfile.jsp';");
 			out.println("</script>");	
 			
 		} catch (IOException e) {

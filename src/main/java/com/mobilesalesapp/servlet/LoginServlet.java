@@ -79,7 +79,7 @@ public class LoginServlet extends HttpServlet {
 						ProductImpl  productImpl = new ProductImpl();
 						List<ProductPojo> productList= productImpl.showAllProduct();
 						setSessionAttribute(session,"productList", (Serializable) productList);
-						RequestDispatcher rd=req.getRequestDispatcher("MobilePage.jsp");
+						RequestDispatcher rd=req.getRequestDispatcher("mobilePage.jsp");
 						rd.forward(req, res);
 						
 	
@@ -87,10 +87,10 @@ public class LoginServlet extends HttpServlet {
 						
 						out.println("<script type=\"text/javascript\">");
 						out.println("alert('Your account now Inactive');");
-						out.println("location='Request.jsp';");
+						out.println("location='request.jsp';");
 						out.println("</script>");					
 						}else if(role.equals("admin"))  {
-						res.sendRedirect("AdminMain.jsp");
+						res.sendRedirect("adminMain.jsp");
 					}
 				}
 					

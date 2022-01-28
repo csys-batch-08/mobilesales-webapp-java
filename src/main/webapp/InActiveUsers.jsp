@@ -108,7 +108,7 @@ background-color: rgb(248, 213, 168);
 
 		<ul>
 			<li style="float: right;"><a href="logOut">Logout</a></li>
-			<li style="float: right;"><a class="active" href="AdminMain.jsp">Admin</a></li>
+			<li style="float: right;"><a class="active" href="adminMain.jsp">Admin</a></li>
 			
 
 

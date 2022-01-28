@@ -36,7 +36,7 @@ public class MobileInfoServlet extends HttpServlet {
 		  ProductImpl productImpl=new ProductImpl();
         List<ProductPojo> selectedProduct=productImpl.selectProduct(productId);
         setSessionAttribute(session,"selectedProduct", (Serializable) selectedProduct);
-		RequestDispatcher rd=req.getRequestDispatcher("MobileInfo.jsp");
+		RequestDispatcher rd=req.getRequestDispatcher("mobileInfo.jsp");
 		rd.forward(req, resp);
 	}
 

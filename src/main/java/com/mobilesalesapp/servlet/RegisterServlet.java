@@ -4,6 +4,8 @@ package com.mobilesalesapp.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+
+
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -36,7 +38,7 @@ public class RegisterServlet extends HttpServlet {
 			
 		RegisterPojo p=new RegisterPojo(name, email, phoneNumber, password);
 		UserImpl userDao=new UserImpl();
-		PrintWriter out=res.getWriter();
+		
 		
 		int i=userDao.register(p);
 		
@@ -57,11 +59,15 @@ public class RegisterServlet extends HttpServlet {
 				throw new EmailException();
 				
 			} catch (EmailException e) {
-
+				try {
+				PrintWriter out=res.getWriter();
 				out.println("<script type=\"text/javascript\">");
 				out.println("alert('Thish Email Already Used');");
-				out.println("location='Register.jsp';");
+				out.println("location='register.jsp';");
 				out.println("</script>");
+				}catch (IOException s) {
+					s.printStackTrace();
+				}
 				
 			}
 		}

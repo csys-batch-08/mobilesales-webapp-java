@@ -46,7 +46,7 @@ public class ViewOrderServlet extends HttpServlet {
 			setSessionAttribute(session, "userId1", userId);
 			
 	
-			RequestDispatcher rd=request.getRequestDispatcher("ViewOrders.jsp");
+			RequestDispatcher rd=request.getRequestDispatcher("viewOrders.jsp");
 			rd.forward(request, response);
 			
   }

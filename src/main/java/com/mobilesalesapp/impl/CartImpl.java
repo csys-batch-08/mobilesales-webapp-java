@@ -34,8 +34,6 @@ public class CartImpl implements CartDao {
 		
 		Connection con = ConnectionUtil.connect();
 		String query = "select product_name,description,list_price,url from products where pk_product_id=?";
-	
-	
 		String productName=null;
 		String url= null;
 		String description = null;
@@ -58,8 +56,6 @@ public class CartImpl implements CartDao {
 			}
 			
 			String query3 = "insert into carts_table(user_id,product_id,product_name,description,price,url) values(?,?,?,?,?,?)";
-
-			
 			pre2 = con.prepareStatement(query3);
 			pre2.setInt(1, cartPojo.getUserId());
 			pre2.setInt(2, cartPojo.getProductId());
@@ -76,12 +72,21 @@ public class CartImpl implements CartDao {
 		}catch (Exception e) {
 			e.printStackTrace();
 
-		}
+		}finally {
+			try {
+				if(pre!=null && pre2!=null) {
+					pre.close();
+					pre2.close();
+					con.close();
+				}
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+	}
 
 	}
 	public void deleteCart(CartPojo cartPojo) {
-		
-		
 		Connection con=ConnectionUtil.connect();
 		String query="delete from carts_table where product_id=? and user_id=? ";
 		PreparedStatement pre=null;
@@ -95,9 +100,17 @@ public class CartImpl implements CartDao {
 	
 			e.printStackTrace();
 
-			}
-		
-		
+			}finally {
+				try {
+					if(pre!=null) {
+						pre.close();
+						con.close();
+					}
+					
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+				}
 	}
 	public List<CartPojo> viewAllCart(CartPojo cartPojo) {
 		Connection con=ConnectionUtil.connect();
@@ -117,7 +130,17 @@ public class CartImpl implements CartDao {
 	
 			e.printStackTrace();
 
-			}
+			}finally {
+				try {
+					if(pre!=null) {
+						pre.close();
+						con.close();
+					}
+					
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+				}
 		return cartList;
 		
 		

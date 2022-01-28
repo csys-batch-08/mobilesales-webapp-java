@@ -32,7 +32,7 @@ public class ViewProductServlet extends HttpServlet {
 		List<ProductPojo> viewProducts =product.showAllProduct();
 
 		setSessionAttribute(session, "viewProducts", (Serializable) viewProducts);
-		RequestDispatcher rd=req.getRequestDispatcher("ProductList.jsp");
+		RequestDispatcher rd=req.getRequestDispatcher("productList.jsp");
 		rd.forward(req, resp);
 	}
 

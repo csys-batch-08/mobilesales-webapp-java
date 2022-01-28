@@ -22,7 +22,7 @@ public class ViewInActiveUsersServlet extends HttpServlet {
 		UserImpl userDao = new UserImpl();
 		List<RegisterPojo> inactiveUserDetails = userDao.inActiveUserDetails();
 		req.setAttribute("inactiveUserDetails", inactiveUserDetails);
-		RequestDispatcher rd=req.getRequestDispatcher("InActiveUsers.jsp");
+		RequestDispatcher rd=req.getRequestDispatcher("inActiveUsers.jsp");
 		rd.forward(req, resp);
 	}
 
