@@ -67,6 +67,11 @@ li a:hover {
 table {
 	background-color: rgb(248, 213, 168);
 }
+#product{
+width: 90%; 
+margin-left: 70px;
+
+}
 
 
 body{
@@ -101,7 +106,7 @@ background-color:cornsilk;
 	<br>
 	
 
-	<table role="none" class="table table-hover table-striped" style="width: 90%; margin-left: 70px;">
+	<table id="product" class="table table-hover table-striped" >
 		<tr style="background-color: cornflowerblue">
 			<th>Product Id</th>
 			<th>Product Name</th>

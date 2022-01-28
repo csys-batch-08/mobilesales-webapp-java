@@ -95,6 +95,10 @@ background-color:cornsilk;
 table{
 background-color: rgb(248, 213, 168);
 }
+#inActive{
+width: 90%; 
+margin-left: 50px;
+}
 
 * {
 	margin: 0;
@@ -122,7 +126,7 @@ background-color: rgb(248, 213, 168);
 
 	
 		
-		<table role="none" style="width: 90%; margin-left: 50px;">
+		<table id="inActive" >
 			<tr style="background-color: cornflowerblue">
 				<th>Name</th>
 				<th>Email</th>

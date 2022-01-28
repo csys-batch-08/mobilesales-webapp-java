@@ -128,6 +128,9 @@ background-color:cornsilk;
 table{
 background-color: rgb(248, 213, 168);
 }
+#conatct{
+width: 85%;margin-left: 70px;
+}
 
 * {
 	margin: 0;
@@ -154,7 +157,7 @@ background-color: rgb(248, 213, 168);
 
 
 
- <table role="none" class="table table-hover table-striped" style="width: 85%;margin-left: 70px;">
+ <table id="conatct" class="table table-hover table-striped" >
     <tr style="background-color: cornflowerblue">
      <th>Name</th>
     <th>Email</th>

@@ -160,13 +160,13 @@ public class ProductImpl implements ProductDao {
 		return productList;
 	}
 	public List<ProductPojo> searchProduct(String product) {
-		String query = "select pk_product_id,product_name,description,standard_price,list_price,url from products where lower(product_name) like ?% ";
+		String query = "select pk_product_id,product_name,description,standard_price,list_price,url from products where lower(product_name) like ? ";
 		Connection con = ConnectionUtil.connect();
 		List<ProductPojo> productList=new ArrayList<>();
 		PreparedStatement pre=null; 
 		try {
 			pre=con.prepareStatement(query);
-			pre.setString(1, product);
+			pre.setString(1, product+"%");
 			
 			ResultSet rs = pre.executeQuery();
 			while(rs.next()) {

@@ -35,12 +35,8 @@ public class ViewOrderServlet extends HttpServlet {
 			HttpSession session=request.getSession();
 			
 			int userId = Integer.parseInt(session.getAttribute("userId").toString());
-
-		
-
 			OrderPojo orderPojo = new OrderPojo(userId);
 			OrderImpl order = new OrderImpl();
-
 			List<OrderPojo> orderList = order.viewAllOrders(orderPojo);
 			setSessionAttribute(session, "orderList", (Serializable) orderList);
 			setSessionAttribute(session, "userId1", userId);

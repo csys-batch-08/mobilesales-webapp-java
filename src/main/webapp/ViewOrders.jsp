@@ -165,6 +165,10 @@ background-color: cornsilk;
 table{
 background-color: rgb(248, 213, 168);
 }
+#product{
+width: 90%;
+ margin-left: 60px;
+}
 
 * {
 	margin: 0;
@@ -217,7 +221,7 @@ background-color: rgb(248, 213, 168);
 		
 	</script>
 <c:if test="${sessionScope.userId1!=null}">
-	<table role="none" class="table table-hover table-striped" style="width: 90%; margin-left: 60px;">
+	<table id="product" class="table table-hover table-striped" >
 	
 		<tr style="background-color:cornflowerblue ">
 			

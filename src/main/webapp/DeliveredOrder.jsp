@@ -138,6 +138,10 @@ background-color:cornsilk;
 table{
 background-color: rgb(248, 213, 168);
 }
+#orders{
+width: 80%;
+margin-left: 100px;
+}
 
 * {
 	margin: 0;
@@ -164,7 +168,7 @@ background-color: rgb(248, 213, 168);
 	
   <c:if test="${userId==null}">
     	
-    <table role="none" style="width: 80%;margin-left: 100px;">
+    <table id="orders" >
     <tr style="background-color: cornflowerblue">
      <th>Order Id</th>
     <th>Order Status</th>

@@ -35,8 +35,8 @@ public class SearchMobileServlet extends HttpServlet {
 	
 		ProductImpl product=new ProductImpl();
 		List<ProductPojo> searchList = product.searchProduct(search);
-		setSessionAttribute(session,"searchList", (Serializable) searchList);
-		RequestDispatcher rd=request.getRequestDispatcher("searchMobile.jsp");
+		setSessionAttribute(session,"productList", (Serializable) searchList);
+		RequestDispatcher rd=request.getRequestDispatcher("mobilePage.jsp");
 		rd.forward(request, response);
 	}
 

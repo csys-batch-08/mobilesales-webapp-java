@@ -46,7 +46,7 @@ public class AddWalletServlet extends HttpServlet {
 				UserImpl userImpl=new UserImpl();
 				List<RegisterPojo> listAllDetails=userImpl.myDetails(userId);
 				
-				setSessionAttribute(session, "listAllDetails1", (Serializable) listAllDetails);
+				setSessionAttribute(session, "listAllDetails", (Serializable) listAllDetails);
 				PrintWriter out=res.getWriter();
 				if(i>0) {
 					out.println("<script type=\"text/javascript\">");

@@ -93,6 +93,9 @@ li a:hover {
 table{
 background-color: rgb(248, 213, 168);
 }
+#user{
+width: 90%; margin-left: 50px;
+}
 
 * {
 	margin: 0;
@@ -120,7 +123,7 @@ background-color: rgb(248, 213, 168);
 
 	
 		
-		<table role="none" class="table table-hover table-striped" style="width: 90%; margin-left: 50px;">
+		<table id="user" class="table table-hover table-striped" >
 			<tr style="background-color: cornflowerblue">
 				<th>Name</th>
 				<th>Email</th>

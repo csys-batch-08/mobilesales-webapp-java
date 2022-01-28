@@ -40,10 +40,10 @@ public class SearchOrderServlet extends HttpServlet {
 		
 		List<OrderPojo> searchList1 = order.searchAllOrders(orderPojo);
 
-		setSessionAttribute(session,"searchList1", (Serializable) searchList1);
+		setSessionAttribute(session,"orderList", (Serializable) searchList1);
 		setSessionAttribute(session,"userId", userId);
 	
-		RequestDispatcher rd = request.getRequestDispatcher("searchOrder.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("viewOrders.jsp");
 		rd.forward(request, resp);
 	}
 
