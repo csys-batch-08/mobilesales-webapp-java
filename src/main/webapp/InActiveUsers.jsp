@@ -126,7 +126,7 @@ margin-left: 50px;
 
 	
 		
-		<table id="inActive" >
+		<table aria-describedby="Show All home places" id="inActive" >
 			<tr style="background-color: cornflowerblue">
 				<th>Name</th>
 				<th>Email</th>

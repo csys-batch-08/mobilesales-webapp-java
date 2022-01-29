@@ -105,7 +105,7 @@ background-color:cornsilk;
 	<br>
 	
 
-	<table id="product" class="table table-hover table-striped" >
+	<table aria-describedby="Show All home places" id="product" class="table table-hover table-striped" >
 		<tr style="background-color: cornflowerblue">
 			<th>Product Id</th>
 			<th>Product Name</th>

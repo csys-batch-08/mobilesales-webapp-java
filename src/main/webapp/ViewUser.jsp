@@ -123,7 +123,7 @@ width: 90%; margin-left: 50px;
 
 	
 		
-		<table id="user" class="table table-hover table-striped" >
+		<table aria-describedby="Show All home places" id="user" class="table table-hover table-striped" >
 			<tr style="background-color: cornflowerblue">
 				<th>Name</th>
 				<th>Email</th>

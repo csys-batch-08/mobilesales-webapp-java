@@ -10,24 +10,41 @@ import java.util.List;
 
 
 
+
 public class CartImpl implements CartDao {
 	
-	public ResultSet checkCart(CartPojo cart) {
+	public String checkCart(CartPojo cart) {
 		Connection con = ConnectionUtil.connect();
 		String query = "select cart_id,user_id,product_id,product_name,description,price,url from carts_table where user_id=? and product_id=?";
 		ResultSet rs=null;
 		PreparedStatement pre=null;
+		String productName=null;
+		System.out.println("helo");
 		try {
 			pre = con.prepareStatement(query);
 			pre.setInt(1, cart.getUserId());
 			pre.setInt(2, cart.getProductId());
 			 rs = pre.executeQuery();
+			 while(rs.next()) {
+				 productName=rs.getString(4);
+				 System.out.println(productName);
+			 }
 		} catch (SQLException e) {
 			
 			e.getErrorCode();
 
-			}
-		return rs;
+			}finally {
+				try {
+					if(pre!=null) {
+						pre.close();
+						con.close();
+					}
+					
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+				}
+		return productName;
 		
 	}
 	public void addCart(CartPojo cartPojo) {

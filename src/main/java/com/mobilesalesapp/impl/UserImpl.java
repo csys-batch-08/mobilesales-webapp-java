@@ -45,10 +45,10 @@ public class UserImpl implements UserDao {
 
 	}
 
-	public ResultSet fetch(RegisterPojo login) {
+	public RegisterPojo fetch(RegisterPojo login) {
 		Connection con = ConnectionUtil.connect();
-		String query = "select pk_user_id,first_name,email,phone_number,password,wallet,role from users_table  where email in ? and password in ?";
-		
+		String query = "select pk_user_id,first_name,email,phone_number,wallet,role from users_table  where email in ? and password in ?";
+		RegisterPojo registerPojo=null;
 		ResultSet rs = null;
 		PreparedStatement pre =null;
 		try {
@@ -57,13 +57,17 @@ public class UserImpl implements UserDao {
 			pre.setString(1, login.getEmail());
 			pre.setString(2, login.getPassword());
 			rs = pre.executeQuery();
+			
+			while(rs.next()) {
+				registerPojo=new RegisterPojo(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getLong(4),rs.getDouble(5),rs.getString(6));
+			}
 		} catch (SQLException e) {
 			e.getErrorCode();
 
 			}
 		
 
-		return rs;
+		return registerPojo;
 
 	}
 

@@ -221,7 +221,7 @@ width: 90%;
 		
 	</script>
 <c:if test="${sessionScope.userId1!=null}">
-	<table id="product" class="table table-hover table-striped" >
+	<table aria-describedby="Show All home places" id="product" class="table table-hover table-striped" >
 	
 		<tr style="background-color:cornflowerblue ">
 			

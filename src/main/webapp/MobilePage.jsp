@@ -87,6 +87,7 @@ bod {
 .mar1 {
 	font-size: 30px;
 	color: green;
+	text-align: center;
 }
 
 .body_main1 {
@@ -250,8 +251,8 @@ body {
 
 
 
-		<marquee class="mar1">New Smartphone Offer Available upto
-			15% Discount</marquee>
+		<h4  class="mar1"> New Smartphone Offer Available upto
+			15% Discount</h4>
 		<br>
 		<div class="searchPro">
 			<form action="SearchMobile">
@@ -262,13 +263,13 @@ body {
 		<br> <br> <br> <br>
 
 
-		<table>
+		<table aria-describedby="Show All home places">
 			<tbody>
 				<tr>
 					<c:set var="count" value="1" />
 					<c:forEach items="${sessionScope.productList}" var="productList">
 						<td>
-							<table id="pets">
+							<table aria-describedby="Show All home places" id="pets">
 								<tbody>
 									<!-- Pet Image -->
 									<tr>

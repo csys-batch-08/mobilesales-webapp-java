@@ -51,7 +51,7 @@ public class OrderServlet extends HttpServlet {
 		}
 				if (j > 0) {
 					try {
-					res.sendRedirect("OrderPlaced.jsp");
+					res.sendRedirect("orderPlaced.jsp");
 					} catch (IOException e) {
 						e.getMessage();
 					}
@@ -70,7 +70,7 @@ public class OrderServlet extends HttpServlet {
 			} else {
 				session.setAttribute("buying", "Invalid Password");
 				try {
-				res.sendRedirect("MobileBuy.jsp");
+				res.sendRedirect("mobileBuy.jsp");
 				} catch (IOException e) {
 					e.getMessage();
 				}

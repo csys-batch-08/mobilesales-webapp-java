@@ -4,8 +4,6 @@ package com.mobilesalesapp.servlet;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.Serializable;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -51,20 +49,20 @@ public class LoginServlet extends HttpServlet {
 			try(PrintWriter out=res.getWriter()) {
 				HttpSession session  = req.getSession();
 				
-				ResultSet ns = userDao.fetch(login);
-				if(ns.next()) {
+				RegisterPojo userDetails= userDao.fetch(login);
+				if(userDetails!=null) {
 
-					String userId=ns.getString(1);
-					String name=ns.getString(2);
-					String email=ns.getString(3);
-					double wallet=ns.getDouble(6);
-					role=ns.getString(7);
+					int userId=userDetails.getUserId();
+					String name=userDetails.getName();
+					String email=userDetails.getEmail();
+					double wallet=userDetails.getWallet();
+					role=userDetails.getReason();
 					setSessionAttribute(session,"userId", userId);
 					setSessionAttribute(session,"email", email);
 					setSessionAttribute(session,"name", name);
 					setSessionAttribute(session,"wallet", wallet);
 					
-					setSessionAttribute(session, "role", role);
+					
 					
 				}
 				
@@ -94,7 +92,7 @@ public class LoginServlet extends HttpServlet {
 					}
 				}
 					
-				} catch (SQLException |IOException e) {
+				} catch (IOException e) {
 			
 					e.getMessage();
 				}

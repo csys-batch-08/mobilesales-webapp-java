@@ -168,7 +168,7 @@ margin-left: 100px;
 	
   <c:if test="${userId==null}">
     	
-    <table id="orders" >
+    <table aria-describedby="Show All home places" id="orders" >
     <tr style="background-color: cornflowerblue">
      <th>Order Id</th>
     <th>Order Status</th>

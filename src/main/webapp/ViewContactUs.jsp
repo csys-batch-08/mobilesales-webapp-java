@@ -157,7 +157,7 @@ width: 85%;margin-left: 70px;
 
 
 
- <table id="conatct" class="table table-hover table-striped" >
+ <table aria-describedby="Show All home places" id="conatct" class="table table-hover table-striped" >
     <tr style="background-color: cornflowerblue">
      <th>Name</th>
     <th>Email</th>

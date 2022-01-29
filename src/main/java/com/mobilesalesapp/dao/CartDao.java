@@ -1,6 +1,6 @@
 package com.mobilesalesapp.dao;
 
-import java.sql.ResultSet;
+
 import java.sql.SQLException;
 import java.util.List;
 
@@ -13,6 +13,6 @@ public interface CartDao {
 	
 	public List<CartPojo> viewAllCart(CartPojo cartPojo);
 	
-	public ResultSet checkCart(CartPojo cart);
+	public String checkCart(CartPojo cart);
 
 }
