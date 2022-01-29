@@ -39,7 +39,7 @@ public class CancelOrderServlet extends HttpServlet {
 				PrintWriter out = res.getWriter();
 				out.print("Already Delivered");
 			} catch (IOException e1) {
-				e1.printStackTrace();
+				e1.getMessage();
 			}
 		} else {
 

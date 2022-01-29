@@ -117,8 +117,8 @@ public class OrderImpl implements OrderDao {
 				orderList1.add(orders);
 			}
 
-		} catch (Exception e) {
-			e.printStackTrace();
+		} catch (SQLException e) {
+			e.getErrorCode();
 
 		}finally {
 			try {
@@ -128,7 +128,7 @@ public class OrderImpl implements OrderDao {
 				}
 
 			} catch (SQLException e) {
-				e.printStackTrace();
+				e.getErrorCode();
 			}
 		}
 		return orderList1;
@@ -188,11 +188,22 @@ public class OrderImpl implements OrderDao {
 		} catch (SQLException e) {
 			e.getErrorCode();
 
+		}finally {
+			try {
+				if (pre2 != null ) {
+					pre2.close();
+					con.close();
+				}
+
+			} catch (SQLException e) {
+				e.getErrorCode();
+			}
 		}
 
 		PreparedStatement pre=null;
+		Connection con1 = ConnectionUtil.connect();
 		try {
-			pre= con.prepareStatement(query2);
+			pre= con1.prepareStatement(query2);
 			pre.setInt(1, orderPojo.getOrderId());
 			pre.executeUpdate();
 			pre.executeUpdate(COMMIT);
@@ -204,7 +215,7 @@ public class OrderImpl implements OrderDao {
 			try {
 				if (pre != null ) {
 					pre.close();
-					con.close();
+					con1.close();
 				}
 
 			} catch (SQLException e) {

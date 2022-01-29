@@ -66,7 +66,7 @@ public class RegisterServlet extends HttpServlet {
 				out.println("location='register.jsp';");
 				out.println("</script>");
 				}catch (IOException s) {
-					s.printStackTrace();
+					e.getMessage();
 				}
 				
 			}

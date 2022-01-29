@@ -77,6 +77,7 @@ public class LoginServlet extends HttpServlet {
 						ProductImpl  productImpl = new ProductImpl();
 						List<ProductPojo> productList= productImpl.showAllProduct();
 						setSessionAttribute(session,"productList", (Serializable) productList);
+						
 						RequestDispatcher rd=req.getRequestDispatcher("mobilePage.jsp");
 						rd.forward(req, res);
 						
@@ -92,7 +93,7 @@ public class LoginServlet extends HttpServlet {
 					}
 				}
 					
-				} catch (IOException e) {
+				} catch (IOException |ServletException e) {
 			
 					e.getMessage();
 				}

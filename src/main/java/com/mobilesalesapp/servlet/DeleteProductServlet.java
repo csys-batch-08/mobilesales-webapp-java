@@ -23,7 +23,7 @@ public class DeleteProductServlet extends HttpServlet {
 			ProductImpl obj2 = new ProductImpl();
 			i = obj2.delete(obj1);
 		} catch (NumberFormatException e) {
-			e.printStackTrace();
+			e.getMessage();
 		}
 		
 			try(PrintWriter out=res.getWriter()) {

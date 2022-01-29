@@ -38,7 +38,7 @@ public class CartImpl implements CartDao {
 				}
 
 			} catch (SQLException e) {
-				e.printStackTrace();
+				e.getErrorCode();
 			}
 		}
 		return productName;
@@ -102,7 +102,7 @@ public class CartImpl implements CartDao {
 		} finally {
 			try {
 				if ( pre2 != null) {
-					pre.close();
+				
 					pre2.close();
 					con.close();
 				}

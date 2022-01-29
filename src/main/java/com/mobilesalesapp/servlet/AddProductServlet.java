@@ -33,7 +33,7 @@ public class AddProductServlet extends HttpServlet {
     	   
 			obj2.add(obj);
     	   }catch (NumberFormatException uhex) {
-    		   uhex.printStackTrace();
+    		   uhex.getMessage();
     		  }
 
 			 try {

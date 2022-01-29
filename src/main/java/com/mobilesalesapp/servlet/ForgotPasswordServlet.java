@@ -20,7 +20,7 @@ public class ForgotPasswordServlet extends HttpServlet {
 		try {
 			phone=Long.parseLong(request.getParameter("phone_number"));
 		} catch (NumberFormatException e) {
-			e.printStackTrace();
+			e.getMessage();
 		}
 		String password=request.getParameter("password");
 		RegisterPojo reg=new RegisterPojo();

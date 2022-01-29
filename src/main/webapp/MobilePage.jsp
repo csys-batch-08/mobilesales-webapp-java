@@ -263,17 +263,19 @@ body {
 		<br> <br> <br> <br>
 
 
-		<table aria-describedby="Show All home places">
+		<table aria-describedby="Show All home places" >
 			<tbody>
+			
 				<tr>
+				
 					<c:set var="count" value="1" />
 					<c:forEach items="${sessionScope.productList}" var="productList">
 						<td>
-							<table aria-describedby="Show All home places" id="pets">
+							<table aria-describedby="Show All home places" id="pets"  >
 								<tbody>
 									<!-- Pet Image -->
 									<tr>
-										<td><img src="${productList.url}" alt="petimage"></td>
+										<th><img src="${productList.url}" alt="petimage"></th>
 
 
 										<td>

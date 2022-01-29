@@ -64,8 +64,17 @@ public class UserImpl implements UserDao {
 		} catch (SQLException e) {
 			e.getErrorCode();
 
+			}finally {
+			try {
+				if(pre!=null) {
+					pre.close();
+					con.close();
+				}
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
 			}
-		
+			}
 
 		return registerPojo;
 
