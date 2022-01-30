@@ -37,7 +37,7 @@ public class UpdateUserServlet extends HttpServlet {
 			userId =Integer.parseInt( session.getAttribute("userId").toString());
 			userPhone=Long.parseLong( request.getParameter("userPhone"));
 		}catch (NumberFormatException e) {
-			e.printStackTrace();
+			e.getMessage();
 		}
 		String email=request.getParameter("userEmail");
 		RegisterPojo registerPojo=new RegisterPojo(name,email,userPhone,null);

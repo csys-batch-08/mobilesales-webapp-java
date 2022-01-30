@@ -265,7 +265,8 @@ body {
 
 		<table aria-describedby="Show All home places" >
 			<tbody>
-			
+			<tr>
+			<th><p style="visibility: hidden;">empty</p></th></tr>
 				<tr>
 				
 					<c:set var="count" value="1" />

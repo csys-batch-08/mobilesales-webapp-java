@@ -15,7 +15,7 @@ public class ConnectionUtil {
 			con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe",userName ,password);
 		} catch (Exception e) {
 	
-			e.printStackTrace();
+			e.getMessage();
 		}
 		return con;
 

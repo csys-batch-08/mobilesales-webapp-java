@@ -21,17 +21,30 @@ public class OrderImpl implements OrderDao {
 		String query = "update users_table set wallet = wallet-? where pk_user_id=? and password=?";
 		PreparedStatement pre = null;
 		PreparedStatement pre1 = null;
+		ResultSet rs=null;
+		double wallet = 0;
 		try {
 			pre = con.prepareStatement(query2);
 			pre.setInt(1, obj1.getUserId());
-			ResultSet rs = pre.executeQuery();
-
-			// get Wallet code
-
-			double wallet = 0;
+			rs = pre.executeQuery();
 			if (rs.next()) {
 				wallet = rs.getDouble(1);
 			}
+		} catch (SQLException e) {
+
+			e.getErrorCode();
+
+		}finally {
+			try {
+				if (pre != null ) {
+					pre.close();
+				}
+
+			} catch (SQLException e) {
+				e.getErrorCode();
+			}
+		}
+		try {
 			if (wallet > obj1.getPrice()) {
 
 				pre1 = con.prepareStatement(query);
@@ -51,8 +64,8 @@ public class OrderImpl implements OrderDao {
 
 		}finally {
 			try {
-				if (pre != null && pre1 != null) {
-					pre.close();
+				if (pre1 != null) {
+					
 					pre1.close();
 					con.close();
 				}
