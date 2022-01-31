@@ -3,14 +3,14 @@ package com.mobilesalesapp.util;
 
 
 public class EncryptionAndDecryption {
-	private  String password;
+	private  String cred;
 	private  char[] chars;
 	private char[] let;
 	private String encryptedPassword;
 	
 	EncryptionAndDecryption() {
-		password="oracle";
-		chars=password.toCharArray();
+		cred="oracle";
+		chars=cred.toCharArray();
 		let=new char[chars.length];
 		
 		int i=0;
@@ -32,8 +32,7 @@ public class EncryptionAndDecryption {
 			let[i]=c;
 			i++;
 		}
-		String decryptedPassword=String.valueOf(let);
-		return decryptedPassword;
+		return String.valueOf(let);
 	}
 
 }
