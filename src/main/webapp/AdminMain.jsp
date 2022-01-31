@@ -104,7 +104,7 @@ width: 200px;
 		<div class="add_con">
 		<div class="btn btn-block"> 
 			<br> <a  class="btn btn-secondary " style="margin-left: 40px"
-				href="AddProduct.jsp">Add Products</a><br>
+				href="addProduct.jsp">Add Products</a><br>
 			
 		
 			<br> <a class="btn btn-secondary btn-block" style="margin-left: 40px"

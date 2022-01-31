@@ -9,9 +9,10 @@ public class ConnectionUtil {
 	public static Connection connect() {
 		Connection con = null;
 		try {
+			EncryptionAndDecryption encrypt=new EncryptionAndDecryption();
 			Class.forName("oracle.jdbc.OracleDriver");
 			String userName="system";
-			String password= "oracle";
+			String password= encrypt.decryt();
 			con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe",userName ,password);
 		} catch (Exception e) {
 	
