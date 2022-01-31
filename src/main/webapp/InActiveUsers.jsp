@@ -128,6 +128,7 @@ margin-left: 50px;
 		
 		<table aria-describedby="Show All home places" id="inActive" >
 			<tr style="background-color: cornflowerblue">
+				<th>Serial No</th>
 				<th>Name</th>
 				<th>Email</th>
 				<th>Phone Number</th>
@@ -136,10 +137,12 @@ margin-left: 50px;
 				<th>Action</th>
 
 			</tr>
+			<c:set var="serialNumber" value="1" scope="page"></c:set>
 			<c:forEach items="${inactiveUserDetails}" var="inactiveUserDetails">
 
 
 			<tr>
+				<td>${serialNumber}</td>
 				<td>${inactiveUserDetails.name }</td>
 				<td>${inactiveUserDetails.email}</td>
 				<td>${inactiveUserDetails.phoneNumber}</td>
@@ -151,6 +154,7 @@ margin-left: 50px;
 				</td>
 
 			</tr>
+			<c:set var="serialNumber" value="${serialNumber+1 }" scope="page"></c:set>
 			</c:forEach>
 		</table>
 	</div>

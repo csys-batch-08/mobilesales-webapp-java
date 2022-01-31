@@ -125,6 +125,7 @@ width: 90%; margin-left: 50px;
 		
 		<table aria-describedby="Show All home places" id="user" class="table table-hover table-striped" >
 			<tr style="background-color: cornflowerblue">
+				<th>Serial No</th>
 				<th>Name</th>
 				<th>Email</th>
 				<th>Phone Number</th>
@@ -134,9 +135,11 @@ width: 90%; margin-left: 50px;
 				<th>Inactive</th>
 
 			</tr>
+			<c:set var="serialNumber" value="1" scope="page"></c:set>
 			<c:forEach items="${userDetails}" var="u">
 
 			<tr>
+				<td>${serialNumber}</td>
 				<td>${u.name}</td>
 				<td>${u.email}</td>
 				<td>${u.phoneNumber}</td>
@@ -153,6 +156,7 @@ width: 90%; margin-left: 50px;
 				</td>
 
 			</tr>
+			<c:set var="serialNumber" value="${serialNumber+1 }" scope="page"></c:set>
 			</c:forEach>
 		</table>
 	</div>

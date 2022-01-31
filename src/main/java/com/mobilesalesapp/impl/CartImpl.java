@@ -12,13 +12,13 @@ public class CartImpl implements CartDao {
 
 	public String checkCart(CartPojo cart) {
 		Connection con = ConnectionUtil.connect();
-		String query = "select cart_id,user_id,product_id,product_name,description,price,url from carts_table where user_id=? and product_id=?";
+		String checkCartquery = "select cart_id,user_id,product_id,product_name,description,price,url from carts_table where user_id=? and product_id=?";
 		ResultSet rs = null;
 		PreparedStatement pre = null;
 		String productName = null;
 
 		try {
-			pre = con.prepareStatement(query);
+			pre = con.prepareStatement(checkCartquery);
 			pre.setInt(1, cart.getUserId());
 			pre.setInt(2, cart.getProductId());
 			rs = pre.executeQuery();
@@ -48,18 +48,18 @@ public class CartImpl implements CartDao {
 	public void addCart(CartPojo cartPojo) {
 
 		Connection con = ConnectionUtil.connect();
-		String query = "select product_name,description,list_price,url from products where pk_product_id=?";
+		String addCartquery = "select product_name,description,list_price,url from products where pk_product_id=?";
 		String productName = null;
 		String url = null;
 		String description = null;
 		double price = 0;
-		PreparedStatement pre = null;
 		PreparedStatement pre2 = null;
+		PreparedStatement pre3 = null;
 		try {
-			pre = con.prepareStatement(query);
+			pre2 = con.prepareStatement(addCartquery);
 
-			pre.setInt(1, cartPojo.getProductId());
-			ResultSet rs = pre.executeQuery();
+			pre2.setInt(1, cartPojo.getProductId());
+			ResultSet rs = pre2.executeQuery();
 
 			if (rs.next()) {
 				productName = rs.getString(1);
@@ -73,8 +73,8 @@ public class CartImpl implements CartDao {
 
 		} finally {
 			try {
-				if (pre != null) {
-					pre.close();
+				if (pre2 != null) {
+					pre2.close();
 					con.close();
 				}
 
@@ -84,26 +84,26 @@ public class CartImpl implements CartDao {
 		}
 		try {
 
-			String query3 = "insert into carts_table(user_id,product_id,product_name,description,price,url) values(?,?,?,?,?,?)";
-			pre2 = con.prepareStatement(query3);
-			pre2.setInt(1, cartPojo.getUserId());
-			pre2.setInt(2, cartPojo.getProductId());
-			pre2.setString(3, productName);
-			pre2.setString(4, description);
-			pre2.setDouble(5, price);
-			pre2.setString(6, url);
-			pre2.executeUpdate();
+			String addCartInsertquery = "insert into carts_table(user_id,product_id,product_name,description,price,url) values(?,?,?,?,?,?)";
+			pre3 = con.prepareStatement(addCartInsertquery);
+			pre3.setInt(1, cartPojo.getUserId());
+			pre3.setInt(2, cartPojo.getProductId());
+			pre3.setString(3, productName);
+			pre3.setString(4, description);
+			pre3.setDouble(5, price);
+			pre3.setString(6, url);
+			pre3.executeUpdate();
 
-			pre2.executeUpdate("commit");
+			pre3.executeUpdate("commit");
 
 		} catch (SQLException e) {
 			e.getErrorCode();
 
 		} finally {
 			try {
-				if ( pre2 != null) {
+				if ( pre3 != null) {
 				
-					pre2.close();
+					pre3.close();
 					con.close();
 				}
 

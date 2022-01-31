@@ -178,6 +178,7 @@ margin-left: 60px;
     <table aria-describedby="Show All home places" id="product" class="table table-hover table-striped" >
     
     <tr style="background-color: cornflowerblue" >
+    <th>Serial No</th>
      <th>Product</th>
     <th>Product Name</th>
     <th>Description</th>
@@ -185,10 +186,11 @@ margin-left: 60px;
     <th>View</th>
   	<th>Action</th>
     </tr>
-   
+   <c:set var="serialNumber" value="1" scope="page"></c:set>
    <c:forEach items="${sessionScope.listCart}" var="listCarts">
    
     <tr>
+    <td>${serialNumber}</td>
     <td><img alt="img" src="${listCarts.url}" width="100px"> </td>
     <td>${listCarts.productName}</td>
     <td>${listCarts.description}</td>
@@ -197,6 +199,7 @@ margin-left: 60px;
     <td><a class="btn btn-danger" href="cartDelete?product_id=${listCarts.productId}&userId=${listCarts.userId}">Delete </a></td>
    
     </tr>
+    <c:set var="serialNumber" value="${serialNumber+1 }" scope="page"></c:set>
   </c:forEach>
   </c:if>
      <c:if test="${userId==null}">

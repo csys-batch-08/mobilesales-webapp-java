@@ -159,6 +159,7 @@ width: 85%;margin-left: 70px;
 
  <table aria-describedby="Show All home places" id="conatct" class="table table-hover table-striped" >
     <tr style="background-color: cornflowerblue">
+      <th>Serial No</th>
      <th>Name</th>
     <th>Email</th>
     <th>Phone_number</th>
@@ -167,17 +168,19 @@ width: 85%;margin-left: 70px;
   
     </tr>
    
-  
+  	   <c:set var="serialNumber" value="1" scope="page"></c:set>
      <c:forEach items="${viewContact}" var="v">
      
      
     
 	<tr>
+	<td>${serialNumber}</td>
 	<td>${v.name}</td>
 	<td>${v.email}</td>
 	<td>${v.phoneNumber}</td>
 	<td>${v.description}</td>
 	</tr>
+	<c:set var="serialNumber" value="${serialNumber+1 }" scope="page"></c:set>
    </c:forEach>
 
     </table>

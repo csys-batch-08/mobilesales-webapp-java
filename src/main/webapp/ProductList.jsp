@@ -107,7 +107,7 @@ background-color:cornsilk;
 
 	<table aria-describedby="Show All home places" id="product" class="table table-hover table-striped" >
 		<tr style="background-color: cornflowerblue">
-			<th>Product Id</th>
+			<th>Serial No</th>
 			<th>Product Name</th>
 			<th>Description</th>
 			<th>Standard Price</th>
@@ -115,11 +115,11 @@ background-color:cornsilk;
 			<th>Update</th>
 			<th>Delete</th>
 		</tr>
-		
+		<c:set var="serialNumber" value="1" scope="page"></c:set>
 		<c:forEach items="${viewProducts}" var="viewProducts">
-
+		
 		<tr>
-			<td>${viewProducts.id}</td>
+			<td>${serialNumber}</td>
 			<td>${viewProducts.productName}</td>
 			<td>${viewProducts.description}</td>
 			<td>${viewProducts.standardCost}</td>
@@ -154,6 +154,7 @@ background-color:cornsilk;
 				</form>
 			</td>
 		</tr>
+		<c:set var="serialNumber" value="${serialNumber+1 }" scope="page"></c:set>
 		</c:forEach>
 	</table>
 

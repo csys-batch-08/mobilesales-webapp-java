@@ -224,7 +224,7 @@ width: 90%;
 	<table aria-describedby="Show All home places" id="product" class="table table-hover table-striped" >
 	
 		<tr style="background-color:cornflowerblue ">
-			
+			<th>Serial No</th>
 			<th>Product</th>
 			<th>Order Status</th>
 			<th>Price</th>
@@ -235,10 +235,11 @@ width: 90%;
 
 
 
-
+	<c:set var="serialNumber" value="1" scope="page"></c:set>
 		<c:forEach items="${sessionScope.orderList}" var="orderList">
 		<tr>
 			<jsp:useBean id="url" class="com.mobilesalesapp.impl.OrderImpl"></jsp:useBean>
+			<td>${serialNumber}</td>
 			<td><img width="110px;" alt="${orderList.productId}" src="${url.getUrl(orderList.productId)}"> </td>
 			<td>${orderList.status}</td>
 			<td>${orderList.price }</td>
@@ -256,7 +257,7 @@ width: 90%;
 				
 			</td>
 		</tr>
-
+			<c:set var="serialNumber" value="${serialNumber+1 }" scope="page"></c:set>
 		</c:forEach>
 
 

@@ -108,8 +108,8 @@ width: 300px;
 				<br>
 				<button class="btn btn-primary btn-block" type="submit">Login
 				</button><br>
-				<br> <a class="btn btn-primary btn-block" href="Register.jsp">Register</a><br>
-				<br> <a style="margin-left: 80px;"  href="ForgotPassword.jsp">Forgot
+				<br> <a class="btn btn-primary btn-block" href="register.jsp">Register</a><br>
+				<br> <a style="margin-left: 80px;"  href="forgotPassword.jsp">Forgot
 					password</a><br> <br>
 					<c:if test="${loginError!=null}">
 					<h6 style="color: red ; margin-left: 60px;">${loginError}</h6>
