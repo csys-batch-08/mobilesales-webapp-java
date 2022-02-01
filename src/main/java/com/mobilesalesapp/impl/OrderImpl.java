@@ -124,8 +124,8 @@ public class OrderImpl implements OrderDao {
 			rs = pre.executeQuery();
 			while (rs.next()) {
 
-				OrderPojo orders = new OrderPojo(rs.getInt(6), rs.getInt(7), rs.getInt(1), rs.getString(2),
-						rs.getDouble(3), rs.getDate(4), rs.getString(5));
+				OrderPojo orders = new OrderPojo(rs.getInt("fk_product_id"), rs.getInt("fk_user_id"), rs.getInt("order_id"), rs.getString("status"),
+						rs.getDouble("price"), rs.getDate("order_date"), rs.getString("address"));
 
 				orderList1.add(orders);
 			}
@@ -161,8 +161,8 @@ public class OrderImpl implements OrderDao {
 
 			while (rs.next()) {
 		
-				OrderPojo orders = new OrderPojo(rs.getInt(6), rs.getInt(7), rs.getInt(1), rs.getString(2),
-						rs.getDouble(3), rs.getDate(4), rs.getString(5));
+				OrderPojo orders = new OrderPojo(rs.getInt("fk_product_id"), rs.getInt("fk_user_id"), rs.getInt("order_id"), rs.getString("status"),
+						rs.getDouble("price"), rs.getDate("order_date"), rs.getString("address"));
 
 				orderList1.add(orders);
 			

@@ -23,7 +23,7 @@ public class CartImpl implements CartDao {
 			pre.setInt(2, cart.getProductId());
 			rs = pre.executeQuery();
 			while (rs.next()) {
-				productName = rs.getString(4);
+				productName = rs.getString("product_name");
 
 			}
 		} catch (SQLException e) {
@@ -62,10 +62,10 @@ public class CartImpl implements CartDao {
 			ResultSet rs = pre2.executeQuery();
 
 			if (rs.next()) {
-				productName = rs.getString(1);
-				description = rs.getString(2);
-				price = rs.getDouble(3);
-				url = rs.getString(4);
+				productName = rs.getString("product_name");
+				description = rs.getString("description");
+				price = rs.getDouble("list_price");
+				url = rs.getString("url");
 
 			}
 		} catch (SQLException e) {
@@ -152,8 +152,8 @@ public class CartImpl implements CartDao {
 			ResultSet rs = pre.executeQuery();
 			while (rs.next()) {
 
-				CartPojo cart = new CartPojo(rs.getInt(1), rs.getInt(2), rs.getInt(3), rs.getString(4), rs.getString(5),
-						rs.getDouble(6), rs.getString(7));
+				CartPojo cart = new CartPojo(rs.getInt("cart_id"), rs.getInt("user_id"), rs.getInt("product_id"), rs.getString("product_name"), rs.getString("product_name"),
+						rs.getDouble("price"), rs.getString("url"));
 				cartList.add(cart);
 			}
 		} catch (SQLException e) {

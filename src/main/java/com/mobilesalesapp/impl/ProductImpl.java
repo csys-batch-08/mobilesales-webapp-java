@@ -109,7 +109,7 @@ public class ProductImpl implements ProductDao {
 			pre=con.prepareStatement(query);
 			rs = pre.executeQuery();
 			while(rs.next()) {
-				ProductPojo productPojo=new ProductPojo(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getDouble(4),rs.getDouble(5),rs.getString(6));
+				ProductPojo productPojo=new ProductPojo(rs.getInt("pk_product_id"),rs.getString("product_name"),rs.getString("description"),rs.getDouble("standard_price"),rs.getDouble("list_price"),rs.getString("url"));
 				productList.add(productPojo);
 			}
 		} catch (SQLException e) {
@@ -140,7 +140,7 @@ public class ProductImpl implements ProductDao {
 			pre.setInt(1, productId);
 			rs = pre.executeQuery();
 			while(rs.next()) {
-				ProductPojo productPojo=new ProductPojo(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getDouble(4),rs.getDouble(5),rs.getString(6));
+				ProductPojo productPojo=new ProductPojo(rs.getInt("pk_product_id"),rs.getString("product_name"),rs.getString("description"),rs.getDouble("standard_price"),rs.getDouble("list_price"),rs.getString("url"));
 				productList.add(productPojo);
 			}
 		} catch (SQLException e) {
@@ -170,7 +170,7 @@ public class ProductImpl implements ProductDao {
 			
 			ResultSet rs = pre.executeQuery();
 			while(rs.next()) {
-				ProductPojo productPojo=new ProductPojo(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getDouble(4),rs.getDouble(5),rs.getString(6));
+				ProductPojo productPojo=new ProductPojo(rs.getInt("pk_product_id"),rs.getString("product_name"),rs.getString("description"),rs.getDouble("standard_price"),rs.getDouble("standard_price"),rs.getString("url"));
 				productList.add(productPojo);
 			}
 		} catch (SQLException e) {

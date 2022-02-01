@@ -127,7 +127,7 @@ public class AdminImpl implements AdminDao  {
 			pre3 = con.prepareStatement(viewContactUsquery);
 			 rs=pre3.executeQuery();
 			 while(rs.next()) {
-				 ContactUsPojo contactUsPojo=new ContactUsPojo(rs.getString(1),rs.getString(2),rs.getLong(3),rs.getString(4));
+				 ContactUsPojo contactUsPojo=new ContactUsPojo(rs.getString("name"),rs.getString("email"),rs.getLong("phone_number"),rs.getString("descriptions"));
 				 contact.add(contactUsPojo);
 			 }
 		} catch (SQLException e) {

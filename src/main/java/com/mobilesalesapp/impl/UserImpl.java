@@ -59,7 +59,7 @@ public class UserImpl implements UserDao {
 			rs = pre.executeQuery();
 			
 			while(rs.next()) {
-				registerPojo=new RegisterPojo(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getLong(4),rs.getDouble(5),rs.getString(6));
+				registerPojo=new RegisterPojo(rs.getInt("pk_user_id"),rs.getString("first_name"),rs.getString("email"),rs.getLong("phone_number"),rs.getDouble("wallet"),rs.getString("role"));
 			}
 		} catch (SQLException e) {
 			e.getErrorCode();
@@ -90,7 +90,7 @@ public class UserImpl implements UserDao {
 			pre= con.prepareStatement(query);
 			rs = pre.executeQuery();
 			while(rs.next()) {
-				RegisterPojo registerPojo=new RegisterPojo(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getLong(4),rs.getDouble(5));
+				RegisterPojo registerPojo=new RegisterPojo(rs.getInt("pk_user_id"),rs.getString("first_name"),rs.getString("email"),rs.getLong("phone_number"),rs.getDouble("wallet"));
 				userList.add(registerPojo);
 			}
 
@@ -122,7 +122,7 @@ public class UserImpl implements UserDao {
 			pre= con.prepareStatement(query);
 			ns = pre.executeQuery();			
 			while(ns.next()) {
-				RegisterPojo registerPojo=new RegisterPojo(ns.getInt(1),ns.getString(2),ns.getString(3),ns.getLong(4),ns.getString(5));
+				RegisterPojo registerPojo=new RegisterPojo(ns.getInt("pk_user_id"),ns.getString("first_name"),ns.getString("email"),ns.getLong("phone_number"),ns.getString("request"));
 				userList.add(registerPojo);
 			}
 
@@ -277,11 +277,11 @@ public class UserImpl implements UserDao {
 			 rs= pre.executeQuery();
 			 while(rs.next()) {
 					RegisterPojo registerPojo1=new RegisterPojo();
-					registerPojo1.setUserId(rs.getInt(1));
-					registerPojo1.setName(rs.getString(2));
-					registerPojo1.setEmail(rs.getString(3));
-					registerPojo1.setPhoneNumber(rs.getLong(4));
-					registerPojo1.setWallet(rs.getDouble(5));
+					registerPojo1.setUserId(rs.getInt("pk_user_id"));
+					registerPojo1.setName(rs.getString("first_name"));
+					registerPojo1.setEmail(rs.getString("email"));
+					registerPojo1.setPhoneNumber(rs.getLong("phone_number"));
+					registerPojo1.setWallet(rs.getDouble("wallet"));
 					userList.add(registerPojo1);
 				}
 		} catch (SQLException e) {
