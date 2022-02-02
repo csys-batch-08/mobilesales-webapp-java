@@ -123,15 +123,16 @@ public class OrderImpl implements OrderDao {
 			pre.setInt(1, orderPojo.getUserId());
 			rs = pre.executeQuery();
 			while (rs.next()) {
-
+				
 				OrderPojo orders = new OrderPojo(rs.getInt("fk_product_id"), rs.getInt("fk_user_id"), rs.getInt("order_id"), rs.getString("status"),
-						rs.getDouble("price"), rs.getDate("order_date"), rs.getString("address"));
+						rs.getDouble("price"), rs.getTimestamp("order_date").toLocalDateTime(), rs.getString("address"));
+				
 
 				orderList1.add(orders);
 			}
 
 		} catch (SQLException e) {
-			e.getErrorCode();
+			e.printStackTrace();
 
 		}finally {
 			try {
@@ -150,7 +151,7 @@ public class OrderImpl implements OrderDao {
 	public List<OrderPojo> searchAllOrders(OrderPojo orderPojo) {
 		List<OrderPojo> orderList1 = new ArrayList<>();
 		Connection con = ConnectionUtil.connect();
-		String query = "select order_id,status,price,trunc(order_date),address,fk_product_id,fk_user_id from orders_table where fk_user_id=? and to_char(trunc( order_date),'yyyy-mm-dd')=? order by order_date desc";
+		String query = "select fk_product_id,fk_user_id,order_id,status,price,order_date,address from orders_table where fk_user_id=? and to_char(trunc( order_date),'yyyy-mm-dd')=? order by order_date desc";
 		ResultSet rs = null;
 		PreparedStatement pre=null;
 		try {
@@ -158,17 +159,15 @@ public class OrderImpl implements OrderDao {
 			pre.setInt(1, orderPojo.getUserId());
 			pre.setString(2, orderPojo.getStrDate());
 			rs = pre.executeQuery();
-
 			while (rs.next()) {
 		
 				OrderPojo orders = new OrderPojo(rs.getInt("fk_product_id"), rs.getInt("fk_user_id"), rs.getInt("order_id"), rs.getString("status"),
-						rs.getDouble("price"), rs.getDate("order_date"), rs.getString("address"));
-
+						rs.getDouble("price"), rs.getTimestamp("order_date").toLocalDateTime(), rs.getString("address"));
 				orderList1.add(orders);
 			
 			}
 		} catch (SQLException e) {
-			e.getErrorCode();
+			e.printStackTrace();
 
 		}finally {
 			try {
@@ -176,9 +175,8 @@ public class OrderImpl implements OrderDao {
 					pre.close();
 					con.close();
 				}
-
 			} catch (SQLException e) {
-				e.getErrorCode();
+				e.printStackTrace();
 			}
 		}
 
@@ -205,7 +203,7 @@ public class OrderImpl implements OrderDao {
 			try {
 				if (pre2 != null ) {
 					pre2.close();
-					con.close();
+					
 				}
 
 			} catch (SQLException e) {

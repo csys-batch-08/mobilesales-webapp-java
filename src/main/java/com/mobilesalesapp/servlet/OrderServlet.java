@@ -1,5 +1,6 @@
 package com.mobilesalesapp.servlet;
 
+import com.mobilesalesapp.dao.OrderDao;
 import com.mobilesalesapp.exception.LowBalanceException;
 import com.mobilesalesapp.impl.OrderImpl;
 import com.mobilesalesapp.model.OrderPojo;
@@ -37,7 +38,7 @@ public class OrderServlet extends HttpServlet {
 		double price = Double.parseDouble( req.getParameter("total1"));
 
 		UpdateWalletPojo obj1 = new UpdateWalletPojo(userId, password, price);
-		OrderImpl orderDao = new OrderImpl();
+		OrderDao orderDao = new OrderImpl();
 		i = orderDao.updateWallet1(obj1);
 		
 

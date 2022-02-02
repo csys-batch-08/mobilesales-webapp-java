@@ -1,21 +1,24 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"  %>
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+	pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="ISO-8859-1">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+	rel="stylesheet">
 
 
 <title>ViewContactUs</title>
 </head>
 <style>
 table, th, td {
-  border: 1px solid black;
-  border-collapse: collapse;
-  padding: 20px;
+	border: 1px solid black;
+	border-collapse: collapse;
+	padding: 20px;
 }
+
 .h2_1 {
 	text-align: center;
 	background-color: bisque;
@@ -109,27 +112,32 @@ li a:hover {
 	margin-top: -270px;
 	font-size: 20px;
 }
-.but_log a{
-	text-decoration:none;
-	color:white;
- 	padding: 12px;
- 	margin-top:20px;
-    margin-left: 100px;
-    background-color: rgb(83, 83, 204);
-    border-radius: 20px;
 
+.but_log a {
+	text-decoration: none;
+	color: white;
+	padding: 12px;
+	margin-top: 20px;
+	margin-left: 100px;
+	background-color: rgb(83, 83, 204);
+	border-radius: 20px;
 }
-.but_log{
-margin-top:40px;
+
+.but_log {
+	margin-top: 40px;
 }
-body{
-background-color:cornsilk;
+
+body {
+	background-color: cornsilk;
 }
-table{
-background-color: rgb(248, 213, 168);
+
+table {
+	background-color: rgb(248, 213, 168);
 }
-#conatct{
-width: 85%;margin-left: 70px;
+
+#conatct {
+	width: 85%;
+	margin-left: 70px;
 }
 
 * {
@@ -137,10 +145,10 @@ width: 85%;margin-left: 70px;
 	padding: 0;
 }
 </style>
-<body >
+<body>
 	<h2 class="h2_1">Mobile Sales App</h2>
 
-	<div style="position: relative;top: -10px;" class="top_nav">
+	<div style="position: relative; top: -10px;" class="top_nav">
 
 		<ul>
 
@@ -151,39 +159,43 @@ width: 85%;margin-left: 70px;
 
 
 	</div>
-	<img style="border-radius: 100px;position: absolute;top:0px;left: 500px; " width="40px" alt="" src="assets/images/mobile112.png">
-	
-	<br><br>
+	<img
+		style="border-radius: 100px; position: absolute; top: 0px; left: 500px;"
+		width="40px" alt="" src="assets/images/mobile112.png">
+
+	<br>
+	<br>
 
 
 
- <table aria-describedby="Show All home places" id="conatct" class="table table-hover table-striped" >
-    <tr style="background-color: cornflowerblue">
-      <th>Serial No</th>
-     <th>Name</th>
-    <th>Email</th>
-    <th>Phone_number</th>
-    <th>Description</th>
-   
-  
-    </tr>
-   
-  	   <c:set var="serialNumber" value="1" scope="page"></c:set>
-     <c:forEach items="${viewContact}" var="v">
-     
-     
-    
-	<tr>
-	<td>${serialNumber}</td>
-	<td>${v.name}</td>
-	<td>${v.email}</td>
-	<td>${v.phoneNumber}</td>
-	<td>${v.description}</td>
-	</tr>
-	<c:set var="serialNumber" value="${serialNumber+1 }" scope="page"></c:set>
-   </c:forEach>
+	<table aria-describedby="Show All home places" id="conatct"
+		class="table table-hover table-striped">
+		<tr style="background-color: cornflowerblue">
+			<th>Serial No</th>
+			<th>Name</th>
+			<th>Email</th>
+			<th>Phone_number</th>
+			<th>Description</th>
 
-    </table>
+
+		</tr>
+
+		<c:set var="serialNumber" value="1" scope="page"></c:set>
+		<c:forEach items="${viewContact}" var="v">
+
+
+
+			<tr>
+				<td>${serialNumber}</td>
+				<td>${v.name}</td>
+				<td>${v.email}</td>
+				<td>${v.phoneNumber}</td>
+				<td>${v.description}</td>
+			</tr>
+			<c:set var="serialNumber" value="${serialNumber+1 }" scope="page"></c:set>
+		</c:forEach>
+
+	</table>
 
 </body>
 </html>

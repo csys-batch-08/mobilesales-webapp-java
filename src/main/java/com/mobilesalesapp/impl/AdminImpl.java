@@ -129,9 +129,9 @@ public class AdminImpl implements AdminDao  {
 			 while(rs.next()) {
 				 ContactUsPojo contactUsPojo=new ContactUsPojo(rs.getString("name"),rs.getString("email"),rs.getLong("phone_number"),rs.getString("descriptions"));
 				 contact.add(contactUsPojo);
+				 
 			 }
 		} catch (SQLException e) {
-			
 			e.getErrorCode();
 
 		}finally {

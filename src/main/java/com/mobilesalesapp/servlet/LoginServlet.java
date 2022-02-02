@@ -14,6 +14,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.mobilesalesapp.dao.ProductDao;
+import com.mobilesalesapp.dao.UserDao;
 import com.mobilesalesapp.impl.ProductImpl;
 import com.mobilesalesapp.impl.UserImpl;
 import com.mobilesalesapp.model.ProductPojo;
@@ -43,7 +45,7 @@ public class LoginServlet extends HttpServlet {
 		RegisterPojo login=new RegisterPojo();
 		login.setEmail(username);
 		login.setPassword(password);
-		UserImpl userDao=new UserImpl();
+		UserDao userDao=new UserImpl();
 	
 	
 			try(PrintWriter out=res.getWriter()) {
@@ -68,13 +70,13 @@ public class LoginServlet extends HttpServlet {
 				
 				if(role==null) {
 					
-					session.setAttribute("loginError", "invalid User or password");
+					session.setAttribute("loginError", "Invalid User or password");
 					res.sendRedirect("index.jsp");
 
 				}else {
 					if(role.equals("user")) {
 						
-						ProductImpl  productImpl = new ProductImpl();
+						ProductDao  productImpl = new ProductImpl();
 						List<ProductPojo> productList= productImpl.showAllProduct();
 						setSessionAttribute(session,"productList", (Serializable) productList);
 						

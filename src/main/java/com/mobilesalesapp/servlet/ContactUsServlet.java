@@ -2,6 +2,7 @@ package com.mobilesalesapp.servlet;
 
 import java.io.IOException;
 
+import com.mobilesalesapp.dao.UserDao;
 import com.mobilesalesapp.impl.UserImpl;
 import com.mobilesalesapp.model.ContactUsPojo;
 import javax.servlet.annotation.WebServlet;
@@ -24,7 +25,7 @@ public class ContactUsServlet extends HttpServlet {
 		String description=req.getParameter("description");
 		ContactUsPojo contactUsPojo=new ContactUsPojo(name,email,number,description);
 		
-		UserImpl userImpl=new UserImpl();
+		UserDao userImpl=new UserImpl();
 		userImpl.contactUs(contactUsPojo);
 		} catch (NumberFormatException e) {
 			e.getMessage();

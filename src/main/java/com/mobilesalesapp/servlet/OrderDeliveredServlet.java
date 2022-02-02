@@ -3,7 +3,7 @@ package com.mobilesalesapp.servlet;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-
+import com.mobilesalesapp.dao.OrderDao;
 import com.mobilesalesapp.impl.OrderImpl;
 import com.mobilesalesapp.model.OrderPojo;
 import javax.servlet.annotation.WebServlet;
@@ -27,7 +27,7 @@ public class OrderDeliveredServlet extends HttpServlet {
 		String status=req.getParameter("deliveryStatus");
 		if(status.equals("Placed")) {
 		OrderPojo orderPojo=new OrderPojo(0,orderId);
-		OrderImpl orderImpl=new OrderImpl();
+		OrderDao orderImpl=new OrderImpl();
 		orderImpl.deliveredCancel(orderPojo);
 		try {
 			PrintWriter out=res.getWriter();

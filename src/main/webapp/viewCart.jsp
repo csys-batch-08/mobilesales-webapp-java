@@ -199,8 +199,8 @@ margin-left: 60px;
     <td><a class="btn btn-danger" href="cartDelete?product_id=${listCarts.productId}&userId=${listCarts.userId}">Delete </a></td>
    
     </tr>
-    <c:set var="serialNumber" value="${serialNumber+1 }" scope="page"></c:set>
-  </c:forEach>
+				<c:set var="serialNumber" value="${serialNumber+1 }" scope="page"></c:set>
+			</c:forEach>
   </c:if>
      <c:if test="${userId==null}">
     	 <h1 style="color: red;margin-left: 500px;margin-top: 150px">Cart is Empty</h1>

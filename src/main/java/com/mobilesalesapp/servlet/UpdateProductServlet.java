@@ -3,6 +3,7 @@ package com.mobilesalesapp.servlet;
 import java.io.IOException;
 import java.io.Serializable;
 
+import com.mobilesalesapp.dao.ProductDao;
 import com.mobilesalesapp.impl.ProductImpl;
 import com.mobilesalesapp.model.ProductPojo;
 import javax.servlet.annotation.WebServlet;
@@ -35,7 +36,7 @@ public class UpdateProductServlet extends HttpServlet {
 
 		
 		ProductPojo obj1=new ProductPojo(productId,standardPrice,listPrice);
-		ProductImpl obj2=new ProductImpl();
+		ProductDao obj2=new ProductImpl();
 		obj2.update(obj1);
 		} catch (NumberFormatException e) {
 			e.getMessage();

@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.mobilesalesapp.dao.AdminDao;
 import com.mobilesalesapp.impl.AdminImpl;
 import com.mobilesalesapp.model.RegisterPojo;
 @WebServlet("/inActive")
@@ -20,7 +21,7 @@ public class InactiveServlet extends HttpServlet {
 			int userId=Integer.parseInt(request.getParameter("userId"));
 			RegisterPojo regPojo=new RegisterPojo();
 			regPojo.setUserId(userId);
-			AdminImpl adminImpl=new AdminImpl();
+			AdminDao adminImpl=new AdminImpl();
 			int i=adminImpl.userInActive(regPojo);
 			if(i>0) {
 				try {

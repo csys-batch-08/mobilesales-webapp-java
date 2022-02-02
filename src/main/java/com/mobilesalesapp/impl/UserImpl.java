@@ -58,7 +58,7 @@ public class UserImpl implements UserDao {
 			pre.setString(2, login.getPassword());
 			rs = pre.executeQuery();
 			
-			while(rs.next()) {
+			if(rs.next()) {
 				registerPojo=new RegisterPojo(rs.getInt("pk_user_id"),rs.getString("first_name"),rs.getString("email"),rs.getLong("phone_number"),rs.getDouble("wallet"),rs.getString("role"));
 			}
 		} catch (SQLException e) {
@@ -75,9 +75,7 @@ public class UserImpl implements UserDao {
 				e.getErrorCode();
 			}
 			}
-
 		return registerPojo;
-
 	}
 
 	public List<RegisterPojo> userDetails() {

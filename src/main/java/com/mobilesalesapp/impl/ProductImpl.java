@@ -163,19 +163,20 @@ public class ProductImpl implements ProductDao {
 		String query = "select pk_product_id,product_name,description,standard_price,list_price,url from products where lower(product_name) like ? ";
 		Connection con = ConnectionUtil.connect();
 		List<ProductPojo> productList=new ArrayList<>();
-		PreparedStatement pre=null; 
+		PreparedStatement pre=null;
 		try {
 			pre=con.prepareStatement(query);
 			pre.setString(1, product+"%");
 			
 			ResultSet rs = pre.executeQuery();
 			while(rs.next()) {
+			
 				ProductPojo productPojo=new ProductPojo(rs.getInt("pk_product_id"),rs.getString("product_name"),rs.getString("description"),rs.getDouble("standard_price"),rs.getDouble("standard_price"),rs.getString("url"));
 				productList.add(productPojo);
 			}
 		} catch (SQLException e) {
 
-			e.getErrorCode();
+			e.printStackTrace();
 	
 		}finally {
 			try {

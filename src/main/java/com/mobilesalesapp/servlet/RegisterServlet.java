@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.mobilesalesapp.dao.UserDao;
 import com.mobilesalesapp.exception.EmailException;
 import com.mobilesalesapp.impl.UserImpl;
 import com.mobilesalesapp.model.RegisterPojo;
@@ -33,11 +34,8 @@ public class RegisterServlet extends HttpServlet {
 			e.getMessage();
 		}
 		String password=req.getParameter("password");
-
-		
-			
 		RegisterPojo p=new RegisterPojo(name, email, phoneNumber, password);
-		UserImpl userDao=new UserImpl();
+		UserDao userDao=new UserImpl();
 		
 		
 		int i=userDao.register(p);

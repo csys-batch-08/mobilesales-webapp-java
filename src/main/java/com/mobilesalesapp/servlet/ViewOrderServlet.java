@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.mobilesalesapp.dao.OrderDao;
 import com.mobilesalesapp.impl.OrderImpl;
 
 import com.mobilesalesapp.model.OrderPojo;
@@ -36,12 +37,12 @@ public class ViewOrderServlet extends HttpServlet {
 			
 			int userId = Integer.parseInt(session.getAttribute("userId").toString());
 			OrderPojo orderPojo = new OrderPojo(userId);
-			OrderImpl order = new OrderImpl();
+			OrderDao order = new OrderImpl();
 			List<OrderPojo> orderList = order.viewAllOrders(orderPojo);
 			setSessionAttribute(session, "orderList", (Serializable) orderList);
 			setSessionAttribute(session, "userId1", userId);
 			
-	
+			
 			RequestDispatcher rd=request.getRequestDispatcher("viewOrders.jsp");
 			rd.forward(request, response);
 			

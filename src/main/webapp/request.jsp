@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,7 +8,9 @@
 <title>Request Page</title>
 
 
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+	rel="stylesheet">
 
 <style type="text/css">
 .text-info {
@@ -95,25 +97,23 @@ body {
 				<label class="c_lab" for="">Email</label><br> <input
 					autocomplete="off" autofocus class="c_user"
 					pattern="[a-z][a-z0-9_.]+@[a-z0-9.]+[.][a-z]+" readonly
-					title="Enter valid email ex(example12@gmail.com)" value="${email }" name="username"
-					type="email" required><br> <br> <label
+					title="Enter valid email ex(example12@gmail.com)" value="${email }"
+					name="username" type="email" required><br> <br> <label
 					class="c_lab" for="">Reason</label><br> <input
-					autocomplete="off" class="c_user"
-					pattern="[A-Za-z.\s]{3,80}"
-					title="Enter valid character"
-					name="reason" type="text" required><br> <br>
-				<br>
-				<button style="margin-left: 100px;" class="btn btn-primary btn-block" type="submit">Submit
-				</button>
-				
+					autocomplete="off" class="c_user" pattern="[A-Za-z.\s]{3,80}"
+					title="Enter valid character" name="reason" type="text" required><br>
+				<br> <br>
+				<button style="margin-left: 100px;"
+					class="btn btn-primary btn-block" type="submit">Submit</button>
 
 
-		
+
+
 
 			</form>
 
 
-			
+
 		</div>
 	</div>
 

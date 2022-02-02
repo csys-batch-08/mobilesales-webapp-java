@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.mobilesalesapp.dao.CartDao;
 import com.mobilesalesapp.impl.CartImpl;
 import com.mobilesalesapp.model.CartPojo;
 
@@ -34,7 +35,7 @@ public class ViewCartServlet extends HttpServlet {
 		int userId=Integer.parseInt( session.getAttribute("userId").toString());
 		CartPojo cartPojo=new CartPojo();
 		cartPojo.setUserId(userId);
-		CartImpl cartImpl=new CartImpl();
+		CartDao cartImpl=new CartImpl();
 
 		List<CartPojo> listCart= cartImpl.viewAllCart(cartPojo);
 		setSessionAttribute(session,"listCart", (Serializable) listCart);

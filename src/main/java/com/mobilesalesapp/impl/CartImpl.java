@@ -75,7 +75,7 @@ public class CartImpl implements CartDao {
 			try {
 				if (pre2 != null) {
 					pre2.close();
-					con.close();
+					
 				}
 
 			} catch (SQLException e) {
@@ -83,7 +83,7 @@ public class CartImpl implements CartDao {
 			}
 		}
 		try {
-
+			
 			String addCartInsertquery = "insert into carts_table(user_id,product_id,product_name,description,price,url) values(?,?,?,?,?,?)";
 			pre3 = con.prepareStatement(addCartInsertquery);
 			pre3.setInt(1, cartPojo.getUserId());
@@ -93,11 +93,11 @@ public class CartImpl implements CartDao {
 			pre3.setDouble(5, price);
 			pre3.setString(6, url);
 			pre3.executeUpdate();
-
+		
 			pre3.executeUpdate("commit");
 
 		} catch (SQLException e) {
-			e.getErrorCode();
+			e.printStackTrace();
 
 		} finally {
 			try {
@@ -108,7 +108,7 @@ public class CartImpl implements CartDao {
 				}
 
 			} catch (SQLException e) {
-				e.getErrorCode();
+				e.printStackTrace();
 			}
 		}
 

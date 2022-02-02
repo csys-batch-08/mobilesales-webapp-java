@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.mobilesalesapp.dao.ProductDao;
 import com.mobilesalesapp.impl.ProductImpl;
 import com.mobilesalesapp.model.ProductPojo;
 
@@ -28,7 +29,7 @@ public class ViewProductServlet extends HttpServlet {
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		HttpSession session=req.getSession();	
-		ProductImpl product=new ProductImpl();
+		ProductDao product=new ProductImpl();
 		List<ProductPojo> viewProducts =product.showAllProduct();
 
 		setSessionAttribute(session, "viewProducts", (Serializable) viewProducts);

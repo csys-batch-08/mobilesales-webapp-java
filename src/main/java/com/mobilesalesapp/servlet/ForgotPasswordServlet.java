@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.mobilesalesapp.dao.UserDao;
 import com.mobilesalesapp.impl.UserImpl;
 import com.mobilesalesapp.model.RegisterPojo;
 @WebServlet("/forgotPassword")
@@ -27,7 +28,7 @@ public class ForgotPasswordServlet extends HttpServlet {
 		reg.setEmail(email);
 		reg.setPhoneNumber(phone);
 		reg.setPassword(password);
-		UserImpl userImpl=new UserImpl();
+		UserDao userImpl=new UserImpl();
 		int i=userImpl.forgotPassword(reg);
 		if(i>0) {
 			

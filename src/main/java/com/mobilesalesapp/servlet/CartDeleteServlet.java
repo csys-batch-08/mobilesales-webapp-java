@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.mobilesalesapp.dao.CartDao;
 import com.mobilesalesapp.impl.CartImpl;
 import com.mobilesalesapp.model.CartPojo;
 
@@ -35,7 +36,7 @@ public class CartDeleteServlet extends HttpServlet {
 		
 		CartPojo cartPojo=new CartPojo(userId,productId);
 		
-		CartImpl cartImpl=new CartImpl();
+		CartDao cartImpl=new CartImpl();
 		cartImpl.deleteCart(cartPojo);
 		List<CartPojo> listCart= cartImpl.viewAllCart(cartPojo);
 		setSessionAttribute(session,"listCart" , (Serializable) listCart);

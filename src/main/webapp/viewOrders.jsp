@@ -1,15 +1,18 @@
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1" %>
-	 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-	 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+	pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="ISO-8859-1">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-
-
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+	rel="stylesheet">
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<script type="text/javascript" src="assets/javascript/orderScript.js"></script>
 <title>ViewOrders</title>
 </head>
 <style>
@@ -155,19 +158,22 @@ li a:hover {
 	background-color: lightblue;
 	border-radius: 22px;
 }
-body{
-background-color: cornsilk;
+
+body {
+	background-color: cornsilk;
 }
 
 .btn_add:hover {
 	background-color: cornflowerblue;
 }
-table{
-background-color: rgb(248, 213, 168);
+
+table {
+	background-color: rgb(248, 213, 168);
 }
-#product{
-width: 90%;
- margin-left: 60px;
+
+#product {
+	width: 90%;
+	margin-left: 60px;
 }
 
 * {
@@ -175,13 +181,13 @@ width: 90%;
 	padding: 0;
 }
 </style>
-<body  >
+<body>
 	<h2 class="h2_1">Mobile Sales App</h2>
 
-	<div style="position: relative;top: -10px;" class="top_nav">
+	<div style="position: relative; top: -10px;" class="top_nav">
 
 		<ul>
-				<li><a  href="MobilePage">Home</a></li>
+			<li><a href="MobilePage">Home</a></li>
 			<li><a class="active" href="ViewOrders1">My Orders</a></li>
 			<li><a href="ViewCart">Cart</a></li>
 			<li><a href="MyProfile">My Profile</a></li>
@@ -195,18 +201,19 @@ width: 90%;
 
 
 	</div>
-	<img style="border-radius: 100px;position: absolute;top:0px;left: 500px; " width="40px" alt="" src="assets/images/mobile112.png">
-	
+	<img
+		style="border-radius: 100px; position: absolute; top: 0px; left: 500px;"
+		width="40px" alt="" src="assets/images/mobile112.png">
+
 	<br>
 	<br>
 
-	
+
 
 
 	<div class="searchPro">
 		<form action="SearchOrder">
-			<input type="date" id="search" name="OrderDate" 
-				 required >
+			<input type="date" id="search" name="OrderDate" required>
 			<button class="btn btn-primary" type="submit">Search</button>
 		</form>
 	</div>
@@ -215,92 +222,97 @@ width: 90%;
 	<br>
 	<script type="text/javascript">
 		let today = new Date().toISOString().slice(0, 10);
-	
+
 		console.log(today);
-		document.getElementById("search").max =today;
-		
+		document.getElementById("search").max = today;
 	</script>
-<c:if test="${sessionScope.userId1!=null}">
-	<table aria-describedby="Show All home places" id="product" class="table table-hover table-striped" >
-	
-		<tr style="background-color:cornflowerblue ">
-			<th>Serial No</th>
-			<th>Product</th>
-			<th>Order Status</th>
-			<th>Price</th>
-			<th>Order Date</th>
-			<th>Delivery Address</th>
-			<th>Cancel Order</th>
-		</tr>
+	<c:if test="${sessionScope.userId1!=null}">
+		<table aria-describedby="Show All home places" id="product"
+			class="table table-hover table-striped">
+
+			<tr style="background-color: cornflowerblue">
+				<th>Serial No</th>
+				<th>Product</th>
+				<th>Order Status</th>
+				<th>Price</th>
+				<th>Order Date</th>
+				<th>Delivery Address</th>
+				<th>Cancel Order</th>
+			</tr>
 
 
 
-	<c:set var="serialNumber" value="1" scope="page"></c:set>
-		<c:forEach items="${sessionScope.orderList}" var="orderList">
-		<tr>
-			<jsp:useBean id="url" class="com.mobilesalesapp.impl.OrderImpl"></jsp:useBean>
-			<td>${serialNumber}</td>
-			<td><img width="110px;" alt="${orderList.productId}" src="${url.getUrl(orderList.productId)}"> </td>
-			<td>${orderList.status}</td>
-			<td>${orderList.price }</td>
-			<td><fmt:parseDate value="${orderList.date}" pattern="yyyy-MM-dd" var="orderDate" type="date"/>
-			<fmt:formatDate pattern="dd/MM/yyyy" value="${orderDate}"/></td>
-			<td>${orderList.address}</td>
-			<td>
-			
-			
-					Order Id :<input type="text" name="cancelId"
-						value="${orderList.orderId }" readonly><br>
-					<br>
-
-					<button class="btn btn-danger" type="submit" onclick="Cancel('${orderList.status}','${orderList.orderId }','${orderList.price }','${orderList.userId}')" class="btn_add">Cancel</button>
-				
-			</td>
-		</tr>
-			<c:set var="serialNumber" value="${serialNumber+1 }" scope="page"></c:set>
-		</c:forEach>
+			<c:set var="serialNumber" value="1" scope="page"></c:set>
+			<c:forEach items="${sessionScope.orderList}" var="orderList">
+				<tr>
+					<jsp:useBean id="url" class="com.mobilesalesapp.impl.OrderImpl"></jsp:useBean>
+					<td>${serialNumber}</td>
+					<td><img width="110px;" alt="${orderList.productId}"
+						src="${url.getUrl(orderList.productId)}"></td>
+					<td>${orderList.status}</td>
+					<td>${orderList.price }</td>
+					<td><fmt:parseDate value="${orderList.date}"
+							pattern="yyyy-MM-dd'T'HH:mm" var="orderDate" type="both" /> <fmt:formatDate
+							pattern="dd-MM-yyyy HH:mm" value="${orderDate}" /></td>
+					<td>${orderList.address}</td>
+					<td>
 
 
 
-	</table>
-</c:if>
+						<div class="container mt-3">
+
+
+							<button type="button" class="btn btn-danger"
+								data-bs-toggle="modal" data-bs-target="#myModal">Cancel
+							</button>
+						</div>
+						<div class="modal fade" id="myModal">
+							<div class="modal-dialog">
+								<div class="modal-content">
+
+									<div class="modal-header">
+										<h4 class="modal-title">Cancel Order</h4>
+										<button type="button" class="btn-close"
+											data-bs-dismiss="modal"></button>
+									</div>
+
+
+									<div class="modal-body">
+										<div>
+											<input type="hidden" name="cancelId"
+												value="${orderList.orderId }" readonly><br>
+
+											<p>Do you want cancel your order</p>
+											<button class="btn btn-success" type="submit"
+												onclick="Cancel('${orderList.status}','${orderList.orderId }','${orderList.price }','${orderList.userId}')"
+												class="btn_add">Confirm</button>
+										</div>
+									</div>
+
+
+									<div class="modal-footer">
+										<button type="button" class="btn btn-danger"
+											data-bs-dismiss="modal">Close</button>
+									</div>
+
+								</div>
+							</div>
+						</div>
+
+					</td>
+				</tr>
+				<c:set var="serialNumber" value="${serialNumber+1 }" scope="page"></c:set>
+			</c:forEach>
+
+
+
+		</table>
+	</c:if>
 	<c:if test="${sessionScope.userId1==null}">
-	<h1 style="color: red; margin-left: 500px; margin-top: 150px">Order
-		is not placed yet</h1>
-</c:if>
-	<script type="text/javascript">
-	function Cancel(status,id,price,userId) {
-		console.log('on'+status,price+userId);
-		var url1="cancelOrder?orderStatus="+status+"&orderId="+id+"&price="+price+"&userId="+userId;
-		if(window.XMLHttpRequest){  
-    		request=new XMLHttpRequest();  
-    		}  
-    		else if(window.ActiveXObject){  
-    		request=new ActiveXObject("Microsoft.XMLHTTP");  
-    		} 
-	
-	   	try  
-    	{  
-    	request.onreadystatechange=getInfo;  
-    	request.open("GET",url1,true);  
-    	request.send();  
-    	}  
-    	catch(e)  
-    	{  
-    	alert("Unable to connect to server");  
-    	}
-        
-      
-    } 
-    
-    function getInfo(){  
-    	if(request.readyState==4){  
-    	var val=request.responseText;
-    	 alert(val);  
-    	}
-		
-	}
-	</script>
+		<h1 style="color: red; margin-left: 500px; margin-top: 150px">Order
+			is not placed yet</h1>
+	</c:if>
+
 
 
 

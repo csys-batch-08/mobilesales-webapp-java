@@ -2,7 +2,9 @@ package com.mobilesalesapp.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
 
+import com.mobilesalesapp.dao.CartDao;
 import com.mobilesalesapp.exception.CartException;
 import com.mobilesalesapp.impl.CartImpl;
 import com.mobilesalesapp.model.CartPojo;
@@ -27,7 +29,7 @@ public class CartServlet extends HttpServlet {
 		int userId=Integer.parseInt( session.getAttribute("userId").toString());
 
 		CartPojo cartPojo=new CartPojo(userId,productId);
-		CartImpl  cartDao=new CartImpl();
+		CartDao  cartDao=new CartImpl();
 		
 		String productName= cartDao.checkCart(cartPojo);
 		
@@ -49,6 +51,9 @@ public class CartServlet extends HttpServlet {
 			String message=e.cartSame();
 			write.print(message);
 
+		} catch (SQLException e) {
+
+			e.printStackTrace();
 		}
 		
 	}

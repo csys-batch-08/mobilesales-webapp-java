@@ -1,7 +1,9 @@
 package com.mobilesalesapp.model;
 
 
-import java.util.Date;
+
+import java.time.LocalDateTime;
+
 
 public class OrderPojo {
 	public OrderPojo(int userId) {
@@ -15,7 +17,7 @@ public class OrderPojo {
 	private int orderId;
 	private String status;
 	private double price;
-	private Date date;
+	private LocalDateTime date;
 	private String strDate;
 	private String address;
 	
@@ -36,7 +38,7 @@ public class OrderPojo {
 	}
 
 
-	public OrderPojo(int orderId, String status, double price, Date date, String address) {
+	public OrderPojo(int orderId, String status, double price, LocalDateTime date, String address) {
 		super();
 		this.orderId = orderId;
 		this.status = status;
@@ -46,7 +48,7 @@ public class OrderPojo {
 	}
 
 
-	public OrderPojo(int productId, int userId, int orderId, String status, double price, Date date, String address) {
+	public OrderPojo(int productId, int userId, int orderId, String status, double price, LocalDateTime date, String address) {
 		super();
 		this.productId = productId;
 		this.userId = userId;
@@ -57,7 +59,7 @@ public class OrderPojo {
 		this.address = address;
 	}
 
-
+	
 
 
 
@@ -74,17 +76,17 @@ public class OrderPojo {
 		this.status = status;
 	}
 
-	public OrderPojo(int userId, Date date) {
+	public OrderPojo(int userId, LocalDateTime date) {
 		super();
 		this.userId = userId;
 		this.date = date;
 	}
 
-	public Date getDate() {
+	public LocalDateTime getDate() {
 		return date;
 	}
 
-	public void setDate(Date date) {
+	public void setDate(LocalDateTime date) {
 		this.date = date;
 	}
 
@@ -158,6 +160,9 @@ public class OrderPojo {
 	public OrderPojo() {
 		super();
 	}
+
+
+	
 	
 	
 	

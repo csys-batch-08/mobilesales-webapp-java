@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.mobilesalesapp.dao.ProductDao;
 import com.mobilesalesapp.impl.ProductImpl;
 
 import com.mobilesalesapp.model.ProductPojo;
@@ -33,7 +34,7 @@ public class SearchMobileServlet extends HttpServlet {
 		String search=( request.getParameter("search")).toLowerCase();
 		HttpSession session=request.getSession();
 	
-		ProductImpl product=new ProductImpl();
+		ProductDao product=new ProductImpl();
 		List<ProductPojo> searchList = product.searchProduct(search);
 		setSessionAttribute(session,"productList", (Serializable) searchList);
 		RequestDispatcher rd=request.getRequestDispatcher("mobilePage.jsp");

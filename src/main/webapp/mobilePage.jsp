@@ -4,8 +4,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -162,19 +160,19 @@ li a:hover {
 	cursor: pointer;
 }
 
-#pets {
+#mobile {
 	margin-left: 75px;
 	margin-top: 20px;
 	line-height: 2;
 	font-size: 20px;
 }
 
-#pets p {
+#mobile p {
 	margin-left: 40px;
 	font-weight: bold;
 }
 
-#pets button {
+#mobile button {
 	margin-left: 50px;
 	margin-top: 5px;
 	width: 120px;
@@ -188,12 +186,12 @@ li a:hover {
 	box-shadow: 0 0 5px black;
 }
 
-#pets button:hover {
+#mobile button:hover {
 	background-color: white;
 	color: black;
 }
 
-#pets img {
+#mobile img {
 	width: 140px;
 	height: 280px;
 	border-radius: 10px;
@@ -251,8 +249,7 @@ body {
 
 
 
-		<h4  class="mar1"> New Smartphone Offer Available upto
-			15% Discount</h4>
+		<h4 class="mar1">New Smartphone Offer Available upto 15% Discount</h4>
 		<br>
 		<div class="searchPro">
 			<form action="SearchMobile">
@@ -263,20 +260,21 @@ body {
 		<br> <br> <br> <br>
 
 
-		<table aria-describedby="Show All home places" >
+		<table aria-describedby="Show All home places">
 			<tbody>
-			<tr>
-			<th><p style="visibility: hidden;">empty</p></th></tr>
 				<tr>
-				
+					<th><p style="visibility: hidden;">empty</p></th>
+				</tr>
+				<tr>
+
 					<c:set var="count" value="1" />
 					<c:forEach items="${sessionScope.productList}" var="productList">
 						<td>
-							<table aria-describedby="Show All home places" id="pets"  >
+							<table aria-describedby="Show All home places" id="mobile">
 								<tbody>
-									<!-- Pet Image -->
+									
 									<tr>
-										<th><img src="${productList.url}" alt="petimage"></th>
+										<th><img src="${productList.url}" alt="mobileImage"></th>
 
 
 										<td>

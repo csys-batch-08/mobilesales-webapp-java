@@ -3,8 +3,11 @@ package com.mobilesalesapp.servlet;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.Serializable;
+import java.sql.SQLException;
 import java.util.List;
 
+import com.mobilesalesapp.dao.AdminDao;
+import com.mobilesalesapp.dao.UserDao;
 import com.mobilesalesapp.impl.AdminImpl;
 import com.mobilesalesapp.impl.UserImpl;
 import com.mobilesalesapp.model.RegisterPojo;
@@ -41,9 +44,9 @@ public class AddWalletServlet extends HttpServlet {
 				
 				
 				RegisterPojo wallet=new RegisterPojo(userId,addAmount);
-				AdminImpl adminAddAmount=new AdminImpl();
+				AdminDao adminAddAmount=new AdminImpl();
 				int i=adminAddAmount.addWalletAmount(wallet);
-				UserImpl userImpl=new UserImpl();
+				UserDao userImpl=new UserImpl();
 				List<RegisterPojo> listAllDetails=userImpl.myDetails(userId);
 				
 				setSessionAttribute(session, "listAllDetails", (Serializable) listAllDetails);
@@ -63,6 +66,8 @@ public class AddWalletServlet extends HttpServlet {
 			} catch (IOException |NumberFormatException e) {
 			
 				e.getMessage();
+			} catch (SQLException e) {
+				e.printStackTrace();
 			}
 			
 		

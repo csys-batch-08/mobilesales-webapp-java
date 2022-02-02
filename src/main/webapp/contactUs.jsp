@@ -144,30 +144,47 @@ li a:hover {
 table td, th {
 	padding: 10px;
 }
-input{
-margin-top:10px; 
+
+input {
+	margin-top: 10px;
 }
 
 body {
 	background-color: cornsilk;
 }
-	form  { display: table;      }
-p     { display: table-row;  }
-label { display: table-cell;position: absolute;right: 1000px;  }
-input { display: table-cell;position: absolute;left: 200px; }
+
+form {
+	display: table;
+}
+
+p {
+	display: table-row;
+}
+
+label {
+	display: table-cell;
+	position: absolute;
+	right: 1000px;
+}
+
+input {
+	display: table-cell;
+	position: absolute;
+	left: 200px;
+}
 
 * {
 	margin: 0;
 	padding: 0;
 }
 </style>
-<body >
+<body>
 	<h2 class="h2_1">Mobile Sales App</h2>
 
 	<div style="position: relative; top: -10px;" class="top_nav">
 
 		<ul>
-			<li><a  href="MobilePage">Home</a></li>
+			<li><a href="MobilePage">Home</a></li>
 			<li><a href="ViewOrders1">My Orders</a></li>
 			<li><a href="ViewCart">Cart</a></li>
 			<li><a href="MyProfile">My Profile</a></li>
@@ -180,60 +197,59 @@ input { display: table-cell;position: absolute;left: 200px; }
 
 
 	</div>
-	<img style="border-radius: 100px;position: absolute;top:0px;left: 500px; " width="40px" alt="" src="assets/images/mobile112.png">
-	
+	<img
+		style="border-radius: 100px; position: absolute; top: 0px; left: 500px;"
+		width="40px" alt="" src="assets/images/mobile112.png">
+
 	<br>
-	
+
 	<br>
 	<br>
-	<div style="position:absolute;left:200px; margin-top: 50px;" class="container">
+	<div style="position: absolute; left: 200px; margin-top: 50px;"
+		class="container">
 
 
 
-			<form action="contactUs" method="post">
+		<form action="contactUs" method="post">
 			<h1 style="margin-left: 200px;">Contact Us</h1>
-				<p>
-					<label for="">Name:</label>
-					<input class="c_user2" name="name1" type="text"
-						autocomplete="off" pattern="[A-Za-z]{3,40}"
-						title="Only enter A-Z ,a-z and enter  min 3 to max 40 " required><br>
-					<br>
-				</p>
-				<p>
+			<p>
+				<label for="">Name:</label> <input class="c_user2" name="name1"
+					type="text" autocomplete="off" pattern="[A-Za-z]{3,40}"
+					title="Only enter A-Z ,a-z and enter  min 3 to max 40 " required><br>
+				<br>
+			</p>
+			<p>
 
-					<label for="">Email:</label>
-					<input class="c_user2" name="email" autocomplete="off"
-						pattern="[a-z][a-z0-9_.]+@[a-z0-9.]+[.][a-z]+" type="email"
-						title="Enter valid email ex(example12@gmail.com)" required><br>
-					<br>
-				</p>
-				<p>
-					<label for="">Phone :</label>
-					<input class="c_user2" autocomplete="off"
-						name="phone_number" type="text" pattern="[6789]{1}+[0-9]{9}"
-						maxlength="10" title="Enter only 10 digit number" required><br>
-					<br>
-				</p>
-				
-				<p>
-					<label for="">Description :</label>
-					<input style="margin-left: 0px" class="c_user2"
-						name="name1" type="text" autocomplete="off"
-						pattern="[a-zA-Z0-9\s,[]]{3,40}"
-						title="Only enter A-Z ,a-z and enter  min 3 to max 40 " required><br>
-					<br>
-				</p>
-		
-		<br>
-				<p>
+				<label for="">Email:</label> <input class="c_user2" name="email"
+					autocomplete="off" pattern="[a-z][a-z0-9_.]+@[a-z0-9.]+[.][a-z]+"
+					type="email" title="Enter valid email ex(example12@gmail.com)"
+					required><br> <br>
+			</p>
+			<p>
+				<label for="">Phone :</label> <input class="c_user2"
+					autocomplete="off" name="phone_number" type="text"
+					pattern="[6789]{1}+[0-9]{9}" maxlength="10"
+					title="Enter only 10 digit number" required><br> <br>
+			</p>
+
+			<p>
+				<label for="">Description :</label> <input style="margin-left: 0px"
+					class="c_user2" name="name1" type="text" autocomplete="off"
+					pattern="[a-zA-Z0-9\s,[]]{3,40}"
+					title="Only enter A-Z ,a-z and enter  min 3 to max 40 " required><br>
+				<br>
+			</p>
+
+			<br>
+			<p>
 				<button style="margin-left: 150px" type="submit"
 					class="btn btn-primary">Submit</button>
-		</p>
-	
-	</form>
+			</p>
+
+		</form>
 	</div>
 
-	
+
 
 </body>
 </html>

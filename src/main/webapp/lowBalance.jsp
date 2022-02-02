@@ -1,18 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="ISO-8859-1">
 <title>LowBalance</title>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+	rel="stylesheet">
 
 </head>
 <style>
-body{
-background-color:cornsilk;
+body {
+	background-color: cornsilk;
 }
+
 .h2_1 {
 	text-align: center;
 	background-color: bisque;
@@ -106,18 +108,19 @@ li a:hover {
 	margin-top: -270px;
 	font-size: 20px;
 }
-.but_log a{
-	text-decoration:none;
-	color:white;
- 	padding: 12px;
- 	margin-top:20px;
-    margin-left: 100px;
-    background-color: rgb(83, 83, 204);
-    border-radius: 20px;
 
+.but_log a {
+	text-decoration: none;
+	color: white;
+	padding: 12px;
+	margin-top: 20px;
+	margin-left: 100px;
+	background-color: rgb(83, 83, 204);
+	border-radius: 20px;
 }
-.but_log{
-margin-top:40px;
+
+.but_log {
+	margin-top: 40px;
 }
 
 * {
@@ -125,10 +128,10 @@ margin-top:40px;
 	padding: 0;
 }
 </style>
-<body >
+<body>
 	<h2 class="h2_1">Mobile Sales App</h2>
 
-	<div style="position: relative;top: -10px;" class="top_nav">
+	<div style="position: relative; top: -10px;" class="top_nav">
 
 		<ul>
 			<li><a class="active" href="MobilePage">Home</a></li>
@@ -144,12 +147,15 @@ margin-top:40px;
 
 
 	</div>
-	<img style="border-radius: 100px;position: absolute;top:0px;left: 500px; " width="40px" alt="" src="assets/images/mobile112.png">
-	
-	<h1 style="color: green;margin-left: 470px;margin-top:200px">Low Balance in Wallet</h1>
-	<span style='font-size:100px;margin-left: 550px'>&#128528;</span>
+	<img
+		style="border-radius: 100px; position: absolute; top: 0px; left: 500px;"
+		width="40px" alt="" src="assets/images/mobile112.png">
+
+	<h1 style="color: green; margin-left: 470px; margin-top: 200px">Low
+		Balance in Wallet</h1>
+	<span style='font-size: 100px; margin-left: 550px'>&#128528;</span>
 
 
-	
+
 </body>
 </html>

@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.mobilesalesapp.dao.UserDao;
 import com.mobilesalesapp.impl.UserImpl;
 import com.mobilesalesapp.model.RegisterPojo;
 
@@ -33,7 +34,7 @@ public class MyProfileServlet extends HttpServlet {
 		HttpSession session=req.getSession();
 		int userId =Integer.parseInt( session.getAttribute("userId").toString());
 		
-		UserImpl userImpl=new UserImpl();
+		UserDao userImpl=new UserImpl();
 		List<RegisterPojo> listAllDetails=userImpl.myDetails(userId);
 		setSessionAttribute(session,"listAllDetails", (Serializable) listAllDetails);
 		

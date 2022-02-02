@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.mobilesalesapp.dao.AdminDao;
 import com.mobilesalesapp.impl.AdminImpl;
 import com.mobilesalesapp.model.RegisterPojo;
 
@@ -21,7 +22,7 @@ public class AcivateUserServlet extends HttpServlet  {
 		
 		RegisterPojo regPojo=new RegisterPojo();
 		regPojo.setUserId(userId);
-		AdminImpl adminImpl=new AdminImpl();
+		AdminDao adminImpl=new AdminImpl();
 		int i=adminImpl.activateUser(regPojo);
 		if(i>0) {
 			try {
@@ -34,7 +35,7 @@ public class AcivateUserServlet extends HttpServlet  {
 				
 			} catch (IOException e) {
 			
-				e.getMessage();
+				e.printStackTrace();
 			}
 			
 		}

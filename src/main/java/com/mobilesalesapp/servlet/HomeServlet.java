@@ -12,8 +12,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.mobilesalesapp.dao.ProductDao;
+import com.mobilesalesapp.dao.UserDao;
 import com.mobilesalesapp.impl.ProductImpl;
+import com.mobilesalesapp.impl.UserImpl;
 import com.mobilesalesapp.model.ProductPojo;
+import com.mobilesalesapp.model.RegisterPojo;
+
 
 @WebServlet("/MobilePage")
 public class HomeServlet extends HttpServlet {
@@ -30,9 +35,16 @@ public class HomeServlet extends HttpServlet {
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		HttpSession session  = req.getSession();
-		ProductImpl  productImpl = new ProductImpl();
+		ProductDao  productImpl = new ProductImpl();
 		List<ProductPojo> productList= productImpl.showAllProduct();
+		int userId =Integer.parseInt( session.getAttribute("userId").toString());
 		
+		UserDao userImpl=new UserImpl();
+		List<RegisterPojo> listAllDetails=userImpl.myDetails(userId);
+		for(RegisterPojo userDetails :listAllDetails) {
+			setSessionAttribute(session,"name", userDetails.getName());
+			setSessionAttribute(session,"wallet", userDetails.getWallet());
+		}
 		setSessionAttribute(session, "productList",(Serializable) productList);
 		RequestDispatcher rd=req.getRequestDispatcher("mobilePage.jsp");
 		rd.forward(req, resp);

@@ -3,6 +3,7 @@ package com.mobilesalesapp.servlet;
 import java.io.IOException;
 import java.util.List;
 
+import com.mobilesalesapp.dao.ProductDao;
 import com.mobilesalesapp.impl.ProductImpl;
 import com.mobilesalesapp.model.ProductPojo;
 
@@ -29,7 +30,7 @@ public class AddProductServlet extends HttpServlet {
     	   double listPrice=Double.parseDouble(req.getParameter("list_price"));
     	   ProductPojo obj=new ProductPojo(productName,description,
     			   standardCost,(listPrice));
-    	   ProductImpl obj2=new ProductImpl();
+    	   ProductDao obj2=new ProductImpl();
     	   
 			obj2.add(obj);
     	   }catch (NumberFormatException uhex) {
@@ -37,7 +38,7 @@ public class AddProductServlet extends HttpServlet {
     		  }
 
 			 try {
-				 ProductImpl product=new ProductImpl();
+				 ProductDao product=new ProductImpl();
 					List<ProductPojo> viewProducts =product.showAllProduct();
 					req.setAttribute("viewProducts", viewProducts);
 					RequestDispatcher rd=req.getRequestDispatcher("productList.jsp");

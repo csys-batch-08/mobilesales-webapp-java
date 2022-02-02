@@ -3,6 +3,7 @@ package com.mobilesalesapp.servlet;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import com.mobilesalesapp.dao.OrderDao;
 import com.mobilesalesapp.impl.OrderImpl;
 import com.mobilesalesapp.model.OrderPojo;
 
@@ -29,7 +30,7 @@ public class CancelOrderServlet extends HttpServlet {
 			OrderPojo orderPojo = new OrderPojo(0, orderId);
 			orderPojo.setPrice(price);
 			orderPojo.setUserId(userId);
-			OrderImpl orderImpl = new OrderImpl();
+			OrderDao orderImpl = new OrderImpl();
 			orderImpl.orderCancel(orderPojo);
 			PrintWriter out = res.getWriter();
 			out.print("Cancelled successfully");

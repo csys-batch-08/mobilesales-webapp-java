@@ -1,6 +1,8 @@
 package com.mobilesalesapp.servlet;
 import java.io.IOException;
 import java.io.PrintWriter;
+
+import com.mobilesalesapp.dao.ProductDao;
 import com.mobilesalesapp.impl.ProductImpl;
 import com.mobilesalesapp.model.ProductPojo;
 import javax.servlet.annotation.WebServlet;
@@ -20,7 +22,7 @@ public class DeleteProductServlet extends HttpServlet {
 			int productId = Integer.parseInt(req.getParameter("deleteId"));
 
 			ProductPojo obj1 = new ProductPojo(productId);
-			ProductImpl obj2 = new ProductImpl();
+			ProductDao obj2 = new ProductImpl();
 			i = obj2.delete(obj1);
 		} catch (NumberFormatException e) {
 			e.getMessage();

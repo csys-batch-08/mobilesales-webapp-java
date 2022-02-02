@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
+import com.mobilesalesapp.dao.AdminDao;
 import com.mobilesalesapp.impl.AdminImpl;
 import com.mobilesalesapp.model.ContactUsPojo;
 @WebServlet("/ViewContactUs1")
@@ -23,7 +23,7 @@ public class ViewContactServlet extends HttpServlet {
 	@Override
 	public void service(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException {
 		
-		AdminImpl adminImpl=new AdminImpl();
+		AdminDao adminImpl=new AdminImpl();
 	
 		List<ContactUsPojo> contactList=adminImpl.viewContactUs();
 		request.setAttribute("viewContact", contactList);	

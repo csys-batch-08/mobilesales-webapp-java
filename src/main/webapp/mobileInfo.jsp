@@ -1,15 +1,18 @@
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"  %>
-	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+	pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="ISO-8859-1">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+	rel="stylesheet">
 
 
 <title>Mobile Info Page</title>
+<script src="assets/javascript/addCart.js"></script>
 </head>
 <style>
 .h2_1 {
@@ -105,31 +108,33 @@ li a:hover {
 	margin-top: -270px;
 	font-size: 20px;
 }
-.but_log a{
-	text-decoration:none;
-	color:white;
- 	padding: 12px;
- 	margin-top:20px;
-    margin-left: 100px;
-    background-color: rgb(83, 83, 204);
-    border-radius: 20px;
 
+.but_log a {
+	text-decoration: none;
+	color: white;
+	padding: 12px;
+	margin-top: 20px;
+	margin-left: 100px;
+	background-color: rgb(83, 83, 204);
+	border-radius: 20px;
 }
-.but_log button{
-	text-decoration:none;
-	color:white;
- 	padding: 12px;
- 	margin-top:20px;
-    margin-left: 100px;
-    background-color: rgb(83, 83, 204);
-    border-radius: 20px;
 
+.but_log button {
+	text-decoration: none;
+	color: white;
+	padding: 12px;
+	margin-top: 20px;
+	margin-left: 100px;
+	background-color: rgb(83, 83, 204);
+	border-radius: 20px;
 }
-.but_log{
-margin-top:20px;
+
+.but_log {
+	margin-top: 20px;
 }
-body{
-background-color:cornsilk;
+
+body {
+	background-color: cornsilk;
 }
 
 * {
@@ -137,13 +142,13 @@ background-color:cornsilk;
 	padding: 0;
 }
 </style>
-<body >
+<body>
 	<h2 class="h2_1">Mobile Sales App</h2>
 
-	<div style="position: relative;top: -10px;" class="top_nav">
+	<div style="position: relative; top: -10px;" class="top_nav">
 
 		<ul>
-		<li><a class="active" href="MobilePage">Home</a></li>
+			<li><a class="active" href="MobilePage">Home</a></li>
 			<li><a href="ViewOrders1">My Orders</a></li>
 			<li><a href="ViewCart">Cart</a></li>
 			<li><a href="MyProfile">My Profile</a></li>
@@ -156,60 +161,30 @@ background-color:cornsilk;
 
 
 	</div>
-	<img style="border-radius: 100px;position: absolute;top:0px;left: 500px; " width="40px" alt="" src="assets/images/mobile112.png">
-	
-	<c:forEach items="${sessionScope.selectedProduct}" var="selectedProduct">
-	<div class="body_main">
-	
-		<a><img id="41"
-			src="${selectedProduct.url}"
-			alt=""></a>
-		<div class="phoneInfo">
-			<pre>${selectedProduct.description}
+	<img
+		style="border-radius: 100px; position: absolute; top: 0px; left: 500px;"
+		width="40px" alt="" src="assets/images/mobile112.png">
+
+	<c:forEach items="${sessionScope.selectedProduct}"
+		var="selectedProduct">
+		<div class="body_main">
+
+			<a><img class="rounded" id="41" src="${selectedProduct.url}" alt=""></a>
+			<div class="phoneInfo">
+				<pre>${selectedProduct.description}
 </pre>
 
-			<div class="but_lo">
-				<button type="button" class="btn btn-primary" onclick="addCartItem('${selectedProduct.id}')">Add Cart</button>
-				
-				<a style="margin-left: 50px;" class="btn btn-success" href="MobileBuy?price=${selectedProduct.listCost}&productId=${selectedProduct.id}">Buy</a>
+				<div class="but_lo">
+					<button type="button" class="btn btn-primary"
+						onclick="addCartItem('${selectedProduct.id}')">Add Cart</button>
+
+					<a style="margin-left: 50px;" class="btn btn-success"
+						href="MobileBuy?price=${selectedProduct.listCost}&productId=${selectedProduct.id}">Buy</a>
+				</div>
 			</div>
 		</div>
-	</div>
 	</c:forEach>
-	<script type="text/javascript">
-	function addCartItem(productId){     
-        
-        console.log("cart");
-        
-    	var url="addCart?productId="+productId;  
-    	
-    	if(window.XMLHttpRequest){  
-    		request=new XMLHttpRequest();  
-    		}  
-    		else if(window.ActiveXObject){  
-    		request=new ActiveXObject("Microsoft.XMLHTTP");  
-    		}  
-    	try  
-    	{  
-    	request.onreadystatechange=getInfo;  
-    	request.open("GET",url,true);  
-    	request.send();  
-    	}  
-    	catch(e)  
-    	{  
-    	alert("Unable to connect to server");  
-    	}
-        
-      
-    } 
-    
-    function getInfo(){  
-    	if(request.readyState==4){  
-    	var val=request.responseText;
-    	 alert(val);  
-    	}  
-    	}  
-    </script>
+	
 
 
 
