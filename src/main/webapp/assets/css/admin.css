@@ -1,0 +1,58 @@
+
+
+
+
+.add_inputs1 {
+	border-top: none;
+	border-left: none;
+	border-right: none;
+	width: 300px;
+	height: 25px;
+}
+
+.add_con {
+	position: absolute;
+	left: 300px;
+	margin: 80px;
+}
+
+
+.btn_add:hover {
+	background-color: cornflowerblue;
+}
+
+form {
+	display: table;
+}
+
+p {
+	display: table-row;
+}
+
+label {
+	display: table-cell;
+}
+
+input {
+	display: table-cell;
+	position: absolute;
+	left: 120px;
+}
+
+.add_con {
+	position: absolute;
+	left: 450px;
+	margin: 60px;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+
+.btn  {
+	width: 200px;
+}
+
+

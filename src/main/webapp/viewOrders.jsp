@@ -250,7 +250,7 @@ table {
 					<td><img width="110px;" alt="${orderList.productId}"
 						src="${url.getUrl(orderList.productId)}"></td>
 					<td>${orderList.status}</td>
-					<td>${orderList.price }</td>
+					<td> &#x20b9;${orderList.price }</td>
 					<td><fmt:parseDate value="${orderList.date}"
 							pattern="yyyy-MM-dd'T'HH:mm" var="orderDate" type="both" /> <fmt:formatDate
 							pattern="dd-MM-yyyy HH:mm" value="${orderDate}" /></td>
@@ -278,14 +278,15 @@ table {
 
 
 									<div class="modal-body">
-										<div>
+										<div><form action="">
 											<input type="hidden" name="cancelId"
 												value="${orderList.orderId }" readonly><br>
 
-											<p>Do you want cancel your order</p>
+											<p>Do you want to cancel your order(${orderList.orderId })</p>
 											<button class="btn btn-success" type="submit"
 												onclick="Cancel('${orderList.status}','${orderList.orderId }','${orderList.price }','${orderList.userId}')"
 												class="btn_add">Confirm</button>
+										</form>
 										</div>
 									</div>
 

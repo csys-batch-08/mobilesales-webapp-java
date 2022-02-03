@@ -181,7 +181,7 @@ table {
 
 		<table aria-describedby="Show All home places" id="orders">
 			<tr style="background-color: cornflowerblue">
-				<th>Order Id</th>
+				<th>Serial No</th>
 				<th>Order Status</th>
 				<th>Price</th>
 				<th>Order Date</th>
@@ -189,11 +189,11 @@ table {
 				<th>Cancel Order</th>
 			</tr>
 		
-
+		<c:set var="serialNumber" value="1" scope="page"></c:set>
 			<c:forEach items="${orderDetails}" var="orderDetail">
 
 				<tr>
-					<td>${orderDetail.orderId }</td>
+					<td>${serialNumber}</td>
 					<td>${orderDetail.status }</td>
 					<td>${orderDetail.price }</td>
 					<td>${orderDetail.date }</td>

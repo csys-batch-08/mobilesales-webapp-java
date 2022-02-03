@@ -100,7 +100,10 @@ background-color: rgb(248, 213, 168);
 width: 90%; 
 margin-left: 50px;
 }
-
+.input-group{
+margin-left:1000px;
+width: 20%;
+}
 * {
 	margin: 0;
 	padding: 0;
@@ -123,7 +126,13 @@ margin-left: 50px;
 	
 	<div class="full">
 	<br>
-
+	<div class="searchInactives">
+			<form class="input-group mb-7" action="searchInactives">
+				<input class="form-control" type="text" pattern="[A-Za-z]{1,40}" name="search">
+				<button class="btn btn-primary" type="submit">Search</button>
+			</form>
+		</div>
+		<br> 
 
 	
 		
@@ -155,10 +164,10 @@ margin-left: 50px;
 
 
 						<button type="button" class="btn btn-dark"
-							data-bs-toggle="modal" data-bs-target="#myModal">Activate
+							data-bs-toggle="modal" data-bs-target="#myModal_${serialNumber}">Activate
 						</button>
 					</div> 
-					<div class="modal fade" id="myModal">
+					<div class="modal fade" id="myModal_${serialNumber}">
 						<div class="modal-dialog">
 							<div class="modal-content">
 
@@ -170,10 +179,9 @@ margin-left: 50px;
 							
 								<div class="modal-body">
 									<div>
-					<input type="hidden" name="cancelId"
-						value="${orderList.orderId }" readonly><br>
 					
-					<p>Do you want to Activate this user</p>
+					
+					<p>Do you want to Activate this user(${inactiveUserDetails.name })</p>
 				<a class="btn btn-success" href="activeUser?userId=${inactiveUserDetails.userId}">Confirm</a>
 				</div>
 								</div>

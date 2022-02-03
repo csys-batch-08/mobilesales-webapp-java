@@ -9,45 +9,9 @@
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
 	rel="stylesheet">
+<link rel="stylesheet" href="assets/css/login.css">
 
 
-<style type="text/css">
-.fullbody {
-	background: linear-gradient(rgba(0, 0, 0, .3) 50%, rgba(0, 0, 0, .3)
-		-50%),
-		url(https://www.kindpng.com/picc/m/478-4787076_mobile-frame-png-full-hd-mobiles-kartik-creation.png);
-	background-repeat: no-repeat;
-	background-size: cover;
-	height: 100vh;
-}
-
-.c_user2 {
-	border-top: none;
-	border-left: none;
-	border-right: none;
-	width: 300px;
-	height: 25px;
-}
-
-.containe {
-	background-color: white;
-	padding: 30px;
-	padding-bottom: 50px;
-	position: absolute;
-	left: 500px;
-	top: 50px;
-	border-radius: 40px;
-}
-
-.btn {
-	width: 300px;
-}
-
-* {
-	margin: 0;
-	padding: 0;
-}
-</style>
 
 
 
@@ -70,7 +34,7 @@
 
 
 <body>
-	<div class="fullbody">
+	<div class="full">
 
 		<div class="containe">
 			<div class="container mt-1">

@@ -2,6 +2,7 @@
 	pageEncoding="ISO-8859-1" 
 	%>
 		<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+		<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>	
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -88,6 +89,30 @@ li a {
 li a:hover {
 	background-color: goldenrod;
 }
+.searchPro {
+	position: absolute;
+	left: 420px;
+}
+
+.searchPro input[type=date] {
+	padding: 4px;
+	font-size: 16px;
+	float: left;
+}
+
+.searchPro button {
+	float: left;
+	padding: 4px;
+	background: #2196F3;
+	font-size: 17px;
+	border: 1px solid grey;
+	border-left: none;
+	cursor: pointer;
+}
+#product {
+	width: 95%;
+	margin-left: 40px;
+}
 
 .active {
 	background-color: grey;
@@ -126,87 +151,68 @@ width: 20%;
 	<div class="full">
 	<br>
 
+
+
+
+
 	<div class="searchPro">
-			<form class="input-group mb-7" action="SearchUsers">
-				<input class="form-control" type="text" pattern="[A-Za-z]{1,40}" name="search">
-				<button class="btn btn-primary" type="submit">Search</button>
-			</form>
-		</div>
-		<br>
-	
-		
-		<table aria-describedby="Show All home places" id="user" class="table table-hover table-striped" >
+		<form action="SearchSales">
+			<input type="date" id="search" name="OrderDate" required>
+			<button class="btn btn-primary" type="submit">Search</button>
+		</form>
+	</div>
+	<br>
+	<br>
+	<br>
+	<script type="text/javascript">
+		let today = new Date().toISOString().slice(0, 10);
+
+		console.log(today);
+		document.getElementById("search").max = today;
+	</script>
+
+		<table aria-describedby="Show All home places" id="product"
+			class="table table-hover table-striped">
+
 			<tr style="background-color: cornflowerblue">
 				<th>Serial No</th>
-				<th>Name</th>
-				<th>Email</th>
-				<th>Phone Number</th>
-				
-				<th>Action</th>
-				<th>Orders</th>
-				<th>Inactive</th>
-
+				<th>Product</th>
+				<th>Order Id</th>
+				<th>Order Status</th>
+				<th>Price</th>
+				<th>Order Date</th>
+				<th>Delivery Address</th>
+			
 			</tr>
+
+
+
 			<c:set var="serialNumber" value="1" scope="page"></c:set>
-			<c:forEach items="${userDetails}" var="userDetail">
-
-			<tr>
-				<td>${serialNumber}</td>
-				<td>${userDetail.name}</td>
-				<td>${userDetail.email}</td>
-				<td>${userDetail.phoneNumber}</td>
-				<td>${userDetail.wallet}</td>
-			
-				<td>
-			
-					<a class="btn btn-primary" href="DeliveredOrder?userId=${userDetail.userId}">View Order</a>
-
-				</td>
-				<td>
-					<div class="container mt-3">
-
-
-						<button type="button" class="btn btn-dark"
-							data-bs-toggle="modal" data-bs-target="#myModal">InActive
-						</button>
-					</div> 
-					<div class="modal fade" id="myModal">
-						<div class="modal-dialog">
-							<div class="modal-content">
-
-								<div class="modal-header">
-									<h4 class="modal-title">User Inactivation</h4>
-									<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-								</div>
-
-							
-								<div class="modal-body">
-									<div>
-					
-					
-					<p>Do you want to InActive this user(${userDetail.name})</p>
-				<a class="btn btn-success" href="inActive?userId=${userDetail.userId}">Confirm</a>
-				</div>
-								</div>
-
-								
-								<div class="modal-footer">
-									<button type="button" class="btn btn-danger"
-										data-bs-dismiss="modal">Close</button>
-								</div> 
-
-							</div>
-						</div>
-					</div>
-					
-					
-				</td>
-
-			</tr>
-			<c:set var="serialNumber" value="${serialNumber+1 }" scope="page"></c:set>
+			<c:forEach items="${sessionScope.salesList}" var="orderList">
+				<tr>
+					<jsp:useBean id="url" class="com.mobilesalesapp.impl.OrderImpl"></jsp:useBean>
+					<td>${serialNumber}</td>
+					<td><img width="110px;" alt="${orderList.productId}"
+						src="${url.getUrl(orderList.productId)}"></td>
+						<td>${orderList.orderId }</td>
+					<td>${orderList.status}</td>
+					<td> &#x20b9;${orderList.price }</td>
+					<td><fmt:parseDate value="${orderList.date}"
+							pattern="yyyy-MM-dd'T'HH:mm" var="orderDate" type="both" /> <fmt:formatDate
+							pattern="dd-MM-yyyy HH:mm" value="${orderDate}" /></td>
+					<td>${orderList.address}</td>
+				
+				</tr>
+				<c:set var="serialNumber" value="${serialNumber+1 }" scope="page"></c:set>
 			</c:forEach>
+
+
+
 		</table>
+	
 	</div>
+
+
 
 
 </body>

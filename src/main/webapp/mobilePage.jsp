@@ -245,7 +245,7 @@ body {
 
 		<h5 style="margin-left: 200px;">Welcome :${sessionScope.name}</h5>
 		<h5 style="margin-left: 200px;">Wallet
-			Amount:${sessionScope.wallet}</h5>
+			Amount: Rs : ${sessionScope.wallet}</h5>
 
 
 

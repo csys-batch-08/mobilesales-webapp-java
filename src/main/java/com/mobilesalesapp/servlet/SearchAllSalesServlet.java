@@ -16,8 +16,8 @@ import com.mobilesalesapp.dao.OrderDao;
 import com.mobilesalesapp.impl.OrderImpl;
 import com.mobilesalesapp.model.OrderPojo;
 
-@WebServlet("/ViewOrders1")
-public class ViewOrderServlet extends HttpServlet {
+@WebServlet("/SearchSales")
+public class SearchAllSalesServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 
@@ -28,18 +28,19 @@ public class ViewOrderServlet extends HttpServlet {
 	}
 
 	@Override
-	public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void service(HttpServletRequest request, HttpServletResponse resp) throws ServletException, IOException {
 		HttpSession session = request.getSession();
+		String dateOrder = request.getParameter("OrderDate");
 
 		int userId = Integer.parseInt(session.getAttribute("userId").toString());
-		OrderPojo orderPojo = new OrderPojo(userId);
+
+		OrderPojo orderPojo = new OrderPojo(userId, dateOrder);
 		OrderDao order = new OrderImpl();
-		List<OrderPojo> orderList = order.viewAllOrders(orderPojo);
-		setSessionAttribute(session, "orderList", (Serializable) orderList);
-		setSessionAttribute(session, "userId1", userId);
+		List<OrderPojo> searchSales = order.searchAllSales(orderPojo);
 
-		RequestDispatcher rd = request.getRequestDispatcher("viewOrders.jsp");
-		rd.forward(request, response);
-
+		setSessionAttribute(session, "salesList", (Serializable) searchSales);
+		RequestDispatcher rd = request.getRequestDispatcher("viewAllSales.jsp");
+		rd.forward(request, resp);
 	}
+
 }

@@ -76,6 +76,10 @@ table {
 body {
 	background-color: cornsilk;
 }
+.input-group{
+margin-left:1000px;
+width: 20%;
+}
 
 * {
 	margin: 0;
@@ -102,9 +106,15 @@ body {
 		style="border-radius: 100px; position: absolute; top: 0px; left: 500px;"
 		width="40px" alt="" src="assets/images/mobile112.png">
 
+	
 	<br>
-	<br>
-	<br>
+		<div class="searchPro">
+			<form class="input-group mb-7" action="SearchProduct">
+				<input class="form-control" type="text" pattern="[A-Za-z]{1,40}" name="search">
+				<button class="btn btn-primary" type="submit">Search</button>
+			</form>
+		</div>
+		<br>
 
 
 	<table aria-describedby="Show All home places" id="product"
@@ -133,10 +143,10 @@ body {
 
 
 						<button type="button" class="btn btn-primary"
-							data-bs-toggle="modal" data-bs-target="#myModal">Update
+							data-bs-toggle="modal" data-bs-target="#myModal_${serialNumber}">Update
 						</button>
 					</div> <!-- The Modal -->
-					<div class="modal fade" id="myModal">
+					<div class="modal fade" id="myModal_${serialNumber}">
 						<div class="modal-dialog">
 							<div class="modal-content">
 
@@ -181,15 +191,48 @@ body {
 
 				</td>
 				<td>
+				
+					<div class="container mt-3">
 
-					<form action="deleteProduct" method="post">
-						Product Id : <input type="text" value="${viewProducts.id}"
+
+						<button type="button" class="btn btn-danger"
+							data-bs-toggle="modal" data-bs-target="#myModal1_${serialNumber}">Delete
+						</button>
+					</div> <!-- The Modal -->
+					<div class="modal fade" id="myModal1_${serialNumber}">
+						<div class="modal-dialog">
+							<div class="modal-content">
+
+								<!-- Modal Header -->
+								<div class="modal-header">
+									<h4 class="modal-title">Delete Product</h4>
+									<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+								</div>
+
+								<!-- Modal body -->
+								<div class="modal-body">
+								<p>Do you want to Delete this Product(${viewProducts.productName})</p>
+									<form action="deleteProduct" method="post">
+						 <input type="hidden" value="${viewProducts.id}"
 							readonly name="deleteId" id="brand_textbox" pattern="[0-9]{1,8}"
-							maxlength="8" required class="deleteId"><br> <br>
-						<button type="submit" class="btn btn-danger">Delete</button>
-						<br> <br>
+							maxlength="8" required class="deleteId"><br>
+						<button type="submit" class="btn btn-primary">Confirm</button>
+						<br> 
 
 					</form>
+								</div>
+
+								<!-- Modal footer -->
+								<div class="modal-footer">
+									<button type="button" class="btn btn-danger"
+										data-bs-dismiss="modal">Close</button>
+								</div>
+
+							</div>
+						</div>
+					</div>
+
+					
 
 
 				</td>

@@ -1,0 +1,42 @@
+@charset "ISO-8859-1";
+.mar1 {
+	font-size: 30px;
+	color: crimson;
+}
+
+.body_main {
+	margin-top: 120px;
+	margin-left: 240px;
+}
+
+
+
+.phoneInfo {
+	margin-left: 250px;
+	margin-top: -270px;
+	font-size: 20px;
+}
+
+.but_log a {
+	text-decoration: none;
+	color: white;
+	padding: 12px;
+	margin-top: 20px;
+	margin-left: 100px;
+	background-color: rgb(83, 83, 204);
+	border-radius: 20px;
+}
+
+.but_log {
+	margin-top: 40px;
+}
+
+.aboutUs {
+	margin-left: 50px;
+	margin-top: -80px;
+}
+
+
+.aboutUs{
+padding: 20px;
+}

@@ -16,8 +16,8 @@ import com.mobilesalesapp.dao.OrderDao;
 import com.mobilesalesapp.impl.OrderImpl;
 import com.mobilesalesapp.model.OrderPojo;
 
-@WebServlet("/ViewOrders1")
-public class ViewOrderServlet extends HttpServlet {
+@WebServlet("/viewSales")
+public class ViewAllSalesServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 
@@ -31,15 +31,13 @@ public class ViewOrderServlet extends HttpServlet {
 	public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 
-		int userId = Integer.parseInt(session.getAttribute("userId").toString());
-		OrderPojo orderPojo = new OrderPojo(userId);
 		OrderDao order = new OrderImpl();
-		List<OrderPojo> orderList = order.viewAllOrders(orderPojo);
-		setSessionAttribute(session, "orderList", (Serializable) orderList);
-		setSessionAttribute(session, "userId1", userId);
+		List<OrderPojo> salesList = order.viewAllSales();
+		setSessionAttribute(session, "salesList", (Serializable) salesList);
 
-		RequestDispatcher rd = request.getRequestDispatcher("viewOrders.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("viewAllSales.jsp");
 		rd.forward(request, response);
 
 	}
+
 }
