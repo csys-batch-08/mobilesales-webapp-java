@@ -211,7 +211,7 @@ width: 20%;
 
 								<!-- Modal body -->
 								<div class="modal-body">
-								<p>Do you want to Delete this Product(${viewProducts.productName})</p>
+								<p>Do you want to Delete this Product(${viewProducts.productName}) ?</p>
 									<form action="deleteProduct" method="post">
 						 <input type="hidden" value="${viewProducts.id}"
 							readonly name="deleteId" id="brand_textbox" pattern="[0-9]{1,8}"

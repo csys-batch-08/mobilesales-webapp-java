@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="assets/css/navigation.css">
 <link rel="stylesheet" href="assets/css/user.css">
 
-<title>OrderPlaced</title>
+<title>AboutUs</title>
 </head>
 <style>
 

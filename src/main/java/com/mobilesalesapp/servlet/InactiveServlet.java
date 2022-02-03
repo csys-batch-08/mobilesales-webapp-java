@@ -10,33 +10,35 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.mobilesalesapp.dao.AdminDao;
 import com.mobilesalesapp.impl.AdminImpl;
+import com.mobilesalesapp.logger.Logger;
 import com.mobilesalesapp.model.RegisterPojo;
+
 @WebServlet("/inActive")
 public class InactiveServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 
-		@Override
-		public void service(HttpServletRequest request,HttpServletResponse response) {
-			int userId=Integer.parseInt(request.getParameter("userId"));
-			RegisterPojo regPojo=new RegisterPojo();
-			regPojo.setUserId(userId);
-			AdminDao adminImpl=new AdminImpl();
-			int i=adminImpl.userInActive(regPojo);
-			if(i>0) {
-				try {
-					PrintWriter out=response.getWriter();
-					out.println("<script type=\"text/javascript\">");
-					out.println("alert('Inactive Successfully');");
-					out.println("location='adminMain.jsp';");
-					out.println("</script>");
-					
-					
-				} catch (IOException e) {
-					e.getMessage();
-				}
-				
+	@Override
+	public void service(HttpServletRequest request, HttpServletResponse response) {
+		int userId = Integer.parseInt(request.getParameter("userId"));
+		RegisterPojo regPojo = new RegisterPojo();
+		regPojo.setUserId(userId);
+		AdminDao adminImpl = new AdminImpl();
+		int i = adminImpl.userInActive(regPojo);
+		if (i > 0) {
+			try {
+				PrintWriter out = response.getWriter();
+				out.println("<script type=\"text/javascript\">");
+				out.println("alert('Inactive Successfully');");
+				out.println("location='adminMain.jsp';");
+				out.println("</script>");
+
+			} catch (IOException e) {
+				Logger.printStackTrace(e);
+				Logger.runTimeException(e.getMessage());
 			}
 
 		}
+
+	}
 }

@@ -13,23 +13,21 @@ import javax.servlet.http.HttpServletResponse;
 import com.mobilesalesapp.dao.AdminDao;
 import com.mobilesalesapp.impl.AdminImpl;
 import com.mobilesalesapp.model.ContactUsPojo;
+
 @WebServlet("/ViewContactUs1")
 public class ViewContactServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1;
-	
 
-	
 	@Override
-	public void service(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException {
-		
-		AdminDao adminImpl=new AdminImpl();
-	
-		List<ContactUsPojo> contactList=adminImpl.viewContactUs();
-		request.setAttribute("viewContact", contactList);	
-		RequestDispatcher rd=request.getRequestDispatcher("viewContactUs.jsp");
+	public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+		AdminDao adminImpl = new AdminImpl();
+		List<ContactUsPojo> contactList = adminImpl.viewContactUs();
+		request.setAttribute("viewContact", contactList);
+		RequestDispatcher rd = request.getRequestDispatcher("viewContactUs.jsp");
 		rd.forward(request, response);
-	
- }
+
+	}
 
 }

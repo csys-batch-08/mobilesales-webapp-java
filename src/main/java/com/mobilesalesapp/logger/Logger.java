@@ -1,13 +1,11 @@
 package com.mobilesalesapp.logger;
 
-import java.sql.SQLException;
-
 public class Logger {
 	private Logger() {
 
 	}
 
-	public static void printStackTrace(SQLException e) {
+	public static void printStackTrace(Exception e) {
 		e.printStackTrace();
 	}
 

@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.mobilesalesapp.dao.OrderDao;
+import com.mobilesalesapp.logger.Logger;
 import com.mobilesalesapp.model.OrderPojo;
 import com.mobilesalesapp.model.UpdateWalletPojo;
 import com.mobilesalesapp.util.ConnectionUtil;
@@ -36,17 +37,11 @@ public class OrderImpl implements OrderDao {
 			}
 		} catch (SQLException e) {
 
-			e.getErrorCode();
+			Logger.printStackTrace(e);
+			Logger.runTimeException(e.getMessage());
 
 		} finally {
-			try {
-				if (pre != null) {
-					pre.close();
-				}
-
-			} catch (SQLException e) {
-				e.getErrorCode();
-			}
+			ConnectionUtil.close(rs, pre, null);
 		}
 		try {
 			if (wallet > obj1.getPrice()) {
@@ -64,19 +59,11 @@ public class OrderImpl implements OrderDao {
 			}
 		} catch (SQLException e) {
 
-			e.getErrorCode();
+			Logger.printStackTrace(e);
+			Logger.runTimeException(e.getMessage());
 
 		} finally {
-			try {
-				if (pre1 != null) {
-
-					pre1.close();
-					con.close();
-				}
-
-			} catch (SQLException e) {
-				e.getErrorCode();
-			}
+			ConnectionUtil.close(rs, pre1, con);
 		}
 
 		return i;
@@ -99,18 +86,11 @@ public class OrderImpl implements OrderDao {
 
 		} catch (SQLException e) {
 
-			e.getErrorCode();
+			Logger.printStackTrace(e);
+			Logger.runTimeException(e.getMessage());
 
 		} finally {
-			try {
-				if (pre != null) {
-					pre.close();
-					con.close();
-				}
-
-			} catch (SQLException e) {
-				e.getErrorCode();
-			}
+			ConnectionUtil.close(null, pre, con);
 		}
 		return i;
 
@@ -138,18 +118,11 @@ public class OrderImpl implements OrderDao {
 			}
 
 		} catch (SQLException e) {
-			e.printStackTrace();
+			Logger.printStackTrace(e);
+			Logger.runTimeException(e.getMessage());
 
 		} finally {
-			try {
-				if (pre != null) {
-					pre.close();
-					con.close();
-				}
-
-			} catch (SQLException e) {
-				e.getErrorCode();
-			}
+			ConnectionUtil.close(rs, pre, con);
 		}
 		return orderList1;
 	}
@@ -175,17 +148,11 @@ public class OrderImpl implements OrderDao {
 
 			}
 		} catch (SQLException e) {
-			e.printStackTrace();
+			Logger.printStackTrace(e);
+			Logger.runTimeException(e.getMessage());
 
 		} finally {
-			try {
-				if (pre != null) {
-					pre.close();
-					con.close();
-				}
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
+			ConnectionUtil.close(rs, pre, con);
 		}
 
 		return orderList1;
@@ -206,7 +173,8 @@ public class OrderImpl implements OrderDao {
 			pre2.executeUpdate();
 			pre2.executeUpdate(COMMIT);
 		} catch (SQLException e) {
-			e.getErrorCode();
+			Logger.printStackTrace(e);
+			Logger.runTimeException(e.getMessage());
 
 		} finally {
 			try {
@@ -216,7 +184,8 @@ public class OrderImpl implements OrderDao {
 				}
 
 			} catch (SQLException e) {
-				e.getErrorCode();
+				Logger.printStackTrace(e);
+				Logger.runTimeException(e.getMessage());
 			}
 		}
 
@@ -229,18 +198,11 @@ public class OrderImpl implements OrderDao {
 			pre.executeUpdate(COMMIT);
 		} catch (SQLException e) {
 
-			e.getErrorCode();
+			Logger.printStackTrace(e);
+			Logger.runTimeException(e.getMessage());
 
 		} finally {
-			try {
-				if (pre != null) {
-					pre.close();
-					con1.close();
-				}
-
-			} catch (SQLException e) {
-				e.getErrorCode();
-			}
+			ConnectionUtil.close(null, pre, con);
 		}
 
 	}
@@ -256,18 +218,11 @@ public class OrderImpl implements OrderDao {
 			pre.executeUpdate();
 			pre.executeUpdate(COMMIT);
 		} catch (SQLException e) {
-			e.getErrorCode();
+			Logger.printStackTrace(e);
+			Logger.runTimeException(e.getMessage());
 
 		} finally {
-			try {
-				if (pre != null) {
-					pre.close();
-					con.close();
-				}
-
-			} catch (SQLException e) {
-				e.getErrorCode();
-			}
+			ConnectionUtil.close(null, pre, con);
 		}
 	}
 
@@ -287,18 +242,11 @@ public class OrderImpl implements OrderDao {
 				url = rs.getString(1);
 			}
 		} catch (SQLException e) {
-			e.getErrorCode();
+			Logger.printStackTrace(e);
+			Logger.runTimeException(e.getMessage());
 
 		} finally {
-			try {
-				if (pre != null) {
-					pre.close();
-					con.close();
-				}
-
-			} catch (SQLException e) {
-				e.getErrorCode();
-			}
+			ConnectionUtil.close(rs, pre, con);
 		}
 		return url;
 	}
@@ -324,18 +272,11 @@ public class OrderImpl implements OrderDao {
 			}
 
 		} catch (SQLException e) {
-			e.printStackTrace();
+			Logger.printStackTrace(e);
+			Logger.runTimeException(e.getMessage());
 
 		} finally {
-			try {
-				if (pre != null) {
-					pre.close();
-					con.close();
-				}
-
-			} catch (SQLException e) {
-				e.getErrorCode();
-			}
+			ConnectionUtil.close(rs, pre, con);
 		}
 		return orderList1;
 	}
@@ -360,17 +301,11 @@ public class OrderImpl implements OrderDao {
 
 			}
 		} catch (SQLException e) {
-			e.printStackTrace();
+			Logger.printStackTrace(e);
+			Logger.runTimeException(e.getMessage());
 
 		} finally {
-			try {
-				if (pre != null) {
-					pre.close();
-					con.close();
-				}
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
+			ConnectionUtil.close(rs, pre, con);
 		}
 
 		return orderList1;

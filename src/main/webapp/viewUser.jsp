@@ -167,10 +167,10 @@ width: 20%;
 
 
 						<button type="button" class="btn btn-dark"
-							data-bs-toggle="modal" data-bs-target="#myModal">InActive
+							data-bs-toggle="modal" data-bs-target="#myModal_${serialNumber}">InActive
 						</button>
 					</div> 
-					<div class="modal fade" id="myModal">
+					<div class="modal fade" id="myModal_${serialNumber}">
 						<div class="modal-dialog">
 							<div class="modal-content">
 
@@ -184,7 +184,7 @@ width: 20%;
 									<div>
 					
 					
-					<p>Do you want to InActive this user(${userDetail.name})</p>
+					<p>Do you want to InActive this user(${userDetail.name}) ?</p>
 				<a class="btn btn-success" href="inActive?userId=${userDetail.userId}">Confirm</a>
 				</div>
 								</div>

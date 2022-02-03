@@ -46,7 +46,7 @@
 					<br>
 					<br> <label class="form-label" for="">Name:</label><br> <input
 						autofocus autocomplete="off" class="form-control" name="name1"
-						type="text" pattern="[A-Za-z]{3,40}"
+						type="text" pattern="[A-Za-z\s]{3,40}"
 						title="Only enter A-Z ,a-z and enter  min 3 to max 40 " required>
 
 					<label class="form-label">Email:</label><br> <input

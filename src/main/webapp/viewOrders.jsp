@@ -263,10 +263,10 @@ table {
 
 
 							<button type="button" class="btn btn-danger"
-								data-bs-toggle="modal" data-bs-target="#myModal">Cancel
+								data-bs-toggle="modal" data-bs-target="#myModal_${serialNumber}">Cancel
 							</button>
 						</div>
-						<div class="modal fade" id="myModal">
+						<div class="modal fade" id="myModal_${serialNumber}">
 							<div class="modal-dialog">
 								<div class="modal-content">
 
@@ -282,7 +282,7 @@ table {
 											<input type="hidden" name="cancelId"
 												value="${orderList.orderId }" readonly><br>
 
-											<p>Do you want to cancel your order(${orderList.orderId })</p>
+											<p>Do you want to cancel your order(${orderList.orderId }) ?</p>
 											<button class="btn btn-success" type="submit"
 												onclick="Cancel('${orderList.status}','${orderList.orderId }','${orderList.price }','${orderList.userId}')"
 												class="btn_add">Confirm</button>

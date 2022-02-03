@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.mobilesalesapp.dao.UserDao;
+import com.mobilesalesapp.logger.Logger;
 import com.mobilesalesapp.model.ContactUsPojo;
 import com.mobilesalesapp.model.RegisterPojo;
 import com.mobilesalesapp.util.ConnectionUtil;
@@ -32,17 +33,10 @@ public class UserImpl implements UserDao {
 			i = pre.executeUpdate();
 			pre.executeUpdate(query2);
 		} catch (SQLException e) {
-			e.getErrorCode();
+			Logger.printStackTrace(e);
+			Logger.runTimeException(e.getMessage());
 		} finally {
-			try {
-				if (pre != null) {
-					pre.close();
-					con.close();
-				}
-
-			} catch (SQLException e) {
-				e.getErrorCode();
-			}
+			ConnectionUtil.close(null, pre, con);
 		}
 
 		return i;
@@ -69,18 +63,11 @@ public class UserImpl implements UserDao {
 						rs.getString("role"));
 			}
 		} catch (SQLException e) {
-			e.getErrorCode();
+			Logger.printStackTrace(e);
+			Logger.runTimeException(e.getMessage());
 
 		} finally {
-			try {
-				if (pre != null) {
-					pre.close();
-					con.close();
-				}
-
-			} catch (SQLException e) {
-				e.getErrorCode();
-			}
+			ConnectionUtil.close(rs, pre, con);
 		}
 		return registerPojo;
 	}
@@ -102,17 +89,10 @@ public class UserImpl implements UserDao {
 			}
 
 		} catch (SQLException e) {
-			e.getErrorCode();
+			Logger.printStackTrace(e);
+			Logger.runTimeException(e.getMessage());
 		} finally {
-			try {
-				if (pre != null) {
-					pre.close();
-					con.close();
-				}
-
-			} catch (SQLException e) {
-				e.getErrorCode();
-			}
+			ConnectionUtil.close(rs, pre, con);
 		}
 
 		return userList;
@@ -136,18 +116,11 @@ public class UserImpl implements UserDao {
 			}
 
 		} catch (SQLException e) {
-			e.getErrorCode();
+			Logger.printStackTrace(e);
+			Logger.runTimeException(e.getMessage());
 
 		} finally {
-			try {
-				if (pre != null) {
-					pre.close();
-					con.close();
-				}
-
-			} catch (SQLException e) {
-				e.getErrorCode();
-			}
+			ConnectionUtil.close(null, pre, con);
 		}
 
 		return userList;
@@ -168,18 +141,11 @@ public class UserImpl implements UserDao {
 			pre.executeUpdate();
 
 		} catch (SQLException e) {
-			e.getErrorCode();
+			Logger.printStackTrace(e);
+			Logger.runTimeException(e.getMessage());
 
 		} finally {
-			try {
-				if (pre != null) {
-					pre.close();
-					con.close();
-				}
-
-			} catch (SQLException e) {
-				e.getErrorCode();
-			}
+			ConnectionUtil.close(null, pre, con);
 		}
 
 	}
@@ -196,18 +162,11 @@ public class UserImpl implements UserDao {
 			pre.setString(3, reg.getEmail());
 			pre.executeUpdate();
 		} catch (SQLException e) {
-			e.getErrorCode();
+			Logger.printStackTrace(e);
+			Logger.runTimeException(e.getMessage());
 
 		} finally {
-			try {
-				if (pre != null) {
-					pre.close();
-					con.close();
-				}
-
-			} catch (SQLException e) {
-				e.getErrorCode();
-			}
+			ConnectionUtil.close(null, pre, con);
 		}
 
 	}
@@ -228,18 +187,11 @@ public class UserImpl implements UserDao {
 			pre.executeUpdate("commit");
 
 		} catch (SQLException e) {
-			e.getErrorCode();
+			Logger.printStackTrace(e);
+			Logger.runTimeException(e.getMessage());
 
 		} finally {
-			try {
-				if (pre != null) {
-					pre.close();
-					con.close();
-				}
-
-			} catch (SQLException e) {
-				e.getErrorCode();
-			}
+			ConnectionUtil.close(null, pre, con);
 		}
 
 		return i;
@@ -259,18 +211,11 @@ public class UserImpl implements UserDao {
 			i = pre.executeUpdate();
 
 		} catch (SQLException e) {
-			e.getErrorCode();
+			Logger.printStackTrace(e);
+			Logger.runTimeException(e.getMessage());
 
 		} finally {
-			try {
-				if (pre != null) {
-					pre.close();
-					con.close();
-				}
-
-			} catch (SQLException e) {
-				e.getErrorCode();
-			}
+			ConnectionUtil.close(null, pre, con);
 		}
 
 		return i;
@@ -298,18 +243,11 @@ public class UserImpl implements UserDao {
 				userList.add(registerPojo1);
 			}
 		} catch (SQLException e) {
-			e.getErrorCode();
+			Logger.printStackTrace(e);
+			Logger.runTimeException(e.getMessage());
 
 		} finally {
-			try {
-				if (pre != null) {
-					pre.close();
-					con.close();
-				}
-
-			} catch (SQLException e) {
-				e.getErrorCode();
-			}
+			ConnectionUtil.close(rs, pre, con);
 		}
 
 		return userList;
@@ -334,17 +272,10 @@ public class UserImpl implements UserDao {
 			}
 
 		} catch (SQLException e) {
-			e.getErrorCode();
+			Logger.printStackTrace(e);
+			Logger.runTimeException(e.getMessage());
 		} finally {
-			try {
-				if (pre != null) {
-					pre.close();
-					con.close();
-				}
-
-			} catch (SQLException e) {
-				e.getErrorCode();
-			}
+			ConnectionUtil.close(rs, pre, con);
 		}
 
 		return userList;
@@ -369,17 +300,10 @@ public class UserImpl implements UserDao {
 			}
 
 		} catch (SQLException e) {
-			e.getErrorCode();
+			Logger.printStackTrace(e);
+			Logger.runTimeException(e.getMessage());
 		} finally {
-			try {
-				if (pre != null) {
-					pre.close();
-					con.close();
-				}
-
-			} catch (SQLException e) {
-				e.getErrorCode();
-			}
+			ConnectionUtil.close(rs, pre, con);
 		}
 
 		return userList;

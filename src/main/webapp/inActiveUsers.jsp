@@ -181,7 +181,7 @@ width: 20%;
 									<div>
 					
 					
-					<p>Do you want to Activate this user(${inactiveUserDetails.name })</p>
+					<p>Do you want to Activate this user(${inactiveUserDetails.name }) ?</p>
 				<a class="btn btn-success" href="activeUser?userId=${inactiveUserDetails.userId}">Confirm</a>
 				</div>
 								</div>

@@ -1,15 +1,20 @@
 package com.mobilesalesapp.impl;
 
-import com.mobilesalesapp.dao.CartDao;
-import com.mobilesalesapp.model.CartPojo;
-import com.mobilesalesapp.util.ConnectionUtil;
-
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.mobilesalesapp.dao.CartDao;
+import com.mobilesalesapp.logger.Logger;
+import com.mobilesalesapp.model.CartPojo;
+import com.mobilesalesapp.util.ConnectionUtil;
+
 public class CartImpl implements CartDao {
 
+	@Override
 	public String checkCart(CartPojo cart) {
 		Connection con = ConnectionUtil.connect();
 		String checkCartquery = "select cart_id,user_id,product_id,product_name,description,price,url from carts_table where user_id=? and product_id=?";
@@ -27,24 +32,17 @@ public class CartImpl implements CartDao {
 
 			}
 		} catch (SQLException e) {
-
-			e.getErrorCode();
+			Logger.printStackTrace(e);
+			Logger.runTimeException(e.getMessage());
 
 		} finally {
-			try {
-				if (pre != null) {
-					pre.close();
-					con.close();
-				}
-
-			} catch (SQLException e) {
-				e.getErrorCode();
-			}
+			ConnectionUtil.close(rs, pre, con);
 		}
 		return productName;
 
 	}
 
+	@Override
 	public void addCart(CartPojo cartPojo) {
 
 		Connection con = ConnectionUtil.connect();
@@ -69,21 +67,14 @@ public class CartImpl implements CartDao {
 
 			}
 		} catch (SQLException e) {
-			e.getErrorCode();
+			Logger.printStackTrace(e);
+			Logger.runTimeException(e.getMessage());
 
 		} finally {
-			try {
-				if (pre2 != null) {
-					pre2.close();
-					
-				}
-
-			} catch (SQLException e) {
-				e.getErrorCode();
-			}
+			ConnectionUtil.close(null, pre2, null);
 		}
 		try {
-			
+
 			String addCartInsertquery = "insert into carts_table(user_id,product_id,product_name,description,price,url) values(?,?,?,?,?,?)";
 			pre3 = con.prepareStatement(addCartInsertquery);
 			pre3.setInt(1, cartPojo.getUserId());
@@ -93,27 +84,19 @@ public class CartImpl implements CartDao {
 			pre3.setDouble(5, price);
 			pre3.setString(6, url);
 			pre3.executeUpdate();
-		
+
 			pre3.executeUpdate("commit");
 
 		} catch (SQLException e) {
-			e.printStackTrace();
-
+			Logger.printStackTrace(e);
+			Logger.runTimeException(e.getMessage());
 		} finally {
-			try {
-				if ( pre3 != null) {
-				
-					pre3.close();
-					con.close();
-				}
-
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
+			ConnectionUtil.close(null, pre3, con);
 		}
 
 	}
 
+	@Override
 	public void deleteCart(CartPojo cartPojo) {
 		Connection con = ConnectionUtil.connect();
 		String query = "delete from carts_table where product_id=? and user_id=? ";
@@ -125,22 +108,15 @@ public class CartImpl implements CartDao {
 			pre.executeUpdate();
 
 		} catch (SQLException e) {
-
-			e.getErrorCode();
+			Logger.printStackTrace(e);
+			Logger.runTimeException(e.getMessage());
 
 		} finally {
-			try {
-				if (pre != null) {
-					pre.close();
-					con.close();
-				}
-
-			} catch (SQLException e) {
-				e.getErrorCode();
-			}
+			ConnectionUtil.close(null, pre, con);
 		}
 	}
 
+	@Override
 	public List<CartPojo> viewAllCart(CartPojo cartPojo) {
 		Connection con = ConnectionUtil.connect();
 		String query = "select cart_id,user_id,product_id,product_name,description,price,url from carts_table where user_id=? order by cart_id desc";
@@ -152,24 +128,17 @@ public class CartImpl implements CartDao {
 			ResultSet rs = pre.executeQuery();
 			while (rs.next()) {
 
-				CartPojo cart = new CartPojo(rs.getInt("cart_id"), rs.getInt("user_id"), rs.getInt("product_id"), rs.getString("product_name"), rs.getString("product_name"),
-						rs.getDouble("price"), rs.getString("url"));
+				CartPojo cart = new CartPojo(rs.getInt("cart_id"), rs.getInt("user_id"), rs.getInt("product_id"),
+						rs.getString("product_name"), rs.getString("product_name"), rs.getDouble("price"),
+						rs.getString("url"));
 				cartList.add(cart);
 			}
 		} catch (SQLException e) {
-
-			e.getErrorCode();
+			Logger.printStackTrace(e);
+			Logger.runTimeException(e.getMessage());
 
 		} finally {
-			try {
-				if (pre != null) {
-					pre.close();
-					con.close();
-				}
-
-			} catch (SQLException e) {
-				e.getErrorCode();
-			}
+			ConnectionUtil.close(null, pre, con);
 		}
 		return cartList;
 

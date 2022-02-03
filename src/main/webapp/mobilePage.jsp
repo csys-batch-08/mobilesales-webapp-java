@@ -13,7 +13,7 @@
 	rel="stylesheet">
 
 
-<title>Mobile_page</title>
+<title>MobilePage</title>
 </head>
 <style>
 .h2_1 {

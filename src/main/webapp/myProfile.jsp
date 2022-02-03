@@ -12,9 +12,9 @@
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
 	rel="stylesheet">
+<script type="text/javascript" src="assets/javascript/myProfile.js"></script>
 
-
-<title>Mobile_page</title>
+<title>MobileProfile</title>
 </head>
 <style>
 .h2_1 {
@@ -228,7 +228,7 @@ input {
 
 		<div class="user_det">
 
-			<form action="updateUser" method="post">
+			<form action="" method="post">
 				<p>
 				<h2 style="position: absolute; left: 80px;">MyProfile</h2>
 				<br>
@@ -237,19 +237,19 @@ input {
 				</p>
 				<p>
 					<label>Name : </label> <input type="text" required class="c_user"
-						name="userName" pattern="[A-Za-z.\s]{3,40}"
+						name="userName" id="userName" pattern="[A-Za-z.\s]{3,40}"
 						value="${listAllDetail.name}"> <br>
 					<br>
 				</p>
 				<p>
 					<label>Email :</label> <input type="text" required class="c_user"
-						readonly name="userEmail" value="${listAllDetail.email}">
+						readonly name="userEmail" id="userEmail" value="${listAllDetail.email}">
 					<br>
 					<br>
 				</p>
 				<p>
 					<label>Phone :</label> <input class="c_user" required type="text"
-						pattern="[6789]{1}[0-9]{9}" maxlength="10" name="userPhone"
+						pattern="[6789]{1}[0-9]{9}" maxlength="10" name="userPhone" id="userPhone"
 						value="${listAllDetail.phoneNumber}"> <br>
 					<br>
 				</p>
@@ -261,7 +261,8 @@ input {
 					<br>
 				</p>
 				<p>
-					<button style="margin-left: 100px" class="btn btn-primary"
+					<button style="margin-left: 100px" class="btn btn-primary" 
+					onclick="updateProfile()"
 						type="submit">Update</button>
 				</p>
 			</form>
@@ -287,6 +288,7 @@ input {
 							<br>
 							<button
 								style="display: table-cell; position: absolute; left: 20px;"
+								
 								type="submit" class="btn btn-success">Add</button>
 							<br> <br>
 						</p>
