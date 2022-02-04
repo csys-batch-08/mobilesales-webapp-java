@@ -16,6 +16,12 @@
 <title>ViewOrders</title>
 </head>
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Heebo&family=Roboto:ital@1&display=swap');
+
+
+*{
+font-family:Heebo;
+}
 table, th, td {
 	border: 1px solid black;
 	border-collapse: collapse;
@@ -168,7 +174,7 @@ body {
 }
 
 table {
-	background-color: rgb(248, 213, 168);
+	background-color: white;
 }
 
 #product {

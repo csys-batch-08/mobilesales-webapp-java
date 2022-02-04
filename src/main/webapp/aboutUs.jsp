@@ -14,7 +14,12 @@
 </head>
 <style>
 
+@import url('https://fonts.googleapis.com/css2?family=Heebo&family=Roboto:ital@1&display=swap');
 
+
+*{
+font-family:Heebo;
+}
 
 
 .mar1 {
@@ -50,14 +55,12 @@
 }
 
 .aboutUs {
-	margin-left: 50px;
-	margin-top: -80px;
+	margin-left: 10px;
+	margin-top: -160px;
+	padding: 100px;
 }
 
 
-.aboutUs{
-padding: 20px;
-}
 
 
 </style>
@@ -85,7 +88,7 @@ padding: 20px;
 		width="40px" alt="" src="assets/images/mobile112.png">
 
 	<br>
-	<h3 style="margin-left: 70px;">About Us</h3>
+	<h3 style="margin-left: 120px;">About Us</h3>
 	<br>
 	<br>
 	<div class="aboutUs">

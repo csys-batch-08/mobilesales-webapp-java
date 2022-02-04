@@ -16,6 +16,12 @@
 	text-align: center;
 	background-color: bisque;
 }
+@import url('https://fonts.googleapis.com/css2?family=Heebo&family=Roboto:ital@1&display=swap');
+
+
+*{
+font-family:Heebo;
+}
 
 .top_nav {
 	/* background-color: brown;

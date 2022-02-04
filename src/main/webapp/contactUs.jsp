@@ -12,6 +12,12 @@
 <title>ContactUs</title>
 </head>
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Heebo&family=Roboto:ital@1&display=swap');
+
+
+*{
+font-family:Heebo;
+}
 .h2_1 {
 	text-align: center;
 	background-color: bisque;

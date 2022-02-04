@@ -16,6 +16,12 @@
 <title>MobilePage</title>
 </head>
 <style>
+
+
+
+*{
+font-family:Heebo;
+}
 .h2_1 {
 	text-align: center;
 	background-color: bisque;
@@ -262,9 +268,7 @@ body {
 
 		<table aria-describedby="Show All home places">
 			<tbody>
-				<tr>
-					<th><p style="visibility: hidden;">empty</p></th>
-				</tr>
+				
 				<tr>
 
 					<c:set var="count" value="1" />

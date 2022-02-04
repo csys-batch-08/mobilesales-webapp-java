@@ -13,10 +13,20 @@
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
 	rel="stylesheet">
 <script type="text/javascript" src="assets/javascript/myProfile.js"></script>
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 
 <title>MobileProfile</title>
 </head>
 <style>
+@import
+	url('https://fonts.googleapis.com/css2?family=Heebo&family=Roboto:ital@1&display=swap')
+	;
+
+* {
+	font-family: Heebo;
+}
+
 .h2_1 {
 	text-align: center;
 	background-color: bisque;
@@ -164,9 +174,19 @@ li a:hover {
 }
 
 .user_det {
-	margin: 60px;
+	margin: 30px;
 	position: absolute;
-	left: 250px;
+	left: 300px;
+}
+
+.profile {
+	background-color: white;
+	width: 150%;
+	height: 430px;
+	padding: 60px;
+	border-color: brown;
+	border-radius: 10px;
+	border-style: solid;
 }
 
 body {
@@ -184,13 +204,91 @@ p {
 label {
 	display: table-cell;
 	position: absolute;
-	right: 90px;
+	font-size: 20px;
+	right: 230px;
 }
 
 input {
 	display: table-cell;
 	position: absolute;
 	left: 80px;
+}
+
+#snackbar {
+	visibility: hidden;
+	min-width: 250px;
+	margin-left: -125px;
+	background-color: green;
+	color: white;
+	text-align: center;
+	border-radius: 2px;
+	padding: 16px;
+	position: fixed;
+	z-index: 1;
+	left: 50%;
+	top: 90px;
+	font-size: 17px;
+}
+
+#snackbar.show {
+	visibility: visible;
+	-webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+	animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+@
+-webkit-keyframes fadein {
+	from {top: 0;
+	opacity: 0;
+}
+
+to {
+	top: 90px;
+	opacity: 1;
+}
+
+}
+@
+keyframes fadein {
+	from {top: 0;
+	opacity: 0;
+}
+
+to {
+	top: 90px;
+	opacity: 1;
+}
+
+}
+@
+-webkit-keyframes fadeout {
+	from {top: 90px;
+	opacity: 1;
+}
+
+to {
+	top: 0;
+	opacity: 0;
+}
+
+}
+@
+keyframes fadeout {
+	from {top: 90px;
+	opacity: 1;
+}
+
+to {
+	top: 0;
+	opacity: 0;
+}
+
+}
+.wallet {
+	position: absolute;
+	left: 180px;
+	top: 380px;
+	padding: 1px;
 }
 
 * {
@@ -227,79 +325,93 @@ input {
 	<c:forEach items="${listAllDetails}" var="listAllDetail">
 
 		<div class="user_det">
+			<div class="profile">
 
-			<form action="" method="post">
 				<p>
-				<h2 style="position: absolute; left: 80px;">MyProfile</h2>
-				<br>
-				<br>
-				<br>
+				<h2 style="position: absolute; left: 150px;">MyProfile</h2>
 				</p>
+				<br> <br> <br>
+
 				<p>
 					<label>Name : </label> <input type="text" required class="c_user"
 						name="userName" id="userName" pattern="[A-Za-z.\s]{3,40}"
-						value="${listAllDetail.name}"> <br>
-					<br>
+						value="${listAllDetail.name}"> <br> <br>
 				</p>
 				<p>
 					<label>Email :</label> <input type="text" required class="c_user"
-						readonly name="userEmail" id="userEmail" value="${listAllDetail.email}">
-					<br>
-					<br>
+						readonly name="userEmail" id="userEmail"
+						value="${listAllDetail.email}"> <br> <br>
 				</p>
 				<p>
 					<label>Phone :</label> <input class="c_user" required type="text"
-						pattern="[6789]{1}[0-9]{9}" maxlength="10" name="userPhone" id="userPhone"
-						value="${listAllDetail.phoneNumber}"> <br>
+						pattern="[6789]{1}[0-9]{9}" maxlength="10" name="userPhone"
+						id="userPhone" value="${listAllDetail.phoneNumber}"> <br>
 					<br>
 				</p>
 				<p>
-					<label>Wallet :</label> <input type="text" required class="c_user"
-						name="userWallet" readonly value="${listAllDetail.wallet}">
+					<input type="text" required class="c_user" name="userWallet"
+						id="userWallet" readonly value="${listAllDetail.wallet}">
+					<label for="userWallet">Wallet :</label> <br> <br>
+				</p>
+				<p>
+					<button style="margin-left: 120px" class="btn btn-primary"
+						onclick="updateProfile()" type="submit">Update</button>
 
-					<br>
-					<br>
+
 				</p>
-				<p>
-					<button style="margin-left: 100px" class="btn btn-primary" 
-					onclick="updateProfile()"
-						type="submit">Update</button>
-				</p>
-			</form>
-			<div>
-				<details
-					style="position: absolute; left: 450px; top: 210px; padding: 4px;">
-					<summary style="padding: 4px;" class="btn btn-secondary">Recharge</summary>
-					<p>
-					<form action="addWallet" method="post">
-						<p>
-							<br> <input hidden=""
-								style="display: table-cell; position: absolute; left: 80px;"
-								type="text" name="walletUserId" value="${listAllDetail.userId}"
-								readonly pattern="[0-9]{1,8}" maxlength="8" required>
-						</p>
-						<p>
-							<label
-								style="display: table-cell; position: absolute; right: 20px;">Wallet:</label>
-							<input
-								style="display: table-cell; position: absolute; left: 70px;"
-								type="text" name="walletAmount" pattern="[1-9][0-9]{1,8}"
-								maxlength="8" title="Only enter positive number" required><br>
-							<br>
-							<button
-								style="display: table-cell; position: absolute; left: 20px;"
+				<button style="margin-left: 110px;"  type="button" class="btn btn-primary" data-bs-toggle="modal"
+					data-bs-target="#myModal">Recharge</button>
+
+				<div class="modal" id="myModal">
+					<div class="modal-dialog">
+						<div class="modal-content">
+
+						
+							<div class="modal-header">
+								<h4 class="modal-title">Recharge Wallet</h4>
+								<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+							</div>
+
+							<div class="modal-body">
+								<form action="addWallet" method="post">
+								<p>
+								 <input type="text" name="walletAmount"
+										pattern="[1-9][0-9]{1,8}" maxlength="8"
+										title="Only enter positive number" required> Wallet :<br>
 								
-								type="submit" class="btn btn-success">Add</button>
-							<br> <br>
-						</p>
-					</form>
-				</details>
+									</p>
+									<br> <input
+										style="display: table-cell; position: absolute; left: 80px;"
+										type="hidden" name="walletUserId"
+										value="${listAllDetail.userId}" readonly pattern="[0-9]{1,8}"
+										maxlength="8" required>
+
+
+
+									<button type="submit" class="btn btn-success">Submit</button>
+
+
+								</form>
+							</div>
+
+
+							<div class="modal-footer">
+								<button type="button" class="btn btn-danger"
+									data-bs-dismiss="modal">Close</button>
+							</div>
+
+						</div>
+					</div>
+				</div>
+
+
+				<div id="snackbar">Profile Updated Successfully</div>
+
+
+				<div></div>
 			</div>
 		</div>
 	</c:forEach>
-
-
-
 
 </body>
 </html>
