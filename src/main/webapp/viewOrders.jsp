@@ -251,10 +251,10 @@ table {
 			<c:set var="serialNumber" value="1" scope="page"></c:set>
 			<c:forEach items="${sessionScope.orderList}" var="orderList">
 				<tr>
-					<jsp:useBean id="url" class="com.mobilesalesapp.impl.OrderImpl"></jsp:useBean>
+					
 					<td>${serialNumber}</td>
 					<td><img width="110px;" alt="${orderList.productId}"
-						src="${url.getUrl(orderList.productId)}"></td>
+						src="${orderList.url}"></td>
 					<td>${orderList.status}</td>
 					<td> &#x20b9;${orderList.price }</td>
 					<td><fmt:parseDate value="${orderList.date}"

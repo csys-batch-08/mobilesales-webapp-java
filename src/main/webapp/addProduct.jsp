@@ -12,7 +12,6 @@
 <title>AdminPage</title>
 
 
-
 </head>
 
 <body>
@@ -43,7 +42,7 @@
 			<form action="addproduct" method="post">
 				<br>
 
-				<h2 style="margin-left: 70px;">Add product</h2>
+				<h2 style="margin-left: 120px;">Add product</h2>
 				<br>
 				<p>
 					<label class="lable">Product Name :</label> <input type="text"
@@ -69,7 +68,7 @@
 						maxlength="8" required class="add_inputs1"><br>
 					<br>
 				</p>
-				<button type="submit" style="margin-left: 120px"
+				<button type="submit" style="margin-left: 130px"
 					class="btn btn-success">Submit</button>
 				<br>
 				<br>

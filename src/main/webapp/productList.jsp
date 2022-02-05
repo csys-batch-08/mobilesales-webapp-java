@@ -65,7 +65,7 @@ li a:hover {
 }
 
 table {
-	background-color: rgb(248, 213, 168);
+	background-color: white;
 }
 
 #product {

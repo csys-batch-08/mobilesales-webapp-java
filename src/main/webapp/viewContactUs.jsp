@@ -132,7 +132,7 @@ body {
 }
 
 table {
-	background-color: rgb(248, 213, 168);
+	background-color: white;
 }
 
 #conatct {

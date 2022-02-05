@@ -40,7 +40,7 @@
 	<div class="body_main1">
 		<br>
 
-		<div class="add_con">
+		<div class="add_con1">
 			<div class="btn btn-block">
 				<br> <a class="btn btn-secondary " style="margin-left: 40px"
 					href="addProduct.jsp">Add Products</a><br> <br> <a

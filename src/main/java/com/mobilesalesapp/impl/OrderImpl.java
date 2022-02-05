@@ -100,7 +100,7 @@ public class OrderImpl implements OrderDao {
 	public List<OrderPojo> viewAllOrders(OrderPojo orderPojo) {
 
 		Connection con = ConnectionUtil.connect();
-		String query = "select order_id,status,price,order_date,address,fk_product_id,fk_user_id from orders_table where fk_user_id=? order by order_date desc ";
+		String query = "select o.order_id,o.status,o.price,o.order_date,o.address,o.fk_product_id,o.fk_user_id,p.url from orders_table o, products p  where o.fk_user_id=? and p.pk_product_id=o.fk_product_id order by order_date desc ";
 		ResultSet rs = null;
 		List<OrderPojo> orderList1 = new ArrayList<>();
 		PreparedStatement pre = null;
@@ -112,7 +112,7 @@ public class OrderImpl implements OrderDao {
 
 				OrderPojo orders = new OrderPojo(rs.getInt("fk_product_id"), rs.getInt("fk_user_id"),
 						rs.getInt("order_id"), rs.getString("status"), rs.getDouble("price"),
-						rs.getTimestamp("order_date").toLocalDateTime(), rs.getString("address"));
+						rs.getTimestamp("order_date").toLocalDateTime(), rs.getString("address"), rs.getString("url"));
 
 				orderList1.add(orders);
 			}
@@ -131,7 +131,10 @@ public class OrderImpl implements OrderDao {
 	public List<OrderPojo> searchAllOrders(OrderPojo orderPojo) {
 		List<OrderPojo> orderList1 = new ArrayList<>();
 		Connection con = ConnectionUtil.connect();
-		String query = "select fk_product_id,fk_user_id,order_id,status,price,order_date,address from orders_table where fk_user_id=? and to_char(trunc( order_date),'yyyy-mm-dd')=? order by order_date desc";
+		String query = "select o.order_id,o.status,o.price,o.order_date,o.address,o.fk_product_id,o.fk_user_id,"
+				+ "p.url from orders_table o, products p  where o.fk_user_id=? and "
+				+ "p.pk_product_id=o.fk_product_id  and to_char(trunc(o.order_date),'yyyy-mm-dd')=? order by"
+				+ " o.order_date desc";
 		ResultSet rs = null;
 		PreparedStatement pre = null;
 		try {
@@ -143,7 +146,7 @@ public class OrderImpl implements OrderDao {
 
 				OrderPojo orders = new OrderPojo(rs.getInt("fk_product_id"), rs.getInt("fk_user_id"),
 						rs.getInt("order_id"), rs.getString("status"), rs.getDouble("price"),
-						rs.getTimestamp("order_date").toLocalDateTime(), rs.getString("address"));
+						rs.getTimestamp("order_date").toLocalDateTime(), rs.getString("address"), rs.getString("url"));
 				orderList1.add(orders);
 
 			}
@@ -227,35 +230,12 @@ public class OrderImpl implements OrderDao {
 	}
 
 	@Override
-	public String getUrl(int productId) {
-		Connection con = ConnectionUtil.connect();
-		String query = "select url from products where pk_product_id=?";
-		ResultSet rs = null;
-		String url = null;
-		PreparedStatement pre = null;
-		try {
-			pre = con.prepareStatement(query);
-			pre.setInt(1, productId);
-			rs = pre.executeQuery();
-
-			if (rs.next()) {
-				url = rs.getString(1);
-			}
-		} catch (SQLException e) {
-			Logger.printStackTrace(e);
-			Logger.runTimeException(e.getMessage());
-
-		} finally {
-			ConnectionUtil.close(rs, pre, con);
-		}
-		return url;
-	}
-
-	@Override
 	public List<OrderPojo> viewAllSales() {
 
 		Connection con = ConnectionUtil.connect();
-		String query = "select order_id,status,price,order_date,address,fk_product_id,fk_user_id from orders_table order by order_date desc ";
+		String query = "select o.order_id,o.status,o.price,o.order_date,o.address,o.fk_product_id,o.fk_user_id"
+				+ ",p.url from orders_table o, products p  where p.pk_product_id=o.fk_product_id order by "
+				+ "order_date desc ";
 		ResultSet rs = null;
 		List<OrderPojo> orderList1 = new ArrayList<>();
 		PreparedStatement pre = null;
@@ -266,7 +246,7 @@ public class OrderImpl implements OrderDao {
 
 				OrderPojo orders = new OrderPojo(rs.getInt("fk_product_id"), rs.getInt("fk_user_id"),
 						rs.getInt("order_id"), rs.getString("status"), rs.getDouble("price"),
-						rs.getTimestamp("order_date").toLocalDateTime(), rs.getString("address"));
+						rs.getTimestamp("order_date").toLocalDateTime(), rs.getString("address"), rs.getString("url"));
 
 				orderList1.add(orders);
 			}
@@ -285,7 +265,9 @@ public class OrderImpl implements OrderDao {
 	public List<OrderPojo> searchAllSales(OrderPojo orderPojo) {
 		List<OrderPojo> orderList1 = new ArrayList<>();
 		Connection con = ConnectionUtil.connect();
-		String query = "select fk_product_id,fk_user_id,order_id,status,price,order_date,address from orders_table where to_char(trunc( order_date),'yyyy-mm-dd')=? order by order_date desc";
+		String query = "select o.order_id,o.status,o.price,o.order_date,o.address,o.fk_product_id,o.fk_user_id"
+				+ ",p.url from orders_table o, products p  where p.pk_product_id=o.fk_product_id and "
+				+ "to_char(trunc( o.order_date),'yyyy-mm-dd')=? order by o.order_date desc";
 		ResultSet rs = null;
 		PreparedStatement pre = null;
 		try {
@@ -296,7 +278,7 @@ public class OrderImpl implements OrderDao {
 
 				OrderPojo orders = new OrderPojo(rs.getInt("fk_product_id"), rs.getInt("fk_user_id"),
 						rs.getInt("order_id"), rs.getString("status"), rs.getDouble("price"),
-						rs.getTimestamp("order_date").toLocalDateTime(), rs.getString("address"));
+						rs.getTimestamp("order_date").toLocalDateTime(), rs.getString("address"), rs.getString("url"));
 				orderList1.add(orders);
 
 			}

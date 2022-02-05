@@ -18,7 +18,9 @@
 <style>
 
 
-
+@import
+	url('https://fonts.googleapis.com/css2?family=Heebo&family=Roboto:ital@1&display=swap')
+	;
 *{
 font-family:Heebo;
 }

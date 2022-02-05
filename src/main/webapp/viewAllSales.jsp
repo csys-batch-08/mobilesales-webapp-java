@@ -118,7 +118,7 @@ li a:hover {
 	background-color: grey;
 }
 table{
-background-color: rgb(248, 213, 168);
+background-color:white;
 }
 #user{
 width: 90%; margin-left: 50px;
@@ -190,10 +190,10 @@ width: 20%;
 			<c:set var="serialNumber" value="1" scope="page"></c:set>
 			<c:forEach items="${sessionScope.salesList}" var="orderList">
 				<tr>
-					<jsp:useBean id="url" class="com.mobilesalesapp.impl.OrderImpl"></jsp:useBean>
+					
 					<td>${serialNumber}</td>
-					<td><img width="110px;" alt="${orderList.productId}"
-						src="${url.getUrl(orderList.productId)}"></td>
+				<td><img width="110px;" alt="Mobiles"
+						src="${orderList.url}"></td>
 						<td>${orderList.orderId }</td>
 					<td>${orderList.status}</td>
 					<td> &#x20b9;${orderList.price }</td>

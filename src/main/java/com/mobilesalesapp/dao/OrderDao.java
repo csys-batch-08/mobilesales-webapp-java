@@ -18,8 +18,6 @@ public interface OrderDao {
 
 	public void deliveredCancel(OrderPojo orderPojo);
 
-	public String getUrl(int productId);
-
 	public List<OrderPojo> viewAllSales();
 
 	public List<OrderPojo> searchAllSales(OrderPojo orderPojo);

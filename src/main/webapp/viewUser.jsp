@@ -92,8 +92,8 @@ li a:hover {
 .active {
 	background-color: grey;
 }
-table{
-background-color: rgb(248, 213, 168);
+table {
+	background-color: white;
 }
 #user{
 width: 90%; margin-left: 50px;

@@ -93,8 +93,8 @@ li a:hover {
 body{
 background-color:cornsilk;
 }
-table{
-background-color: rgb(248, 213, 168);
+table {
+	background-color: white;
 }
 #inActive{
 width: 90%; 
@@ -136,7 +136,7 @@ width: 20%;
 
 	
 		
-		<table aria-describedby="Show All home places" id="inActive" >
+		<table aria-describedby="Show All home places" id="inActive" class="table table-hover table-striped">
 			<tr style="background-color: cornflowerblue">
 				<th>Serial No</th>
 				<th>Name</th>

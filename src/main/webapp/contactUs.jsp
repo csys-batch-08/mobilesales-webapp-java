@@ -12,28 +12,35 @@
 <title>ContactUs</title>
 </head>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Heebo&family=Roboto:ital@1&display=swap');
+@import
+	url('https://fonts.googleapis.com/css2?family=Heebo&family=Roboto:ital@1&display=swap')
+	;
 
-
-*{
-font-family:Heebo;
+.container {
+	position: absolute;
+	left: 290px;
+	margin-top: 30px;
+	background-color: white;
+	width: 50%;
+	height: 360px;
+	padding: 20px;
+	border-color: brown;
+	border-radius: 10px;
+	border-style: solid;
 }
+
+* {
+	font-family: Heebo;
+}
+
 .h2_1 {
 	text-align: center;
 	background-color: bisque;
 }
 
-.container {
-	text-align: center;
-	position: absolute;
-	top: 120px;
-}
 
-.top_nav {
-	/* background-color: brown;
-        padding: 9px; */
-	
-}
+
+
 
 .top_nav_in1 {
 	position: relative;
@@ -170,7 +177,7 @@ p {
 label {
 	display: table-cell;
 	position: absolute;
-	right: 1000px;
+	right: 500px;
 }
 
 input {
@@ -211,8 +218,7 @@ input {
 
 	<br>
 	<br>
-	<div style="position: absolute; left: 200px; margin-top: 50px;"
-		class="container">
+	<div class="container">
 
 
 
@@ -248,7 +254,7 @@ input {
 
 			<br>
 			<p>
-				<button style="margin-left: 150px" type="submit"
+				<button style="margin-left: 250px" type="submit"
 					class="btn btn-primary">Submit</button>
 			</p>
 

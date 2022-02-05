@@ -15,8 +15,12 @@
 <script type="text/javascript" src="assets/javascript/myProfile.js"></script>
 <script
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+	  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.5/sweetalert2.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.5/sweetalert2.common.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.5/sweetalert2.min.js"></script>
 
 <title>MobileProfile</title>
+
 </head>
 <style>
 @import
@@ -181,7 +185,7 @@ li a:hover {
 
 .profile {
 	background-color: white;
-	width: 150%;
+	width: 170%;
 	height: 430px;
 	padding: 60px;
 	border-color: brown;
@@ -205,13 +209,13 @@ label {
 	display: table-cell;
 	position: absolute;
 	font-size: 20px;
-	right: 230px;
+	right: 180px;
 }
 
 input {
 	display: table-cell;
 	position: absolute;
-	left: 80px;
+	left: 150px;
 }
 
 #snackbar {
@@ -245,6 +249,7 @@ input {
 to {
 	top: 90px;
 	opacity: 1;
+	left: 40px;
 }
 
 }
@@ -257,6 +262,7 @@ keyframes fadein {
 to {
 	top: 90px;
 	opacity: 1;
+	left: 40px;
 }
 
 }
@@ -264,6 +270,7 @@ to {
 -webkit-keyframes fadeout {
 	from {top: 90px;
 	opacity: 1;
+	left: 40px;
 }
 
 to {
@@ -276,6 +283,7 @@ to {
 keyframes fadeout {
 	from {top: 90px;
 	opacity: 1;
+	left: 40px;
 }
 
 to {
@@ -359,7 +367,7 @@ to {
 
 
 				</p>
-				<button style="margin-left: 110px;"  type="button" class="btn btn-primary" data-bs-toggle="modal"
+				<button style="margin-left: 113px;margin-top: 10px;"  type="button" class="btn btn-primary" data-bs-toggle="modal"
 					data-bs-target="#myModal">Recharge</button>
 
 				<div class="modal" id="myModal">
@@ -412,6 +420,7 @@ to {
 			</div>
 		</div>
 	</c:forEach>
+	
 
 </body>
 </html>
