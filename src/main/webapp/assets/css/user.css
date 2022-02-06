@@ -1,7 +1,14 @@
 @charset "ISO-8859-1";
-.mar1 {
-	font-size: 30px;
-	color: crimson;
+@import
+	url('https://fonts.googleapis.com/css2?family=Heebo&family=Roboto:ital@1&display=swap')
+	;
+
+* {
+	font-family: Heebo;
+}
+* {
+	margin: 0;
+	padding: 0;
 }
 
 .body_main {
@@ -9,34 +16,116 @@
 	margin-left: 240px;
 }
 
-
-
 .phoneInfo {
 	margin-left: 250px;
 	margin-top: -270px;
 	font-size: 20px;
 }
-
-.but_log a {
-	text-decoration: none;
-	color: white;
-	padding: 12px;
+.mar1 {
+	font-size: 30px;
+	color: green;
+	text-align: center;
+}
+#mobile {
+	margin-left: 105px;
 	margin-top: 20px;
-	margin-left: 100px;
-	background-color: rgb(83, 83, 204);
-	border-radius: 20px;
+	line-height: 2;
+	font-size: 20px;
 }
 
-.but_log {
-	margin-top: 40px;
+#mobile p {
+	margin-left: 40px;
+	font-weight: bold;
 }
 
-.aboutUs {
+#mobile button {
 	margin-left: 50px;
-	margin-top: -80px;
+	margin-top: 5px;
+	width: 120px;
+	height: 30px;
+	background-color: rgb(16, 177, 16);
+	border-radius: 10px;
+	border: none;
+	color: white;
+	font-size: 17px;
+	font-weight: bold;
+	box-shadow: 0 0 5px black;
+}
+
+#mobile button:hover {
+	background-color: white;
+	color: black;
+}
+
+#mobile img {
+	width: 140px;
+	height: 280px;
+	border-radius: 10px;
+}
+
+.buy_div form {
+	display: table;
+}
+
+.buy_div p {
+	display: table-row;
+}
+
+.buy_div label {
+	display: table-cell;
+}
+
+.buy_div input {
+	display: table-cell;
+	position: absolute;
+	left: 620px;
+}
+.buy_div {
+	margin-left: 400px;
+}
+.buy_h4 {
+	margin-left: 70px;
+	color: blue;
+}
+.buy_h5{
+margin-left: 150px;
+}
+#buy_btn{
+margin-left: 150px;
+}
+.searchPro {
+	position: absolute;
+	left: 420px;
+}
+
+.searchPro input[type=date] {
+	padding: 4px;
+	font-size: 16px;
+	float: left;
+}
+
+.searchPro button {
+	float: left;
+	padding: 4px;
+	background: #2196F3;
+	font-size: 17px;
+	border: 1px solid grey;
+	border-left: none;
+	cursor: pointer;
+}
+table, th, td {
+	border: 1px solid black;
+	border-collapse: collapse;
+	padding: 20px;
+}
+
+table {
+	background-color: white;
+}
+
+#product {
+	width: 90%;
+	margin-left: 60px;
 }
 
 
-.aboutUs{
-padding: 20px;
-}

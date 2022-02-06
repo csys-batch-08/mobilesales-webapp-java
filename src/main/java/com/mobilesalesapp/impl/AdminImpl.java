@@ -77,9 +77,7 @@ public class AdminImpl implements AdminDao {
 			pre2 = con.prepareStatement(activateUserquery);
 			pre2.setInt(1, reg.getUserId());
 			i = pre2.executeUpdate();
-
 		} catch (SQLException e) {
-
 			Logger.printStackTrace(e);
 			Logger.runTimeException(e.getMessage());
 

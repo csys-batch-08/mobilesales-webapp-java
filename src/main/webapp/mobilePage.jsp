@@ -12,260 +12,26 @@
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
 	rel="stylesheet">
 
-
+<link rel="stylesheet" href="assets/css/user.css">
 <title>MobilePage</title>
 </head>
-<style>
 
-
-@import
-	url('https://fonts.googleapis.com/css2?family=Heebo&family=Roboto:ital@1&display=swap')
-	;
-*{
-font-family:Heebo;
-}
-.h2_1 {
-	text-align: center;
-	background-color: bisque;
-}
-
-.top_nav {
-	/* background-color: brown;
-        padding: 9px; */
-	
-}
-
-.top_nav_in1 {
-	position: relative;
-	left: 500px;
-	padding: 8px;
-}
-
-bod {
-	background-image:
-		url("https://image.freepik.com/free-psd/smartphone-screen-mockup-glowing-neon-lights_53876-98580.jpg");
-	background-repeat: repeat;
-	background-size: 700px;
-}
-
-.top_nav_bu1 {
-	position: relative;
-	left: 520px;
-	padding: 8px;
-	background-color: cornflowerblue;
-}
-
-.top_nav_bu1 :hover {
-	background-color: darkgreen;
-	color: darkkhaki;
-}
-
-#table_id {
-	margin-right: 200px;
-}
-
-.table1 {
-	padding: 15px;
-}
-
-.table1 td {
-	padding: 12px;
-	text-align: center;
-}
-
-.button1 {
-	text-decoration: none;
-	position: relative;
-	top: 20px;
-	padding: 12px;
-	padding-left: 32px;
-	padding-right: 32px;
-	color: blanchedalmond;
-	border-radius: 12px;
-	border-color: black;
-	background-color: red;
-}
-
-.button1:hover {
-	background-color: blue;
-}
-
-.mar1 {
-	font-size: 30px;
-	color: green;
-	text-align: center;
-}
-
-.body_main1 {
-	background: linear-gradient(rgba(0, 0, 0, .3) 60%, rgba(0, 0, 0, .3)
-		-70%),
-		url(https://image.freepik.com/free-psd/smartphone-screen-mockup-glowing-neon-lights_53876-98580.jpg);
-	background-repeat: repeat;
-	background-size: 700px;
-	/* background: rgba(76, 175, 80, 0.3) */
-}
-
-ul {
-	list-style-type: none;
-	margin: 0;
-	padding: 0;
-	overflow: hidden;
-	background-color: brown;
-}
-
-li {
-	float: left;
-}
-
-li a {
-	display: block;
-	color: white;
-	text-align: center;
-	padding: 12px 16px;
-	text-decoration: none;
-}
-
-li a:hover {
-	background-color: goldenrod;
-}
-
-.active {
-	background-color: grey;
-}
-
-#but_id {
-	position: relative;
-	top: -8px;
-}
-
-#but_id1 {
-	position: relative;
-	top: -8px;
-}
-
-.table_right {
-	margin-right: 200px
-}
-
-.searchPro {
-	position: absolute;
-	left: 420px;
-}
-
-.searchPro input[type=text] {
-	padding: 10px;
-	font-size: 16px;
-	float: left;
-}
-
-.searchPro button {
-	float: left;
-	padding: 10px;
-	background: #2196F3;
-	font-size: 17px;
-	border: 1px solid grey;
-	border-left: none;
-	cursor: pointer;
-}
-
-#mobile {
-	margin-left: 75px;
-	margin-top: 20px;
-	line-height: 2;
-	font-size: 20px;
-}
-
-#mobile p {
-	margin-left: 40px;
-	font-weight: bold;
-}
-
-#mobile button {
-	margin-left: 50px;
-	margin-top: 5px;
-	width: 120px;
-	height: 30px;
-	background-color: rgb(16, 177, 16);
-	border-radius: 10px;
-	border: none;
-	color: white;
-	font-size: 17px;
-	font-weight: bold;
-	box-shadow: 0 0 5px black;
-}
-
-#mobile button:hover {
-	background-color: white;
-	color: black;
-}
-
-#mobile img {
-	width: 140px;
-	height: 280px;
-	border-radius: 10px;
-}
-
-#petdetails {
-	width: 80px;
-}
-
-body {
-	background-color: cornsilk;
-}
-
-.img1 {
-	position: absolute;
-	left: 100px;
-}
-
-* {
-	margin: 0;
-	padding: 0;
-}
-</style>
 
 <body>
-	<h2 class="h2_1">Mobile Sales App</h2>
-
-	<div style="position: relative; top: -10px;" class="top_nav">
-
-		<ul>
-			<li><a class="active" href="MobilePage">Home</a></li>
-			<li><a href="ViewOrders1">My Orders</a></li>
-			<li><a href="ViewCart">Cart</a></li>
-			<li><a href="MyProfile">My Profile</a></li>
-			<li><a href="contactUs.jsp">Contact us</a></li>
-			<li><a href="aboutUs.jsp">About us</a></li>
-			<li style="float: right;"><a href="logOut">Logout</a></li>
+	<jsp:include page="userHeader.jsp"></jsp:include>
 
 
-		</ul>
-
-
-	</div>
-	<img
-		style="border-radius: 100px; position: absolute; top: 0px; left: 500px;"
-		width="40px" alt="" src="assets/images/mobile112.png">
-
-	<div class="body_main">
+	<div class="body_main1">
 		<br>
 
-
+		<h4 class="mar1">New Smartphone Offer Available upto 15% Discount</h4>
+		
 		<h5 style="margin-left: 200px;">Welcome :${sessionScope.name}</h5>
 		<h5 style="margin-left: 200px;">Wallet
 			Amount: Rs : ${sessionScope.wallet}</h5>
-
-
-
-		<h4 class="mar1">New Smartphone Offer Available upto 15% Discount</h4>
-		<br>
-		<div class="searchPro">
-			<form action="SearchMobile">
-				<input type="text" pattern="[A-Za-z]{1,40}" name="search">
-				<button type="submit">Search</button>
-			</form>
-		</div>
-		<br> <br> <br> <br>
+	
+	<br>
+	
 
 
 		<table aria-describedby="Show All home places">
