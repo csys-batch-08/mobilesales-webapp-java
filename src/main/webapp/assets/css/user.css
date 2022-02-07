@@ -10,7 +10,6 @@
 	margin: 0;
 	padding: 0;
 }
-
 .body_main {
 	margin-top: 120px;
 	margin-left: 240px;
@@ -113,19 +112,145 @@ margin-left: 150px;
 	border-left: none;
 	cursor: pointer;
 }
-table, th, td {
+#product table, th, td {
 	border: 1px solid black;
 	border-collapse: collapse;
 	padding: 20px;
 }
-
-table {
+#product table {
 	background-color: white;
 }
-
 #product {
 	width: 90%;
 	margin-left: 60px;
 }
 
+/* userprofile css */
 
+.profile form {
+	display: table;
+}
+
+.profile p {
+	display: table-row;
+}
+
+.profile label {
+	display: table-cell;
+	position: absolute;
+	font-size: 20px;
+	right: 180px;
+}
+
+.profile input {
+	display: table-cell;
+	position: absolute;
+	left: 150px;
+}
+#snackbar {
+	visibility: hidden;
+	min-width: 250px;
+	margin-left: -125px;
+	background-color: green;
+	color: white;
+	text-align: center;
+	border-radius: 2px;
+	padding: 16px;
+	position: fixed;
+	z-index: 1;
+	left: 50%;
+	top: 90px;
+	font-size: 17px;
+}
+#snackbar.show {
+	visibility: visible;
+	-webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+	animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+@-webkit-keyframes fadeout {
+	from {top: 90px;
+	opacity: 1;
+	left: 40px;
+}
+
+to {
+	top: 0;
+	opacity: 0;
+}
+
+}
+@keyframes fadeout {
+	from {top: 90px;
+	opacity: 1;
+	left: 40px;
+}
+
+to {
+	top: 0;
+	opacity: 0;
+}
+}
+.profile {
+	background-color: white;
+	width: 170%;
+	height: 430px;
+	padding: 60px;
+	border-color: brown;
+	border-radius: 10px;
+	border-style: solid;
+}
+.user_det {
+	margin: 30px;
+	position: absolute;
+	left: 300px;
+}
+.c_user {
+	border-top: none;
+	border-left: none;
+	border-right: none;
+	width: 300px;
+	height: 25px;
+	margin-left: 30px;
+}
+
+/* ContactUs css */
+.container2 form {
+	display: table;
+}
+
+.container2 p {
+	display: table-row;
+}
+
+.container2 label {
+	display: table-cell;
+	position: absolute;
+	right: 450px;
+}
+
+.container2 input {
+	display: table-cell;
+	position: absolute;
+	left: 200px;
+}
+.container2 {
+	position: absolute;
+	left: 290px;
+	margin-top: 30px;
+	background-color: white;
+	width: 45%;
+	height: 360px;
+	padding: 20px;
+	border-color: brown;
+	border-radius: 10px;
+	border-style: solid;
+}
+
+/* about us */
+
+
+.aboutUs {
+	margin-left: 10px;
+	margin-top: -160px;
+	padding: 100px;
+}

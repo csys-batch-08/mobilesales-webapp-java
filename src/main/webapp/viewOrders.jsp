@@ -1,4 +1,3 @@
-
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -11,19 +10,13 @@
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
 	rel="stylesheet">
 	<link rel="stylesheet" href="assets/css/user.css">
-<script
-	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
 <script type="text/javascript" src="assets/javascript/orderScript.js"></script>
 <title>ViewOrders</title>
 </head>
-
 <body>
 	<jsp:include page="userHeader.jsp"></jsp:include>
 	<br>
-
-
-
-
 	<div class="searchPro">
 		<form action="SearchOrder">
 			<input type="date" id="search" name="OrderDate" required>
@@ -42,7 +35,6 @@
 	<c:if test="${sessionScope.userId1!=null}">
 		<table aria-describedby="Show All home places" id="product"
 			class="table table-hover table-striped">
-
 			<tr style="background-color: cornflowerblue">
 				<th>Serial No</th>
 				<th>Product</th>
@@ -52,13 +44,9 @@
 				<th>Delivery Address</th>
 				<th>Cancel Order</th>
 			</tr>
-
-
-
 			<c:set var="serialNumber" value="1" scope="page"></c:set>
 			<c:forEach items="${sessionScope.orderList}" var="orderList">
 				<tr>
-					
 					<td>${serialNumber}</td>
 					<td><img width="110px;" alt="${orderList.productId}"
 						src="${orderList.url}"></td>
@@ -69,9 +57,6 @@
 							pattern="dd-MM-yyyy HH:mm" value="${orderDate}" /></td>
 					<td>${orderList.address}</td>
 					<td>
-
-
-
 						<div class="container mt-3">
 
 
@@ -88,8 +73,6 @@
 										<button type="button" class="btn-close"
 											data-bs-dismiss="modal"></button>
 									</div>
-
-
 									<div class="modal-body">
 										<div><form action="">
 											<input type="hidden" name="cancelId"
@@ -102,8 +85,6 @@
 										</form>
 										</div>
 									</div>
-
-
 									<div class="modal-footer">
 										<button type="button" class="btn btn-danger"
 											data-bs-dismiss="modal">Close</button>
@@ -118,17 +99,12 @@
 				<c:set var="serialNumber" value="${serialNumber+1 }" scope="page"></c:set>
 			</c:forEach>
 
-
-
 		</table>
 	</c:if>
 	<c:if test="${sessionScope.userId1==null}">
 		<h1 style="color: red; margin-left: 500px; margin-top: 150px">Order
 			is not placed yet</h1>
 	</c:if>
-
-
-
 
 </body>
 </html>

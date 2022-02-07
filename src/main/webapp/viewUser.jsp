@@ -7,9 +7,6 @@
 <head>
 <meta charset="ISO-8859-1">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-<script
-	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-
 
 <title>UsersList</title>
 </head>
@@ -28,15 +25,6 @@ table {
 }
 
 
-.full1 {
-	background: linear-gradient(rgba(0, 0, 0, .3) 70%, rgba(0, 0, 0, .3)
-		-70%),
-		url(https://images.unsplash.com/photo-1506102383123-c8ef1e872756?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8Mjd8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60);
-	background-repeat: no-repeat;
-	background-size: cover;
-	/* background: rgba(76, 175, 80, 0.3) */
-	height: 100%;
-}
 
 .btn_add {
 	padding: 12px;

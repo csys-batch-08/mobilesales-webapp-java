@@ -7,85 +7,16 @@
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
 	rel="stylesheet">
-<link rel="stylesheet" href="assets/css/navigation.css">
+
 <link rel="stylesheet" href="assets/css/user.css">
 
 <title>AboutUs</title>
 </head>
-<style>
-
-@import url('https://fonts.googleapis.com/css2?family=Heebo&family=Roboto:ital@1&display=swap');
-
-
-*{
-font-family:Heebo;
-}
-
-
-.mar1 {
-	font-size: 30px;
-	color: crimson;
-}
-
-.body_main {
-	margin-top: 120px;
-	margin-left: 240px;
-}
 
 
 
-.phoneInfo {
-	margin-left: 250px;
-	margin-top: -270px;
-	font-size: 20px;
-}
-
-.but_log a {
-	text-decoration: none;
-	color: white;
-	padding: 12px;
-	margin-top: 20px;
-	margin-left: 100px;
-	background-color: rgb(83, 83, 204);
-	border-radius: 20px;
-}
-
-.but_log {
-	margin-top: 40px;
-}
-
-.aboutUs {
-	margin-left: 10px;
-	margin-top: -160px;
-	padding: 100px;
-}
-
-
-
-
-</style>
 <body>
-	<h2 class="h2_1">Mobile Sales App</h2>
-
-	<div style="position: relative; top: -10px;" class="top_nav">
-
-		<ul>
-			<li><a href="MobilePage">Home</a></li>
-			<li><a href="ViewOrders1">My Orders</a></li>
-			<li><a href="ViewCart">Cart</a></li>
-			<li><a href="MyProfile">My Profile</a></li>
-			<li><a href="contactUs.jsp">Contact us</a></li>
-			<li><a class="active" href="aboutUs.jsp">About us</a></li>
-			<li style="float: right;"><a href="logOut">Logout</a></li>
-
-
-		</ul>
-
-
-	</div>
-	<img
-		style="border-radius: 100px; position: absolute; top: 0px; left: 500px;"
-		width="40px" alt="" src="assets/images/mobile112.png">
+<jsp:include page="userHeader.jsp"></jsp:include>
 
 	<br>
 	<h3 style="margin-left: 120px;">About Us</h3>
