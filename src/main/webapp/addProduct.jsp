@@ -63,8 +63,8 @@
 					<br>
 				</p>
 				<p>
-					<label class="add_label2">List Price :</label> <input type="text"
-						name="list_price" id="brand_textbox" pattern="[0-9]{1,8}"
+					<label class="add_label2">List Price :</label> <input 
+					type="text" name="list_price" id="brand_textbox1" pattern="[0-9]{1,8}"
 						maxlength="8" required class="add_inputs1"><br>
 					<br>
 				</p>

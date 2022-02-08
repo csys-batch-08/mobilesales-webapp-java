@@ -1,8 +1,12 @@
 package com.mobilesalesapp.model;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
-public class OrderPojo {
+public class OrderPojo implements Serializable {
+
+	private static final long serialVersionUID = 1L;
+
 	public OrderPojo(int userId) {
 		super();
 		this.userId = userId;

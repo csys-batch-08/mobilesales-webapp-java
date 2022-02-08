@@ -23,29 +23,29 @@
 		<h4 class="buy_h4">Hello ${sessionScope.name}</h4>
 		<p>
 			<label>Address Line :</label> <input autocomplete="off"
-				name="address1" required="required" pattern="[a-zA-Z0-9\s,[]]{3,40}"
+				name="address1" id="address1" required="required" pattern="[a-zA-Z0-9\s,[]]{3,40}"
 				type="text"><br> <br>
 
 		</p>
 		<p>
 			<label> City/Town : </label> <input autocomplete="off"
-				name="address2" required="required" pattern="[a-zA-Z0-9\s,[]]{3,40}"
+				name="address2" id="address2" required="required" pattern="[a-zA-Z0-9\s,[]]{3,40}"
 				type="text"><br> <br>
 		</p>
 		<p>
-			<label> Pincode :</label> <input autocomplete="off" name="pincode"
+			<label> Pincode :</label> <input autocomplete="off" name="pincode" id="pincode"
 				required="required" pattern="[0-9]{6}" maxlength="6" type="text"><br>
 			<br>
 		</p>
 		<p>
 			<label> Phone Number : </label> <input autocomplete="off"
-				class="c_user2" name="phone_number" type="text"
+				class="c_user2" name="phone_number" id="phone_number" type="text"
 				pattern="[6789]{1}+[0-9]{9}" maxlength="10"
 				title="Enter only 10 digit number" required><br> <br>
 		</p>
 		<p>
 			<label>Password : </label> <input autocomplete="off" name="password"
-				required="required"
+				required="required" id="password"
 				pattern="(?=.*\d)(?=.*[@#$%*!^()_+])(?=.*[a-z])(?=.*[A-Z]).{8,}"
 				type="password"><br> <br>
 		</p>

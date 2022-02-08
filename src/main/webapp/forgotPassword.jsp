@@ -66,12 +66,12 @@
 				<br>
 				<br>
 				<br> <label for="">Email:</label><br> <input
-					autocomplete="off" class="c_user2" name="email"
+					autocomplete="off" class="c_user2" name="email" id="email"
 					pattern="[a-z][a-z0-9_.]+@[a-z0-9.]+[.][a-z]+" type="email"
 					title="Enter valid email ex(example12@gmail.com)" required><br>
 
 				<label for="">Phone number:</label><br> <input
-					autocomplete="off" class="c_user2" name="phone_number" type="text"
+					autocomplete="off" class="c_user2" name="phone_number" id="phone_number" type="text"
 					pattern="[6789]{1}[0-9]{9}" maxlength="10"
 					title="Enter only 10 digit number" required><br> <label
 					for="">Password:</label><br> <input autocomplete="off"

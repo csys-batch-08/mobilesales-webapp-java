@@ -9,7 +9,6 @@
 	rel="stylesheet">
 
 <link rel="stylesheet" href="assets/css/user.css">
-</head>
 <title>ContactUs</title>
 </head>
 <style>
@@ -29,27 +28,27 @@
 			<h1 style="margin-left: 200px;">Contact Us</h1>
 			<p>
 				<label for="">Name:</label> <input class="c_user" name="name1"
-					type="text" autocomplete="off" pattern="[A-Za-z]{3,40}"
+					type="text" id="name1" autocomplete="off" pattern="[A-Za-z]{3,40}"
 					title="Only enter A-Z ,a-z and enter  min 3 to max 40 " required><br>
 				<br>
 			</p>
 			<p>
 
 				<label for="">Email:</label> <input class="c_user" name="email"
-					autocomplete="off" pattern="[a-z][a-z0-9_.]+@[a-z0-9.]+[.][a-z]+"
+					autocomplete="off" id="email" pattern="[a-z][a-z0-9_.]+@[a-z0-9.]+[.][a-z]+"
 					type="email" title="Enter valid email ex(example12@gmail.com)"
 					required><br> <br>
 			</p>
 			<p>
 				<label for="">Phone :</label> <input class="c_user"
-					autocomplete="off" name="phone_number" type="text"
+					autocomplete="off" id="phone_number" name="phone_number" type="text"
 					pattern="[6789]{1}+[0-9]{9}" maxlength="10"
 					title="Enter only 10 digit number" required><br> <br>
 			</p>
 
 			<p>
 				<label for="">Description :</label> <input style="margin-left: 0px"
-					class="c_user" name="name1" type="text" autocomplete="off"
+					class="c_user" name="name1" id="name1" type="text" autocomplete="off"
 					pattern="[a-zA-Z0-9\s,[]]{3,40}"
 					title="Only enter A-Z ,a-z and enter  min 3 to max 40 " required><br>
 				<br>
