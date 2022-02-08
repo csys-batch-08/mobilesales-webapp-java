@@ -1,11 +1,5 @@
 @charset "ISO-8859-1";
-@import
-	url('https://fonts.googleapis.com/css2?family=Heebo&family=Roboto:ital@1&display=swap')
-	;
 
-* {
-	font-family: Heebo,sans-seri;
-}
 * {
 	margin: 0;
 	padding: 0;
