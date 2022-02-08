@@ -36,9 +36,9 @@
 
 		<table aria-describedby="Show All home places">
 			<tbody>
-				
+				<tr><th></th></tr>
 				<tr>
-
+					
 					<c:set var="count" value="1" />
 					<c:forEach items="${sessionScope.productList}" var="productList">
 						<td>
