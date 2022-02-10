@@ -44,5 +44,6 @@
 
 * Admin can inactive users
 * Admin can view inactive users
+* admin can view all sales
 * Admin can activate users
 * Admin can view contact
