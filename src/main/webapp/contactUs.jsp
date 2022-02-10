@@ -48,7 +48,7 @@
 
 			<p>
 				<label for="">Description :</label> <input style="margin-left: 0px"
-					class="c_user" name="name1" id="name1" type="text" autocomplete="off"
+					class="c_user" name="description" id="description" type="text" autocomplete="off"
 					pattern="[a-zA-Z0-9\s,[]]{3,40}"
 					title="Only enter A-Z ,a-z and enter  min 3 to max 40 " required><br>
 				<br>

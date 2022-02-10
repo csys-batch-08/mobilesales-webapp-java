@@ -152,8 +152,8 @@ margin-left: 150px;
 	padding: 16px;
 	position: fixed;
 	z-index: 1;
-	left: 50%;
-	top: 90px;
+	left: 43%;
+	top: 120px;
 	font-size: 17px;
 }
 #snackbar.show {
@@ -164,7 +164,6 @@ margin-left: 150px;
 @-webkit-keyframes fadeout {
 	from {top: 90px;
 	opacity: 1;
-	left: 40px;
 }
 
 to {
@@ -176,7 +175,6 @@ to {
 @keyframes fadeout {
 	from {top: 90px;
 	opacity: 1;
-	left: 40px;
 }
 
 to {
